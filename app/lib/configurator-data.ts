@@ -76,8 +76,8 @@ export const coolingUnits: CoolingUnit[] = [
   { id: 'carrier-xarios', name: 'Carrier Xarios 300', description: 'Kompakt, megbízható raktérhűtő egység kisebb furgonokhoz. -20°C-ig.', price: 1800000 },
   { id: 'carrier-supra-750', name: 'Carrier Supra 750', description: 'Nagy teljesítményű hűtőegység alvázas járművekhez. -25°C-ig.', price: 2800000 },
   { id: 'carrier-supra-1250', name: 'Carrier Supra 1250', description: 'Csúcskategóriás hűtőegység nehéz feladatokhoz. -30°C-ig.', price: 3500000 },
-  { id: 'thermo-king-v-200', name: 'Thermo King V-200', description: 'Alternatív hűtőegység, Thermo King megbízhatóság. -20°C-ig.', price: 2400000 },
-  { id: 'thermo-king-v-500', name: 'Thermo King V-500', description: 'Nagy teljesítményű Thermo King egység. -25°C-ig.', price: 3000000 },
+  { id: 'daikin-lke', name: 'Daikin LKE Eco', description: 'Kompakt, energiatakarékos hűtőegység kisebb furgonokhoz. -20°C-ig.', price: 2200000 },
+  { id: 'daikin-frv', name: 'Daikin FRV Pro', description: 'Nagy teljesítményű Daikin hűtőegység alvázas járművekhez. -25°C-ig.', price: 3100000 },
 ];
 
 // === INTERIOR OPTIONS ===

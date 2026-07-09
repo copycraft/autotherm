@@ -21,7 +21,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Hivatalos Carrier Transicold szerviz. Hűtőberendezések karbantartása, javítása 0-24 órás ügyelettel. Thermo King szerviz. Alkategóriák: járműfelépítmény javítás, raktérhűtő szerviz.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Hivatalos Carrier Transicold szerviz. Hűtőberendezések karbantartása, javítása. Daikin szerviz. Alkategóriák: járműfelépítmény javítás, raktérhűtő szerviz.</p>
           </div>
         </div>
       </section>

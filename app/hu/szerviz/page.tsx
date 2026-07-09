@@ -23,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Autotherm Kft. teljes körű szerviz szolgáltatást nyújt Carrier és Thermo King raktérhűtő berendezésekhez. 0-24 órás ügyeleti szolgálat. Hűtőberendezések diagnosztikája, javítása, karbantartása.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Autotherm Kft. teljes körű szerviz szolgáltatást nyújt Carrier és Daikin raktérhűtő berendezésekhez. Hűtőberendezések diagnosztikája, javítása, karbantartása.</p>
           </div>
         </div>
       </section>
@@ -35,10 +35,9 @@ export default async function Page() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: "Carrier szerviz", text: "Carrier raktérhűtő berendezések teljes körű szervizelése, diagnosztika, javítás." },
-              { title: "Thermo King szerviz", text: "Thermo King hűtőegységek karbantartása és javítása." },
-              { title: "0-24 órás ügyelet", text: "Éjjel-nappali hívható szerviz ügyelet a folyamatos üzemmenet biztosításáért." },
+              { title: "Daikin szerviz", text: "Daikin hűtőegységek karbantartása és javítása." },
               { title: "Karbantartás", text: "Rendszeres karbantartási csomagok a hűtőberendezések élettartamának meghosszabbításáért." },
-              { title: "Alkatrész ellátás", text: "Eredeti Carrier és Thermo King alkatrészek raktárról." },
+              { title: "Alkatrész ellátás", text: "Eredeti Carrier és Daikin alkatrészek raktárról." },
               { title: "Hibakód olvasás", text: "Modern diagnosztikai eszközökkel gyors és pontos hibameghatározás." },
             ].map((s) => (
               <div key={s.title} className="p-6 border border-[#e0e0e0]">

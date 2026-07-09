@@ -57,7 +57,7 @@ export default async function Page({ params }: Props) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { name: "Busa Ádám", role: "Értékesítés", email: "busa.adam@autotherm.hu" },
-              { name: "Csíkos Péter", role: "Hűtőszervíz 0-24", email: "csikos.peter@autotherm.hu" },
+              { name: "Csíkos Péter", role: "Hűtőszervíz", email: "csikos.peter@autotherm.hu" },
               { name: "Borbély Erika", role: "Ügyfélszolgálat", email: "borbely.erika@autotherm.hu" },
             ].map((p) => (
               <div key={p.name} className="p-6 border border-[#e0e0e0]">

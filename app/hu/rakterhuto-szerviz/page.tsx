@@ -23,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Carrier raktérhűtők értékesítés, beépítés és 0-24H szerviz. Hivatalos Carrier Transicold márkaszerviz és alkatrész forgalmazó. Thermo King hűtőberendezések javítása is.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Carrier raktérhűtők értékesítés, beépítés és szerviz. Hivatalos Carrier Transicold márkaszerviz és alkatrész forgalmazó. Daikin hűtőberendezések javítása is.</p>
           </div>
         </div>
       </section>
@@ -36,7 +36,6 @@ export default async function Page() {
             {[
               { title: "Carrier hűtőberendezések értékesítése", text: "A Carrier Transicold teljes termékpalettájának forgalmazása." },
               { title: "Beépítés", text: "Új hűtőberendezések szakszerű beépítése és üzembe helyezése." },
-              { title: "0-24 órás szerviz", text: "Folyamatos ügyeleti szolgálat a hét minden napján." },
               { title: "Diagnosztika és javítás", text: "Korszerű műszerekkel gyors és pontos hibafeltárás." },
             ].map((s) => (
               <div key={s.title} className="p-6 border border-[#e0e0e0]">

@@ -41,7 +41,7 @@ export default async function Page() {
               { title: "100% garancia", text: "100% pénzvisszafizetési garancia minden munkánkra." },
               { title: "Egyedi megoldások", text: "Minden járművet az Ön egyedi igényei szerint alakítunk ki." },
               { title: "Gyors határidők", text: "A jármű átalakítása akár 15 nap alatt." },
-              { title: "0-24 szerviz", text: "Éjjel-nappal elérhető szerviz ügyelet." },
+              { title: "Carrier szerviz", text: "Hivatalos Carrier Transicold szerviz." },
             ].map((s) => (
               <div key={s.title} className="p-6 border border-[#e0e0e0]">
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>

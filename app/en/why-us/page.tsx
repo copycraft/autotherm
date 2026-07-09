@@ -39,7 +39,7 @@ export default async function Page() {
               { title: "100% Guarantee", text: "100% money-back guarantee on all our work." },
               { title: "Custom Solutions", text: "Every vehicle built to your specific requirements." },
               { title: "Fast Delivery", text: "Conversion completed in as little as 15 days." },
-              { title: "0-24 Service", text: "Round-the-clock service hotline." },
+              { title: "Carrier Service", text: "Official Carrier Transicold service." },
             ].map((s) => (
               <div key={s.title} className="p-6 border border-[#e0e0e0]">
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>

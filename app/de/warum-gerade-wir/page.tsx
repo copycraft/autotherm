@@ -39,7 +39,7 @@ export default async function Page() {
               { title: "100% Garantie", text: "100% Geld-zurück-Garantie auf alle Arbeiten." },
               { title: "Individuelle Lösungen", text: "Jedes Fahrzeug nach Ihren Wünschen." },
               { title: "Schnelle Lieferung", text: "Umbau in nur 15 Tagen möglich." },
-              { title: "0-24 Service", text: "Rund-um-die-Uhr Service-Hotline." },
+              { title: "Carrier Service", text: "Offizieller Carrier Transicold Service." },
             ].map((s) => (
               <div key={s.title} className="p-6 border border-[#e0e0e0]">
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>

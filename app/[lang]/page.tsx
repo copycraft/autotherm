@@ -32,7 +32,7 @@ const huContent = {
   h1: "Hűtőautó és fagyasztós autó gyártás",
   icons: [
     { icon: "fa fa-gears", title: "gyártás", text: "3,5 tonnás járműfelépítmények gyártása és furgonok raktérszigetelése", link: "/hu/termekeink" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Carrier raktérhűtők értékesítés, beépítés és 0-24H szerviz", link: "/hu/rakterhuto-szerviz" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Carrier raktérhűtők értékesítés, beépítésés szerviz", link: "/hu/rakterhuto-szerviz" },
     { icon: "fa fa-desktop", title: "ügyintézés", text: "Akár 12 órán belül árajánlatot adunk részletes műszaki dokumentációval", link: "/hu/arajanlatkeres" },
   ],
   welcomeTitle: "Üdvözöljük az Autotherm Kft. weboldalán!",
@@ -62,7 +62,7 @@ const huContent = {
   testimonials: [
     { text: "Kiváló minőségű hűtőautót kaptunk, pontosan az elképzeléseink szerint. A szerviz háttér is kiemelkedő.", name: "Kiss János", company: "FrigoTrans Kft." },
     { text: "Már több járművet is náluk rendeltünk meg. Mindig pontosak, a megadott határidőre elkészülnek.", name: "Szabó Péter", company: "Magyar Hűtőlogisztika" },
-    { text: "Profi csapat, rugalmas hozzáállás. A Carrier szerviz 0-24-ben elérhető, ami nekünk nagyon fontos.", name: "Nagy István", company: "Hűtőkonténerszállító Zrt." },
+    { text: "Profi csapat, rugalmas hozzáállás. A Carrier szerviz elérhető, ami nekünk nagyon fontos, ami nekünk nagyon fontos.", name: "Nagy István", company: "Hűtőkonténerszállító Zrt." },
   ],
   stats: [
     { number: "2800", label: "Elégedett ügyfél" },
@@ -83,7 +83,7 @@ const enContent = {
   h1: "Cooled & Refrigerated Vehicle Body Manufacturing",
   icons: [
     { icon: "fa fa-gears", title: "production", text: "Vehicle bodies and van isolation up to 3.5 Tons", link: "/en/our-products" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Sale, installation and 0-24 Service of Carrier cooling units", link: "/en/van-isolations" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Sale, installation and Service of Carrier cooling units", link: "/en/van-isolations" },
     { icon: "fa fa-desktop", title: "documentation", text: "Detailed quotation within 12 hours with full technical documentation", link: "/en/quotation" },
   ],
   welcomeTitle: "Welcome to Autotherm Ltd.!",
@@ -113,7 +113,7 @@ const enContent = {
   testimonials: [
     { text: "Excellent quality refrigerated van built exactly to our specs. The service background is outstanding.", name: "John Smith", company: "CoolTrans Ltd." },
     { text: "We have ordered multiple vehicles from them. Always on time, meeting deadlines perfectly.", name: "Peter Brown", company: "EuroFridge Logistics" },
-    { text: "Professional team, flexible approach. Carrier service available 0-24, which is crucial for us.", name: "Robert Wilson", company: "ColdChain Solutions" },
+    { text: "Professional team, flexible approach. Carrier service available, which is crucial for us.", name: "Robert Wilson", company: "ColdChain Solutions" },
   ],
   stats: [
     { number: "2800", label: "Happy clients" },
@@ -134,7 +134,7 @@ const deContent = {
   h1: "Kühlfahrzeug- und Kühlkoffer-Herstellung",
   icons: [
     { icon: "fa fa-gears", title: "herstellung", text: "Fahrzeugaufbauten und Kühlkoffer bis zu 3,5 Tonnen", link: "/de/kuehlfahrzeug" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Verkauf, Einbau und 0-24 Service von Carrier Kühlaggregaten", link: "/de/kontakt" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Verkauf, Einbau und Service von Carrier Kühlaggregaten", link: "/de/kontakt" },
     { icon: "fa fa-desktop", title: "dokumentierung", text: "Angebot innerhalb von 12 Stunden mit technischer Dokumentation", link: "/de/anfrage" },
   ],
   welcomeTitle: "Willkommen bei Autotherm GmbH!",
@@ -164,7 +164,7 @@ const deContent = {
   testimonials: [
     { text: "Hervorragende Qualität, genau nach unseren Vorstellungen gebaut. Der Service ist ausgezeichnet.", name: "Hans Müller", company: "KühlLogistik GmbH" },
     { text: "Wir haben bereits mehrere Fahrzeuge bestellt. Stets pünktlich und termingerecht.", name: "Klaus Schmidt", company: "FrischeTrans GmbH" },
-    { text: "Professionelles Team, flexibler Ansatz. Carrier Service 0-24 verfügbar.", name: "Thomas Weber", company: "euroKühl Solutions" },
+    { text: "Professionelles Team, flexibler Ansatz. Carrier Service verfügbar.", name: "Thomas Weber", company: "euroKühl Solutions" },
   ],
   stats: [
     { number: "2800", label: "Zufriedene Kunden" },
@@ -185,7 +185,7 @@ const roContent = {
   h1: "Producție carosări frigorifice și izoterme",
   icons: [
     { icon: "fa fa-gears", title: "fabricație", text: "Suprastructuri și carosări frigorifice până la 3,5 tone", link: "/ro/carosari-furgoane-frigorifice" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Vânzare, instalare și service 0-24 unități frigorifice Carrier", link: "/ro/contact-2" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Vânzare, instalare și service unități frigorifice Carrier", link: "/ro/contact-2" },
     { icon: "fa fa-desktop", title: "documentație", text: "Ofertă detaliată în 12 ore cu documentație tehnică completă", link: "/ro/cerere-oferta" },
   ],
   welcomeTitle: "Bun venit la Autotherm SRL!",
@@ -215,7 +215,7 @@ const roContent = {
   testimonials: [
     { text: "Caroserie frigorifică de calitate excelentă, construită exact după specificațiile noastre.", name: "Ion Popescu", company: "FrigoDist SRL" },
     { text: "Am comandat multiple vehicule. Întotdeauna la timp, respectând termenele.", name: "Andrei Ionescu", company: "Logistică Refrigerată" },
-    { text: "Echipă profesionistă, abordare flexibilă. Service Carrier disponibil 0-24.", name: "Mihai Dumitru", company: "Soluții Lanț Rece" },
+    { text: "Echipă profesionistă, abordare flexibilă. Service Carrier disponibil.", name: "Mihai Dumitru", company: "Soluții Lanț Rece" },
   ],
   stats: [
     { number: "2800", label: "Clienți mulțumiți" },
