@@ -14,6 +14,7 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
       "/hu/kepgaleria": "Galéria",
       "/hu/kapcsolat": "Kapcsolat",
       "/hu/arajanlatkeres": "Ajánlatkérés",
+      "/hu/konfigurator": "Konfigurátor",
       "/hu/hutoauto-blog": "Blog",
     },
     contact: { phone: "+3620 910 20 50", email: "autotherm@autotherm.hu", hours: "Munkanapokon (workdays) 08:00-16:30" },
@@ -23,6 +24,7 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
       "/hu/termekeink": "Termékeink",
       "/hu/szerviz": "Szerviz",
       "/hu/miert-mi": "Miért mi?",
+      "/hu/konfigurator": "Konfigurátor",
     },
   },
   en: {
@@ -93,6 +95,7 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
 
 import ClientHeader from "@/app/components/ClientHeader";
 import CookieBarClient from "@/app/components/CookieBarClient";
+import { FOUNDED_YEAR, thisYear } from "@/app/lib/constants";
 
 export { langConfig };
 export type LangConfig = typeof langConfig.hu;
@@ -198,6 +201,10 @@ function Footer({ lang }: { lang: string }) {
               <a href={`mailto:${cfg.contact.email}`}>{cfg.contact.email}</a>
               <a href="https://www.autotherm.hu">Web: www.autotherm.hu</a>
             </div>
+            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-white/10">
+              <img src="/images/carrier-logo.png" alt="Carrier Transicold" className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
+              <img src="/images/garancia-logo.png" alt="Garancia" className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
+            </div>
           </div>
           <div className="footer-widget">
             <h3>Térkép / Map</h3>
@@ -216,7 +223,7 @@ function Footer({ lang }: { lang: string }) {
       </div>
       <div className="footer-bottom">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© 1992- Autotherm Kft. - minden jog fenntartva</p>
+          <p>© {FOUNDED_YEAR}-{thisYear} Autotherm Kft. - minden jog fenntartva</p>
           <div className="flex gap-4">
             <span>Az oldal, vagy egy részének másolása, sokszorosítása, bármilyen célú fel – és átdolgozása, kereskedelmi forgalomba hozatala tilos.</span>
           </div>

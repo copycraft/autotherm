@@ -3,6 +3,7 @@ import Link from "next/link";
 import { use, useState, useEffect, useCallback } from "react";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 import YouTubeLazy from "@/app/components/YouTubeLazy";
+import { yearsSince } from "@/app/lib/constants";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -67,7 +68,7 @@ const huContent = {
     { number: "2800", label: "Elégedett ügyfél" },
     { number: "265", label: "Átalakítás évente" },
     { number: "32", label: "Munkatárs" },
-    { number: "32", label: "Év rutin" },
+    { number: String(yearsSince()), label: "Év rutin" },
   ],
   ctaTitle: "Kérje árajánlatunkat most!",
   ctaText: "Adja meg adatait és 12 órán belül árajánlatot adunk.",
@@ -118,7 +119,7 @@ const enContent = {
     { number: "2800", label: "Happy clients" },
     { number: "265", label: "Conversions/year" },
     { number: "32", label: "Employees" },
-    { number: "32", label: "Years of experience" },
+    { number: String(yearsSince()), label: "Years of experience" },
   ],
   ctaTitle: "Request a Quotation Today!",
   ctaText: "We will provide a quotation within 12 hours.",
@@ -169,7 +170,7 @@ const deContent = {
     { number: "2800", label: "Zufriedene Kunden" },
     { number: "265", label: "Umbauten/Jahr" },
     { number: "32", label: "Mitarbeiter" },
-    { number: "32", label: "Jahre Erfahrung" },
+    { number: String(yearsSince()), label: "Jahre Erfahrung" },
   ],
   ctaTitle: "Fordern Sie noch heute ein Angebot an!",
   ctaText: "Wir erstellen Ihnen innerhalb von 12 Stunden ein Angebot.",
@@ -220,7 +221,7 @@ const roContent = {
     { number: "2800", label: "Clienți mulțumiți" },
     { number: "265", label: "Conversii/an" },
     { number: "32", label: "Angajați" },
-    { number: "32", label: "Ani experiență" },
+    { number: String(yearsSince()), label: "Ani experiență" },
   ],
   ctaTitle: "Cereți o ofertă astăzi!",
   ctaText: "Vă vom oferi o ofertă în 12 ore.",
@@ -399,10 +400,8 @@ function HomeContent({ lang }: { lang: string }) {
           <div className="content-section-heading">
             <h2>{lang === "hu" ? "Referencia ügyfeleink" : lang === "de" ? "Referenzkunden" : lang === "ro" ? "Clienți de referință" : "Our Clients"}</h2>
           </div>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
-            {clients.map((name) => (
-              <span key={name} className="text-[#999] font-bold text-xl opacity-60">{name}</span>
-            ))}
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <img src="/images/partner-logos.jpg" alt="Partner logos" className="max-w-full h-auto max-h-24 md:max-h-32 opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
           </div>
         </div>
       </section>

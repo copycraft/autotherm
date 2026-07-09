@@ -30,8 +30,8 @@ export default function ClientHeader({ lang, navEntries, homeLabel }: Props) {
     <header className={`main-header sticky top-0 z-50 ${scrolled ? 'scrolled' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
-          <Link href={`/${lang}`} className="flex items-center gap-3 shrink-0" onClick={closeMenu}>
-            <span className="text-2xl font-extrabold text-[#2e2e2e]">{homeLabel}</span>
+          <Link href={`/${lang}`} className="flex items-center shrink-0" onClick={closeMenu}>
+            <img src="/images/autotherm-logo.png" alt="Autotherm" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop nav */}
@@ -65,7 +65,9 @@ export default function ClientHeader({ lang, navEntries, homeLabel }: Props) {
       {/* Mobile menu panel */}
       <div className={`mobile-menu-panel ${menuOpen ? 'open' : ''}`}>
         <div className="flex items-center justify-between p-4 border-b border-gray-100">
-          <span className="text-lg font-bold text-[#2e2e2e]">{homeLabel}</span>
+          <span className="flex items-center">
+            <img src="/images/autotherm-logo.png" alt="Autotherm" className="h-7 w-auto" />
+          </span>
           <button
             onClick={closeMenu}
             className="w-10 h-10 flex items-center justify-center text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded transition-colors"

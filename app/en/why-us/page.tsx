@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
+import { yearsSince } from "@/app/lib/constants";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -10,6 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page() {
+  const years = yearsSince();
   return (
     <div>
       <AnimateOnScroll>
@@ -21,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">32 years of experience in refrigerated vehicle manufacturing. Official Carrier Transicold representation. 100% money-back guarantee. Custom solutions. Fast delivery, reliable quality.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">{years} years of experience in refrigerated vehicle manufacturing. Official Carrier Transicold representation. 100% money-back guarantee. Custom solutions. Fast delivery, reliable quality.</p>
           </div>
         </div>
       </section>
@@ -32,7 +34,7 @@ export default async function Page() {
           <div className="content-section-heading"><h2>Why choose us?</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: "32 Years Experience", text: "Manufacturing refrigerated vehicles since 1992." },
+              { title: `${years} Years Experience`, text: "Manufacturing refrigerated vehicles since 1992." },
               { title: "Carrier Representation", text: "Official Carrier Transicold distributor and service center." },
               { title: "100% Guarantee", text: "100% money-back guarantee on all our work." },
               { title: "Custom Solutions", text: "Every vehicle built to your specific requirements." },

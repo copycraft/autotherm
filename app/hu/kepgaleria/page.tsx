@@ -8,40 +8,61 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: "Képgaléria - Autotherm Kft." };
 }
 
+const categories = [
+  {
+    title: "Hűtős furgonok",
+    images: ["/images/4c7a44122714.jpg", "/images/a404687637b3.jpg", "/images/ae97125a0c4f.jpg", "/images/785d3105c7c6.jpg", "/images/0e90d9793302.jpg", "/images/3cc963ec4181.jpg"],
+  },
+  {
+    title: "Alvázas felépítmények",
+    images: ["/images/688500d4a01a.jpg", "/images/b2c54816a378.jpg", "/images/05b85e04c8d3.jpg", "/images/32b4cd177558.jpg", "/images/310373572c3b.jpg", "/images/82308068d05b.jpg"],
+  },
+  {
+    title: "Speciális járművek",
+    images: ["/images/e7f13b6c4bc5.jpg", "/images/79539d1d7438.jpg", "/images/db347b9ebd92.jpg", "/images/be3495baa194.jpg", "/images/45196215f76f.jpg", "/images/15f4103a8265.jpg"],
+  },
+  {
+    title: "Raktérszigetelés",
+    images: ["/images/6be9f7162b3b.jpg", "/images/103f979650e6.jpg", "/images/b05d04ca1183.jpg", "/images/a68af7b4ba26.jpg", "/images/e4566315cd28.jpg", "/images/2948dab7dd9a.jpg"],
+  },
+  {
+    title: "Flották és nagy projektek",
+    images: ["/images/d029c0586d66.jpg", "/images/300aebed8e8e.jpg", "/images/a51e2c833b3a.jpg", "/images/be8bb6a35e77.jpg", "/images/fca243146ad0.jpg", "/images/8bd1648f42cf.jpg"],
+  },
+];
+
 export default async function Page() {
-  const images = [
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Dobozos felépítmények" },
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Flotta járművek" },
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Elhunytszállító autók" },
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg", title: "Járműfelépítmények" },
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs01.jpg", title: "Raktérhűtő szerviz" },
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs02.jpg", title: "Hűtőautó gyártás" },
-    { src: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs03.jpg", title: "Speciális járművek" },
-  ];
   return (
     <div>
-      <AnimateOnScroll>
-      <section className="page-hero" style={{ backgroundImage: 'url(https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg)' }}>
+      <section
+        className="page-hero"
+        style={{ backgroundImage: `url(${categories[0].images[0]})` }}
+      >
         <div className="hero-content">
           <div className="max-w-7xl mx-auto px-4"><h1>Galéria</h1></div>
         </div>
       </section>
-      </AnimateOnScroll>
-      <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
-        <div className="wrap-column">
-          <div className="content-section-heading"><h2>Képek a munkáinkról</h2></div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {images.map((img) => (
-              <a key={img.title} className="gallery-card block">
-                <div className="h-[250px] bg-cover bg-center" style={{ backgroundImage: `url(${img.src})` }} />
-                <div className="gallery-card-overlay"><h3>{img.title}</h3></div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
+
+      {categories.map((cat, ci) => (
+        <AnimateOnScroll key={cat.title} delay={ci * 100}>
+          <section className={`content-section black-text ${ci % 2 === 0 ? 'white-bg' : 'gray-bg'} top-spacing-medium bottom-spacing-medium`}>
+            <div className="wrap-column">
+              <div className="content-section-heading">
+                <h2 className="content-section-subtitle">Munkáink</h2>
+                <h1>{cat.title}</h1>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {cat.images.map((src) => (
+                  <a key={src} className="gallery-card block">
+                    <img src={src} alt={cat.title} className="h-[240px] w-full object-cover" loading="lazy" />
+                    <div className="gallery-card-overlay"><h3>{cat.title}</h3></div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+        </AnimateOnScroll>
+      ))}
     </div>
   );
 }

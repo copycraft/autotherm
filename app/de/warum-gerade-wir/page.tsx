@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
+import { yearsSince } from "@/app/lib/constants";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -10,6 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page() {
+  const years = yearsSince();
   return (
     <div>
       <AnimateOnScroll>
@@ -21,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">32 Jahre Erfahrung im Kühlfahrzeugbau. Offizielle Carrier Transicold Vertretung. 100% Geld-zurück-Garantie. Maßgeschneiderte Lösungen. Kurze Lieferzeiten, zuverlässige Qualität.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">{years} Jahre Erfahrung im Kühlfahrzeugbau. Offizielle Carrier Transicold Vertretung. 100% Geld-zurück-Garantie. Maßgeschneiderte Lösungen. Kurze Lieferzeiten, zuverlässige Qualität.</p>
           </div>
         </div>
       </section>
@@ -32,7 +34,7 @@ export default async function Page() {
           <div className="content-section-heading"><h2>Warum uns wählen?</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: "32 Jahre Erfahrung", text: "Kühlfahrzeugbau seit 1992." },
+              { title: `${years} Jahre Erfahrung`, text: "Kühlfahrzeugbau seit 1992." },
               { title: "Carrier Vertretung", text: "Offizieller Carrier Transicold Vertrieb und Service." },
               { title: "100% Garantie", text: "100% Geld-zurück-Garantie auf alle Arbeiten." },
               { title: "Individuelle Lösungen", text: "Jedes Fahrzeug nach Ihren Wünschen." },
