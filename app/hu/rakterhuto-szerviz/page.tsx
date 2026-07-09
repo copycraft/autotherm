@@ -1,0 +1,61 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import AnimateOnScroll from "@/app/components/AnimateOnScroll";
+
+type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
+  return { title: "Raktérhűtő szerviz - Carrier hűtőberendezés javítás - Autotherm" };
+}
+
+export default async function Page() {
+  return (
+    <div>
+      <AnimateOnScroll>
+      <section className="page-hero" style={{ backgroundImage: 'url(https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs01.jpg)' }}>
+        <div className="hero-content">
+          <div className="max-w-7xl mx-auto px-4"><h1>Raktérhűtő szerviz</h1></div>
+        </div>
+      </section>
+      </AnimateOnScroll>
+      <AnimateOnScroll delay={150}>
+      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+        <div className="wrap-column">
+          <div className="content-column1">
+            <p className="text-base leading-7 text-[#666] mb-6">Carrier raktérhűtők értékesítés, beépítés és 0-24H szerviz. Hivatalos Carrier Transicold márkaszerviz és alkatrész forgalmazó. Thermo King hűtőberendezések javítása is.</p>
+          </div>
+        </div>
+      </section>
+      </AnimateOnScroll>
+      <AnimateOnScroll delay={300}>
+      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+        <div className="wrap-column">
+          <div className="content-section-heading"><h2>Szolgáltatásaink</h2></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              { title: "Carrier hűtőberendezések értékesítése", text: "A Carrier Transicold teljes termékpalettájának forgalmazása." },
+              { title: "Beépítés", text: "Új hűtőberendezések szakszerű beépítése és üzembe helyezése." },
+              { title: "0-24 órás szerviz", text: "Folyamatos ügyeleti szolgálat a hét minden napján." },
+              { title: "Diagnosztika és javítás", text: "Korszerű műszerekkel gyors és pontos hibafeltárás." },
+            ].map((s) => (
+              <div key={s.title} className="p-6 border border-[#e0e0e0]">
+                <h3 className="text-lg font-bold mb-3">{s.title}</h3>
+                <p className="text-[#666]">{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      </AnimateOnScroll>
+      <AnimateOnScroll delay={450}>
+      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+        <div className="wrap-column">
+          <h2 className="text-2xl font-bold mb-6">Szerviz időpont egyeztetés</h2>
+          <Link href="/hu/kapcsolat" className="button">Kapcsolat</Link>
+        </div>
+      </section>
+      </AnimateOnScroll>
+    </div>
+  );
+}
