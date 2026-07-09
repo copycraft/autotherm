@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
-type Props = { params: Promise<{ lang: string }> };
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("en", "/en/galeries").title,
+    description: getPageMeta("en", "/en/galeries").description,
+    keywords: getPageMeta("en", "/en/galeries").keywords,
+  };
+}
 
 export default async function Page() {
   const images = [

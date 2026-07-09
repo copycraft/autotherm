@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
-type Props = { params: Promise<{ lang: string }> };
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("hu", "/hu/szervizunk").title,
+    description: getPageMeta("hu", "/hu/szervizunk").description,
+    keywords: getPageMeta("hu", "/hu/szervizunk").keywords,
+  };
+}
 
 export default async function Page() {
   return (

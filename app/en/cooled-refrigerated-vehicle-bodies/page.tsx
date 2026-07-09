@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
-type Props = { params: Promise<{ lang: string }> };
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("en", "/en/cooled-refrigerated-vehicle-bodies").title,
+    description: getPageMeta("en", "/en/cooled-refrigerated-vehicle-bodies").description,
+    keywords: getPageMeta("en", "/en/cooled-refrigerated-vehicle-bodies").keywords,
+  };
+}
 
 export default async function Page() {
   return (
@@ -16,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">High-quality cooled and refrigerated vehicle bodies for 3.5T chassis. AT Strong® insulation with Carrier refrigeration units. Custom-built to your specifications.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Cooled and refrigerated vehicle bodies for 3.5T chassis. Insulated construction with Carrier refrigeration units. Custom-built to your specifications.</p>
           </div>
         </div>
       </section>

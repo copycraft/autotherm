@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
-type Props = { params: Promise<{ lang: string }> };
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("en", "/en/deceased-transport").title,
+    description: getPageMeta("en", "/en/deceased-transport").description,
+    keywords: getPageMeta("en", "/en/deceased-transport").keywords,
+  };
+}
 
 export default async function Page() {
   return (
@@ -16,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">AT Strong® insulated deceased transport vehicles. Stainless steel or GRP interior lining. +18°C cargo temperature. Multi-level configurations. Full paperwork handling.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Insulated deceased transport vehicles. Stainless steel or GRP interior lining. +18°C cargo temperature. Multi-level configurations. Full paperwork handling.</p>
           </div>
         </div>
       </section>

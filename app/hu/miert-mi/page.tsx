@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 import { yearsSince } from "@/app/lib/constants";
 
-type Props = { params: Promise<{ lang: string }> };
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("hu", "/hu/miert-mi").title,
+    description: getPageMeta("hu", "/hu/miert-mi").description,
+    keywords: getPageMeta("hu", "/hu/miert-mi").keywords,
+  };
+}
 
 export default async function Page() {
   const years = yearsSince();

@@ -58,7 +58,7 @@ export interface BodyType {
 
 export const bodyTypes: BodyType[] = [
   { id: 'refrigerated-van', name: 'Hűtős furgon', description: 'Raktérszigetelés + hűtőberendezés. Ideális élelmiszer, gyógyszer és egyéb hőmérséklet-érzékeny áruk szállítására.', image: '/images/05b85e04c8d3.jpg', price: 2800000 },
-  { id: 'insulated-box', name: 'Szigetelt doboz', description: 'AT Strong® hőszigetelt doboz felépítmény alvázas járművekre. Alumínium/rozsdamentes belső burkolattal.', image: '/images/688500d4a01a.jpg', price: 3500000 },
+  { id: 'insulated-box', name: 'Szigetelt doboz', description: 'Hőszigetelt doboz felépítmény alvázas járművekre. Alumínium/rozsdamentes belső burkolattal.', image: '/images/688500d4a01a.jpg', price: 3500000 },
   { id: 'chassis-body', name: 'Alvázas felépítmény', description: '3,5 tonnás alvázra épített platós-ponyvás vagy dobozos felépítmény.', image: '/images/b2c54816a378.jpg', price: 2200000 },
   { id: 'deceased-transport', name: 'Halottszállító', description: 'Speciális kialakítású halottszállító jármű. Diszkrét, méltóságteljes megjelenés.', image: '/images/e7f13b6c4bc5.jpg', price: 3800000 },
 ];

@@ -1,10 +1,37 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { getPageMeta, getCanonical, getHreflang } from "@/app/lib/seo";
+import { BreadcrumbJsonLd } from "@/app/lib/json-ld";
 
-const langConfig: Record<string, { label: string; nav: Record<string, string>; contact: Record<string, string>; homeLabel: string; footerMenu: Record<string, string> }> = {
+type LangLayoutProps = { children: ReactNode; params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: LangLayoutProps): Promise<Metadata> {
+  const { lang } = await params;
+  const meta = getPageMeta(lang, `/${lang}`);
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
+    alternates: {
+      canonical: getCanonical(lang, ""),
+      languages: getHreflang(lang, ""),
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: getCanonical(lang, ""),
+    },
+  };
+}
+
+const langConfig: Record<string, { label: string; nav: Record<string, string>; contact: Record<string, string>; homeLabel: string; footerMenu: Record<string, string>; legalName: string; footerRights: string; footerCopyright: string }> = {
   hu: {
     label: "HU",
     homeLabel: "Autotherm",
+    legalName: "Autotherm Kft.",
+    footerRights: "minden jog fenntartva",
+    footerCopyright: "Az oldal, vagy egy részének másolása, sokszorosítása, bármilyen célú fel – és átdolgozása, kereskedelmi forgalomba hozatala tilos.",
     nav: {
       "/hu": "Kezdőlap",
       "/hu/kik-vagyunk": "Kik vagyunk?",
@@ -28,6 +55,9 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
   en: {
     label: "EN",
     homeLabel: "Autotherm",
+    legalName: "Autotherm Ltd.",
+    footerRights: "all rights reserved",
+    footerCopyright: "Copying, reproduction, adaptation, or commercial distribution of this site or any part thereof is prohibited.",
     nav: {
       "/en": "Home",
       "/en/who-are-we": "Who are we",
@@ -50,6 +80,9 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
   de: {
     label: "DE",
     homeLabel: "Autotherm",
+    legalName: "Autotherm GmbH",
+    footerRights: "alle Rechte vorbehalten",
+    footerCopyright: "Das Kopieren, die Vervielfältigung, die Bearbeitung oder die kommerzielle Verbreitung dieser Website oder eines Teils davon ist untersagt.",
     nav: {
       "/de": "Startseite",
       "/de/wer-sind-wir-3": "Wer sind wir?",
@@ -72,6 +105,9 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
   ro: {
     label: "RO",
     homeLabel: "Autotherm",
+    legalName: "Autotherm SRL",
+    footerRights: "toate drepturile rezervate",
+    footerCopyright: "Copierea, reproducerea, adaptarea sau distribuția comercială a acestui site sau a oricărei părți a acestuia este interzisă.",
     nav: {
       "/ro": "Acasă",
       "/ro/cine-suntem-noi": "Cine suntem noi?",
@@ -138,7 +174,7 @@ function LangSwitcher({ currentLang }: { currentLang: string }) {
           className={`block leading-none ${l.code === currentLang ? "opacity-100" : "opacity-50 hover:opacity-100"}`}
           title={l.label}
         >
-          {l.code === "hu" && <svg width="24" height="16" viewBox="0 0 24 16"><rect width="24" height="16" fill="#fff"/><rect width="24" height="5.33" fill="#436F4D"/><rect y="10.67" width="24" height="5.33" fill="#CD2A3E"/></svg>}
+          {l.code === "hu" && <svg width="24" height="16" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#CD2A3E"/><rect y="5.33" width="24" height="5.34" fill="#fff"/><rect y="10.67" width="24" height="5.33" fill="#436F4D"/></svg>}
           {l.code === "en" && <svg width="24" height="16" viewBox="0 0 24 16"><rect width="24" height="16" fill="#012169"/><rect x="10" width="4" height="16" fill="#fff"/><rect y="6" width="24" height="4" fill="#fff"/><rect x="11" y="1" width="2" height="14" fill="#C8102E"/><rect y="7" width="24" height="2" fill="#C8102E"/></svg>}
           {l.code === "de" && <svg width="24" height="16" viewBox="0 0 24 16"><rect width="24" height="5.33" fill="#000"/><rect y="5.33" width="24" height="5.33" fill="#DD0000"/><rect y="10.67" width="24" height="5.33" fill="#FFCE00"/></svg>}
           {l.code === "ro" && <svg width="24" height="16" viewBox="0 0 24 16"><rect width="8" height="16" fill="#002B7F"/><rect x="8" width="8" height="16" fill="#FCD116"/><rect x="16" width="8" height="16" fill="#CE1126"/></svg>}
@@ -221,9 +257,9 @@ function Footer({ lang }: { lang: string }) {
       </div>
       <div className="footer-bottom">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© {FOUNDED_YEAR}-{thisYear} Autotherm Kft. - minden jog fenntartva</p>
+          <p>© {FOUNDED_YEAR}-{thisYear} {cfg.legalName} - {cfg.footerRights}</p>
           <div className="flex gap-4">
-            <span>Az oldal, vagy egy részének másolása, sokszorosítása, bármilyen célú fel – és átdolgozása, kereskedelmi forgalomba hozatala tilos.</span>
+            <span>{cfg.footerCopyright}</span>
           </div>
         </div>
       </div>

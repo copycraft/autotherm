@@ -28,15 +28,15 @@ const sliderSlides = [
 const huContent = {
   slideTitle: "3,5T hűtőautók, 31 éve",
   slideSub: "Egyedi igényekre gyártva",
-  subtitle: "Hűtős furgonok, elhunytszállító autók gyártása, utólagos raktérszigetelés és alvázas felépítmény gyártás.",
+  subtitle: "Hűtős furgonok, elhunytszállító autók gyártása, utólagos raktérszigetelés és alvázas felépítmény gyártás. Hűtőautó gyártás 1992 óta.",
   h1: "Hűtőautó és fagyasztós autó gyártás",
   icons: [
-    { icon: "fa fa-gears", title: "gyártás", text: "3,5 tonnás járműfelépítmények gyártása és furgonok raktérszigetelése", link: "/hu/termekeink" },
+    { icon: "fa fa-gears", title: "gyártás", text: "3,5 tonnás járműfelépítmények gyártása és furgonok raktérszigetelése 1992 óta", link: "/hu/termekeink" },
     { icon: "fa fa-globe", title: "carrier transicold", text: "Carrier raktérhűtők értékesítés, beépítésés szerviz", link: "/hu/rakterhuto-szerviz" },
     { icon: "fa fa-desktop", title: "ügyintézés", text: "Akár 12 órán belül árajánlatot adunk részletes műszaki dokumentációval", link: "/hu/arajanlatkeres" },
   ],
   welcomeTitle: "Üdvözöljük az Autotherm Kft. weboldalán!",
-  welcomeText: "Az Autotherm Kft. 1992 óta foglalkozik hűtőautók, elhunytszállító járművek és járműfelépítmények gyártásával. Célunk, hogy ügyfeleinknek a legmagasabb minőségű, egyedi igényekre szabott megoldásokat kínáljuk. Büszkék vagyunk arra, hogy termékeinket Magyarország mellett számos európai országba szállítjuk.",
+  welcomeText: "Az Autotherm Kft. 1992 óta foglalkozik hűtőautók, elhunytszállító járművek és járműfelépítmények gyártásával, valamint Carrier raktérhűtő szervizzel. Egyedi igényekre szabott megoldásokat kínálunk. Termékeinket Magyarország mellett számos európai országba szállítjuk.",
   videoId: "5QShNg3oKcA",
   productSections: [
     {
@@ -49,7 +49,7 @@ const huContent = {
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
       title: "Alvázas járműfelépítmények",
-      text: "3,5 tonnás alvázakra épített dobozos felépítmények. Alumínium doboz, hűtős doboz, platós-ponyvás és speciális felépítmények. AT Strong® hőszigeteléssel, rozsdamentes vagy üvegszálas belső bevonattal.",
+      text: "3,5 tonnás alvázakra épített dobozos felépítmények. Alumínium doboz, hűtős doboz, platós-ponyvás és speciális felépítmények. Hőszigetelt kivitel, rozsdamentes vagy üvegszálas belső bevonattal.",
       detailLink: "/hu/termekeink",
       quoteLink: "/hu/arajanlatkeres",
     },
@@ -79,10 +79,10 @@ const huContent = {
 const enContent = {
   slideTitle: "3.5T cooled vehicles, 31 years",
   slideSub: "Built to your specifications",
-  subtitle: "Cooled vans, deceased transport vehicles, van isolations, and chassis body production, repair and service.",
+  subtitle: "Cooled vans, deceased transport vehicles, van isolations, and chassis body production, repair and service. Refrigerated vehicle manufacturing since 1992.",
   h1: "Cooled & Refrigerated Vehicle Body Manufacturing",
   icons: [
-    { icon: "fa fa-gears", title: "production", text: "Vehicle bodies and van isolation up to 3.5 Tons", link: "/en/our-products" },
+    { icon: "fa fa-gears", title: "production", text: "Vehicle bodies and van isolation up to 3.5 Tons — since 1992", link: "/en/our-products" },
     { icon: "fa fa-globe", title: "carrier transicold", text: "Sale, installation and Service of Carrier cooling units", link: "/en/van-isolations" },
     { icon: "fa fa-desktop", title: "documentation", text: "Detailed quotation within 12 hours with full technical documentation", link: "/en/quotation" },
   ],
@@ -100,7 +100,7 @@ const enContent = {
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
       title: "Chassis Commercial Bodies",
-      text: "Box bodies for 3.5T chassis. Aluminium box, refrigerated box, flatbed with tarpaulin and special bodies. AT Strong® insulation with stainless steel or GRP interior lining.",
+      text: "Box bodies for 3.5T chassis. Aluminium box, refrigerated box, flatbed with tarpaulin and special bodies. Insulated construction with stainless steel or GRP interior lining.",
       detailLink: "/en/our-products",
       quoteLink: "/en/quotation",
     },
@@ -151,7 +151,7 @@ const deContent = {
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
       title: "Fahrgestell Nutzwagen Aufbauten",
-      text: "Kofferaufbauten für 3,5T Fahrgestelle. Aluminiumkoffer, Kühlkoffer, Pritschenaufbau mit Plane und Spezialaufbauten. AT Strong® Isolierung mit Edelstahl oder GFK Innenverkleidung.",
+      text: "Kofferaufbauten für 3,5T Fahrgestelle. Aluminiumkoffer, Kühlkoffer, Pritschenaufbau mit Plane und Spezialaufbauten. Isolierte Ausführung mit Edelstahl oder GFK Innenverkleidung.",
       detailLink: "/de/kuehlfahrzeug",
       quoteLink: "/de/anfrage",
     },
@@ -202,7 +202,7 @@ const roContent = {
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
       title: "Suprastructuri comerciale",
-      text: "Suprastructuri tip box pentru șasiuri de 3,5T. Cutie aluminiu, cutie frigorifică, platformă cu prelată și suprastructuri speciale. Izolație AT Strong® cu interior din oțel inoxidabil sau fibră de sticlă.",
+      text: "Suprastructuri tip box pentru șasiuri de 3,5T. Cutie aluminiu, cutie frigorifică, platformă cu prelată și suprastructuri speciale. Construcție izolată cu interior din oțel inoxidabil sau fibră de sticlă.",
       detailLink: "/ro/carosari-furgoane-frigorifice",
       quoteLink: "/ro/cerere-oferta",
     },

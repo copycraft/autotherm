@@ -1,8 +1,15 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
-type Props = { params: Promise<{ lang: string }> };
-
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("en", "/en/van-isolations").title,
+    description: getPageMeta("en", "/en/van-isolations").description,
+    keywords: getPageMeta("en", "/en/van-isolations").keywords,
+  };
+}
 
 export default async function Page() {
   return (
@@ -16,7 +23,7 @@ export default async function Page() {
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Professional van isolation solutions. AT Strong® technology with vacuum-bonded panels. 50mm or 80mm insulation thickness. Smooth, washable surfaces meeting food transport hygiene standards.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Professional van isolation solutions. Vacuum-bonded sandwich panels. 50mm or 80mm insulation thickness. Smooth, washable surfaces meeting food transport hygiene standards.</p>
           </div>
         </div>
       </section>
@@ -27,7 +34,7 @@ export default async function Page() {
           <div className="content-section-heading"><h2>Isolation Features</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { title: "AT Strong® Technology", text: "Vacuum-bonded sandwich panels with CFC-free insulation core." },
+              { title: "Insulation Technology", text: "Vacuum-bonded sandwich panels with CFC-free insulation core." },
               { title: "Hygienic Surfaces", text: "Smooth white polyester surfaces, easy to clean and disinfect." },
               { title: "Full Coverage", text: "Floor, walls, roof, wheel arches, doors - all fully insulated." },
               { title: "Lightweight", text: "Optimized weight for maximum payload capacity." },

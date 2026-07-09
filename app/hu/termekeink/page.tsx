@@ -1,11 +1,17 @@
+import type { Metadata } from "next";
+import { getPageMeta } from "@/app/lib/seo";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
-type Props = { params: Promise<{ lang: string }> };
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: getPageMeta("hu", "/hu/termekeink").title,
+    description: getPageMeta("hu", "/hu/termekeink").description,
+    keywords: getPageMeta("hu", "/hu/termekeink").keywords,
+  };
+}
 
-
-export default async function Page({ params }: Props) {
-  const { lang } = await params;
+export default async function Page() {
   return (
     <div>
       <AnimateOnScroll>
@@ -79,7 +85,7 @@ export default async function Page({ params }: Props) {
             <h2>Elhunytszállító autók</h2>
           </div>
           <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">AT Strong® hőszigeteléssel, rozsdamentes vagy üvegszálas belső bevonattal, +18°C-os raktérhűtéssel, több szintes változatban és speciális megoldásokkal. Teljes körű ügyintézéssel.</p>
+            <p className="text-base leading-7 text-[#666] mb-6">Hőszigetelt kivitel, rozsdamentes vagy üvegszálas belső bevonattal, +18°C-os raktérhűtéssel, több szintes változatban és speciális megoldásokkal. Teljes körű ügyintézéssel.</p>
           </div>
         </div>
       </section>
