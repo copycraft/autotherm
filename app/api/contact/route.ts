@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: 'Name, email, and message are required.' }, { status: 400 });
     }
 
-    insertSubmission({ name, email, phone, message, page, lang });
+    await insertSubmission({ name, email, phone, message, page, lang });
 
     return NextResponse.json({ success: true, message: 'Köszönjük! Munkatársunk hamarosan felveszi Önnel a kapcsolatot.' });
   } catch {

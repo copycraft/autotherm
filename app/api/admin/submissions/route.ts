@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
   if (user !== ADMIN_USER || pass !== ADMIN_PASS) return unauthorized();
 
   try {
-    const submissions = getAllSubmissions();
+    const submissions = await getAllSubmissions();
     return NextResponse.json({ success: true, submissions });
   } catch {
     return NextResponse.json({ success: false, message: 'Database error' }, { status: 500 });

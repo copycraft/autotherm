@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createPost, getAllPosts, updatePost, deletePost } from '@/app/lib/blog-db';
+import { createPost, getAllPosts, updatePost, deletePost } from '@/app/lib/db';
 
 function checkAuth(req: NextRequest): boolean {
   const auth = req.headers.get('authorization');
@@ -11,14 +11,14 @@ function checkAuth(req: NextRequest): boolean {
 
 export async function GET(req: NextRequest) {
   if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return NextResponse.json({ posts });
 }
 
 export async function POST(req: NextRequest) {
   if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await req.json();
-  const id = createPost(body);
+  const id = await createPost(body);
   return NextResponse.json({ success: true, id });
 }
 
@@ -27,7 +27,7 @@ export async function PUT(req: NextRequest) {
   const body = await req.json();
   const { id, ...data } = body;
   if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 });
-  updatePost(id, data);
+  await updatePost(id, data);
   return NextResponse.json({ success: true });
 }
 
@@ -35,6 +35,6 @@ export async function DELETE(req: NextRequest) {
   if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const { id } = await req.json();
   if (!id) return NextResponse.json({ error: 'id required' }, { status: 400 });
-  deletePost(id);
+  await deletePost(id);
   return NextResponse.json({ success: true });
 }
