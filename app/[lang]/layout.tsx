@@ -14,7 +14,6 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
       "/hu/kepgaleria": "Galéria",
       "/hu/kapcsolat": "Kapcsolat",
       "/hu/arajanlatkeres": "Ajánlatkérés",
-      "/hu/konfigurator": "Konfigurátor",
       "/hu/hutoauto-blog": "Blog",
     },
     contact: { phone: "+3620 910 20 50", email: "autotherm@autotherm.hu", hours: "Munkanapokon (workdays) 08:00-16:30" },
@@ -24,7 +23,6 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
       "/hu/termekeink": "Termékeink",
       "/hu/szerviz": "Szerviz",
       "/hu/miert-mi": "Miért mi?",
-      "/hu/konfigurator": "Konfigurátor",
     },
   },
   en: {

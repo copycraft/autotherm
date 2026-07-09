@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ContactForm from "@/app/components/ContactForm";
+import QuotationForm from "@/app/components/QuotationForm";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 type Props = { params: Promise<{ lang: string }> };
@@ -52,7 +52,7 @@ export default async function Page({ params }: Props) {
         <div className="wrap-column">
           <div className="max-w-2xl mx-auto p-8 border border-[#e0e0e0]">
             <h2 className="text-2xl font-bold mb-6">Küldje el igényeit</h2>
-            <ContactForm lang="hu" submitLabel="Ajánlatkérés" successTitle="Köszönjük ajánlatkérését!" successText="Munkatársunk hamarosan felveszi Önnel a kapcsolatot." />
+            <QuotationForm />
           </div>
         </div>
       </section>
