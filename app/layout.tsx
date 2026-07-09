@@ -9,10 +9,7 @@ const raleway = Raleway({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Autotherm - Cooled Vehicle Bodies & Refrigerated Conversions",
-    template: "%s • Autotherm",
-  },
+  title: "autotherm.hu",
   description:
     "Autotherm: Manufacturer of cooled and refrigerated vehicle bodies, van isolations, deceased transport vehicles, and commercial vehicle bodies since 1992.",
   keywords: [

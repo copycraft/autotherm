@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  return { title: "Aufbauten Galerie - Autotherm GmbH" };
-}
 
 export default async function Page() {
   const images = [

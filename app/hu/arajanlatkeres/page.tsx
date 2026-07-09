@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
 import QuotationForm from "@/app/components/QuotationForm";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  return { title: "Árajánlatkérés - Hűtőautó átalakítás árajánlat - Autotherm Kft." };
-}
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;

@@ -1,14 +1,9 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 import { yearsSince } from "@/app/lib/constants";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  return { title: "Warum gerade wir? - Autotherm GmbH" };
-}
 
 export default async function Page() {
   const years = yearsSince();

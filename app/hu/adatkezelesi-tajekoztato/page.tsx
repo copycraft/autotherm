@@ -1,12 +1,7 @@
-import type { Metadata } from "next";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  return { title: "Adatkezelési tájékoztató - Autotherm Kft." };
-}
 
 export default async function Page() {
   return (

@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  return { title: "Raktérhűtő szerviz - Carrier hűtőberendezés javítás - Autotherm" };
-}
 
 export default async function Page() {
   return (

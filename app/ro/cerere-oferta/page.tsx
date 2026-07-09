@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
 import ContactForm from "@/app/components/ContactForm";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 type Props = { params: Promise<{ lang: string }> };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { lang } = await params;
-  return { title: "Cerere ofertă - Autotherm SRL" };
-}
 
 export default async function Page({ params }: Props) {
   const { lang } = await params;
