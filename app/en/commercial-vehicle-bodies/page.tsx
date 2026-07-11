@@ -20,16 +20,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Wide range of commercial vehicle bodies for 3.5T chassis. Aluminium box, refrigerated box, flatbed with tarpaulin, and special bodies for every need.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Wide range of commercial vehicle bodies for 3.5T chassis. Aluminium box, refrigerated box, flatbed with tarpaulin, and special bodies for every need.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Body Types</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -39,9 +39,9 @@ export default async function Page() {
               { title: "Flatbed with Tarpaulin", text: "Versatile flatbed design with tarpaulin cover and load securing points." },
               { title: "Special Bodies", text: "Custom bodies for specific requirements. Workshop vehicle, refrigerated cargo, etc." },
             ].map((s) => (
-              <div key={s.title} className="p-6 border border-[#e0e0e0] bg-white">
+              <div key={s.title} className="p-6 border border-[var(--gray-200)] bg-white">
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>
-                <p className="text-[#666]">{s.text}</p>
+                <p className="text-[var(--gray-600)]">{s.text}</p>
               </div>
             ))}
           </div>
@@ -49,7 +49,7 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={450}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
           <h2 className="text-2xl font-bold mb-6">Interested in our bodies?</h2>
           <Link href="/en/quotation" className="button">Request a Quotation</Link>

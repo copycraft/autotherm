@@ -20,16 +20,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Cooled and refrigerated vehicle bodies for 3.5T chassis. Insulated construction with Carrier refrigeration units. Custom-built to your specifications.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Cooled and refrigerated vehicle bodies for 3.5T chassis. Insulated construction with Carrier refrigeration units. Custom-built to your specifications.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section gray-bg align-center">
         <div className="wrap-column">
           <h2 className="text-2xl font-bold mb-6">Interested?</h2>
           <Link href="/en/quotation" className="button">Request a Quotation</Link>

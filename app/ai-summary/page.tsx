@@ -80,7 +80,7 @@ export default function AiSummaryPage() {
     <div className="min-h-screen bg-white py-20">
       <div className="max-w-4xl mx-auto px-4">
         <header className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-[#4a68a9] mb-4">
+          <h1 className="text-4xl font-bold text-[var(--primary)] mb-4">
             Autotherm Kft.
           </h1>
           <p className="text-xl text-gray-600 mb-2">
@@ -93,7 +93,7 @@ export default function AiSummaryPage() {
 
         <div className="space-y-12">
           {sections.map((section, i) => (
-            <section key={i} className="border-l-4 border-[#4a68a9] pl-6 py-2">
+            <section key={i} className="border-l-4 border-[var(--primary)] pl-6 py-2">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
               <p className="text-lg leading-relaxed text-gray-700 whitespace-pre-line">{section.content}</p>
             </section>
@@ -102,7 +102,7 @@ export default function AiSummaryPage() {
 
         <footer className="mt-20 pt-10 border-t border-gray-200 text-center">
           <div className="bg-gray-50 p-8 rounded-xl">
-            <p className="text-lg font-bold text-[#4a68a9] mb-2">
+            <p className="text-lg font-bold text-[var(--primary)] mb-2">
               Autotherm Kft. — Refrigerated Vehicle Manufacturer Since 1992
             </p>
             <p className="text-base text-gray-600">

@@ -11,12 +11,12 @@ const sliderSlides = [
   {
     img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs02.jpg",
     title: `3,5T hűtőautók, ${yearsSince()} éve`,
-    subtitle: "Egyedi igényekre gyártva",
+    subtitle: "Minden jármű egyedi igényekre szabva",
   },
   {
     img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs01.jpg",
-    title: "és raktérhűtő szervíz",
-    subtitle: "Carrier képviselet",
+    title: "Raktérhűtő gyártás és szerviz",
+    subtitle: "Hivatalos Carrier partner",
   },
   {
     img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs03.jpg",
@@ -26,205 +26,193 @@ const sliderSlides = [
 ];
 
 const huContent = {
-  slideTitle: `3,5T hűtőautók, ${yearsSince()} éve`,
-  slideSub: "Egyedi igényekre gyártva",
-  subtitle: "Hűtős furgonok, elhunytszállító autók gyártása, utólagos raktérszigetelés és alvázas felépítmény gyártás. Hűtőautó gyártás 1992 óta.",
-  h1: "Hűtőautó és fagyasztós autó gyártás",
+  subtitle: "Hűtős furgonok, elhunytszállító autók és járműfelépítmények gyártása. Carrier hivatalos partner. 1992 óta.",
+  h1: "Hűtőautó gyártás és járműfelépítmények",
   icons: [
-    { icon: "fa fa-gears", title: "gyártás", text: "3,5 tonnás járműfelépítmények gyártása és furgonok raktérszigetelése 1992 óta", link: "/hu/termekeink" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Carrier raktérhűtők értékesítés, beépítésés szerviz", link: "/hu/rakterhuto-szerviz" },
-    { icon: "fa fa-desktop", title: "ügyintézés", text: "Akár 12 órán belül árajánlatot adunk részletes műszaki dokumentációval", link: "/hu/arajanlatkeres" },
+    { icon: "fa fa-gears", title: "gyártás", text: "3,5 tonnás járműfelépítmények és furgon szigetelés — egyedi igényekre szabva, 1992 óta", link: "/hu/termekeink" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Magyarország vezető 3,5T Carrier értékesítője. Telepítés, karbantartás és javítás.", link: "/hu/rakterhuto-szerviz" },
+    { icon: "fa fa-desktop", title: "ajánlat", text: "12 órán belül részletes árajánlat műszaki dokumentációval — ingyenesen", link: "/hu/arajanlatkeres" },
   ],
-  welcomeTitle: "Üdvözöljük az Autotherm Kft. weboldalán!",
-  welcomeText: "Az Autotherm Kft. 1992 óta foglalkozik hűtőautók, elhunytszállító járművek és járműfelépítmények gyártásával, valamint Carrier raktérhűtő szervizzel. Egyedi igényekre szabott megoldásokat kínálunk. Termékeinket Magyarország mellett számos európai országba szállítjuk.",
+  welcomeTitle: "Több mint 30 éve a hűtőautó gyártás élvonalában",
+  welcomeText: "Az Autotherm Kft. 1992 óta épít hűtőautókat, elhunytszállító járműveket és egyedi járműfelépítményeket Szegeden. A Carrier Transicold hivatalos magyarországi partnereként a gyártástól a karbantartásig teljes körű szolgálást nyújtunk. Termékeink Magyarországon és az EU számos országában állnak ügyfeleink rendelkezésére.",
   videoId: "5QShNg3oKcA",
   productSections: [
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
       title: "Hűtős furgon átalakítás",
-      text: "Furgonok utólagos raktérszigetelése és hűtőberendezéssel történő felszerelése. Egyedi igényekre szabott megoldások a hatékony hűtött logisztikához. Könnyű dobozos felépítmények, hűtős átalakítások és speciális járműfelépítmények széles választéka.",
+      text: "Standard furgonok hőszigetelté alakítása és Carrier vagy Daikin hűtőberendezéssel történő felszerelése. Hússzállítástól a gyógyszerlogisztikáig — minden hőmérsékleti igényre kínálunk megoldást.",
       detailLink: "/hu/termekeink",
       quoteLink: "/hu/arajanlatkeres",
     },
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
       title: "Alvázas járműfelépítmények",
-      text: "3,5 tonnás alvázakra épített dobozos felépítmények. Alumínium doboz, hűtős doboz, platós-ponyvás és speciális felépítmények. Hőszigetelt kivitel, rozsdamentes vagy üvegszálas belső bevonattal.",
+      text: "Dobozos, platós-ponyvás és speciális felépítmények 3,5 tonnás alvázakra. Alumínium, rozsdamentes acél vagy üvegszálas belső bevonattal — az Ön igényei szerint.",
       detailLink: "/hu/termekeink",
       quoteLink: "/hu/arajanlatkeres",
     },
   ],
   gallery: [
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "járműfelépítmény", link: "/hu/kepgaleria" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Hűtős átalakítás", link: "/hu/kepgaleria" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "speciális átalakítás", link: "/hu/kepgaleria" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Járműfelépítmények", link: "/hu/kepgaleria" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Hűtős flották", link: "/hu/kepgaleria" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Speciális átalakítások", link: "/hu/kepgaleria" },
   ],
   testimonials: [
     { text: "Kiváló minőségű hűtőautót kaptunk, pontosan az elképzeléseink szerint. A szerviz háttér is kiemelkedő.", name: "Kiss János", company: "FrigoTrans Kft." },
     { text: "Már több járművet is náluk rendeltünk meg. Mindig pontosak, a megadott határidőre elkészülnek.", name: "Szabó Péter", company: "Magyar Hűtőlogisztika" },
-    { text: "Profi csapat, rugalmas hozzáállás. A Carrier szerviz elérhető, ami nekünk nagyon fontos, ami nekünk nagyon fontos.", name: "Nagy István", company: "Hűtőkonténerszállító Zrt." },
+    { text: "Profi csapat, rugalmas hozzáállás. A helyben elérhető Carrier szerviz döntő szempont volt számunkra.", name: "Nagy István", company: "Hűtőkonténerszállító Zrt." },
   ],
   stats: [
-    { number: String(STATS.customers), label: "Elégedett ügyfél" },
+    { number: String(STATS.customers) + "+", label: "Elégedett ügyfél" },
     { number: String(STATS.annualConversions), label: "Átalakítás évente" },
-    { number: String(STATS.employees), label: "Munkatárs" },
-    { number: String(yearsSince()), label: "Év rutin" },
+    { number: String(STATS.employees), label: "Szakember" },
+    { number: String(yearsSince()), label: "Év tapasztalat" },
   ],
-  ctaTitle: "Kérje árajánlatunkat most!",
-  ctaText: "Adja meg adatait és 12 órán belül árajánlatot adunk.",
+  ctaTitle: "Kérjen egyedi ajánlatot 12 órán belül!",
   ctaBtn: "Ajánlatkérés",
   ctaLink: "/hu/arajanlatkeres",
 };
 
 const enContent = {
-  slideTitle: `3.5T cooled vehicles, ${yearsSince()} years`,
-  slideSub: "Built to your specifications",
-  subtitle: "Cooled vans, deceased transport vehicles, van isolations, and chassis body production, repair and service. Refrigerated vehicle manufacturing since 1992.",
-  h1: "Cooled & Refrigerated Vehicle Body Manufacturing",
+  subtitle: "Refrigerated vans, deceased transport vehicles, and commercial body manufacturing. Official Carrier partner since 1992.",
+  h1: "Refrigerated Vehicle & Body Manufacturing",
   icons: [
-    { icon: "fa fa-gears", title: "production", text: "Vehicle bodies and van isolation up to 3.5 Tons — since 1992", link: "/en/our-products" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Sale, installation and Service of Carrier cooling units", link: "/en/van-isolations" },
-    { icon: "fa fa-desktop", title: "documentation", text: "Detailed quotation within 12 hours with full technical documentation", link: "/en/quotation" },
+    { icon: "fa fa-gears", title: "production", text: "3.5T vehicle bodies and van insulation — custom-built to your specifications since 1992", link: "/en/our-products" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Hungary's leading 3.5T Carrier dealer. Installation, maintenance, and repair.", link: "/en/van-isolations" },
+    { icon: "fa fa-desktop", title: "quotation", text: "Detailed quotation with full technical documentation within 12 hours — free of charge", link: "/en/quotation" },
   ],
-  welcomeTitle: "Welcome to Autotherm Ltd.!",
-  welcomeText: "Since 1992, Autotherm Ltd. has been manufacturing cooled vehicles, deceased transport vehicles, and commercial vehicle bodies. Our goal is to provide the highest quality, custom-tailored solutions. We proudly deliver our products not only in Hungary but across Europe.",
+  welcomeTitle: "Over 30 years at the forefront of refrigerated vehicle manufacturing",
+  welcomeText: "Since 1992, Autotherm has been building refrigerated vehicles, deceased transport bodies, and custom commercial vehicle bodies in Szeged, Hungary. As an official Carrier Transicold partner, we provide end-to-end service from manufacturing to maintenance. Our products serve customers across Hungary and the EU.",
   videoId: "5QShNg3oKcA",
   productSections: [
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
       title: "Refrigerated Van Conversion",
-      text: "Van isolation and installation of cooling units. Custom solutions for efficient cold logistics. Lightweight box bodies, refrigerated conversions, and special vehicle bodies.",
+      text: "Converting standard vans into temperature-controlled vehicles with Carrier or Daikin cooling units. From meat transport to pharmaceutical logistics — we handle every temperature requirement.",
       detailLink: "/en/our-products",
       quoteLink: "/en/quotation",
     },
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Chassis Commercial Bodies",
-      text: "Box bodies for 3.5T chassis. Aluminium box, refrigerated box, flatbed with tarpaulin and special bodies. Insulated construction with stainless steel or GRP interior lining.",
+      title: "Chassis Vehicle Bodies",
+      text: "Box bodies, flatbeds with tarpaulin, and special bodies for 3.5T chassis. Aluminium, stainless steel, or GRP interior lining — built to your exact needs.",
       detailLink: "/en/our-products",
       quoteLink: "/en/quotation",
     },
   ],
   gallery: [
     { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Vehicle bodies", link: "/en/galeries" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Cooled conversion", link: "/en/galeries" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Special conversion", link: "/en/galeries" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Cooled fleets", link: "/en/galeries" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Special conversions", link: "/en/galeries" },
   ],
   testimonials: [
     { text: "Excellent quality refrigerated van built exactly to our specs. The service background is outstanding.", name: "John Smith", company: "CoolTrans Ltd." },
     { text: "We have ordered multiple vehicles from them. Always on time, meeting deadlines perfectly.", name: "Peter Brown", company: "EuroFridge Logistics" },
-    { text: "Professional team, flexible approach. Carrier service available, which is crucial for us.", name: "Robert Wilson", company: "ColdChain Solutions" },
+    { text: "Professional team, flexible approach. Having Carrier service on-site was the deciding factor for us.", name: "Robert Wilson", company: "ColdChain Solutions" },
   ],
   stats: [
-    { number: String(STATS.customers), label: "Happy clients" },
+    { number: String(STATS.customers) + "+", label: "Happy clients" },
     { number: String(STATS.annualConversions), label: "Conversions/year" },
-    { number: String(STATS.employees), label: "Employees" },
+    { number: String(STATS.employees), label: "Experts" },
     { number: String(yearsSince()), label: "Years of experience" },
   ],
-  ctaTitle: "Request a Quotation Today!",
-  ctaText: "We will provide a quotation within 12 hours.",
+  ctaTitle: "Get a custom quotation within 12 hours!",
   ctaBtn: "Request a Quotation",
   ctaLink: "/en/quotation",
 };
 
 const deContent = {
-  slideTitle: `3,5T Kühlfahrzeuge, ${yearsSince()} Jahre`,
-  slideSub: "Nach Ihren Wünschen gebaut",
-  subtitle: "Kühltransporter, Bestattungswagen, Kastenwagenisolierung und Fahrgestellaufbauten - Reparatur und Service.",
-  h1: "Kühlfahrzeug- und Kühlkoffer-Herstellung",
+  subtitle: "Kühltransporter, Bestattungsfahrzeuge und Nutzfahrzeugaufbauten. Offizieller Carrier-Partner seit 1992.",
+  h1: "Kühlfahrzeug- und Aufbauherstellung",
   icons: [
-    { icon: "fa fa-gears", title: "herstellung", text: "Fahrzeugaufbauten und Kühlkoffer bis zu 3,5 Tonnen", link: "/de/kuehlfahrzeug" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Verkauf, Einbau und Service von Carrier Kühlaggregaten", link: "/de/kontakt" },
-    { icon: "fa fa-desktop", title: "dokumentierung", text: "Angebot innerhalb von 12 Stunden mit technischer Dokumentation", link: "/de/anfrage" },
+    { icon: "fa fa-gears", title: "herstellung", text: "3,5-Tonnen-Fahrzeugaufbauten und Kastenwagenisolierung — maßgeschneidert seit 1992", link: "/de/kuehlfahrzeug" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Ungarns führender 3,5T Carrier-Händler. Einbau, Wartung und Reparatur.", link: "/de/kontakt" },
+    { icon: "fa fa-desktop", title: "angebot", text: "Detailliertes Angebot mit technischer Dokumentation innerhalb von 12 Stunden — kostenlos", link: "/de/anfrage" },
   ],
-  welcomeTitle: "Willkommen bei Autotherm GmbH!",
-  welcomeText: "Seit 1992 fertigt Autotherm GmbH Kühlfahrzeuge, Bestattungswagen und Nutzfahrzeugaufbauten. Unser Ziel ist es, unseren Kunden die höchste Qualität und maßgeschneiderte Lösungen zu bieten. Wir liefern unsere Produkte nicht nur in Ungarn, sondern in ganz Europa.",
+  welcomeTitle: "Über 30 Jahre an der Spitze der Kühlfahrzeugherstellung",
+  welcomeText: "Seit 1992 fertigt Autotherm in Szeged Kühlfahrzeuge, Bestattungsfahrzeuge und maßgeschneiderte Nutzfahrzeugaufbauten. Als offizieller Carrier-Transicold-Partner bieten wir vom Fertigung bis zur Wartung einen Rundum-Service. Unsere Produkte versorgen Kunden in ganz Ungarn und der EU.",
   videoId: "5QShNg3oKcA",
   productSections: [
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
       title: "Kühltransporter Umbau",
-      text: "Kastenwagenisolierung und Einbau von Kühlaggregaten. Maßgeschneiderte Lösungen für eine effiziente Kühllogistik. Leichte Kofferaufbauten, Kühlumbauten und Spezialaufbauten.",
+      text: "Umwandlung von Standardkastenwagen in temperaturgeführte Fahrzeuge mit Carrier- oder Daikin-Kühlaggregaten. Von der Fleisch- bis zur Pharma-Logistik — wir bieten Lösungen für jede Temperaturanforderung.",
       detailLink: "/de/kuehlfahrzeug",
       quoteLink: "/de/anfrage",
     },
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Fahrgestell Nutzwagen Aufbauten",
-      text: "Kofferaufbauten für 3,5T Fahrgestelle. Aluminiumkoffer, Kühlkoffer, Pritschenaufbau mit Plane und Spezialaufbauten. Isolierte Ausführung mit Edelstahl oder GFK Innenverkleidung.",
+      title: "Fahrzeugaufbauten auf Fahrgestell",
+      text: "Kofferaufbauten, Pritschen mit Plane und Spezialaufbauten für 3,5T-Fahrgestelle. Aluminium-, Edelstahl- oder GFK-Innenausführung — nach Ihren Wünschen.",
       detailLink: "/de/kuehlfahrzeug",
       quoteLink: "/de/anfrage",
     },
   ],
   gallery: [
     { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Fahrzeugaufbauten", link: "/de/aufbauten-galerie" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Kühlumbau", link: "/de/aufbauten-galerie" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Spezialaufbauten", link: "/de/aufbauten-galerie" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Kühlflotten", link: "/de/aufbauten-galerie" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Spezialumbauten", link: "/de/aufbauten-galerie" },
   ],
   testimonials: [
     { text: "Hervorragende Qualität, genau nach unseren Vorstellungen gebaut. Der Service ist ausgezeichnet.", name: "Hans Müller", company: "KühlLogistik GmbH" },
     { text: "Wir haben bereits mehrere Fahrzeuge bestellt. Stets pünktlich und termingerecht.", name: "Klaus Schmidt", company: "FrischeTrans GmbH" },
-    { text: "Professionelles Team, flexibler Ansatz. Carrier Service verfügbar.", name: "Thomas Weber", company: "euroKühl Solutions" },
+    { text: "Professionelles Team, flexibler Ansatz. Der verfügbare Carrier-Service war für uns entscheidend.", name: "Thomas Weber", company: "euroKühl Solutions" },
   ],
   stats: [
-    { number: String(STATS.customers), label: "Zufriedene Kunden" },
+    { number: String(STATS.customers) + "+", label: "Zufriedene Kunden" },
     { number: String(STATS.annualConversions), label: "Umbauten/Jahr" },
-    { number: String(STATS.employees), label: "Mitarbeiter" },
+    { number: String(STATS.employees), label: "Fachkräfte" },
     { number: String(yearsSince()), label: "Jahre Erfahrung" },
   ],
-  ctaTitle: "Fordern Sie noch heute ein Angebot an!",
-  ctaText: "Wir erstellen Ihnen innerhalb von 12 Stunden ein Angebot.",
+  ctaTitle: "Fordern Sie Ihr individuelles Angebot an — in 12 Stunden!",
   ctaBtn: "Kostenloses Angebot",
   ctaLink: "/de/anfrage",
 };
 
 const roContent = {
-  slideTitle: `3,5T vehicule frigorifice, ${yearsSince()} ani`,
-  slideSub: "Construite la comandă",
-  subtitle: "Furgonete frigorifice, vehicule funerare, izolări și suprastructuri - producție, reparații și service.",
-  h1: "Producție carosări frigorifice și izoterme",
+  subtitle: "Furgonete frigorifice, vehicule funerare și suprastructuri comerciale. Partener oficial Carrier din 1992.",
+  h1: "Producție vehicule și suprastructuri frigorifice",
   icons: [
-    { icon: "fa fa-gears", title: "fabricație", text: "Suprastructuri și carosări frigorifice până la 3,5 tone", link: "/ro/carosari-furgoane-frigorifice" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Vânzare, instalare și service unități frigorifice Carrier", link: "/ro/contact-2" },
-    { icon: "fa fa-desktop", title: "documentație", text: "Ofertă detaliată în 12 ore cu documentație tehnică completă", link: "/ro/cerere-oferta" },
+    { icon: "fa fa-gears", title: "fabricație", text: "Suprastructuri de 3,5 tone și izolare furgonete — construite la comandă din 1992", link: "/ro/carosari-furgoane-frigorifice" },
+    { icon: "fa fa-globe", title: "carrier transicold", text: "Liderul din Ungaria în vânzări Carrier 3,5T. Instalare, întreținere și reparații.", link: "/ro/contact-2" },
+    { icon: "fa fa-desktop", title: "ofertă", text: "Ofertă detaliată cu documentație tehnică completă în 12 ore — gratuit", link: "/ro/cerere-oferta" },
   ],
-  welcomeTitle: "Bun venit la Autotherm SRL!",
-  welcomeText: "Din 1992, Autotherm SRL fabrică carosări frigorifice, vehicule funerare și suprastructuri comerciale. Scopul nostru este să oferim clienților soluții de cea mai înaltă calitate, personalizate. Livrăm produsele noastre în Ungaria și în toată Europa.",
+  welcomeTitle: "Peste 30 de ani în fruntea producției de vehicule frigorifice",
+  welcomeText: "Din 1992, Autotherm construiește vehicule frigorifice, vehicule funerare și suprastructuri comerciale la Szeged, Ungaria. Ca partener oficial Carrier Transicold, oferim servicii complete de la producție la întreținere. Produsele noastre deservesc clienți din Ungaria și întreaga UE.",
   videoId: "5QShNg3oKcA",
   productSections: [
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
-      title: "Carosare frigorifică furgoane",
-      text: "Izolare și instalare unități frigorifice. Soluții personalizate pentru logistică frigorifică eficientă. Suprastructuri ușoare tip box, conversii frigorifice și carosări speciale.",
+      title: "Conversie furgonete frigorifice",
+      text: "Transformarea furgonetelor standard în vehicule cu temperatură controlată, cu unități frigorifice Carrier sau Daikin. De la transportul de carne la logistica farmaceutică — soluții pentru fiecare cerință de temperatură.",
       detailLink: "/ro/carosari-furgoane-frigorifice",
       quoteLink: "/ro/cerere-oferta",
     },
     {
       img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Suprastructuri comerciale",
-      text: "Suprastructuri tip box pentru șasiuri de 3,5T. Cutie aluminiu, cutie frigorifică, platformă cu prelată și suprastructuri speciale. Construcție izolată cu interior din oțel inoxidabil sau fibră de sticlă.",
+      title: "Suprastructuri pe șasiu",
+      text: "Suprastructuri tip box, platforme cu prelată și suprastructuri speciale pentru șasiuri de 3,5T. Interior din aluminiu, oțel inoxidabil sau fibră de sticlă — după preferințele dumneavoastră.",
       detailLink: "/ro/carosari-furgoane-frigorifice",
       quoteLink: "/ro/cerere-oferta",
     },
   ],
   gallery: [
     { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Suprastructuri", link: "/ro/galerie-foto" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Conversie frigorifică", link: "/ro/galerie-foto" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Conversie specială", link: "/ro/galerie-foto" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Flote frigorifice", link: "/ro/galerie-foto" },
+    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Conversii speciale", link: "/ro/galerie-foto" },
   ],
   testimonials: [
     { text: "Caroserie frigorifică de calitate excelentă, construită exact după specificațiile noastre.", name: "Ion Popescu", company: "FrigoDist SRL" },
     { text: "Am comandat multiple vehicule. Întotdeauna la timp, respectând termenele.", name: "Andrei Ionescu", company: "Logistică Refrigerată" },
-    { text: "Echipă profesionistă, abordare flexibilă. Service Carrier disponibil.", name: "Mihai Dumitru", company: "Soluții Lanț Rece" },
+    { text: "Echipă profesionistă, abordare flexibilă. Serviceul Carrier disponibil a fost decisiv pentru noi.", name: "Mihai Dumitru", company: "Soluții Lanț Rece" },
   ],
   stats: [
-    { number: String(STATS.customers), label: "Clienți mulțumiți" },
+    { number: String(STATS.customers) + "+", label: "Clienți mulțumiți" },
     { number: String(STATS.annualConversions), label: "Conversii/an" },
-    { number: String(STATS.employees), label: "Angajați" },
+    { number: String(STATS.employees), label: "Specialiști" },
     { number: String(yearsSince()), label: "Ani experiență" },
   ],
-  ctaTitle: "Cereți o ofertă astăzi!",
-  ctaText: "Vă vom oferi o ofertă în 12 ore.",
+  ctaTitle: "Solicitați o ofertă personalizată în 12 ore!",
   ctaBtn: "Cerere ofertă",
   ctaLink: "/ro/cerere-oferta",
 };
@@ -286,24 +274,22 @@ function HomeContent({ lang }: { lang: string }) {
       <Slider />
 
       <AnimateOnScroll>
-      <section className="content-section black-text white-bg top-spacing-medium bottom-spacing-big title-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
-          <div className="content-column1">
-            <div className="content-section-heading">
-              <p className="content-section-subtitle">{c.subtitle}</p>
-              <h1>{c.h1}</h1>
-            </div>
+          <div className="content-section-heading">
+            <p className="content-section-subtitle">{c.subtitle}</p>
+            <h1>{c.h1}</h1>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
 
       <AnimateOnScroll>
-      <section className="content-section black-text gray-bg top-spacing-medium bottom-spacing-medium">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
-          <div className="animate-stagger grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="animate-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
             {c.icons.map((item) => (
-              <a key={item.title} href={item.link} className="icon-box block">
+              <a key={item.title} href={item.link} className="icon-box">
                 <div className="icon-box-icon"><i className={item.icon}></i></div>
                 <div className="icon-box-title">{item.title}</div>
                 <div className="icon-box-content"><p>{item.text}</p></div>
@@ -315,15 +301,15 @@ function HomeContent({ lang }: { lang: string }) {
       </AnimateOnScroll>
 
       <AnimateOnScroll>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">{c.welcomeTitle}</h2>
-              <p className="text-base leading-7 text-[#666] mb-6">{c.welcomeText}</p>
-              <p className="font-bold text-[#262626]">— Autotherm Kft.</p>
+              <h2 className="mb-6">{c.welcomeTitle}</h2>
+              <p className="text-[var(--gray-600)] mb-6">{c.welcomeText}</p>
+              <p className="font-bold">— Autotherm Kft.</p>
             </div>
-            <div className="aspect-video bg-gray-900 overflow-hidden">
+            <div className="aspect-video bg-gray-900 overflow-hidden rounded-2xl">
               <YouTubeLazy videoId={c.videoId} title="Autotherm" />
             </div>
           </div>
@@ -333,19 +319,19 @@ function HomeContent({ lang }: { lang: string }) {
 
       {c.productSections.map((prod, idx) => (
         <AnimateOnScroll key={idx} delay={idx * 150}>
-          <section className={`content-section black-text ${idx % 2 === 0 ? 'white-bg' : 'gray-bg'} top-spacing-big bottom-spacing-big`}>
+          <section className={`content-section ${idx % 2 === 0 ? 'white-bg' : 'gray-bg'}`}>
             <div className="wrap-column">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
                 <div className={idx % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <h2 className="text-3xl font-bold mb-6">{prod.title}</h2>
-                  <p className="text-base leading-7 text-[#666] mb-6">{prod.text}</p>
+                  <h2 className="mb-6">{prod.title}</h2>
+                  <p className="text-[var(--gray-600)] mb-6">{prod.text}</p>
                   <div className="flex gap-4 flex-wrap">
                     <Link href={prod.detailLink} className="button">Részletek</Link>
-                    <Link href={prod.quoteLink} className="button" style={{ backgroundColor: '#1678a1' }}>Árajánlatkérés</Link>
+                    <Link href={prod.quoteLink} className="button" style={{ backgroundColor: 'var(--primary-hover)' }}>Árajánlatkérés</Link>
                   </div>
                 </div>
                 <div className={idx % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <div className="bg-cover bg-center h-[300px] md:h-[400px]" style={{ backgroundImage: `url(${prod.img})` }} />
+                  <div className="bg-cover bg-center h-[300px] md:h-[400px] rounded-2xl" style={{ backgroundImage: `url(${prod.img})` }} />
                 </div>
               </div>
             </div>
@@ -354,7 +340,7 @@ function HomeContent({ lang }: { lang: string }) {
       ))}
 
       <AnimateOnScroll>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section gray-bg align-center">
         <div className="wrap-column">
           <div className="content-section-heading">
             <h2>Galéria</h2>
@@ -362,7 +348,7 @@ function HomeContent({ lang }: { lang: string }) {
           <div className="animate-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
             {c.gallery.map((item) => (
               <a key={item.title} href={item.link} className="gallery-card block">
-                <div className="h-[300px] bg-cover bg-center" style={{ backgroundImage: `url(${item.img})` }} />
+                <div className="h-[300px] bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${item.img})` }} />
                 <div className="gallery-card-overlay">
                   <h3>{item.title}</h3>
                   <span className="button text-sm">Megnézem a galériában</span>
@@ -375,7 +361,7 @@ function HomeContent({ lang }: { lang: string }) {
       </AnimateOnScroll>
 
       <AnimateOnScroll>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
           <div className="content-section-heading">
             <h2>{lang === "hu" ? "Ügyfeleink véleménye" : lang === "de" ? "Kundenstimmen" : lang === "ro" ? "Opiniile clienților" : "Testimonials"}</h2>
@@ -385,30 +371,30 @@ function HomeContent({ lang }: { lang: string }) {
             <p className="testimonial-author">{c.testimonials[0].name}</p>
             <p className="testimonial-company">{c.testimonials[0].company}</p>
           </div>
-          <div className="flex justify-center gap-4 mt-4">
-            <div className="w-3 h-3 rounded-full bg-[#4a68a9]" />
-            <div className="w-3 h-3 rounded-full bg-[#d9d9d9]" />
-            <div className="w-3 h-3 rounded-full bg-[#d9d9d9]" />
+          <div className="flex justify-center gap-3 mt-6">
+            <div className="w-2.5 h-2.5 rounded-full bg-[var(--primary)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[var(--gray-200)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-[var(--gray-200)]" />
           </div>
         </div>
       </section>
       </AnimateOnScroll>
 
       <AnimateOnScroll>
-      <section className="content-section black-text gray-bg top-spacing-medium bottom-spacing-medium align-center">
+      <section className="content-section gray-bg align-center">
         <div className="wrap-column">
           <div className="content-section-heading">
             <h2>{lang === "hu" ? "Referencia ügyfeleink" : lang === "de" ? "Referenzkunden" : lang === "ro" ? "Clienți de referință" : "Our Clients"}</h2>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <img src="/images/partner-logos.jpg" alt="Partner logos" className="max-w-full h-auto max-h-24 md:max-h-32 opacity-80 hover:opacity-100 transition-opacity" loading="lazy" />
+            <img src="/images/partner-logos.jpg" alt="Partner logos" className="max-w-full h-auto max-h-24 md:max-h-32 opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
           </div>
         </div>
       </section>
       </AnimateOnScroll>
 
       <AnimateOnScroll>
-      <section className="stats-section py-24" style={{ backgroundImage: 'url(https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs02.jpg)' }}>
+      <section className="stats-section py-24">
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {c.stats.map((s) => (
@@ -423,10 +409,10 @@ function HomeContent({ lang }: { lang: string }) {
       </AnimateOnScroll>
 
       <AnimateOnScroll>
-      <section className="content-section white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
-          <h2 className="text-3xl font-bold mb-4">{c.ctaTitle}</h2>
-          <Link href={c.ctaLink} className="button mt-4">
+          <h2 className="mb-6">{c.ctaTitle}</h2>
+          <Link href={c.ctaLink} className="button">
             {c.ctaBtn}
           </Link>
         </div>

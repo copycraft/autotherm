@@ -20,16 +20,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Hivatalos Carrier Transicold szerviz. Hűtőberendezések karbantartása, javítása. Daikin szerviz. Alkategóriák: járműfelépítmény javítás, raktérhűtő szerviz.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Hivatalos Carrier Transicold szerviz. Hűtőberendezések karbantartása, javítása. Daikin szerviz. Alkategóriák: járműfelépítmény javítás, raktérhűtő szerviz.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section gray-bg align-center">
         <div className="wrap-column">
           <h2 className="text-2xl font-bold mb-6">Lépjen kapcsolatba velünk!</h2>
           <Link href="/hu/kapcsolat" className="button">Kapcsolat</Link>

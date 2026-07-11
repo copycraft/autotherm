@@ -35,9 +35,9 @@ export default function ClientHeader({ lang, navEntries, homeLabel }: Props) {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center">
+          <nav className="hidden lg:flex items-center gap-1">
             {navEntries.map(([href, label]) => (
-              <Link key={href} href={href} className="nav-link px-3 xl:px-4 py-2 text-xs xl:text-sm font-semibold uppercase tracking-wider text-[#555] hover:text-[#4a68a9] transition-colors">
+              <Link key={href} href={href} className="nav-link px-3 xl:px-4 py-2 text-sm font-medium text-gray-600 hover:text-[var(--primary)] transition-colors rounded-lg hover:bg-[var(--primary-light)]">
                 {label}
               </Link>
             ))}
@@ -84,7 +84,7 @@ export default function ClientHeader({ lang, navEntries, homeLabel }: Props) {
               key={href}
               href={href}
               onClick={closeMenu}
-              className="px-6 py-4 text-sm font-semibold uppercase tracking-wider text-gray-700 hover:text-[#4a68a9] hover:bg-gray-50 border-b border-gray-50 transition-colors"
+              className="px-6 py-4 text-sm font-medium text-gray-700 hover:text-[var(--primary)] hover:bg-gray-50 border-b border-gray-50 transition-colors"
               style={{ animationDelay: `${i * 0.05}s` }}
             >
               {label}

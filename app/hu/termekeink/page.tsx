@@ -24,16 +24,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Hűtőautók egyedi igényekre szabva a hatékony hűtött logisztikához. Könnyű dobozos felépítmények, hűtős átalakítások és speciális járműfelépítmények széles választéka.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Hűtőautók egyedi igényekre szabva a hatékony hűtött logisztikához. Könnyű dobozos felépítmények, hűtős átalakítások és speciális járműfelépítmények széles választéka.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading">
             <h2>3,5 tonnás hűtős furgonok</h2>
@@ -47,9 +47,9 @@ export default async function Page() {
               { title: "Zöldség- és gyümölcsszállító", text: "Optimális hőmérséklet és páratartalom a friss áru minőségének megőrzéséhez." },
               { title: "Virág- és dísznövény szállító", text: "Kíméletes szállítás megfelelő hőmérsékleten, egyedi belső kialakítással." },
             ].map((p) => (
-              <div key={p.title} className="p-6 border border-[#e0e0e0] hover:border-[#4a68a9] transition-colors">
+              <div key={p.title} className="p-6 border border-[var(--gray-200)] hover:border-[var(--primary)] transition-colors">
                 <h3 className="text-xl font-bold mb-3">{p.title}</h3>
-                <p className="text-[#666] leading-relaxed">{p.text}</p>
+                <p className="text-[var(--gray-600)] leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
@@ -57,7 +57,7 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={450}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
           <div className="content-section-heading">
             <h2>3,5 tonnás alvázas haszonjárművek</h2>
@@ -69,9 +69,9 @@ export default async function Page() {
               { title: "Platós-ponyvás felépítmény", text: "Sokoldalú platós kialakítás ponyvafedéllel." },
               { title: "Speciális felépítmény", text: "Egyedi igényekre szabott járműfelépítmények." },
             ].map((p) => (
-              <div key={p.title} className="p-6 border border-[#e0e0e0] hover:border-[#4a68a9] transition-colors">
+              <div key={p.title} className="p-6 border border-[var(--gray-200)] hover:border-[var(--primary)] transition-colors">
                 <h3 className="text-xl font-bold mb-3">{p.title}</h3>
-                <p className="text-[#666] leading-relaxed">{p.text}</p>
+                <p className="text-[var(--gray-600)] leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
@@ -79,21 +79,21 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={600}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading">
             <h2>Elhunytszállító autók</h2>
           </div>
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Hőszigetelt kivitel, rozsdamentes vagy üvegszálas belső bevonattal, +18°C-os raktérhűtéssel, több szintes változatban és speciális megoldásokkal. Teljes körű ügyintézéssel.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Hőszigetelt kivitel, rozsdamentes vagy üvegszálas belső bevonattal, +18°C-os raktérhűtéssel, több szintes változatban és speciális megoldásokkal. Teljes körű ügyintézéssel.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={750}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
-          <div className="p-12 border border-[#e0e0e0] max-w-2xl mx-auto">
+          <div className="p-12 border border-[var(--gray-200)] max-w-2xl mx-auto">
             <h2 className="text-2xl font-bold mb-6">Kérje személyre szabott ajánlatunkat!</h2>
             <Link href="/hu/arajanlatkeres" className="button">Ajánlatkérés</Link>
           </div>

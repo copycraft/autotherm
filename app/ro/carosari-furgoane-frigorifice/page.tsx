@@ -20,16 +20,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Carosări frigorifice personalizate pentru logistică la rece eficientă. Suprastructuri ușoare tip box, conversii frigorifice și carosări speciale pentru orice necesitate.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Carosări frigorifice personalizate pentru logistică la rece eficientă. Suprastructuri ușoare tip box, conversii frigorifice și carosări speciale pentru orice necesitate.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Tipuri de carosări</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -41,9 +41,9 @@ export default async function Page() {
               { title: "Transport legume/fructe", text: "Temperatură și umiditate optimă." },
               { title: "Transport flori", text: "Transport delicat la temperatură adecvată." },
             ].map((p) => (
-              <div key={p.title} className="p-6 border border-[#e0e0e0] hover:border-[#4a68a9] transition-colors">
+              <div key={p.title} className="p-6 border border-[var(--gray-200)] hover:border-[var(--primary)] transition-colors">
                 <h3 className="text-xl font-bold mb-3">{p.title}</h3>
-                <p className="text-[#666] leading-relaxed">{p.text}</p>
+                <p className="text-[var(--gray-600)] leading-relaxed">{p.text}</p>
               </div>
             ))}
           </div>
@@ -51,7 +51,7 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={450}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
           <h2 className="text-2xl font-bold mb-6">Solicitați o ofertă personalizată!</h2>
           <Link href="/ro/cerere-oferta" className="button">Cerere ofertă</Link>

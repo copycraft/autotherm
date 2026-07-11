@@ -191,14 +191,14 @@ function TopBar({ lang }: { lang: string }) {
     <div className="top-bar">
       <div className="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between">
         <div className="flex items-center gap-4 text-xs">
-          <a href={`tel:${cfg.contact.phone.replace(/\s/g, "")}`} className="hover:text-[#4a68a9] transition-colors">
+          <a href={`tel:${cfg.contact.phone.replace(/\s/g, "")}`} className="hover:text-[var(--primary)] transition-colors">
             {cfg.contact.phone}
           </a>
-          <span className="text-[#d9d9d9]">|</span>
-          <a href={`mailto:${cfg.contact.email}`} className="hover:text-[#4a68a9] transition-colors">
+          <span className="text-[var(--gray-200)]">|</span>
+          <a href={`mailto:${cfg.contact.email}`} className="hover:text-[var(--primary)] transition-colors">
             {cfg.contact.email}
           </a>
-          <span className="hidden md:inline text-[#999]">{cfg.contact.hours}</span>
+          <span className="hidden md:inline text-[var(--gray-400)]">{cfg.contact.hours}</span>
         </div>
         <LangSwitcher currentLang={lang} />
       </div>
@@ -221,44 +221,45 @@ function Footer({ lang }: { lang: string }) {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="footer-widget">
             <h3>Menu</h3>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-3">
               {Object.entries(cfg.footerMenu).map(([href, label]) => (
-                <Link key={href} href={href}>{label}</Link>
+                <Link key={href} href={href} className="hover:text-[#93c5fd] transition-colors">{label}</Link>
               ))}
             </div>
           </div>
           <div className="footer-widget">
             <h3>Elérhetőségek / Kontakt</h3>
-            <div className="flex flex-col gap-2">
-              <p>Sitz: 6728 Szeged, Napos út 3.</p>
-              <p>{`GPS: 46° 16.060\u2019, 20° 7.331\u2019`}</p>
-              <a href={`tel:${cfg.contact.phone.replace(/\s/g, "")}`}>{cfg.contact.phone}</a>
-              <a href={`mailto:${cfg.contact.email}`}>{cfg.contact.email}</a>
-              <a href="https://www.autotherm.hu">Web: www.autotherm.hu</a>
+            <div className="flex flex-col gap-3">
+              <p>6728 Szeged, Napos út 3.</p>
+              <a href={`tel:${cfg.contact.phone.replace(/\s/g, "")}`} className="hover:text-[#93c5fd] transition-colors">{cfg.contact.phone}</a>
+              <a href={`mailto:${cfg.contact.email}`} className="hover:text-[#93c5fd] transition-colors">{cfg.contact.email}</a>
+              <a href="https://www.autotherm.hu" className="hover:text-[#93c5fd] transition-colors">www.autotherm.hu</a>
             </div>
-            <div className="flex items-center gap-4 mt-4 pt-4 border-t border-white/10">
-              <img src="/images/carrier-logo.png" alt="Carrier Transicold" className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
-              <img src="/images/garancia-logo.png" alt="Garancia" className="h-10 w-auto opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
+            <div className="flex items-center gap-4 mt-6 pt-6 border-t border-white/10">
+              <img src="/images/carrier-logo.png" alt="Carrier Transicold" className="h-8 w-auto opacity-60 hover:opacity-100 transition-opacity" loading="lazy" />
+              <img src="/images/garancia-logo.png" alt="Garancia" className="h-10 w-auto opacity-60 hover:opacity-100 transition-opacity" loading="lazy" />
             </div>
           </div>
           <div className="footer-widget">
             <h3>Térkép / Map</h3>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2740.5!2d20.15!3d46.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSzeged%2C+Napos+%C3%BAt+3!5e0!3m2!1shu!2shu!4v1"
-              width="100%"
-              height="200"
-              style={{ border: 0 }}
-              allowFullScreen
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Autotherm location"
-            />
+            <div className="rounded-xl overflow-hidden">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2740.5!2d20.15!3d46.25!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSzeged%2C+Napos+%C3%BAt+3!5e0!3m2!1shu!2shu!4v1"
+                width="100%"
+                height="200"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Autotherm location"
+              />
+            </div>
           </div>
         </div>
       </div>
       <div className="footer-bottom">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p>© {FOUNDED_YEAR}-{thisYear} {cfg.legalName} - {cfg.footerRights}</p>
+          <p>&copy; {FOUNDED_YEAR}&ndash;{thisYear} {cfg.legalName} &mdash; {cfg.footerRights}</p>
           <div className="flex gap-4">
             <span>{cfg.footerCopyright}</span>
           </div>

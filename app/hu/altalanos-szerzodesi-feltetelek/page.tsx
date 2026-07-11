@@ -136,14 +136,14 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1 max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             {sections.map((section, i) => (
               <div key={i} className="mb-10">
-                <h2 className="text-xl font-bold mt-8 mb-4 text-[#4a68a9]">{section.title}</h2>
+                <h2 className="text-xl font-bold mt-8 mb-4 text-[var(--primary)]">{section.title}</h2>
                 {section.content.map((p, j) => (
-                  <p key={j} className="text-base leading-7 text-[#666] mb-4">{p}</p>
+                  <p key={j} className="text-base leading-7 text-[var(--gray-600)] mb-4">{p}</p>
                 ))}
               </div>
             ))}

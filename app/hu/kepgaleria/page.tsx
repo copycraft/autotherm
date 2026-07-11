@@ -47,7 +47,7 @@ export default async function Page() {
 
       {categories.map((cat, ci) => (
         <AnimateOnScroll key={cat.title} delay={ci * 100}>
-          <section className={`content-section black-text ${ci % 2 === 0 ? 'white-bg' : 'gray-bg'} top-spacing-medium bottom-spacing-medium`}>
+          <section className={`content-section ${ci % 2 === 0 ? 'white-bg' : 'gray-bg'}`}>
             <div className="wrap-column">
               <div className="content-section-heading">
                 <h2 className="content-section-subtitle">Munkáink</h2>

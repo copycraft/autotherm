@@ -20,16 +20,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Share your ideas with us - we add our experience! Professional commitment, full service and industry-leading speed with 100% money-back guarantee.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Share your ideas with us - we add our experience! Professional commitment, full service and industry-leading speed with 100% money-back guarantee.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>What happens after your inquiry?</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -38,10 +38,10 @@ export default async function Page() {
               { num: "2", title: "Phone consultation", text: "Our colleague will call you to discuss technical details." },
               { num: "3", title: "Quotation sent", text: "We send our quotation in PDF format within 12 hours." },
             ].map((s) => (
-              <div key={s.num} className="p-6 border border-[#e0e0e0] bg-white text-center">
-                <div className="w-12 h-12 bg-[#4a68a9] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">{s.num}</div>
+              <div key={s.num} className="p-6 border border-[var(--gray-200)] bg-white text-center">
+                <div className="w-12 h-12 bg-[var(--primary)] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">{s.num}</div>
                 <h3 className="font-bold text-lg mb-3">{s.title}</h3>
-                <p className="text-[#666]">{s.text}</p>
+                <p className="text-[var(--gray-600)]">{s.text}</p>
               </div>
             ))}
           </div>
@@ -49,9 +49,9 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={450}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="max-w-2xl mx-auto p-8 border border-[#e0e0e0]">
+          <div className="max-w-2xl mx-auto p-8 border border-[var(--gray-200)]">
             <h2 className="text-2xl font-bold mb-6">Send your requirements</h2>
             <ContactForm lang="en" submitLabel="Request Quotation" successTitle="Thank you for your inquiry!" successText="Our colleague will contact you shortly." />
           </div>

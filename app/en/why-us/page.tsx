@@ -22,16 +22,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">{years} years of experience in refrigerated vehicle manufacturing. Official Carrier Transicold representation. 100% money-back guarantee. Custom solutions. Fast delivery, reliable quality.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">{years} years of experience in refrigerated vehicle manufacturing. Official Carrier Transicold representation. 100% money-back guarantee. Custom solutions. Fast delivery, reliable quality.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Why choose us?</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -43,9 +43,9 @@ export default async function Page() {
               { title: "Fast Delivery", text: "Conversion completed in as little as 15 days." },
               { title: "Carrier Service", text: "Official Carrier Transicold service." },
             ].map((s) => (
-              <div key={s.title} className="p-6 border border-[#e0e0e0]">
+              <div key={s.title} className="p-6 border border-[var(--gray-200)]">
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>
-                <p className="text-[#666]">{s.text}</p>
+                <p className="text-[var(--gray-600)]">{s.text}</p>
               </div>
             ))}
           </div>
@@ -53,7 +53,7 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={450}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
           <h2 className="text-2xl font-bold mb-6">Request a Quotation</h2>
           <Link href="/en/quotation" className="button">Request a Quotation</Link>

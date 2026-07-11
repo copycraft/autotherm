@@ -27,7 +27,7 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Unsere Arbeiten</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

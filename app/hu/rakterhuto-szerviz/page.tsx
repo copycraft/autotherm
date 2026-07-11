@@ -22,16 +22,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
-          <div className="content-column1">
-            <p className="text-base leading-7 text-[#666] mb-6">Carrier raktérhűtők értékesítés, beépítés és szerviz. Hivatalos Carrier Transicold márkaszerviz és alkatrész forgalmazó. Daikin hűtőberendezések javítása is.</p>
+          <div className="">
+            <p className="text-base leading-7 text-[var(--gray-600)] mb-6">Carrier raktérhűtők értékesítés, beépítés és szerviz. Hivatalos Carrier Transicold márkaszerviz és alkatrész forgalmazó. Daikin hűtőberendezések javítása is.</p>
           </div>
         </div>
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={300}>
-      <section className="content-section black-text gray-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section gray-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Szolgáltatásaink</h2></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -40,9 +40,9 @@ export default async function Page() {
               { title: "Beépítés", text: "Új hűtőberendezések szakszerű beépítése és üzembe helyezése." },
               { title: "Diagnosztika és javítás", text: "Korszerű műszerekkel gyors és pontos hibafeltárás." },
             ].map((s) => (
-              <div key={s.title} className="p-6 border border-[#e0e0e0]">
+              <div key={s.title} className="p-6 border border-[var(--gray-200)]">
                 <h3 className="text-lg font-bold mb-3">{s.title}</h3>
-                <p className="text-[#666]">{s.text}</p>
+                <p className="text-[var(--gray-600)]">{s.text}</p>
               </div>
             ))}
           </div>
@@ -50,7 +50,7 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={450}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big align-center">
+      <section className="content-section white-bg align-center">
         <div className="wrap-column">
           <h2 className="text-2xl font-bold mb-6">Szerviz időpont egyeztetés</h2>
           <Link href="/hu/kapcsolat" className="button">Kapcsolat</Link>

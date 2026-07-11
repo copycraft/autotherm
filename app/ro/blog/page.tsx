@@ -26,16 +26,16 @@ export default async function Page() {
       </section>
       </AnimateOnScroll>
       <AnimateOnScroll delay={150}>
-      <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
+      <section className="content-section white-bg">
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Articole despre vehicule frigorifice</h2></div>
           <div className="max-w-4xl mx-auto">
-            {posts.length === 0 && <p className="text-[#666]">Încă nu există articole.</p>}
+            {posts.length === 0 && <p className="text-[var(--gray-600)]">Încă nu există articole.</p>}
             {posts.map((post) => (
-              <article key={post.id} className="blog-post border-b border-[#e0e0e0] pb-8 mb-8">
-                <h2><span className="text-[#262626]">{post.ro_title}</span></h2>
+              <article key={post.id} className="blog-post border-b border-[var(--gray-200)] pb-8 mb-8">
+                <h2><span className="">{post.ro_title}</span></h2>
                 <p className="post-meta">{new Date(post.created_at).toLocaleDateString("ro-RO")}</p>
-                <div className="text-[#666] prose" dangerouslySetInnerHTML={{ __html: post.html }} />
+                <div className="text-[var(--gray-600)] prose" dangerouslySetInnerHTML={{ __html: post.html }} />
               </article>
             ))}
           </div>
