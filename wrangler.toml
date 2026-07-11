@@ -1,0 +1,13 @@
+name = "autotherm"
+main = ".wrangler/dist/index.js"
+compatibility_date = "2026-07-11"
+compatibility_flags = ["nodejs_compat"]
+
+# To enable persistent form submissions in the admin panel:
+# 1. Run: npx wrangler kv:namespace create FORM_SUBMISSIONS
+# 2. Paste the ID below (replace xxxxxxxx)
+# 3. Deploy: npx wrangler deploy
+#
+# [[kv_namespaces]]
+# binding = "FORM_SUBMISSIONS"
+# id = "xxxxxxxx"

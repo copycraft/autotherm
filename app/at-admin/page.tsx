@@ -132,7 +132,7 @@ export default function AdminPage() {
   function switchTab(t: 'submissions' | 'blog' | 'smtp') {
     setTab(t);
     setEditingPost(null);
-    if (t === 'submissions' && submissions.length === 0) loadSubmissions();
+    if (t === 'submissions') loadSubmissions();
     if (t === 'blog' && posts.length === 0) loadPosts();
   }
 
@@ -309,12 +309,18 @@ export default function AdminPage() {
 
         {tab === 'submissions' && (
           <>
-            <button onClick={loadSubmissions} disabled={loading}
-              className="button mb-6">{loading ? 'Betöltés...' : 'Frissítés'}
-            </button>
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl font-bold">Űrlap beküldések</h2>
+              <button onClick={loadSubmissions} disabled={loading}
+                className="button text-sm py-2 px-4">{loading ? 'Betöltés...' : 'Frissítés'}
+              </button>
+            </div>
 
             {submissions.length === 0 && (
-              <div className="bg-white p-8 text-center text-gray-400">Nincsenek beküldések.</div>
+              <div className="bg-white p-8 text-center">
+                <p className="text-gray-400 mb-2">Nincsenek beküldések.</p>
+                <p className="text-xs text-gray-300">Az adatok a Worker memóriájában tárolódnak — KV nélkül a Worker újraindulásakor elvesznek.<br/>Minden beküldés emailben is elküldésre kerül.</p>
+              </div>
             )}
 
             {submissions.length > 0 && (
