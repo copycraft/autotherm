@@ -245,8 +245,8 @@ function Slider() {
           >
             <div className="slider-overlay" />
             <div className="slider-content">
-              <h2 className="text-3xl md:text-6xl font-extrabold mb-4 px-4">{slide.title}</h2>
-              <p className="text-sm md:text-base tracking-[4px] uppercase">{slide.subtitle}</p>
+              <h2 className="px-4">{slide.title}</h2>
+              <p>{slide.subtitle}</p>
             </div>
           </div>
         ))}
@@ -305,9 +305,12 @@ function HomeContent({ lang }: { lang: string }) {
         <div className="wrap-column">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
+              <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[var(--primary)] mb-3">
+                {lang === "hu" ? "Bemutatkozás" : lang === "de" ? "Über uns" : lang === "ro" ? "Despre noi" : "About us"}
+              </p>
               <h2 className="mb-6">{c.welcomeTitle}</h2>
               <p className="text-[var(--gray-600)] mb-6">{c.welcomeText}</p>
-              <p className="font-bold">— Autotherm Kft.</p>
+              <p className="font-semibold text-sm">— Autotherm Kft.</p>
             </div>
             <div className="aspect-video bg-gray-900 overflow-hidden rounded-2xl">
               <YouTubeLazy videoId={c.videoId} title="Autotherm" />
@@ -323,6 +326,12 @@ function HomeContent({ lang }: { lang: string }) {
             <div className="wrap-column">
               <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
                 <div className={idx % 2 === 1 ? 'lg:col-start-2' : ''}>
+                  <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[var(--primary)] mb-3">
+                    {idx === 0
+                      ? (lang === "hu" ? "Fő termék" : lang === "de" ? "Hauptprodukt" : lang === "ro" ? "Produs principal" : "Core product")
+                      : (lang === "hu" ? "Kínálat" : lang === "de" ? "Sortiment" : lang === "ro" ? "Gamă" : "Range")
+                    }
+                  </p>
                   <h2 className="mb-6">{prod.title}</h2>
                   <p className="text-[var(--gray-600)] mb-6">{prod.text}</p>
                   <div className="flex gap-4 flex-wrap">
@@ -343,6 +352,9 @@ function HomeContent({ lang }: { lang: string }) {
       <section className="content-section gray-bg align-center">
         <div className="wrap-column">
           <div className="content-section-heading">
+            <p className="content-section-subtitle">
+              {lang === "hu" ? "Munkáink" : lang === "de" ? "Unsere Arbeit" : lang === "ro" ? "Lucrările noastre" : "Our work"}
+            </p>
             <h2>Galéria</h2>
           </div>
           <div className="animate-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -364,6 +376,9 @@ function HomeContent({ lang }: { lang: string }) {
       <section className="content-section white-bg align-center">
         <div className="wrap-column">
           <div className="content-section-heading">
+            <p className="content-section-subtitle">
+              {lang === "hu" ? "Vélemények" : lang === "de" ? "Bewertungen" : lang === "ro" ? "Recenzii" : "Reviews"}
+            </p>
             <h2>{lang === "hu" ? "Ügyfeleink véleménye" : lang === "de" ? "Kundenstimmen" : lang === "ro" ? "Opiniile clienților" : "Testimonials"}</h2>
           </div>
           <div className="testimonial">
@@ -384,6 +399,9 @@ function HomeContent({ lang }: { lang: string }) {
       <section className="content-section gray-bg align-center">
         <div className="wrap-column">
           <div className="content-section-heading">
+            <p className="content-section-subtitle">
+              {lang === "hu" ? "Partnereink" : lang === "de" ? "Partner" : lang === "ro" ? "Parteneri" : "Partners"}
+            </p>
             <h2>{lang === "hu" ? "Referencia ügyfeleink" : lang === "de" ? "Referenzkunden" : lang === "ro" ? "Clienți de referință" : "Our Clients"}</h2>
           </div>
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
@@ -411,6 +429,9 @@ function HomeContent({ lang }: { lang: string }) {
       <AnimateOnScroll>
       <section className="content-section white-bg align-center">
         <div className="wrap-column">
+          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[var(--primary)] mb-3">
+            {lang === "hu" ? "Lépjen kapcsolatba" : lang === "de" ? "Kontakt aufnehmen" : lang === "ro" ? "Contactați-ne" : "Get in touch"}
+          </p>
           <h2 className="mb-6">{c.ctaTitle}</h2>
           <Link href={c.ctaLink} className="button">
             {c.ctaBtn}

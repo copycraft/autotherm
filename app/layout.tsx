@@ -6,7 +6,7 @@ import { siteUrl } from "@/app/lib/seo";
 
 const raleway = Raleway({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
   variable: "--font-raleway",
 });
 
