@@ -33,6 +33,10 @@ async function getDb(): Promise<Database> {
     lang TEXT DEFAULT '',
     created_at TEXT DEFAULT (datetime('now', '+1 hour'))
   )`);
+  db.run(`CREATE TABLE IF NOT EXISTS settings (
+    key TEXT PRIMARY KEY,
+    value TEXT NOT NULL DEFAULT ''
+  )`);
   db.run(`CREATE TABLE IF NOT EXISTS posts (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     hu_title TEXT NOT NULL DEFAULT '',
@@ -77,6 +81,25 @@ export async function insertSubmission(data: { name: string; email: string; phon
   const row = stmt.getAsObject() as unknown as { id: number };
   stmt.free();
   return row.id;
+}
+
+export async function getSetting(key: string): Promise<string> {
+  const d = await getDb();
+  const stmt = d.prepare('SELECT value FROM settings WHERE key = ?');
+  stmt.bind([key]);
+  if (stmt.step()) {
+    const row = stmt.getAsObject() as unknown as { value: string };
+    stmt.free();
+    return row.value;
+  }
+  stmt.free();
+  return '';
+}
+
+export async function setSetting(key: string, value: string): Promise<void> {
+  const d = await getDb();
+  d.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [key, value]);
+  save();
 }
 
 export async function getAllSubmissions(): Promise<Submission[]> {

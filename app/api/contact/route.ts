@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { insertSubmission } from '@/app/lib/db';
+import { insertSubmission, getSetting } from '@/app/lib/db';
 
 export async function POST(request: NextRequest) {
   try {
@@ -12,21 +12,22 @@ export async function POST(request: NextRequest) {
 
     await insertSubmission({ name, email, phone, message, page, lang });
 
-    if (process.env.SMTP_HOST) {
-      try {
+    try {
+      const host = await getSetting('smtp_host');
+      if (host) {
         const nodemailer = await import('nodemailer');
         const transporter = nodemailer.default.createTransport({
-          host: process.env.SMTP_HOST,
-          port: parseInt(process.env.SMTP_PORT || '587'),
+          host,
+          port: parseInt(await getSetting('smtp_port') || '587'),
           auth: {
-            user: process.env.SMTP_USER || '',
-            pass: process.env.SMTP_PASS || '',
+            user: await getSetting('smtp_user') || '',
+            pass: await getSetting('smtp_pass') || '',
           },
         });
         await transporter.sendMail({
-          from: process.env.SMTP_FROM || `"${name}" <${email}>`,
+          from: await getSetting('smtp_from') || `"${name}" <${email}>`,
           replyTo: email,
-          to: process.env.NOTIFICATION_EMAIL || 'vastag.peter@autotherm.hu',
+          to: await getSetting('smtp_notify') || 'vastag.peter@autotherm.hu',
           subject: `Új ajánlatkérés: ${name}`,
           text: [
             `Új ajánlatkérés érkezett az autotherm.hu oldalról`,
@@ -41,9 +42,9 @@ export async function POST(request: NextRequest) {
             message,
           ].join('\n'),
         });
-      } catch {
-        console.error('Email send failed (SMTP not configured or unreachable)');
       }
+    } catch {
+      console.error('Email send failed (SMTP not configured or unreachable)');
     }
 
     return NextResponse.json({ success: true, message: 'Köszönjük! Munkatársunk hamarosan felveszi Önnel a kapcsolatot.' });

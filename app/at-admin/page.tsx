@@ -33,12 +33,14 @@ export default function AdminPage() {
     return false;
   });
   const [password, setPassword] = useState('');
-  const [tab, setTab] = useState<'submissions' | 'blog'>('blog');
+  const [tab, setTab] = useState<'submissions' | 'blog' | 'smtp'>('blog');
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [editingPost, setEditingPost] = useState<Partial<BlogPost> | null>(null);
   const [saving, setSaving] = useState(false);
+  const [smtp, setSmtp] = useState({ host: '', port: '587', user: '', pass: '', from: '', notify: '' });
+  const [smtpLoaded, setSmtpLoaded] = useState(false);
 
   const langs = ['hu', 'en', 'de', 'ro'] as const;
   const langLabel: Record<string, string> = { hu: 'Magyar', en: 'English', de: 'Deutsch', ro: 'Română' };
@@ -105,7 +107,29 @@ export default function AdminPage() {
     } catch { alert('Hiba törléskor'); }
   }
 
-  function switchTab(t: 'submissions' | 'blog') {
+  async function loadSmtp() {
+    try {
+      const res = await fetch('/api/admin/settings', {
+        headers: { Authorization: `Basic ${basicAuthToken()}` },
+      });
+      const data = await res.json();
+      if (data && data.host !== undefined) setSmtp({ host: data.host, port: data.port || '587', user: data.user, pass: data.pass || '', from: data.from, notify: data.notify });
+    } catch {}
+    setSmtpLoaded(true);
+  }
+
+  async function saveSmtp() {
+    try {
+      await fetch('/api/admin/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Basic ${basicAuthToken()}` },
+        body: JSON.stringify(smtp),
+      });
+      alert('SMTP beállítások elmentve!');
+    } catch { alert('Hiba mentéskor'); }
+  }
+
+  function switchTab(t: 'submissions' | 'blog' | 'smtp') {
     setTab(t);
     setEditingPost(null);
     if (t === 'submissions' && submissions.length === 0) loadSubmissions();
@@ -153,6 +177,10 @@ export default function AdminPage() {
               <button onClick={() => switchTab('submissions')}
                 className={`px-4 py-1.5 text-sm font-semibold rounded transition-colors ${tab === 'submissions' ? 'bg-[#4a68a9] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
                 Űrlapok {submissions.length > 0 && `(${submissions.length})`}
+              </button>
+              <button onClick={() => { switchTab('smtp'); if (!smtpLoaded) loadSmtp(); }}
+                className={`px-4 py-1.5 text-sm font-semibold rounded transition-colors ${tab === 'smtp' ? 'bg-[#4a68a9] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
+                SMTP
               </button>
             </nav>
           </div>
@@ -247,6 +275,50 @@ export default function AdminPage() {
                 <button onClick={() => setEditingPost(null)}
                   className="text-sm text-gray-500 hover:text-gray-700">Mégsem</button>
               </div>
+            </div>
+          </div>
+        )}
+
+        {tab === 'smtp' && (
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-[#d9d9d9] max-w-lg">
+            <h2 className="text-xl font-bold mb-6">SMTP beállítások</h2>
+            <div className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">SMTP Host</label>
+                <input type="text" value={smtp.host} onChange={(e) => setSmtp({...smtp, host: e.target.value})}
+                  placeholder="smtp-relay.brevo.com"
+                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Port</label>
+                <input type="text" value={smtp.port} onChange={(e) => setSmtp({...smtp, port: e.target.value})}
+                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Felhasználónév (login)</label>
+                <input type="text" value={smtp.user} onChange={(e) => setSmtp({...smtp, user: e.target.value})}
+                  placeholder="b1aa16001@smtp-brevo.com"
+                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">SMTP kulcs (jelszó)</label>
+                <input type="password" value={smtp.pass} onChange={(e) => setSmtp({...smtp, pass: e.target.value})}
+                  placeholder="********"
+                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Feladó email (From)</label>
+                <input type="text" value={smtp.from} onChange={(e) => setSmtp({...smtp, from: e.target.value})}
+                  placeholder="hutoautok@hutoautok.hu"
+                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+              </div>
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 mb-1">Értesítési email (hová menjen)</label>
+                <input type="text" value={smtp.notify} onChange={(e) => setSmtp({...smtp, notify: e.target.value})}
+                  placeholder="vastag.peter@autotherm.hu"
+                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+              </div>
+              <button onClick={saveSmtp} className="button text-sm py-2.5 px-6">Mentés</button>
             </div>
           </div>
         )}
