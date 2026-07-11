@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPageMeta } from "@/app/lib/seo";
-import Link from "next/link";
+import { getPublishedPosts } from "@/app/lib/db";
+import { marked } from "marked";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,11 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const posts = [
-    { title: "Contribute to destruction of the environment", date: "2021.12.07", excerpt: "How insufficient service of cooling units contributes to environmental destruction..." },
-    { title: "Cooling capacity often undersized", date: "2021.03.04", excerpt: "Why the cooling capacity of refrigerated vehicles is often undersized..." },
-    { title: "Difference in behaviour of different refrigerants", date: "2021.02.21", excerpt: "Understanding the differences between various refrigerant types..." },
-  ];
+  const rawPosts = await getPublishedPosts();
+  const posts = await Promise.all(rawPosts.map(async (post) => ({
+    ...post,
+    html: await marked.parse(post.en_content || ""),
+  })));
   return (
     <div>
       <AnimateOnScroll>
@@ -29,11 +30,12 @@ export default async function Page() {
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Refrigerated Vehicle Articles</h2></div>
           <div className="max-w-4xl mx-auto">
+            {posts.length === 0 && <p className="text-[#666]">No posts yet.</p>}
             {posts.map((post) => (
-              <article key={post.title} className="blog-post border-b border-[#e0e0e0] pb-8 mb-8">
-                <h2><span className="text-[#262626]">{post.title}</span></h2>
-                <p className="post-meta">{post.date}</p>
-                <p className="text-[#666]">{post.excerpt}</p>
+              <article key={post.id} className="blog-post border-b border-[#e0e0e0] pb-8 mb-8">
+                <h2><span className="text-[#262626]">{post.en_title}</span></h2>
+                <p className="post-meta">{new Date(post.created_at).toLocaleDateString("en-GB")}</p>
+                <div className="text-[#666] prose" dangerouslySetInnerHTML={{ __html: post.html }} />
               </article>
             ))}
           </div>

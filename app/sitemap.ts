@@ -20,7 +20,7 @@ const paths: Record<string, string[]> = {
   ],
   ro: [
     "", "/cine-suntem-noi", "/carosari-furgoane-frigorifice",
-    "/galerie-foto", "/contact-2", "/cerere-oferta",
+    "/galerie-foto", "/contact-2", "/cerere-oferta", "/blog",
   ],
 };
 

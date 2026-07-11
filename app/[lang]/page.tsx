@@ -3,14 +3,14 @@ import Link from "next/link";
 import { use, useState, useEffect, useCallback } from "react";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 import YouTubeLazy from "@/app/components/YouTubeLazy";
-import { yearsSince } from "@/app/lib/constants";
+import { yearsSince, STATS } from "@/app/lib/constants";
 
 type Props = { params: Promise<{ lang: string }> };
 
 const sliderSlides = [
   {
     img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs02.jpg",
-    title: "3,5T hűtőautók, 31 éve",
+    title: `3,5T hűtőautók, ${yearsSince()} éve`,
     subtitle: "Egyedi igényekre gyártva",
   },
   {
@@ -26,7 +26,7 @@ const sliderSlides = [
 ];
 
 const huContent = {
-  slideTitle: "3,5T hűtőautók, 31 éve",
+  slideTitle: `3,5T hűtőautók, ${yearsSince()} éve`,
   slideSub: "Egyedi igényekre gyártva",
   subtitle: "Hűtős furgonok, elhunytszállító autók gyártása, utólagos raktérszigetelés és alvázas felépítmény gyártás. Hűtőautó gyártás 1992 óta.",
   h1: "Hűtőautó és fagyasztós autó gyártás",
@@ -65,9 +65,9 @@ const huContent = {
     { text: "Profi csapat, rugalmas hozzáállás. A Carrier szerviz elérhető, ami nekünk nagyon fontos, ami nekünk nagyon fontos.", name: "Nagy István", company: "Hűtőkonténerszállító Zrt." },
   ],
   stats: [
-    { number: "2800", label: "Elégedett ügyfél" },
-    { number: "265", label: "Átalakítás évente" },
-    { number: "32", label: "Munkatárs" },
+    { number: String(STATS.customers), label: "Elégedett ügyfél" },
+    { number: String(STATS.annualConversions), label: "Átalakítás évente" },
+    { number: String(STATS.employees), label: "Munkatárs" },
     { number: String(yearsSince()), label: "Év rutin" },
   ],
   ctaTitle: "Kérje árajánlatunkat most!",
@@ -77,7 +77,7 @@ const huContent = {
 };
 
 const enContent = {
-  slideTitle: "3.5T cooled vehicles, 31 years",
+  slideTitle: `3.5T cooled vehicles, ${yearsSince()} years`,
   slideSub: "Built to your specifications",
   subtitle: "Cooled vans, deceased transport vehicles, van isolations, and chassis body production, repair and service. Refrigerated vehicle manufacturing since 1992.",
   h1: "Cooled & Refrigerated Vehicle Body Manufacturing",
@@ -116,9 +116,9 @@ const enContent = {
     { text: "Professional team, flexible approach. Carrier service available, which is crucial for us.", name: "Robert Wilson", company: "ColdChain Solutions" },
   ],
   stats: [
-    { number: "2800", label: "Happy clients" },
-    { number: "265", label: "Conversions/year" },
-    { number: "32", label: "Employees" },
+    { number: String(STATS.customers), label: "Happy clients" },
+    { number: String(STATS.annualConversions), label: "Conversions/year" },
+    { number: String(STATS.employees), label: "Employees" },
     { number: String(yearsSince()), label: "Years of experience" },
   ],
   ctaTitle: "Request a Quotation Today!",
@@ -128,7 +128,7 @@ const enContent = {
 };
 
 const deContent = {
-  slideTitle: "3,5T Kühlfahrzeuge, 31 Jahre",
+  slideTitle: `3,5T Kühlfahrzeuge, ${yearsSince()} Jahre`,
   slideSub: "Nach Ihren Wünschen gebaut",
   subtitle: "Kühltransporter, Bestattungswagen, Kastenwagenisolierung und Fahrgestellaufbauten - Reparatur und Service.",
   h1: "Kühlfahrzeug- und Kühlkoffer-Herstellung",
@@ -167,9 +167,9 @@ const deContent = {
     { text: "Professionelles Team, flexibler Ansatz. Carrier Service verfügbar.", name: "Thomas Weber", company: "euroKühl Solutions" },
   ],
   stats: [
-    { number: "2800", label: "Zufriedene Kunden" },
-    { number: "265", label: "Umbauten/Jahr" },
-    { number: "32", label: "Mitarbeiter" },
+    { number: String(STATS.customers), label: "Zufriedene Kunden" },
+    { number: String(STATS.annualConversions), label: "Umbauten/Jahr" },
+    { number: String(STATS.employees), label: "Mitarbeiter" },
     { number: String(yearsSince()), label: "Jahre Erfahrung" },
   ],
   ctaTitle: "Fordern Sie noch heute ein Angebot an!",
@@ -179,7 +179,7 @@ const deContent = {
 };
 
 const roContent = {
-  slideTitle: "3,5T vehicule frigorifice, 31 ani",
+  slideTitle: `3,5T vehicule frigorifice, ${yearsSince()} ani`,
   slideSub: "Construite la comandă",
   subtitle: "Furgonete frigorifice, vehicule funerare, izolări și suprastructuri - producție, reparații și service.",
   h1: "Producție carosări frigorifice și izoterme",
@@ -218,9 +218,9 @@ const roContent = {
     { text: "Echipă profesionistă, abordare flexibilă. Service Carrier disponibil.", name: "Mihai Dumitru", company: "Soluții Lanț Rece" },
   ],
   stats: [
-    { number: "2800", label: "Clienți mulțumiți" },
-    { number: "265", label: "Conversii/an" },
-    { number: "32", label: "Angajați" },
+    { number: String(STATS.customers), label: "Clienți mulțumiți" },
+    { number: String(STATS.annualConversions), label: "Conversii/an" },
+    { number: String(STATS.employees), label: "Angajați" },
     { number: String(yearsSince()), label: "Ani experiență" },
   ],
   ctaTitle: "Cereți o ofertă astăzi!",

@@ -115,6 +115,7 @@ const langConfig: Record<string, { label: string; nav: Record<string, string>; c
       "/ro/galerie-foto": "Galerie foto",
       "/ro/contact-2": "Contact",
       "/ro/cerere-oferta": "Cerere ofertă",
+      "/ro/blog": "Blog",
     },
     contact: { phone: "+3620 910 20 50", email: "autotherm@autotherm.hu", hours: "Workdays 08:00-16:30" },
     footerMenu: {

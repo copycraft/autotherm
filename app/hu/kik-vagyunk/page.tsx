@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getPageMeta } from "@/app/lib/seo";
+import { STATS, yearsSince } from "@/app/lib/constants";
 import Link from "next/link";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
@@ -76,10 +77,10 @@ export default async function Page() {
         <div className="wrap-column">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
             {[
-              { number: "3000+", label: "Ügyfél" },
-              { number: "280", label: "Átalakítás évente" },
-              { number: "33", label: "Munkatárs" },
-              { number: "32", label: "Év tapasztalat" },
+              { number: `${STATS.customers}+`, label: "Ügyfél" },
+              { number: String(STATS.annualConversions), label: "Átalakítás évente" },
+              { number: String(STATS.employees), label: "Munkatárs" },
+              { number: String(yearsSince()), label: "Év tapasztalat" },
             ].map((s) => (
               <div key={s.label} className="text-center p-8 border border-[#e0e0e0]">
                 <div className="text-4xl font-bold text-[#4a68a9] mb-2">{s.number}</div>

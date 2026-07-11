@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPageMeta } from "@/app/lib/seo";
-import Link from "next/link";
+import { getPublishedPosts } from "@/app/lib/db";
+import { marked } from "marked";
 import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -12,11 +13,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const posts = [
-    { title: "Bestattungsmesse AirsalmExpo 2022", date: "2022.09.28", slug: "#", excerpt: "Bestattungsmesse AirsalmExpo 2022 - Wir danken den Besuchern aus Rumänien, Ungarn, Bulgarien..." },
-    { title: "Fahrzeugausbauten für Frischdienst-, Tiefkühl-, Thermo- und Hygienefahrzeuge", date: "2021.04.28", slug: "#", excerpt: "Fahrzeugausbauten für Frischdienst-, Tiefkühl-, Thermo- und Hygienefahrzeuge von Autotherm..." },
-    { title: "Umbau zum Kühlfahrzeug", date: "2021.03.04", slug: "#", excerpt: "Wenn es um den Transport von bestimmten Medikamenten, von chemischen Produkten..." },
-  ];
+  const rawPosts = await getPublishedPosts();
+  const posts = await Promise.all(rawPosts.map(async (post) => ({
+    ...post,
+    html: await marked.parse(post.hu_content || ""),
+  })));
   return (
     <div>
       <AnimateOnScroll>
@@ -31,11 +32,12 @@ export default async function Page() {
         <div className="wrap-column">
           <div className="content-section-heading"><h2>Hűtőautós szakcikkek</h2></div>
           <div className="max-w-4xl mx-auto">
+            {posts.length === 0 && <p className="text-[#666]">Még nincsenek bejegyzések.</p>}
             {posts.map((post) => (
-              <article key={post.title} className="blog-post border-b border-[#e0e0e0] pb-8 mb-8">
-                <h2><Link href={post.slug} className="text-[#262626] hover:text-[#4a68a9]">{post.title}</Link></h2>
-                <p className="post-meta">{post.date}</p>
-                <p className="text-[#666]">{post.excerpt}</p>
+              <article key={post.id} className="blog-post border-b border-[#e0e0e0] pb-8 mb-8">
+                <h2><span className="text-[#262626]">{post.hu_title}</span></h2>
+                <p className="post-meta">{new Date(post.created_at).toLocaleDateString("hu-HU")}</p>
+                <div className="text-[#666] prose" dangerouslySetInnerHTML={{ __html: post.html }} />
               </article>
             ))}
           </div>

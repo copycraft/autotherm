@@ -6,9 +6,9 @@ import AnimateOnScroll from "@/app/components/AnimateOnScroll";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: getPageMeta("de", "/de/hutoauto-blog-2").title,
-    description: getPageMeta("de", "/de/hutoauto-blog-2").description,
-    keywords: getPageMeta("de", "/de/hutoauto-blog-2").keywords,
+    title: getPageMeta("ro", "/ro/blog").title,
+    description: getPageMeta("ro", "/ro/blog").description,
+    keywords: getPageMeta("ro", "/ro/blog").keywords,
   };
 }
 
@@ -16,7 +16,7 @@ export default async function Page() {
   const rawPosts = await getPublishedPosts();
   const posts = await Promise.all(rawPosts.map(async (post) => ({
     ...post,
-    html: await marked.parse(post.de_content || ""),
+    html: await marked.parse(post.ro_content || ""),
   })));
   return (
     <div>
@@ -28,13 +28,13 @@ export default async function Page() {
       <AnimateOnScroll delay={150}>
       <section className="content-section black-text white-bg top-spacing-big bottom-spacing-big">
         <div className="wrap-column">
-          <div className="content-section-heading"><h2>Kühlfahrzeug Fachartikel</h2></div>
+          <div className="content-section-heading"><h2>Articole despre vehicule frigorifice</h2></div>
           <div className="max-w-4xl mx-auto">
-            {posts.length === 0 && <p className="text-[#666]">Noch keine Beiträge.</p>}
+            {posts.length === 0 && <p className="text-[#666]">Încă nu există articole.</p>}
             {posts.map((post) => (
               <article key={post.id} className="blog-post border-b border-[#e0e0e0] pb-8 mb-8">
-                <h2><span className="text-[#262626]">{post.de_title}</span></h2>
-                <p className="post-meta">{new Date(post.created_at).toLocaleDateString("de-DE")}</p>
+                <h2><span className="text-[#262626]">{post.ro_title}</span></h2>
+                <p className="post-meta">{new Date(post.created_at).toLocaleDateString("ro-RO")}</p>
                 <div className="text-[#666] prose" dangerouslySetInnerHTML={{ __html: post.html }} />
               </article>
             ))}
