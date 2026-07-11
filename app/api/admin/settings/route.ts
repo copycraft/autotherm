@@ -11,23 +11,17 @@ function checkAuth(req: NextRequest): boolean {
 
 export async function GET(req: NextRequest) {
   if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const host = await getSetting('smtp_host');
-  const port = await getSetting('smtp_port');
-  const user = await getSetting('smtp_user');
-  const pass = await getSetting('smtp_pass');
-  const from = await getSetting('smtp_from');
-  const notify = await getSetting('smtp_notify');
-  return NextResponse.json({ host, port, user, pass: pass ? '********' : '', from, notify });
+  const apiKey = (await getSetting('brevo_api_key')) ? '********' : '';
+  const from = await getSetting('email_from');
+  const to = await getSetting('email_to');
+  return NextResponse.json({ apiKey, from, to });
 }
 
 export async function POST(req: NextRequest) {
   if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   const body = await req.json();
-  if (body.host) await setSetting('smtp_host', body.host);
-  if (body.port) await setSetting('smtp_port', body.port);
-  if (body.user) await setSetting('smtp_user', body.user);
-  if (body.pass && body.pass !== '********') await setSetting('smtp_pass', body.pass);
-  if (body.from) await setSetting('smtp_from', body.from);
-  if (body.notify) await setSetting('smtp_notify', body.notify);
+  if (body.apiKey !== undefined && body.apiKey !== '********') await setSetting('brevo_api_key', body.apiKey);
+  if (body.from !== undefined) await setSetting('email_from', body.from);
+  if (body.to !== undefined) await setSetting('email_to', body.to);
   return NextResponse.json({ success: true });
 }

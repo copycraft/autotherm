@@ -10,44 +10,48 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, message: 'Name, email, and message are required.' }, { status: 400 });
     }
 
-    await insertSubmission({ name, email, phone, message, page, lang });
+    try {
+      await insertSubmission({ name, email, phone, message, page, lang });
+    } catch {
+      // DB save is best-effort on Workers
+    }
 
     try {
-      const host = await getSetting('smtp_host');
-      if (host) {
-        const nodemailer = await import('nodemailer');
-        const transporter = nodemailer.default.createTransport({
-          host,
-          port: parseInt(await getSetting('smtp_port') || '587'),
-          auth: {
-            user: await getSetting('smtp_user') || '',
-            pass: await getSetting('smtp_pass') || '',
+      const apiKey = await getSetting('brevo_api_key');
+      if (apiKey) {
+        const fromEmail = await getSetting('email_from') || 'hutoautok@hutoautok.hu';
+        const toEmail = await getSetting('email_to') || 'vastag.peter@autotherm.hu';
+        await fetch('https://api.brevo.com/v3/smtp/email', {
+          method: 'POST',
+          headers: {
+            'api-key': apiKey,
+            'Content-Type': 'application/json',
           },
-        });
-        await transporter.sendMail({
-          from: await getSetting('smtp_from') || `"${name}" <${email}>`,
-          replyTo: email,
-          to: await getSetting('smtp_notify') || 'vastag.peter@autotherm.hu',
-          subject: `Új ajánlatkérés: ${name}`,
-          text: [
-            `Új ajánlatkérés érkezett az autotherm.hu oldalról`,
-            ``,
-            `Név: ${name}`,
-            `Email: ${email}`,
-            `Telefon: ${phone || '—'}`,
-            `Oldal: ${page || '—'}`,
-            `Nyelv: ${lang || '—'}`,
-            ``,
-            `Üzenet:`,
-            message,
-          ].join('\n'),
+          body: JSON.stringify({
+            sender: { email: fromEmail },
+            to: [{ email: toEmail }],
+            replyTo: { email },
+            subject: `Új ajánlatkérés: ${name}`,
+            textContent: [
+              `Új ajánlatkérés érkezett az autotherm.hu oldalról`,
+              ``,
+              `Név: ${name}`,
+              `Email: ${email}`,
+              `Telefon: ${phone || '—'}`,
+              `Oldal: ${page || '—'}`,
+              `Nyelv: ${lang || '—'}`,
+              ``,
+              `Üzenet:`,
+              message,
+            ].join('\n'),
+          }),
         });
       }
     } catch {
-      console.error('Email send failed (SMTP not configured or unreachable)');
+      console.error('Email send failed');
     }
 
-    return NextResponse.json({ success: true, message: 'Köszönjük! Munkatársunk hamarosan felveszi Önnel a kapcsolatot.' });
+    return NextResponse.json({ success: true });
   } catch {
     return NextResponse.json({ success: false, message: 'Hiba történt. Kérjük, próbálja újra.' }, { status: 500 });
   }
