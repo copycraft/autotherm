@@ -1,18 +1,49 @@
-function getKv(): { get: (k: string) => Promise<string | null>; put: (k: string, v: string) => Promise<void> } | null {
-  try {
-    const ns = (globalThis as any).FORM_SUBMISSIONS;
-    if (ns?.get && ns?.put) return ns;
-  } catch {}
-  return null;
-}
+import Database from 'better-sqlite3';
+import path from 'path';
+import fs from 'fs';
 
-function store(): { submissions: any[]; settings: Record<string, string>; posts: any[]; nextPostId: number } {
-  let s = (globalThis as any).__store;
-  if (!s) {
-    s = { submissions: [], settings: {}, posts: [], nextPostId: 1 };
-    (globalThis as any).__store = s;
-  }
-  return s;
+const DB_PATH = path.join(process.cwd(), 'data', 'autotherm.db');
+
+let db: Database.Database | null = null;
+
+function getDb(): Database.Database {
+  if (db) return db;
+  const dir = path.dirname(DB_PATH);
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+  db = new Database(DB_PATH);
+  db.pragma('journal_mode = WAL');
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS submissions (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL,
+      email TEXT NOT NULL,
+      phone TEXT DEFAULT '',
+      message TEXT NOT NULL,
+      page TEXT DEFAULT '',
+      lang TEXT DEFAULT '',
+      created_at TEXT DEFAULT (datetime('now', '+1 hour'))
+    );
+    CREATE TABLE IF NOT EXISTS settings (
+      key TEXT PRIMARY KEY,
+      value TEXT NOT NULL DEFAULT ''
+    );
+    CREATE TABLE IF NOT EXISTS posts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      hu_title TEXT NOT NULL DEFAULT '',
+      hu_content TEXT NOT NULL DEFAULT '',
+      en_title TEXT NOT NULL DEFAULT '',
+      en_content TEXT NOT NULL DEFAULT '',
+      de_title TEXT NOT NULL DEFAULT '',
+      de_content TEXT NOT NULL DEFAULT '',
+      ro_title TEXT NOT NULL DEFAULT '',
+      ro_content TEXT NOT NULL DEFAULT '',
+      image TEXT DEFAULT '',
+      published INTEGER DEFAULT 0,
+      created_at TEXT DEFAULT (datetime('now', '+1 hour')),
+      updated_at TEXT DEFAULT (datetime('now', '+1 hour'))
+    );
+  `);
+  return db;
 }
 
 export interface Submission {
@@ -21,50 +52,23 @@ export interface Submission {
 }
 
 export async function insertSubmission(data: { name: string; email: string; phone?: string; message: string; page?: string; lang?: string }): Promise<number> {
-  const kv = getKv();
-  const id = Date.now();
-  const entry: Submission = {
-    id,
-    name: data.name,
-    email: data.email,
-    phone: data.phone || '',
-    message: data.message,
-    page: data.page || '',
-    lang: data.lang || '',
-    created_at: new Date().toISOString(),
-  };
-  if (kv) {
-    const existing = JSON.parse(await kv.get('submissions') || '[]');
-    existing.push(entry);
-    await kv.put('submissions', JSON.stringify(existing));
-    return id;
-  }
-  store().submissions.push(entry);
-  return id;
+  const d = getDb();
+  const stmt = d.prepare('INSERT INTO submissions (name, email, phone, message, page, lang) VALUES (?, ?, ?, ?, ?, ?)');
+  const result = stmt.run(data.name, data.email, data.phone || '', data.message, data.page || '', data.lang || '');
+  return result.lastInsertRowid as number;
 }
 
 export async function getAllSubmissions(): Promise<Submission[]> {
-  const kv = getKv();
-  if (kv) {
-    const raw = await kv.get('submissions');
-    return raw ? JSON.parse(raw).reverse() : [];
-  }
-  return [...store().submissions].reverse();
+  return getDb().prepare('SELECT * FROM submissions ORDER BY created_at DESC').all() as Submission[];
 }
 
 export async function getSetting(key: string): Promise<string> {
-  const kv = getKv();
-  if (kv) return (await kv.get(`setting_${key}`)) || '';
-  return store().settings[key] || '';
+  const row = getDb().prepare('SELECT value FROM settings WHERE key = ?').get(key) as { value: string } | undefined;
+  return row?.value || '';
 }
 
 export async function setSetting(key: string, value: string): Promise<void> {
-  const kv = getKv();
-  if (kv) {
-    await kv.put(`setting_${key}`, value);
-    return;
-  }
-  store().settings[key] = value;
+  getDb().prepare('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)').run(key, value);
 }
 
 export interface BlogPost {
@@ -86,39 +90,30 @@ export type BlogPostInput = {
 };
 
 export async function createPost(data: BlogPostInput): Promise<number> {
-  const s = store();
-  const id = s.nextPostId++;
-  const entry: BlogPost = {
-    id,
-    hu_title: data.hu_title || '', hu_content: data.hu_content || '',
-    en_title: data.en_title || '', en_content: data.en_content || '',
-    de_title: data.de_title || '', de_content: data.de_content || '',
-    ro_title: data.ro_title || '', ro_content: data.ro_content || '',
-    image: data.image || '', published: data.published ?? 0,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-  };
-  s.posts.push(entry);
-  return id;
+  const d = getDb();
+  const stmt = d.prepare(`INSERT INTO posts (hu_title, hu_content, en_title, en_content, de_title, de_content, ro_title, ro_content, image, published)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`);
+  const result = stmt.run(data.hu_title||'', data.hu_content||'', data.en_title||'', data.en_content||'',
+    data.de_title||'', data.de_content||'', data.ro_title||'', data.ro_content||'',
+    data.image||'', data.published??0);
+  return result.lastInsertRowid as number;
 }
 
 export async function updatePost(id: number, data: BlogPostInput): Promise<void> {
-  const s = store();
-  const idx = s.posts.findIndex((p: BlogPost) => p.id === id);
-  if (idx !== -1) {
-    s.posts[idx] = { ...s.posts[idx], ...data, updated_at: new Date().toISOString() };
-  }
+  getDb().prepare(`UPDATE posts SET hu_title=?, hu_content=?, en_title=?, en_content=?, de_title=?, de_content=?, ro_title=?, ro_content=?, image=?, published=?, updated_at=datetime('now','+1 hour') WHERE id=?`)
+    .run(data.hu_title||'', data.hu_content||'', data.en_title||'', data.en_content||'',
+      data.de_title||'', data.de_content||'', data.ro_title||'', data.ro_content||'',
+      data.image||'', data.published??0, id);
 }
 
 export async function deletePost(id: number): Promise<void> {
-  const s = store();
-  s.posts = s.posts.filter((p: BlogPost) => p.id !== id);
+  getDb().prepare('DELETE FROM posts WHERE id = ?').run(id);
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  return store().posts;
+  return getDb().prepare('SELECT * FROM posts ORDER BY created_at DESC').all() as BlogPost[];
 }
 
 export async function getPublishedPosts(): Promise<BlogPost[]> {
-  return store().posts.filter((p: BlogPost) => p.published === 1);
+  return getDb().prepare('SELECT * FROM posts WHERE published = 1 ORDER BY created_at DESC').all() as BlogPost[];
 }
