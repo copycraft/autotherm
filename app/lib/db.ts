@@ -1,54 +1,18 @@
-import initSqlJs, { type Database } from 'sql.js';
-
-function isEdge(): boolean {
-  return typeof process === 'undefined' || !process.versions?.node;
-}
-
 function getKv(): { get: (k: string) => Promise<string | null>; put: (k: string, v: string) => Promise<void> } | null {
   try {
-    // Cloudflare Workers: binding injected at runtime as global
     const ns = (globalThis as any).FORM_SUBMISSIONS;
     if (ns?.get && ns?.put) return ns;
   } catch {}
   return null;
 }
 
-// In-memory fallback using sql.js
-let db: Database | null = null;
-async function getDb(): Promise<Database> {
-  if (db) return db;
-  const SQL = await initSqlJs();
-  db = new SQL.Database();
-  db.run(`CREATE TABLE IF NOT EXISTS submissions (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT NOT NULL,
-    email TEXT NOT NULL,
-    phone TEXT DEFAULT '',
-    message TEXT NOT NULL,
-    page TEXT DEFAULT '',
-    lang TEXT DEFAULT '',
-    created_at TEXT DEFAULT (datetime('now', '+1 hour'))
-  )`);
-  db.run(`CREATE TABLE IF NOT EXISTS settings (
-    key TEXT PRIMARY KEY,
-    value TEXT NOT NULL DEFAULT ''
-  )`);
-  db.run(`CREATE TABLE IF NOT EXISTS posts (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    hu_title TEXT NOT NULL DEFAULT '',
-    hu_content TEXT NOT NULL DEFAULT '',
-    en_title TEXT NOT NULL DEFAULT '',
-    en_content TEXT NOT NULL DEFAULT '',
-    de_title TEXT NOT NULL DEFAULT '',
-    de_content TEXT NOT NULL DEFAULT '',
-    ro_title TEXT NOT NULL DEFAULT '',
-    ro_content TEXT NOT NULL DEFAULT '',
-    image TEXT DEFAULT '',
-    published INTEGER DEFAULT 0,
-    created_at TEXT DEFAULT (datetime('now', '+1 hour')),
-    updated_at TEXT DEFAULT (datetime('now', '+1 hour'))
-  )`);
-  return db;
+function store(): { submissions: any[]; settings: Record<string, string>; posts: any[]; nextPostId: number } {
+  let s = (globalThis as any).__store;
+  if (!s) {
+    s = { submissions: [], settings: {}, posts: [], nextPostId: 1 };
+    (globalThis as any).__store = s;
+  }
+  return s;
 }
 
 export interface Submission {
@@ -59,7 +23,7 @@ export interface Submission {
 export async function insertSubmission(data: { name: string; email: string; phone?: string; message: string; page?: string; lang?: string }): Promise<number> {
   const kv = getKv();
   const id = Date.now();
-  const entry = {
+  const entry: Submission = {
     id,
     name: data.name,
     email: data.email,
@@ -75,15 +39,7 @@ export async function insertSubmission(data: { name: string; email: string; phon
     await kv.put('submissions', JSON.stringify(existing));
     return id;
   }
-  if (!isEdge()) {
-    const d = await getDb();
-    d.run('INSERT INTO submissions (name, email, phone, message, page, lang) VALUES (?, ?, ?, ?, ?, ?)',
-      [data.name, data.email, data.phone || '', data.message, data.page || '', data.lang || '']);
-    return id;
-  }
-  const fallback = (globalThis as any).__submissions || [];
-  fallback.push(entry);
-  (globalThis as any).__submissions = fallback;
+  store().submissions.push(entry);
   return id;
 }
 
@@ -91,34 +47,15 @@ export async function getAllSubmissions(): Promise<Submission[]> {
   const kv = getKv();
   if (kv) {
     const raw = await kv.get('submissions');
-    return raw ? JSON.parse(raw) : [];
+    return raw ? JSON.parse(raw).reverse() : [];
   }
-  if (!isEdge()) {
-    const d = await getDb();
-    const stmt = d.prepare('SELECT * FROM submissions ORDER BY created_at DESC');
-    const rows: Submission[] = [];
-    while (stmt.step()) rows.push(stmt.getAsObject() as unknown as Submission);
-    stmt.free();
-    return rows;
-  }
-  return ((globalThis as any).__submissions || []).reverse();
+  return [...store().submissions].reverse();
 }
 
 export async function getSetting(key: string): Promise<string> {
   const kv = getKv();
   if (kv) return (await kv.get(`setting_${key}`)) || '';
-  if (!isEdge()) {
-    const d = await getDb();
-    const stmt = d.prepare('SELECT value FROM settings WHERE key = ?');
-    stmt.bind([key]);
-    if (stmt.step()) {
-      const row = stmt.getAsObject() as unknown as { value: string };
-      stmt.free();
-      return row.value;
-    }
-    stmt.free();
-  }
-  return '';
+  return store().settings[key] || '';
 }
 
 export async function setSetting(key: string, value: string): Promise<void> {
@@ -127,17 +64,9 @@ export async function setSetting(key: string, value: string): Promise<void> {
     await kv.put(`setting_${key}`, value);
     return;
   }
-  if (!isEdge()) {
-    const d = await getDb();
-    d.run('INSERT OR REPLACE INTO settings (key, value) VALUES (?, ?)', [key, value]);
-    return;
-  }
-  const s = (globalThis as any).__settings || {};
-  s[key] = value;
-  (globalThis as any).__settings = s;
+  store().settings[key] = value;
 }
 
-// Blog types (unchanged)
 export interface BlogPost {
   id: number;
   hu_title: string; hu_content: string;
@@ -156,15 +85,9 @@ export type BlogPostInput = {
   image?: string; published?: number;
 };
 
-function getNextId(): number {
-  const k = '__blog_id';
-  const v = ((globalThis as any)[k] || 0) as number;
-  (globalThis as any)[k] = v + 1;
-  return v + 1;
-}
-
 export async function createPost(data: BlogPostInput): Promise<number> {
-  const id = getNextId();
+  const s = store();
+  const id = s.nextPostId++;
   const entry: BlogPost = {
     id,
     hu_title: data.hu_title || '', hu_content: data.hu_content || '',
@@ -175,30 +98,27 @@ export async function createPost(data: BlogPostInput): Promise<number> {
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
   };
-  const posts: BlogPost[] = (globalThis as any).__posts || [];
-  posts.push(entry);
-  (globalThis as any).__posts = posts;
+  s.posts.push(entry);
   return id;
 }
 
 export async function updatePost(id: number, data: BlogPostInput): Promise<void> {
-  const posts: BlogPost[] = (globalThis as any).__posts || [];
-  const idx = posts.findIndex((p) => p.id === id);
+  const s = store();
+  const idx = s.posts.findIndex((p: BlogPost) => p.id === id);
   if (idx !== -1) {
-    posts[idx] = { ...posts[idx], ...data, updated_at: new Date().toISOString() };
-    (globalThis as any).__posts = posts;
+    s.posts[idx] = { ...s.posts[idx], ...data, updated_at: new Date().toISOString() };
   }
 }
 
 export async function deletePost(id: number): Promise<void> {
-  const posts: BlogPost[] = (globalThis as any).__posts || [];
-  (globalThis as any).__posts = posts.filter((p) => p.id !== id);
+  const s = store();
+  s.posts = s.posts.filter((p: BlogPost) => p.id !== id);
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  return (globalThis as any).__posts || [];
+  return store().posts;
 }
 
 export async function getPublishedPosts(): Promise<BlogPost[]> {
-  return ((globalThis as any).__posts || []).filter((p: BlogPost) => p.published === 1);
+  return store().posts.filter((p: BlogPost) => p.published === 1);
 }
