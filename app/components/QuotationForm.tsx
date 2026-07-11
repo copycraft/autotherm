@@ -13,6 +13,8 @@ const temps = [
 
 export default function QuotationForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [requirements, setRequirements] = useState("");
   const [product, setProduct] = useState("");
   const [temperature, setTemperature] = useState("");
@@ -26,7 +28,9 @@ export default function QuotationForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consent) return;
+    setError("");
+    if (!consent) { setError("Kérjük, fogadja el az adatkezelési hozzájárulást."); return; }
+    setSending(true);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -48,7 +52,9 @@ export default function QuotationForm() {
       });
       const data = await res.json();
       if (data.success) setSubmitted(true);
-    } catch { /* ignore */ }
+      else setError(data.message || "Hiba történt.");
+    } catch { setError("Hálózati hiba. Kérjük, próbálja újra."); }
+    finally { setSending(false); }
   };
 
   if (submitted) {
@@ -210,8 +216,10 @@ export default function QuotationForm() {
         </label>
       </div>
 
-      <button type="submit" className="button w-full text-center py-3.5 text-white">
-        Ajánlatkérés
+      {error && <p className="text-red-600 text-sm font-semibold">{error}</p>}
+      <button type="submit" disabled={sending}
+        className="button w-full text-center py-3.5 text-white disabled:opacity-50">
+        {sending ? "Küldés..." : "Ajánlatkérés"}
       </button>
     </form>
   );
