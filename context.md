@@ -1,4 +1,4 @@
-# Autotherm Kft. — Business Context Document
+# Autotherm Kft. - Business Context Document
 
 ## Company Overview
 
@@ -28,7 +28,7 @@
 | Year | Event |
 |------|-------|
 | 1991 | Csurgó László gains hands-on experience in the refrigerated vehicle industry while working in Austria |
-| 1992 | Autotherm Kft. founded. Begins representing Carrier refrigeration equipment in Hungary — introducing Carrier to the emerging Hungarian market |
+| 1992 | Autotherm Kft. founded. Begins representing Carrier refrigeration equipment in Hungary - introducing Carrier to the emerging Hungarian market |
 | 1995 | Begins servicing Thermo King units. Becomes the leading reefer service center in Southern Hungary |
 | 2007 | Regains Carrier Transicold representation. Becomes the top seller of Carrier cooling units for 3.5T vehicles in Hungary |
 | 2012 | Moves to new 1,500 m² facility at Napos út 3, Szeged. Production capacity increases 10× |
@@ -37,9 +37,9 @@
 
 ## Philosophy
 
-> "Napról napra jobbnak lenni abban, amit csinálunk." — To be better every day at what we do.
+> "Napról napra jobbnak lenni abban, amit csinálunk." - To be better every day at what we do.
 
-> "Többet tenni a világért, mint amennyit a világ tesz érted – ez a siker." — Henry Ford (company motto)
+> "Többet tenni a világért, mint amennyit a világ tesz érted – ez a siker." - Henry Ford (company motto)
 
 Innovation-driven approach: continuously improving manufacturing processes and tools to deliver faster production and more modern solutions for customers.
 
@@ -70,11 +70,11 @@ The core product. They take standard commercial vans and convert them into tempe
 **Process:** Take a base vehicle (Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter, or Iveco Daily) → insulate the cargo area → install a Carrier or Daikin cooling unit → add interior lining.
 
 **Vehicle categories:**
-- Meat transport refrigerated van — insulated cargo for safe meat transport
-- Ice cream & cake transport — temperatures down to -20°C
-- Pharmaceutical transport — precision temperature control for medicine
-- Fruit & vegetable transport — optimal temperature and humidity
-- Flower & plant transport — gentle transport with custom interior
+- Meat transport refrigerated van - insulated cargo for safe meat transport
+- Ice cream & cake transport - temperatures down to -20°C
+- Pharmaceutical transport - precision temperature control for medicine
+- Fruit & vegetable transport - optimal temperature and humidity
+- Flower & plant transport - gentle transport with custom interior
 
 ### 2. Cooled/Refrigerated Vehicle Bodies (Hűtőautók)
 
@@ -103,7 +103,7 @@ Specialized funeral transport vehicles:
 
 ### 5. Van Isolation/Insulation (Furgon szigetelés)
 
-The foundational service — insulating standard vans for temperature-controlled use:
+The foundational service - insulating standard vans for temperature-controlled use:
 
 **Insulation technology:**
 - Vacuum-bonded sandwich panels
@@ -111,11 +111,11 @@ The foundational service — insulating standard vans for temperature-controlled
 - Available in 50mm or 80mm thickness
 
 **Surfaces:**
-- Smooth white polyester — easy to clean and disinfect
+- Smooth white polyester - easy to clean and disinfect
 - Meets food transport hygiene standards (HACCP compliant)
 
 **Coverage:**
-- Floor, walls, roof, wheel arches, doors — fully insulated
+- Floor, walls, roof, wheel arches, doors - fully insulated
 
 **Options:**
 - Stainless steel rub rails at 155–280mm height (impact protection)
@@ -237,19 +237,19 @@ Hungary (primary), Austria, Germany, Romania, and the wider European Union.
 3. Autotherm colleague calls to discuss technical details
 4. Detailed quotation with full technical documentation delivered as PDF within 12 hours
 
-**Vehicle configurator available:** 5-step process — choose brand → variant → body type → cooling unit → interior lining. Generates a configured price estimate.
+**Vehicle configurator available:** 5-step process - choose brand → variant → body type → cooling unit → interior lining. Generates a configured price estimate.
 
 ---
 
 ## Key Differentiators
 
-1. **30+ years experience** — Founded 1992, deep expertise in refrigerated vehicle manufacturing
-2. **Official Carrier Transicold partner** — Hungary's top 3.5T Carrier seller
-3. **100% money-back guarantee** — On all work performed
-4. **Custom solutions** — Every vehicle built to individual customer specifications
-5. **Fast turnaround** — Vehicle conversion completed in as little as 15 days
-6. **Full service capability** — Manufacturing + cooling unit installation + ongoing service/repair under one roof
-7. **European reach** — Serving customers across Hungary, Austria, Germany, Romania, and the EU
+1. **30+ years experience** - Founded 1992, deep expertise in refrigerated vehicle manufacturing
+2. **Official Carrier Transicold partner** - Hungary's top 3.5T Carrier seller
+3. **100% money-back guarantee** - On all work performed
+4. **Custom solutions** - Every vehicle built to individual customer specifications
+5. **Fast turnaround** - Vehicle conversion completed in as little as 15 days
+6. **Full service capability** - Manufacturing + cooling unit installation + ongoing service/repair under one roof
+7. **European reach** - Serving customers across Hungary, Austria, Germany, Romania, and the EU
 
 ---
 

@@ -1,449 +1,369 @@
-'use client';
+import Image from "next/image";
 import Link from "next/link";
-import { use, useState, useEffect, useCallback } from "react";
-import AnimateOnScroll from "@/app/components/AnimateOnScroll";
-import YouTubeLazy from "@/app/components/YouTubeLazy";
-import { yearsSince, STATS } from "@/app/lib/constants";
+import { notFound } from "next/navigation";
+import Hero from "@/app/components/home/Hero";
+import SmartVideo from "@/app/components/media/SmartVideo";
+import CountUp from "@/app/components/motion/CountUp";
+import MagneticButton from "@/app/components/motion/MagneticButton";
+import {
+  DollyImage,
+  Reveal,
+  RevealGroup,
+  RevealItem,
+} from "@/app/components/motion/Reveal";
+import SectionHeading from "@/app/components/ui/SectionHeading";
+import {
+  COMPANY,
+  isLang,
+  type Lang,
+} from "@/app/lib/constants";
+import { getDict, type Dict } from "@/app/lib/dictionaries";
+import { getStats } from "@/app/lib/db";
+import { pathFor } from "@/app/lib/routes";
 
-type Props = { params: Promise<{ lang: string }> };
-
-const sliderSlides = [
-  {
-    img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs02.jpg",
-    title: `3,5T hűtőautók, ${yearsSince()} éve`,
-    subtitle: "Minden jármű egyedi igényekre szabva",
-  },
-  {
-    img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs01.jpg",
-    title: "Raktérhűtő gyártás és szerviz",
-    subtitle: "Hivatalos Carrier partner",
-  },
-  {
-    img: "https://www.autotherm.hu/wp-content/uploads/2018/04/kapcs03.jpg",
-    title: '"Többet tenni a világért, mint amennyit a világ tesz érted – ez a siker."',
-    subtitle: "Henry Ford",
-  },
-];
-
-const huContent = {
-  subtitle: "Hűtős furgonok, elhunytszállító autók és járműfelépítmények gyártása. Carrier hivatalos partner. 1992 óta.",
-  h1: "Hűtőautó gyártás és járműfelépítmények",
-  icons: [
-    { icon: "fa fa-gears", title: "gyártás", text: "3,5 tonnás járműfelépítmények és furgon szigetelés — egyedi igényekre szabva, 1992 óta", link: "/hu/termekeink" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Magyarország vezető 3,5T Carrier értékesítője. Telepítés, karbantartás és javítás.", link: "/hu/rakterhuto-szerviz" },
-    { icon: "fa fa-desktop", title: "ajánlat", text: "12 órán belül részletes árajánlat műszaki dokumentációval — ingyenesen", link: "/hu/arajanlatkeres" },
-  ],
-  welcomeTitle: "Több mint 30 éve a hűtőautó gyártás élvonalában",
-  welcomeText: "Az Autotherm Kft. 1992 óta épít hűtőautókat, elhunytszállító járműveket és egyedi járműfelépítményeket Szegeden. A Carrier Transicold hivatalos magyarországi partnereként a gyártástól a karbantartásig teljes körű szolgálást nyújtunk. Termékeink Magyarországon és az EU számos országában állnak ügyfeleink rendelkezésére.",
-  videoId: "5QShNg3oKcA",
-  productSections: [
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
-      title: "Hűtős furgon átalakítás",
-      text: "Standard furgonok hőszigetelté alakítása és Carrier vagy Daikin hűtőberendezéssel történő felszerelése. Hússzállítástól a gyógyszerlogisztikáig — minden hőmérsékleti igényre kínálunk megoldást.",
-      detailLink: "/hu/termekeink",
-      quoteLink: "/hu/arajanlatkeres",
-    },
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Alvázas járműfelépítmények",
-      text: "Dobozos, platós-ponyvás és speciális felépítmények 3,5 tonnás alvázakra. Alumínium, rozsdamentes acél vagy üvegszálas belső bevonattal — az Ön igényei szerint.",
-      detailLink: "/hu/termekeink",
-      quoteLink: "/hu/arajanlatkeres",
-    },
-  ],
-  gallery: [
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Járműfelépítmények", link: "/hu/kepgaleria" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Hűtős flották", link: "/hu/kepgaleria" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Speciális átalakítások", link: "/hu/kepgaleria" },
-  ],
-  testimonials: [
-    { text: "Kiváló minőségű hűtőautót kaptunk, pontosan az elképzeléseink szerint. A szerviz háttér is kiemelkedő.", name: "Kiss János", company: "FrigoTrans Kft." },
-    { text: "Már több járművet is náluk rendeltünk meg. Mindig pontosak, a megadott határidőre elkészülnek.", name: "Szabó Péter", company: "Magyar Hűtőlogisztika" },
-    { text: "Profi csapat, rugalmas hozzáállás. A helyben elérhető Carrier szerviz döntő szempont volt számunkra.", name: "Nagy István", company: "Hűtőkonténerszállító Zrt." },
-  ],
-  stats: [
-    { number: String(STATS.customers) + "+", label: "Elégedett ügyfél" },
-    { number: String(STATS.annualConversions), label: "Átalakítás évente" },
-    { number: String(STATS.employees), label: "Szakember" },
-    { number: String(yearsSince()), label: "Év tapasztalat" },
-  ],
-  ctaTitle: "Kérjen egyedi ajánlatot 12 órán belül!",
-  ctaBtn: "Ajánlatkérés",
-  ctaLink: "/hu/arajanlatkeres",
-};
-
-const enContent = {
-  subtitle: "Refrigerated vans, deceased transport vehicles, and commercial body manufacturing. Official Carrier partner since 1992.",
-  h1: "Refrigerated Vehicle & Body Manufacturing",
-  icons: [
-    { icon: "fa fa-gears", title: "production", text: "3.5T vehicle bodies and van insulation — custom-built to your specifications since 1992", link: "/en/our-products" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Hungary's leading 3.5T Carrier dealer. Installation, maintenance, and repair.", link: "/en/van-isolations" },
-    { icon: "fa fa-desktop", title: "quotation", text: "Detailed quotation with full technical documentation within 12 hours — free of charge", link: "/en/quotation" },
-  ],
-  welcomeTitle: "Over 30 years at the forefront of refrigerated vehicle manufacturing",
-  welcomeText: "Since 1992, Autotherm has been building refrigerated vehicles, deceased transport bodies, and custom commercial vehicle bodies in Szeged, Hungary. As an official Carrier Transicold partner, we provide end-to-end service from manufacturing to maintenance. Our products serve customers across Hungary and the EU.",
-  videoId: "5QShNg3oKcA",
-  productSections: [
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
-      title: "Refrigerated Van Conversion",
-      text: "Converting standard vans into temperature-controlled vehicles with Carrier or Daikin cooling units. From meat transport to pharmaceutical logistics — we handle every temperature requirement.",
-      detailLink: "/en/our-products",
-      quoteLink: "/en/quotation",
-    },
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Chassis Vehicle Bodies",
-      text: "Box bodies, flatbeds with tarpaulin, and special bodies for 3.5T chassis. Aluminium, stainless steel, or GRP interior lining — built to your exact needs.",
-      detailLink: "/en/our-products",
-      quoteLink: "/en/quotation",
-    },
-  ],
-  gallery: [
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Vehicle bodies", link: "/en/galeries" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Cooled fleets", link: "/en/galeries" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Special conversions", link: "/en/galeries" },
-  ],
-  testimonials: [
-    { text: "Excellent quality refrigerated van built exactly to our specs. The service background is outstanding.", name: "John Smith", company: "CoolTrans Ltd." },
-    { text: "We have ordered multiple vehicles from them. Always on time, meeting deadlines perfectly.", name: "Peter Brown", company: "EuroFridge Logistics" },
-    { text: "Professional team, flexible approach. Having Carrier service on-site was the deciding factor for us.", name: "Robert Wilson", company: "ColdChain Solutions" },
-  ],
-  stats: [
-    { number: String(STATS.customers) + "+", label: "Happy clients" },
-    { number: String(STATS.annualConversions), label: "Conversions/year" },
-    { number: String(STATS.employees), label: "Experts" },
-    { number: String(yearsSince()), label: "Years of experience" },
-  ],
-  ctaTitle: "Get a custom quotation within 12 hours!",
-  ctaBtn: "Request a Quotation",
-  ctaLink: "/en/quotation",
-};
-
-const deContent = {
-  subtitle: "Kühltransporter, Bestattungsfahrzeuge und Nutzfahrzeugaufbauten. Offizieller Carrier-Partner seit 1992.",
-  h1: "Kühlfahrzeug- und Aufbauherstellung",
-  icons: [
-    { icon: "fa fa-gears", title: "herstellung", text: "3,5-Tonnen-Fahrzeugaufbauten und Kastenwagenisolierung — maßgeschneidert seit 1992", link: "/de/kuehlfahrzeug" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Ungarns führender 3,5T Carrier-Händler. Einbau, Wartung und Reparatur.", link: "/de/kontakt" },
-    { icon: "fa fa-desktop", title: "angebot", text: "Detailliertes Angebot mit technischer Dokumentation innerhalb von 12 Stunden — kostenlos", link: "/de/anfrage" },
-  ],
-  welcomeTitle: "Über 30 Jahre an der Spitze der Kühlfahrzeugherstellung",
-  welcomeText: "Seit 1992 fertigt Autotherm in Szeged Kühlfahrzeuge, Bestattungsfahrzeuge und maßgeschneiderte Nutzfahrzeugaufbauten. Als offizieller Carrier-Transicold-Partner bieten wir vom Fertigung bis zur Wartung einen Rundum-Service. Unsere Produkte versorgen Kunden in ganz Ungarn und der EU.",
-  videoId: "5QShNg3oKcA",
-  productSections: [
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
-      title: "Kühltransporter Umbau",
-      text: "Umwandlung von Standardkastenwagen in temperaturgeführte Fahrzeuge mit Carrier- oder Daikin-Kühlaggregaten. Von der Fleisch- bis zur Pharma-Logistik — wir bieten Lösungen für jede Temperaturanforderung.",
-      detailLink: "/de/kuehlfahrzeug",
-      quoteLink: "/de/anfrage",
-    },
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Fahrzeugaufbauten auf Fahrgestell",
-      text: "Kofferaufbauten, Pritschen mit Plane und Spezialaufbauten für 3,5T-Fahrgestelle. Aluminium-, Edelstahl- oder GFK-Innenausführung — nach Ihren Wünschen.",
-      detailLink: "/de/kuehlfahrzeug",
-      quoteLink: "/de/anfrage",
-    },
-  ],
-  gallery: [
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Fahrzeugaufbauten", link: "/de/aufbauten-galerie" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Kühlflotten", link: "/de/aufbauten-galerie" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Spezialumbauten", link: "/de/aufbauten-galerie" },
-  ],
-  testimonials: [
-    { text: "Hervorragende Qualität, genau nach unseren Vorstellungen gebaut. Der Service ist ausgezeichnet.", name: "Hans Müller", company: "KühlLogistik GmbH" },
-    { text: "Wir haben bereits mehrere Fahrzeuge bestellt. Stets pünktlich und termingerecht.", name: "Klaus Schmidt", company: "FrischeTrans GmbH" },
-    { text: "Professionelles Team, flexibler Ansatz. Der verfügbare Carrier-Service war für uns entscheidend.", name: "Thomas Weber", company: "euroKühl Solutions" },
-  ],
-  stats: [
-    { number: String(STATS.customers) + "+", label: "Zufriedene Kunden" },
-    { number: String(STATS.annualConversions), label: "Umbauten/Jahr" },
-    { number: String(STATS.employees), label: "Fachkräfte" },
-    { number: String(yearsSince()), label: "Jahre Erfahrung" },
-  ],
-  ctaTitle: "Fordern Sie Ihr individuelles Angebot an — in 12 Stunden!",
-  ctaBtn: "Kostenloses Angebot",
-  ctaLink: "/de/anfrage",
-};
-
-const roContent = {
-  subtitle: "Furgonete frigorifice, vehicule funerare și suprastructuri comerciale. Partener oficial Carrier din 1992.",
-  h1: "Producție vehicule și suprastructuri frigorifice",
-  icons: [
-    { icon: "fa fa-gears", title: "fabricație", text: "Suprastructuri de 3,5 tone și izolare furgonete — construite la comandă din 1992", link: "/ro/carosari-furgoane-frigorifice" },
-    { icon: "fa fa-globe", title: "carrier transicold", text: "Liderul din Ungaria în vânzări Carrier 3,5T. Instalare, întreținere și reparații.", link: "/ro/contact-2" },
-    { icon: "fa fa-desktop", title: "ofertă", text: "Ofertă detaliată cu documentație tehnică completă în 12 ore — gratuit", link: "/ro/cerere-oferta" },
-  ],
-  welcomeTitle: "Peste 30 de ani în fruntea producției de vehicule frigorifice",
-  welcomeText: "Din 1992, Autotherm construiește vehicule frigorifice, vehicule funerare și suprastructuri comerciale la Szeged, Ungaria. Ca partener oficial Carrier Transicold, oferim servicii complete de la producție la întreținere. Produsele noastre deservesc clienți din Ungaria și întreaga UE.",
-  videoId: "5QShNg3oKcA",
-  productSections: [
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg",
-      title: "Conversie furgonete frigorifice",
-      text: "Transformarea furgonetelor standard în vehicule cu temperatură controlată, cu unități frigorifice Carrier sau Daikin. De la transportul de carne la logistica farmaceutică — soluții pentru fiecare cerință de temperatură.",
-      detailLink: "/ro/carosari-furgoane-frigorifice",
-      quoteLink: "/ro/cerere-oferta",
-    },
-    {
-      img: "https://www.autotherm.hu/wp-content/uploads/2018/04/felepitmeny.jpg",
-      title: "Suprastructuri pe șasiu",
-      text: "Suprastructuri tip box, platforme cu prelată și suprastructuri speciale pentru șasiuri de 3,5T. Interior din aluminiu, oțel inoxidabil sau fibră de sticlă — după preferințele dumneavoastră.",
-      detailLink: "/ro/carosari-furgoane-frigorifice",
-      quoteLink: "/ro/cerere-oferta",
-    },
-  ],
-  gallery: [
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/doboz.jpg", title: "Suprastructuri", link: "/ro/galerie-foto" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/flotta.jpg", title: "Flote frigorifice", link: "/ro/galerie-foto" },
-    { img: "https://www.autotherm.hu/wp-content/uploads/2018/04/halottszállító.jpg", title: "Conversii speciale", link: "/ro/galerie-foto" },
-  ],
-  testimonials: [
-    { text: "Caroserie frigorifică de calitate excelentă, construită exact după specificațiile noastre.", name: "Ion Popescu", company: "FrigoDist SRL" },
-    { text: "Am comandat multiple vehicule. Întotdeauna la timp, respectând termenele.", name: "Andrei Ionescu", company: "Logistică Refrigerată" },
-    { text: "Echipă profesionistă, abordare flexibilă. Serviceul Carrier disponibil a fost decisiv pentru noi.", name: "Mihai Dumitru", company: "Soluții Lanț Rece" },
-  ],
-  stats: [
-    { number: String(STATS.customers) + "+", label: "Clienți mulțumiți" },
-    { number: String(STATS.annualConversions), label: "Conversii/an" },
-    { number: String(STATS.employees), label: "Specialiști" },
-    { number: String(yearsSince()), label: "Ani experiență" },
-  ],
-  ctaTitle: "Solicitați o ofertă personalizată în 12 ore!",
-  ctaBtn: "Cerere ofertă",
-  ctaLink: "/ro/cerere-oferta",
-};
-
-const clients = [
-  "Magyar Posta", "SPAR Magyarország", "METRO", "TESCO", "Lidl", "Auchan",
-];
-
-function Slider() {
-  const [current, setCurrent] = useState(0);
-  const total = sliderSlides.length;
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % total);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [total]);
-
-  const goTo = useCallback((idx: number) => setCurrent(idx), []);
+/**
+ * Homepage - the conversion engine.
+ * Server-first: only the hero, motion primitives and media players hydrate.
+ */
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  if (!isLang(lang)) notFound();
+  const dict = getDict(lang);
+  const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
+  const configuratorHref = pathFor("configurator", lang) ?? `/${lang}`;
+  const galleryHref = pathFor("gallery", lang) ?? `/${lang}`;
 
   return (
-    <section className="slider-section h-[50vw] min-h-[350px] max-h-[600px]">
-      <div className="relative w-full h-full">
-        {sliderSlides.map((slide, idx) => (
-          <div
-            key={idx}
-            className={`slider-slide ${idx === current ? 'active' : ''}`}
-            style={{ backgroundImage: `url(${slide.img})` }}
-          >
-            <div className="slider-overlay" />
-            <div className="slider-content">
-              <h2 className="px-4">{slide.title}</h2>
-              <p>{slide.subtitle}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="slider-dots">
-        {sliderSlides.map((_, idx) => (
-          <button key={idx} className={`slider-dot ${idx === current ? 'active' : ''}`} onClick={() => goTo(idx)} aria-label={`Go to slide ${idx + 1}`} />
-        ))}
+    <>
+      <Hero
+        eyebrow={dict.home.hero.eyebrow}
+        titleA={dict.home.hero.titleA}
+        titleB={dict.home.hero.titleB}
+        lead={dict.home.hero.lead}
+        ctaPrimary={dict.home.hero.ctaPrimary}
+        ctaPrimaryHref={quoteHref}
+        ctaSecondary={dict.home.hero.ctaSecondary}
+        ctaSecondaryHref={configuratorHref}
+        badge={dict.home.hero.badge}
+        scrollHint={dict.common.scrollDown}
+        image="/images/e4566315cd28.jpg"
+      />
+
+      <StatsBand lang={lang} dict={dict} />
+      <PartnersSection dict={dict} />
+      <ProductsBento lang={lang} dict={dict} />
+      <ProcessSection dict={dict} />
+      <VideoSection dict={dict} />
+      <ConfiguratorTeaser dict={dict} href={configuratorHref} galleryHref={galleryHref} galleryLabel={dict.common.viewAll} />
+      <CtaBand dict={dict} quoteHref={quoteHref} />
+    </>
+  );
+}
+
+/* ------------------------------- Stats band -------------------------------- */
+
+async function StatsBand({ lang, dict }: { lang: Lang; dict: Dict }) {
+  const locale =
+    lang === "en" ? "en-US" : lang === "de" ? "de-DE" : lang === "ro" ? "ro-RO" : "hu-HU";
+  const s = await getStats();
+  const years = new Date().getFullYear() - s.foundedYear;
+  const stats = [
+    { value: years, suffix: dict.home.stats.yearsSuffix, label: dict.home.stats.years },
+    { value: s.customers, suffix: dict.home.stats.customersSuffix, label: dict.home.stats.customers },
+    { value: s.annualConversions, suffix: dict.home.stats.conversionsSuffix, label: dict.home.stats.conversions },
+    { value: s.employees, suffix: "", label: dict.home.stats.employees },
+  ];
+  return (
+    <section className="relative bg-white py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <RevealGroup className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {stats.map((s) => (
+            <RevealItem
+              key={s.label}
+              className="panel-ring rounded-3xl bg-ink-50 px-6 py-10 text-center"
+            >
+              <p className="text-5xl font-black tracking-tighter text-ink-900 tabular-nums sm:text-6xl">
+                <CountUp value={s.value} suffix={s.suffix} locale={locale} />
+              </p>
+              <p className="mt-3 text-xs font-bold tracking-[0.15em] text-ink-500 uppercase">
+                {s.label}
+              </p>
+            </RevealItem>
+          ))}
+        </RevealGroup>
       </div>
     </section>
   );
 }
 
-function HomeContent({ lang }: { lang: string }) {
-  let c: typeof huContent;
-  switch (lang) {
-    case "en": c = enContent; break;
-    case "de": c = deContent; break;
-    case "ro": c = roContent; break;
-    default: c = huContent;
-  }
+/* ------------------------------ Products bento ------------------------------ */
 
+function ProductsBento({ lang, dict }: { lang: Lang; dict: Dict }) {
   return (
-    <div>
-      <Slider />
-
-      <AnimateOnScroll>
-      <section className="content-section white-bg align-center">
-        <div className="wrap-column">
-          <div className="content-section-heading">
-            <p className="content-section-subtitle">{c.subtitle}</p>
-            <h1>{c.h1}</h1>
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-      <section className="content-section gray-bg">
-        <div className="wrap-column">
-          <div className="animate-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
-            {c.icons.map((item) => (
-              <a key={item.title} href={item.link} className="icon-box">
-                <div className="icon-box-icon"><i className={item.icon}></i></div>
-                <div className="icon-box-title">{item.title}</div>
-                <div className="icon-box-content"><p>{item.text}</p></div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-      <section className="content-section white-bg">
-        <div className="wrap-column">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[var(--primary)] mb-3">
-                {lang === "hu" ? "Bemutatkozás" : lang === "de" ? "Über uns" : lang === "ro" ? "Despre noi" : "About us"}
-              </p>
-              <h2 className="mb-6">{c.welcomeTitle}</h2>
-              <p className="text-[var(--gray-600)] mb-6">{c.welcomeText}</p>
-              <p className="font-semibold text-sm">— Autotherm Kft.</p>
-            </div>
-            <div className="aspect-video bg-gray-900 overflow-hidden rounded-2xl">
-              <YouTubeLazy videoId={c.videoId} title="Autotherm" />
-            </div>
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      {c.productSections.map((prod, idx) => (
-        <AnimateOnScroll key={idx} delay={idx * 150}>
-          <section className={`content-section ${idx % 2 === 0 ? 'white-bg' : 'gray-bg'}`}>
-            <div className="wrap-column">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${idx % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
-                <div className={idx % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[var(--primary)] mb-3">
-                    {idx === 0
-                      ? (lang === "hu" ? "Fő termék" : lang === "de" ? "Hauptprodukt" : lang === "ro" ? "Produs principal" : "Core product")
-                      : (lang === "hu" ? "Kínálat" : lang === "de" ? "Sortiment" : lang === "ro" ? "Gamă" : "Range")
-                    }
-                  </p>
-                  <h2 className="mb-6">{prod.title}</h2>
-                  <p className="text-[var(--gray-600)] mb-6">{prod.text}</p>
-                  <div className="flex gap-4 flex-wrap">
-                    <Link href={prod.detailLink} className="button">Részletek</Link>
-                    <Link href={prod.quoteLink} className="button" style={{ backgroundColor: 'var(--primary-hover)' }}>Árajánlatkérés</Link>
+    <section className="mesh-light py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow={dict.home.products.eyebrow}
+          title={dict.home.products.title}
+          lead={dict.home.products.lead}
+        />
+        <RevealGroup className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+          {dict.home.products.items.map((item, i) => {
+            const href = pathFor(item.href, lang) ?? `/${lang}`;
+            const large = i === 0 || i === 3;
+            return (
+              <RevealItem
+                key={item.title}
+                className={large ? "md:col-span-2" : ""}
+              >
+                <Link
+                  href={href}
+                  className="group panel-ring relative block h-full overflow-hidden rounded-3xl bg-white shadow-soft transition-shadow duration-300 hover:shadow-lifted focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                >
+                  <div className="relative h-52 overflow-hidden sm:h-60">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent" aria-hidden="true" />
                   </div>
-                </div>
-                <div className={idx % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <div className="bg-cover bg-center h-[300px] md:h-[400px] rounded-2xl" style={{ backgroundImage: `url(${prod.img})` }} />
-                </div>
-              </div>
-            </div>
-          </section>
-        </AnimateOnScroll>
-      ))}
-
-      <AnimateOnScroll>
-      <section className="content-section gray-bg align-center">
-        <div className="wrap-column">
-          <div className="content-section-heading">
-            <p className="content-section-subtitle">
-              {lang === "hu" ? "Munkáink" : lang === "de" ? "Unsere Arbeit" : lang === "ro" ? "Lucrările noastre" : "Our work"}
-            </p>
-            <h2>Galéria</h2>
-          </div>
-          <div className="animate-stagger grid grid-cols-1 md:grid-cols-3 gap-6">
-            {c.gallery.map((item) => (
-              <a key={item.title} href={item.link} className="gallery-card block">
-                <div className="h-[300px] bg-cover bg-center rounded-2xl" style={{ backgroundImage: `url(${item.img})` }} />
-                <div className="gallery-card-overlay">
-                  <h3>{item.title}</h3>
-                  <span className="button text-sm">Megnézem a galériában</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-      <section className="content-section white-bg align-center">
-        <div className="wrap-column">
-          <div className="content-section-heading">
-            <p className="content-section-subtitle">
-              {lang === "hu" ? "Vélemények" : lang === "de" ? "Bewertungen" : lang === "ro" ? "Recenzii" : "Reviews"}
-            </p>
-            <h2>{lang === "hu" ? "Ügyfeleink véleménye" : lang === "de" ? "Kundenstimmen" : lang === "ro" ? "Opiniile clienților" : "Testimonials"}</h2>
-          </div>
-          <div className="testimonial">
-            <p className="testimonial-text">&ldquo;{c.testimonials[0].text}&rdquo;</p>
-            <p className="testimonial-author">{c.testimonials[0].name}</p>
-            <p className="testimonial-company">{c.testimonials[0].company}</p>
-          </div>
-          <div className="flex justify-center gap-3 mt-6">
-            <div className="w-2.5 h-2.5 rounded-full bg-[var(--primary)]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[var(--gray-200)]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[var(--gray-200)]" />
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-      <section className="content-section gray-bg align-center">
-        <div className="wrap-column">
-          <div className="content-section-heading">
-            <p className="content-section-subtitle">
-              {lang === "hu" ? "Partnereink" : lang === "de" ? "Partner" : lang === "ro" ? "Parteneri" : "Partners"}
-            </p>
-            <h2>{lang === "hu" ? "Referencia ügyfeleink" : lang === "de" ? "Referenzkunden" : lang === "ro" ? "Clienți de referință" : "Our Clients"}</h2>
-          </div>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            <img src="/images/partner-logos.jpg" alt="Partner logos" className="max-w-full h-auto max-h-24 md:max-h-32 opacity-70 hover:opacity-100 transition-opacity" loading="lazy" />
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-      <section className="stats-section py-24">
-        <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {c.stats.map((s) => (
-              <div key={s.label}>
-                <div className="stat-number">{s.number}</div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      </AnimateOnScroll>
-
-      <AnimateOnScroll>
-      <section className="content-section white-bg align-center">
-        <div className="wrap-column">
-          <p className="text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-[var(--primary)] mb-3">
-            {lang === "hu" ? "Lépjen kapcsolatba" : lang === "de" ? "Kontakt aufnehmen" : lang === "ro" ? "Contactați-ne" : "Get in touch"}
-          </p>
-          <h2 className="mb-6">{c.ctaTitle}</h2>
-          <Link href={c.ctaLink} className="button">
-            {c.ctaBtn}
-          </Link>
-        </div>
-      </section>
-      </AnimateOnScroll>
-    </div>
+                  <div className="p-7">
+                    <h3 className="text-xl font-extrabold tracking-tight text-ink-900">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-ink-600">
+                      {item.body}
+                    </p>
+                    <p className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand-600 transition-transform duration-300 group-hover:translate-x-1">
+                      {dict.common.learnMore}
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </p>
+                  </div>
+                </Link>
+              </RevealItem>
+            );
+          })}
+        </RevealGroup>
+      </div>
+    </section>
   );
 }
 
-export default function HomePage({ params }: Props) {
-  const { lang } = use(params);
-  return <HomeContent lang={lang} />;
+/* -------------------------------- Process ---------------------------------- */
+
+function ProcessSection({ dict }: { dict: Dict }) {
+  return (
+    <section className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow={dict.home.process.eyebrow}
+          title={dict.home.process.title}
+          lead={dict.home.process.lead}
+        />
+        <RevealGroup className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {dict.home.process.steps.map((step, i) => (
+            <RevealItem
+              key={step.title}
+              className="panel-ring relative rounded-3xl bg-ink-50 p-7"
+            >
+              <span
+                className="text-6xl font-black tracking-tighter text-brand-200 tabular-nums"
+                aria-hidden="true"
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-4 text-lg font-extrabold tracking-tight text-ink-900">
+                {step.title}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-ink-600">{step.body}</p>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------- Video ----------------------------------- */
+
+function VideoSection({ dict }: { dict: Dict }) {
+  return (
+    <section className="mesh-hero relative overflow-hidden py-24 sm:py-32">
+      <div className="grid-overlay absolute inset-0" aria-hidden="true" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow={dict.home.video.eyebrow}
+          title={dict.home.video.title}
+          lead={dict.home.video.lead}
+          dark
+        />
+        <DollyImage className="mt-16">
+          <SmartVideo
+            src="/videos/production.mp4"
+            poster="/images/b2e2e8348e1b.jpg"
+            label={dict.home.video.title}
+            className="aspect-video w-full shadow-lifted ring-1 ring-white/10"
+          />
+        </DollyImage>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------- Configurator teaser ---------------------------- */
+
+function ConfiguratorTeaser({
+  dict,
+  href,
+  galleryHref,
+  galleryLabel,
+}: {
+  dict: Dict;
+  href: string;
+  galleryHref: string;
+  galleryLabel: string;
+}) {
+  return (
+    <section className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="panel-ring relative overflow-hidden rounded-4xl bg-ink-50">
+          <div className="grid grid-cols-1 items-center gap-10 p-8 sm:p-14 lg:grid-cols-2">
+            <div>
+              <Reveal>
+                <p className="text-xs font-bold tracking-[0.22em] text-brand-600 uppercase">
+                  {dict.home.configuratorTeaser.eyebrow}
+                </p>
+                <h2 className="mt-4 text-4xl font-extrabold tracking-tighter text-balance text-ink-900 sm:text-5xl">
+                  {dict.home.configuratorTeaser.title}
+                </h2>
+                <p className="mt-6 text-lg leading-relaxed text-ink-600">
+                  {dict.home.configuratorTeaser.lead}
+                </p>
+              </Reveal>
+              <Reveal delay={0.2} className="mt-8 flex flex-wrap gap-4">
+                <MagneticButton href={href} variant="primary">
+                  {dict.home.configuratorTeaser.cta}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </MagneticButton>
+                <MagneticButton href={galleryHref} variant="frost">
+                  {galleryLabel}
+                </MagneticButton>
+              </Reveal>
+            </div>
+            <DollyImage className="relative">
+              <SmartVideo
+                src="/videos/configurator-preview.mp4"
+                poster="/images/a404687637b3.jpg"
+                hoverToPlay
+                className="aspect-[4/3] w-full shadow-lifted"
+              />
+            </DollyImage>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------- Partners --------------------------------- */
+
+function PartnersSection({ dict }: { dict: Dict }) {
+  const partners = [
+    { name: "Carrier Transicold", body: dict.home.partners.carrier, logo: "/images/carrier-logo.png" },
+    { name: "Daikin", body: dict.home.partners.daikin, logo: null },
+    { name: "Thermo King", body: dict.home.partners.thermoking, logo: null },
+  ];
+  const clientLogos = [
+    { src: "/images/pick-logo.jpg", alt: "Pick" },
+    { src: "/images/hovany-logo.jpg", alt: "Hovány" },
+    { src: "/images/elite-logo.png", alt: "Elite" },
+    { src: "/images/monster-logo.png", alt: "Monster" },
+    { src: "/images/garancia-logo.png", alt: "Garancia" },
+    { src: "/images/carrier-logo.png", alt: "Carrier Transicold" },
+  ];
+  return (
+    <section className="mesh-light py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <SectionHeading
+          eyebrow={dict.home.partners.eyebrow}
+          title={dict.home.partners.title}
+          lead={dict.home.partners.lead}
+        />
+        <RevealGroup className="mt-16 grid grid-cols-1 gap-4 md:grid-cols-3">
+          {partners.map((p) => (
+            <RevealItem
+              key={p.name}
+              className="panel-ring rounded-3xl bg-white p-8 shadow-soft"
+            >
+              {p.logo ? (
+                <Image src={p.logo} alt={p.name} width={140} height={40} className="h-9 w-auto" />
+              ) : (
+                <p className="text-2xl font-black tracking-tighter text-ink-900">{p.name}</p>
+              )}
+              <p className="mt-4 text-sm leading-relaxed text-ink-600">{p.body}</p>
+            </RevealItem>
+          ))}
+        </RevealGroup>
+
+        <Reveal className="mt-16 overflow-hidden" delay={0.1}>
+          <div className="relative">
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-ink-50 to-transparent" aria-hidden="true" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-ink-50 to-transparent" aria-hidden="true" />
+            <div className="flex w-max animate-marquee items-center gap-16 py-4">
+              {[...clientLogos, ...clientLogos].map((logo, i) => (
+                <Image
+                  key={`${logo.alt}-${i}`}
+                  src={logo.src}
+                  alt={i < clientLogos.length ? logo.alt : ""}
+                  aria-hidden={i >= clientLogos.length ? true : undefined}
+                  width={120}
+                  height={48}
+                  className="h-10 w-auto opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
+                />
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* --------------------------------- CTA band -------------------------------- */
+
+function CtaBand({ dict, quoteHref }: { dict: Dict; quoteHref: string }) {
+  return (
+    <section className="mesh-hero relative overflow-hidden py-24 sm:py-32">
+      <div className="grid-overlay absolute inset-0" aria-hidden="true" />
+      <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
+        <Reveal>
+          <h2 className="text-4xl font-black tracking-tighter text-balance text-white sm:text-6xl">
+            {dict.home.ctaBand.title}
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-300">
+            {dict.home.ctaBand.body}
+          </p>
+        </Reveal>
+        <Reveal delay={0.2} className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <MagneticButton href={quoteHref} variant="primary">
+            {dict.home.ctaBand.primary}
+          </MagneticButton>
+          <MagneticButton href={COMPANY.phoneHref} variant="ghost">
+            {dict.home.ctaBand.secondary}
+          </MagneticButton>
+        </Reveal>
+      </div>
+    </section>
+  );
 }

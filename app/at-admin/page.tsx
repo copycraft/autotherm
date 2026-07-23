@@ -1,363 +1,519 @@
-'use client';
-import { useState } from 'react';
+"use client";
 
-interface Submission {
-  id: number; name: string; email: string; phone: string;
-  message: string; page: string; lang: string; created_at: string;
+import { useCallback, useEffect, useState } from "react";
+import type { BlogPost, Submission } from "@/app/lib/db";
+
+/**
+ * Admin dashboard - /at-admin (robots-disallowed).
+ * Three panels: form submissions, multilingual blog editor, email settings.
+ * Authenticates against the admin API via HTTP Basic; the password is kept
+ * in sessionStorage for the session only.
+ */
+
+const LANG_FIELDS = [
+  { code: "hu", label: "Magyar" },
+  { code: "en", label: "English" },
+  { code: "de", label: "Deutsch" },
+  { code: "ro", label: "Română" },
+] as const;
+
+type Tab = "submissions" | "blog" | "settings";
+
+interface PostDraft {
+  id: number | null;
+  hu_title: string;
+  hu_content: string;
+  en_title: string;
+  en_content: string;
+  de_title: string;
+  de_content: string;
+  ro_title: string;
+  ro_content: string;
+  image: string;
+  published: boolean;
 }
 
-interface BlogPost {
-  id: number;
-  hu_title: string; hu_content: string;
-  en_title: string; en_content: string;
-  de_title: string; de_content: string;
-  ro_title: string; ro_content: string;
-  image: string; published: number;
-  created_at: string; updated_at: string;
-}
-
-function basicAuthToken(): string {
-  if (typeof window === 'undefined') return '';
-  return btoa('admin:admin');
-}
-
-const emptyPost = {
-  hu_title: '', hu_content: '', en_title: '', en_content: '',
-  de_title: '', de_content: '', ro_title: '', ro_content: '',
-  image: '', published: 0,
+const EMPTY_DRAFT: PostDraft = {
+  id: null,
+  hu_title: "",
+  hu_content: "",
+  en_title: "",
+  en_content: "",
+  de_title: "",
+  de_content: "",
+  ro_title: "",
+  ro_content: "",
+  image: "",
+  published: false,
 };
 
+const inputCls =
+  "w-full rounded-xl border border-ink-200 bg-white px-4 py-2.5 text-sm text-ink-900 focus:ring-2 focus:ring-brand-500 focus-visible:outline-none";
+
 export default function AdminPage() {
-  const [authenticated, setAuthenticated] = useState(() => {
-    if (typeof window !== 'undefined') return sessionStorage.getItem('at-admin-auth') === '1';
-    return false;
-  });
-  const [password, setPassword] = useState('');
-  const [tab, setTab] = useState<'submissions' | 'blog' | 'smtp'>('blog');
+  const [password, setPassword] = useState("");
+  const [authed, setAuthed] = useState(false);
+  const [loginError, setLoginError] = useState(false);
+  const [tab, setTab] = useState<Tab>("submissions");
+
   const [submissions, setSubmissions] = useState<Submission[]>([]);
-  const [loading, setLoading] = useState(false);
   const [posts, setPosts] = useState<BlogPost[]>([]);
-  const [editingPost, setEditingPost] = useState<Partial<BlogPost> | null>(null);
-  const [saving, setSaving] = useState(false);
-  const [smtp, setSmtp] = useState({ apiKey: '', from: 'hutoautok@hutoautok.hu', to: 'vastag.peter@autotherm.hu' });
-  const [smtpLoaded, setSmtpLoaded] = useState(false);
+  const [draft, setDraft] = useState<PostDraft>(EMPTY_DRAFT);
+  const [settings, setSettingsState] = useState({ apiKey: "", from: "", to: "", stats: { foundedYear: 1992, customers: 3000, annualConversions: 280, employees: 33 } });
+  const [notice, setNotice] = useState("");
 
-  const langs = ['hu', 'en', 'de', 'ro'] as const;
-  const langLabel: Record<string, string> = { hu: 'Magyar', en: 'English', de: 'Deutsch', ro: 'Română' };
+  const authHeader = useCallback((): Record<string, string> => {
+    const pass =
+      password || window.sessionStorage.getItem("at-admin-pass") || "";
+    return { Authorization: `Basic ${btoa(`admin:${pass}`)}` };
+  }, [password]);
 
-  function handleLogin(e: React.FormEvent) {
+  const loadAll = useCallback(async () => {
+    try {
+      const headers = authHeader();
+      const [subsRes, postsRes, settingsRes] = await Promise.all([
+        fetch("/api/admin/submissions", { headers }),
+        fetch("/api/admin/blog", { headers }),
+        fetch("/api/admin/settings", { headers }),
+      ]);
+      if (!subsRes.ok) throw new Error("unauthorized");
+      const subs = await subsRes.json();
+      const blog = await postsRes.json();
+      const conf = await settingsRes.json();
+      setSubmissions(subs.submissions ?? []);
+      setPosts(blog.posts ?? []);
+      setSettingsState({
+        apiKey: conf.apiKey ?? "",
+        from: conf.from ?? "",
+        to: conf.to ?? "",
+        stats: conf.stats ?? { foundedYear: 1992, customers: 3000, annualConversions: 280, employees: 33 },
+      });
+      return true;
+    } catch {
+      return false;
+    }
+  }, [authHeader]);
+
+  useEffect(() => {
+    const stored = window.sessionStorage.getItem("at-admin-pass");
+    if (stored) {
+      const id = setTimeout(() => {
+        setPassword(stored);
+        setAuthed(true);
+      }, 0);
+      return () => clearTimeout(id);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (authed) {
+      const id = setTimeout(() => void loadAll(), 0);
+      return () => clearTimeout(id);
+    }
+  }, [authed, loadAll]);
+
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    if (password === 'admin') {
-      setAuthenticated(true);
-      sessionStorage.setItem('at-admin-auth', '1');
-    } else alert('Hibás jelszó!');
+    window.sessionStorage.setItem("at-admin-pass", password);
+    const ok = await loadAll();
+    if (ok) {
+      setAuthed(true);
+      setLoginError(false);
+    } else {
+      window.sessionStorage.removeItem("at-admin-pass");
+      setLoginError(true);
+    }
   }
 
-  async function loadSubmissions() {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/admin/submissions', {
-        headers: { Authorization: `Basic ${basicAuthToken()}` },
-      });
-      const data = await res.json();
-      if (data.success) setSubmissions(data.submissions);
-    } catch { alert('Hiba a betöltéskor'); }
-    finally { setLoading(false); }
+  async function saveDraft() {
+    const headers = { ...authHeader(), "content-type": "application/json" };
+    const payload = {
+      hu_title: draft.hu_title,
+      hu_content: draft.hu_content,
+      en_title: draft.en_title,
+      en_content: draft.en_content,
+      de_title: draft.de_title,
+      de_content: draft.de_content,
+      ro_title: draft.ro_title,
+      ro_content: draft.ro_content,
+      image: draft.image || null,
+      published: draft.published ? 1 : 0,
+    };
+    const res = draft.id
+      ? await fetch("/api/admin/blog", {
+          method: "PUT",
+          headers,
+          body: JSON.stringify({ id: draft.id, ...payload }),
+        })
+      : await fetch("/api/admin/blog", {
+          method: "POST",
+          headers,
+          body: JSON.stringify(payload),
+        });
+    setNotice(res.ok ? "Saved." : "Save failed.");
+    setDraft(EMPTY_DRAFT);
+    await loadAll();
   }
 
-  async function loadPosts() {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/admin/blog', {
-        headers: { Authorization: `Basic ${basicAuthToken()}` },
-      });
-      const data = await res.json();
-      if (data.posts) setPosts(data.posts);
-    } catch { alert('Hiba a blog betöltésekor'); }
-    finally { setLoading(false); }
+  async function removePost(id: number) {
+    await fetch("/api/admin/blog", {
+      method: "DELETE",
+      headers: { ...authHeader(), "content-type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    await loadAll();
   }
 
-  async function savePost() {
-    if (!editingPost) return;
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/blog`, {
-        method: editingPost.id ? 'PUT' : 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Basic ${basicAuthToken()}` },
-        body: JSON.stringify(editingPost),
-      });
-      const data = await res.json();
-      if (data.success) {
-        setEditingPost(null);
-        await loadPosts();
-      }
-    } catch { alert('Hiba mentéskor'); }
-    finally { setSaving(false); }
+  async function saveSettings() {
+    const res = await fetch("/api/admin/settings", {
+      method: "POST",
+      headers: { ...authHeader(), "content-type": "application/json" },
+      body: JSON.stringify({
+        apiKey: settings.apiKey,
+        from: settings.from,
+        to: settings.to,
+        stats: settings.stats,
+      }),
+    });
+    setNotice(res.ok ? "Settings saved." : "Save failed.");
   }
 
-  async function deletePost(id: number) {
-    if (!confirm('Törlöd ezt a bejegyzést?')) return;
-    try {
-      await fetch('/api/admin/blog', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json', Authorization: `Basic ${basicAuthToken()}` },
-        body: JSON.stringify({ id }),
-      });
-      await loadPosts();
-    } catch { alert('Hiba törléskor'); }
-  }
-
-  async function loadSmtp() {
-    try {
-      const res = await fetch('/api/admin/settings', {
-        headers: { Authorization: `Basic ${basicAuthToken()}` },
-      });
-      const data = await res.json();
-      if (data && data.apiKey !== undefined) setSmtp({ apiKey: data.apiKey, from: data.from || 'hutoautok@hutoautok.hu', to: data.to || 'vastag.peter@autotherm.hu' });
-    } catch {}
-    setSmtpLoaded(true);
-  }
-
-  async function saveSmtp() {
-    try {
-      await fetch('/api/admin/settings', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Basic ${basicAuthToken()}` },
-        body: JSON.stringify(smtp),
-      });
-      alert('SMTP beállítások elmentve!');
-    } catch { alert('Hiba mentéskor'); }
-  }
-
-  function switchTab(t: 'submissions' | 'blog' | 'smtp') {
-    setTab(t);
-    setEditingPost(null);
-    if (t === 'submissions') loadSubmissions();
-    if (t === 'blog' && posts.length === 0) loadPosts();
-  }
-
-  function handleLogout() {
-    setAuthenticated(false);
-    sessionStorage.removeItem('at-admin-auth');
-  }
-
-  function setLangField(lang: string, field: 'title' | 'content', value: string) {
-    if (!editingPost) return;
-    setEditingPost({ ...editingPost, [`${lang}_${field}`]: value });
-  }
-
-  if (!authenticated) {
+  if (!authed) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <form onSubmit={handleLogin} className="bg-white p-8 shadow-lg w-full max-w-sm">
-          <h1 className="text-2xl font-bold mb-6 text-center text-[#4a68a9]">Admin belépés</h1>
+      <main className="flex min-h-screen items-center justify-center bg-ink-950 px-6">
+        <form
+          onSubmit={handleLogin}
+          className="w-full max-w-sm rounded-3xl bg-white p-8 shadow-lifted"
+        >
+          <h1 className="text-xl font-extrabold tracking-tight text-ink-900">
+            Autotherm Admin
+          </h1>
+          <label htmlFor="admin-pass" className="mt-6 block text-xs font-bold text-ink-600 uppercase">
+            Password
+          </label>
           <input
-            type="password" value={password}
+            id="admin-pass"
+            type="password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Jelszó"
-            className="w-full px-4 py-2.5 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] mb-4"
+            className={`${inputCls} mt-2`}
+            autoFocus
           />
-          <button type="submit" className="button w-full text-center">Belépés</button>
+          {loginError && (
+            <p className="mt-3 text-sm font-semibold text-red-600" role="alert">
+              Invalid password.
+            </p>
+          )}
+          <button
+            type="submit"
+            className="mt-6 w-full rounded-full bg-brand-600 px-6 py-3 text-sm font-bold text-white hover:bg-brand-500 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:outline-none"
+          >
+            Sign in
+          </button>
         </form>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="bg-white shadow-sm border-b border-[#d9d9d9]">
-        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-6">
-            <h1 className="text-lg font-bold text-[#4a68a9]">Admin</h1>
-            <nav className="flex gap-1">
-              <button onClick={() => switchTab('blog')}
-                className={`px-4 py-1.5 text-sm font-semibold rounded transition-colors ${tab === 'blog' ? 'bg-[#4a68a9] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
-                Blog
-              </button>
-              <button onClick={() => switchTab('submissions')}
-                className={`px-4 py-1.5 text-sm font-semibold rounded transition-colors ${tab === 'submissions' ? 'bg-[#4a68a9] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
-                Űrlapok {submissions.length > 0 && `(${submissions.length})`}
-              </button>
-              <button onClick={() => { switchTab('smtp'); if (!smtpLoaded) loadSmtp(); }}
-                className={`px-4 py-1.5 text-sm font-semibold rounded transition-colors ${tab === 'smtp' ? 'bg-[#4a68a9] text-white' : 'text-gray-600 hover:bg-gray-100'}`}>
-                SMTP
-              </button>
-            </nav>
-          </div>
-          <button onClick={handleLogout} className="text-sm text-red-500 hover:underline">Kijelentkezés</button>
+    <main className="min-h-screen bg-ink-50 pb-24">
+      <header className="bg-ink-950 px-6 py-5">
+        <div className="mx-auto flex max-w-6xl items-center justify-between">
+          <h1 className="text-lg font-extrabold text-white">Autotherm Admin</h1>
+          <button
+            type="button"
+            onClick={() => {
+              window.sessionStorage.removeItem("at-admin-pass");
+              setAuthed(false);
+              setPassword("");
+            }}
+            className="rounded-full px-4 py-2 text-sm font-semibold text-ink-300 ring-1 ring-white/15 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:outline-none"
+          >
+            Sign out
+          </button>
         </div>
-      </div>
+      </header>
 
-      <div className="max-w-7xl mx-auto px-4 py-6">
-        {tab === 'blog' && !editingPost && (
-          <>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">Blog bejegyzések</h2>
-              <button onClick={() => setEditingPost({ ...emptyPost })}
-                className="button text-sm py-2 px-4">+ Új bejegyzés</button>
-            </div>
+      <div className="mx-auto mt-8 max-w-6xl px-6">
+        <div className="flex gap-2" role="tablist" aria-label="Admin sections">
+          {(
+            [
+              ["submissions", `Submissions (${submissions.length})`],
+              ["blog", `Blog (${posts.length})`],
+              ["settings", "Settings"],
+            ] as [Tab, string][]
+          ).map(([id, label]) => (
+            <button
+              key={id}
+              type="button"
+              role="tab"
+              aria-selected={tab === id}
+              onClick={() => setTab(id)}
+              className={`rounded-full px-5 py-2.5 text-sm font-bold transition-colors focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:outline-none ${
+                tab === id
+                  ? "bg-brand-600 text-white"
+                  : "bg-white text-ink-600 ring-1 ring-ink-200 hover:bg-ink-100"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
 
-            {posts.length === 0 && !loading && (
-              <div className="bg-white p-8 text-center text-gray-400">Nincsenek bejegyzések.</div>
+        {notice && (
+          <p className="mt-4 rounded-xl bg-brand-50 px-4 py-3 text-sm font-semibold text-brand-800 ring-1 ring-brand-200" role="status">
+            {notice}
+          </p>
+        )}
+
+        {tab === "submissions" && (
+          <div className="mt-6 flex flex-col gap-3">
+            {submissions.length === 0 && (
+              <p className="rounded-2xl bg-white p-8 text-center text-sm text-ink-500 ring-1 ring-ink-200">
+                No submissions yet.
+              </p>
             )}
+            {submissions.map((s) => (
+              <article key={s.id} className="rounded-2xl bg-white p-5 ring-1 ring-ink-200">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <p className="font-bold text-ink-900">
+                    {s.name}{" "}
+                    <a href={`mailto:${s.email}`} className="font-semibold text-brand-600">
+                      {s.email}
+                    </a>
+                    {s.phone && <span className="ml-2 text-sm text-ink-500">{s.phone}</span>}
+                  </p>
+                  <p className="text-xs text-ink-400">
+                    #{s.id} · {s.created_at} · {s.page ?? "-"} ({s.lang ?? "-"})
+                  </p>
+                </div>
+                <p className="mt-3 text-sm leading-relaxed whitespace-pre-wrap text-ink-700">
+                  {s.message}
+                </p>
+              </article>
+            ))}
+          </div>
+        )}
 
-            {posts.length > 0 && (
-              <div className="space-y-3">
-                {posts.map((p) => (
-                  <div key={p.id} className="bg-white p-4 rounded-lg shadow-sm border border-[#d9d9d9] flex items-center justify-between">
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-3">
-                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${p.published ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500'}`}>
-                          {p.published ? 'Publikus' : 'Rejtett'}
-                        </span>
-                        <span className="font-semibold truncate">{p.hu_title || '(nincs cím)'}</span>
-                      </div>
-                      <div className="text-xs text-gray-400 mt-1">
-                        HU · EN · DE · RO — {p.created_at}
-                      </div>
-                    </div>
-                    <div className="flex gap-2 shrink-0 ml-4">
-                      <button onClick={() => setEditingPost({ ...p })}
-                        className="text-sm text-[#4a68a9] hover:underline">Szerkeszt</button>
-                      <button onClick={() => deletePost(p.id)}
-                        className="text-sm text-red-500 hover:underline">Töröl</button>
-                    </div>
+        {tab === "blog" && (
+          <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">
+            <section className="rounded-2xl bg-white p-6 ring-1 ring-ink-200">
+              <h2 className="text-base font-extrabold text-ink-900">
+                {draft.id ? `Edit post #${draft.id}` : "New post"}
+              </h2>
+              <div className="mt-4 flex flex-col gap-4">
+                {LANG_FIELDS.map((l) => (
+                  <div key={l.code}>
+                    <p className="mb-1.5 text-xs font-bold text-ink-500 uppercase">{l.label}</p>
+                    <input
+                      type="text"
+                      placeholder={`${l.label} title`}
+                      value={draft[`${l.code}_title`]}
+                      onChange={(e) =>
+                        setDraft((d) => ({ ...d, [`${l.code}_title`]: e.target.value }))
+                      }
+                      className={inputCls}
+                    />
+                    <textarea
+                      placeholder={`${l.label} content (Markdown)`}
+                      rows={4}
+                      value={draft[`${l.code}_content`]}
+                      onChange={(e) =>
+                        setDraft((d) => ({ ...d, [`${l.code}_content`]: e.target.value }))
+                      }
+                      className={`${inputCls} mt-2 resize-y`}
+                    />
                   </div>
                 ))}
+                <input
+                  type="text"
+                  placeholder="Image URL (optional)"
+                  value={draft.image}
+                  onChange={(e) => setDraft((d) => ({ ...d, image: e.target.value }))}
+                  className={inputCls}
+                />
+                <label className="flex items-center gap-2 text-sm font-semibold text-ink-700">
+                  <input
+                    type="checkbox"
+                    checked={draft.published}
+                    onChange={(e) => setDraft((d) => ({ ...d, published: e.target.checked }))}
+                    className="h-4 w-4 accent-brand-600"
+                  />
+                  Published
+                </label>
+                <div className="flex gap-3">
+                  <button
+                    type="button"
+                    onClick={() => void saveDraft()}
+                    className="rounded-full bg-brand-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-brand-500 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:outline-none"
+                  >
+                    {draft.id ? "Update" : "Create"}
+                  </button>
+                  {draft.id && (
+                    <button
+                      type="button"
+                      onClick={() => setDraft(EMPTY_DRAFT)}
+                      className="rounded-full px-6 py-2.5 text-sm font-semibold text-ink-600 ring-1 ring-ink-200 hover:bg-ink-100 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:outline-none"
+                    >
+                      Cancel
+                    </button>
+                  )}
+                </div>
               </div>
-            )}
-          </>
-        )}
+            </section>
 
-        {tab === 'blog' && editingPost && (
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-[#d9d9d9] max-w-4xl">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">{editingPost.id ? 'Bejegyzés szerkesztése' : 'Új bejegyzés'}</h2>
-              <button onClick={() => setEditingPost(null)}
-                className="text-sm text-gray-500 hover:text-gray-700">Vissza</button>
-            </div>
-
-            <div className="space-y-6">
-              {langs.map((l) => (
-                <div key={l} className="border border-[#e0e0e0] rounded-lg p-4">
-                  <h3 className="text-sm font-bold text-[#4a68a9] mb-3 uppercase tracking-wider">{langLabel[l]}</h3>
-                  <div className="space-y-3">
+            <section className="flex flex-col gap-3">
+              {posts.map((p) => (
+                <article key={p.id} className="rounded-2xl bg-white p-5 ring-1 ring-ink-200">
+                  <div className="flex items-start justify-between gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-gray-500 mb-1">Cím</label>
-                      <input type="text" value={(editingPost as any)[`${l}_title`] || ''}
-                        onChange={(e) => setLangField(l, 'title', e.target.value)}
-                        className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+                      <p className="font-bold text-ink-900">
+                        #{p.id} {p.hu_title || p.en_title || "(untitled)"}
+                      </p>
+                      <p className="mt-1 text-xs text-ink-400">
+                        {p.published ? "Published" : "Draft"} · {p.updated_at}
+                      </p>
                     </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-gray-500 mb-1">Tartalom (HTML)</label>
-                      <textarea rows={5} value={(editingPost as any)[`${l}_content`] || ''}
-                        onChange={(e) => setLangField(l, 'content', e.target.value)}
-                        className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm font-mono" />
+                    <div className="flex shrink-0 gap-2">
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setDraft({
+                            id: p.id,
+                            hu_title: p.hu_title ?? "",
+                            hu_content: p.hu_content ?? "",
+                            en_title: p.en_title ?? "",
+                            en_content: p.en_content ?? "",
+                            de_title: p.de_title ?? "",
+                            de_content: p.de_content ?? "",
+                            ro_title: p.ro_title ?? "",
+                            ro_content: p.ro_content ?? "",
+                            image: p.image ?? "",
+                            published: p.published === 1,
+                          })
+                        }
+                        className="rounded-full px-4 py-1.5 text-xs font-bold text-brand-700 ring-1 ring-brand-200 hover:bg-brand-50 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:outline-none"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => void removePost(p.id)}
+                        className="rounded-full px-4 py-1.5 text-xs font-bold text-red-700 ring-1 ring-red-200 hover:bg-red-50 focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:outline-none"
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
-                </div>
+                </article>
               ))}
+            </section>
+          </div>
+        )}
 
-              <div className="flex items-center gap-6 pt-2">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={editingPost.published === 1}
-                    onChange={(e) => setEditingPost({ ...editingPost, published: e.target.checked ? 1 : 0 })}
-                    className="accent-[#4a68a9]" />
-                  <span className="text-sm font-semibold">Publikus</span>
+        {tab === "settings" && (
+          <section className="mt-6 max-w-lg rounded-2xl bg-white p-6 ring-1 ring-ink-200">
+            <h2 className="text-base font-extrabold text-ink-900">Email (Brevo)</h2>
+            <div className="mt-4 flex flex-col gap-4">
+              <div>
+                <label htmlFor="set-key" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  Brevo API key
                 </label>
+                <input
+                  id="set-key"
+                  type="text"
+                  value={settings.apiKey}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, apiKey: e.target.value }))}
+                  className={inputCls}
+                />
               </div>
-
-              <div className="flex gap-3 pt-2">
-                <button onClick={savePost} disabled={saving}
-                  className="button text-sm py-2.5 px-6">
-                  {saving ? 'Mentés...' : 'Mentés'}
-                </button>
-                <button onClick={() => setEditingPost(null)}
-                  className="text-sm text-gray-500 hover:text-gray-700">Mégsem</button>
+              <div>
+                <label htmlFor="set-from" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  From address
+                </label>
+                <input
+                  id="set-from"
+                  type="email"
+                  value={settings.from}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, from: e.target.value }))}
+                  className={inputCls}
+                />
+              </div>
+              <div>
+                <label htmlFor="set-to" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  To address
+                </label>
+                <input
+                  id="set-to"
+                  type="email"
+                  value={settings.to}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, to: e.target.value }))}
+                  className={inputCls}
+                />
               </div>
             </div>
-          </div>
-        )}
 
-        {tab === 'smtp' && (
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-[#d9d9d9] max-w-lg">
-            <h2 className="text-xl font-bold mb-1">Email beállítások</h2>
-            <p className="text-xs text-gray-400 mb-6">Brevo API-n keresztül. API kulcs: Brevo → SMTP & API → API keys</p>
-            <div className="space-y-4">
+            <h2 className="mt-8 text-base font-extrabold text-ink-900">Site Stats</h2>
+            <div className="mt-4 flex flex-col gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1">Brevo API kulcs</label>
-                <input type="password" value={smtp.apiKey} onChange={(e) => setSmtp({...smtp, apiKey: e.target.value})}
-                  placeholder="xxxxxxxxxxxxxxx"
-                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+                <label htmlFor="stat-founded" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  Founded year
+                </label>
+                <input
+                  id="stat-founded"
+                  type="number"
+                  value={settings.stats.foundedYear}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, stats: { ...s.stats, foundedYear: Number(e.target.value) } }))}
+                  className={inputCls}
+                />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1">Feladó email (From)</label>
-                <input type="text" value={smtp.from} onChange={(e) => setSmtp({...smtp, from: e.target.value})}
-                  placeholder="hutoautok@hutoautok.hu"
-                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+                <label htmlFor="stat-customers" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  Satisfied customers
+                </label>
+                <input
+                  id="stat-customers"
+                  type="number"
+                  value={settings.stats.customers}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, stats: { ...s.stats, customers: Number(e.target.value) } }))}
+                  className={inputCls}
+                />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-gray-500 mb-1">Értesítési email (hová menjen)</label>
-                <input type="text" value={smtp.to} onChange={(e) => setSmtp({...smtp, to: e.target.value})}
-                  placeholder="vastag.peter@autotherm.hu"
-                  className="w-full px-3 py-2 border border-[#d9d9d9] outline-none focus:border-[#4a68a9] text-sm" />
+                <label htmlFor="stat-conversions" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  Annual conversions
+                </label>
+                <input
+                  id="stat-conversions"
+                  type="number"
+                  value={settings.stats.annualConversions}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, stats: { ...s.stats, annualConversions: Number(e.target.value) } }))}
+                  className={inputCls}
+                />
               </div>
-              <button onClick={saveSmtp} className="button text-sm py-2.5 px-6">Mentés</button>
-            </div>
-          </div>
-        )}
-
-        {tab === 'submissions' && (
-          <>
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold">Űrlap beküldések</h2>
-              <button onClick={loadSubmissions} disabled={loading}
-                className="button text-sm py-2 px-4">{loading ? 'Betöltés...' : 'Frissítés'}
+              <div>
+                <label htmlFor="stat-employees" className="mb-1.5 block text-xs font-bold text-ink-500 uppercase">
+                  Employees
+                </label>
+                <input
+                  id="stat-employees"
+                  type="number"
+                  value={settings.stats.employees}
+                  onChange={(e) => setSettingsState((s) => ({ ...s, stats: { ...s.stats, employees: Number(e.target.value) } }))}
+                  className={inputCls}
+                />
+              </div>
+              <button
+                type="button"
+                onClick={() => void saveSettings()}
+                className="self-start rounded-full bg-brand-600 px-6 py-2.5 text-sm font-bold text-white hover:bg-brand-500 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:outline-none"
+              >
+                Save settings
               </button>
             </div>
-
-            {submissions.length === 0 && (
-              <div className="bg-white p-8 text-center">
-                <p className="text-gray-400 mb-2">Nincsenek beküldések.</p>
-                <p className="text-xs text-gray-300">Az adatok a Worker memóriájában tárolódnak — KV nélkül a Worker újraindulásakor elvesznek.<br/>Minden beküldés emailben is elküldésre kerül.</p>
-              </div>
-            )}
-
-            {submissions.length > 0 && (
-              <div className="overflow-x-auto">
-                <table className="w-full bg-white shadow-sm text-sm">
-                  <thead>
-                    <tr className="bg-[#f5f5f5] border-b border-[#d9d9d9]">
-                      <th className="text-left px-4 py-3 font-semibold">ID</th>
-                      <th className="text-left px-4 py-3 font-semibold">Dátum</th>
-                      <th className="text-left px-4 py-3 font-semibold">Név</th>
-                      <th className="text-left px-4 py-3 font-semibold">Email</th>
-                      <th className="text-left px-4 py-3 font-semibold">Telefon</th>
-                      <th className="text-left px-4 py-3 font-semibold">Oldal</th>
-                      <th className="text-left px-4 py-3 font-semibold">Nyelv</th>
-                      <th className="text-left px-4 py-3 font-semibold">Üzenet</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {submissions.map((s) => (
-                      <tr key={s.id} className="border-b border-[#eee] hover:bg-[#fafafa]">
-                        <td className="px-4 py-3 text-gray-400">{s.id}</td>
-                        <td className="px-4 py-3 whitespace-nowrap">{s.created_at}</td>
-                        <td className="px-4 py-3 font-medium">{s.name}</td>
-                        <td className="px-4 py-3"><a href={`mailto:${s.email}`} className="text-[#4a68a9]">{s.email}</a></td>
-                        <td className="px-4 py-3">{s.phone}</td>
-                        <td className="px-4 py-3 text-gray-500">{s.page}</td>
-                        <td className="px-4 py-3 uppercase text-xs font-bold">{s.lang}</td>
-                        <td className="px-4 py-3 max-w-xs truncate">{s.message}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-          </>
+          </section>
         )}
       </div>
-    </div>
+    </main>
   );
 }

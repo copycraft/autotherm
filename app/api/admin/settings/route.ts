@@ -1,27 +1,63 @@
-import { NextRequest, NextResponse } from 'next/server';
-import { getSetting, setSetting } from '@/app/lib/db';
+import { NextResponse, type NextRequest } from "next/server";
+import { isAuthorized, unauthorized } from "@/app/lib/admin-auth";
+import { getSetting, getStats, setSetting } from "@/app/lib/db";
 
-function checkAuth(req: NextRequest): boolean {
-  const auth = req.headers.get('authorization');
-  if (!auth) return false;
-  const base64 = auth.replace('Basic ', '');
-  const decoded = Buffer.from(base64, 'base64').toString();
-  return decoded === 'admin:admin';
+const MASK = "********";
+
+export async function GET(request: NextRequest) {
+  if (!(await isAuthorized(request))) return unauthorized();
+  const [apiKey, from, to, stats] = await Promise.all([
+    getSetting("brevo_api_key"),
+    getSetting("email_from"),
+    getSetting("email_to"),
+    getStats(),
+  ]);
+  return NextResponse.json({
+    success: true,
+    apiKey: apiKey ? MASK : "",
+    from: from ?? "",
+    to: to ?? "",
+    stats: {
+      foundedYear: stats.foundedYear,
+      customers: stats.customers,
+      annualConversions: stats.annualConversions,
+      employees: stats.employees,
+    },
+  });
 }
 
-export async function GET(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const apiKey = (await getSetting('brevo_api_key')) ? '********' : '';
-  const from = await getSetting('email_from');
-  const to = await getSetting('email_to');
-  return NextResponse.json({ apiKey, from, to });
-}
-
-export async function POST(req: NextRequest) {
-  if (!checkAuth(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-  const body = await req.json();
-  if (body.apiKey !== undefined && body.apiKey !== '********') await setSetting('brevo_api_key', body.apiKey);
-  if (body.from !== undefined) await setSetting('email_from', body.from);
-  if (body.to !== undefined) await setSetting('email_to', body.to);
-  return NextResponse.json({ success: true });
+export async function POST(request: NextRequest) {
+  if (!(await isAuthorized(request))) return unauthorized();
+  try {
+    const body = (await request.json()) as {
+      apiKey?: string;
+      from?: string;
+      to?: string;
+      stats?: {
+        foundedYear?: number;
+        customers?: number;
+        annualConversions?: number;
+        employees?: number;
+      };
+    };
+    const tasks: Promise<boolean>[] = [];
+    if (body.apiKey !== undefined && body.apiKey !== MASK) {
+      tasks.push(setSetting("brevo_api_key", body.apiKey));
+    }
+    if (body.from !== undefined) tasks.push(setSetting("email_from", body.from));
+    if (body.to !== undefined) tasks.push(setSetting("email_to", body.to));
+    if (body.stats) {
+      if (body.stats.foundedYear !== undefined) tasks.push(setSetting("stat_foundedYear", String(body.stats.foundedYear)));
+      if (body.stats.customers !== undefined) tasks.push(setSetting("stat_customers", String(body.stats.customers)));
+      if (body.stats.annualConversions !== undefined) tasks.push(setSetting("stat_annualConversions", String(body.stats.annualConversions)));
+      if (body.stats.employees !== undefined) tasks.push(setSetting("stat_employees", String(body.stats.employees)));
+    }
+    await Promise.all(tasks);
+    return NextResponse.json({ success: true });
+  } catch {
+    return NextResponse.json(
+      { success: false, message: "invalid request" },
+      { status: 400 },
+    );
+  }
 }
