@@ -54,7 +54,7 @@ export default function Hero({
   return (
     <section
       ref={ref}
-      className="mesh-hero relative flex min-h-[100svh] items-center overflow-hidden"
+      className="mesh-hero relative flex min-h-[100svh] flex-col justify-start overflow-hidden pt-16 sm:pt-20"
     >
       <div className="grid-overlay absolute inset-0" aria-hidden="true" />
       <motion.div
@@ -63,7 +63,7 @@ export default function Hero({
         aria-hidden="true"
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white" aria-hidden="true" />
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pt-20 pb-24 sm:pt-32 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-start gap-16 px-4 pb-24 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
