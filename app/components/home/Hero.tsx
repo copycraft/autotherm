@@ -95,14 +95,14 @@ export default function Hero({
               ))}
             </motion.span>
             <motion.span
-              className="text-frost-gradient block"
+              className="block"
               initial="hidden"
               animate="visible"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.45 } } }}
               aria-label={titleB}
             >
               {words(titleB).map((w, i) => (
-                <span key={i} className="inline-block overflow-hidden align-bottom pb-1">
+                <span key={i} className="text-frost-gradient inline-block overflow-hidden align-bottom pb-1">
                   <motion.span variants={textWord} className="inline-block will-change-transform">
                     {w}
                     {i < words(titleB).length - 1 ? "\u00A0" : ""}
