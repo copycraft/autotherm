@@ -70,15 +70,43 @@ type D1Like = {
   };
 };
 
+let d1Instance: D1Like | null | undefined = undefined;
+
 function getD1(): D1Like | null {
+  if (d1Instance !== undefined) return d1Instance;
   try {
     const ctx = getCloudflareContext();
     const db = (ctx.env as Record<string, unknown>).DB as D1Like | undefined;
-    if (db && typeof db.prepare === "function") return db;
+    d1Instance = db && typeof db.prepare === "function" ? db : null;
   } catch {
-    // Not running inside a Cloudflare context (local dev / build).
+    d1Instance = null;
   }
-  return null;
+  return d1Instance;
+}
+
+/* ---------------------------------- Cache ---------------------------------- */
+
+const cache = new Map<string, { value: unknown; expires: number }>();
+const CACHE_TTL_MS = 60_000;
+
+function cacheGet<T>(key: string): T | undefined {
+  const entry = cache.get(key);
+  if (!entry) return undefined;
+  if (Date.now() > entry.expires) {
+    cache.delete(key);
+    return undefined;
+  }
+  return entry.value as T;
+}
+
+function cacheSet<T>(key: string, value: T, ttl = CACHE_TTL_MS): void {
+  cache.set(key, { value, expires: Date.now() + ttl });
+}
+
+function cacheDelete(pattern: string): void {
+  for (const key of cache.keys()) {
+    if (key.startsWith(pattern)) cache.delete(key);
+  }
 }
 
 /* --------------------------- Local SQLite fallback --------------------------- */
@@ -184,6 +212,51 @@ export async function getAllSubmissions(): Promise<Submission[]> {
   }
 }
 
+/* ------------------------------ Batch settings ------------------------------ */
+
+const STAT_KEYS = ["stat_foundedYear", "stat_customers", "stat_annualConversions", "stat_employees"] as const;
+
+export async function getSettings(keys: string[]): Promise<Map<string, string>> {
+  const result = new Map<string, string>();
+  const uncached: string[] = [];
+
+  for (const key of keys) {
+    const cached = cacheGet<string>(`setting:${key}`);
+    if (cached !== undefined) {
+      result.set(key, cached);
+    } else {
+      uncached.push(key);
+    }
+  }
+
+  if (uncached.length === 0) return result;
+
+  const placeholders = uncached.map(() => "?").join(",");
+  const sql = `SELECT key, value FROM settings WHERE key IN (${placeholders})`;
+
+  try {
+    const d1 = getD1();
+    if (d1) {
+      const { results } = await d1.prepare(sql).bind(...uncached).all<{ key: string; value: string }>();
+      for (const row of results ?? []) {
+        result.set(row.key, row.value);
+        cacheSet(`setting:${row.key}`, row.value);
+      }
+    } else {
+      const db = await getSqlite();
+      const rows = db.prepare(sql).all(...uncached) as { key: string; value: string }[];
+      for (const row of rows) {
+        result.set(row.key, row.value);
+        cacheSet(`setting:${row.key}`, row.value);
+      }
+    }
+  } catch (err) {
+    console.error("[db] getSettings failed:", err);
+  }
+
+  return result;
+}
+
 /* ------------------------------- Site stats --------------------------------- */
 
 export interface SiteStats {
@@ -195,17 +268,23 @@ export interface SiteStats {
 
 export async function getStats(): Promise<SiteStats> {
   const defaults = { foundedYear: 1992, customers: 3000, annualConversions: 280, employees: 33 };
+
+  const cached = cacheGet<SiteStats>("stats");
+  if (cached) return cached;
+
   try {
     const d1 = getD1();
     if (d1) {
-      const { results } = await d1.prepare("SELECT key, value FROM settings WHERE key IN ('stat_foundedYear','stat_customers','stat_annualConversions','stat_employees')").all<{ key: string; value: string }>();
+      const { results } = await d1.prepare(`SELECT key, value FROM settings WHERE key IN (${STAT_KEYS.map(() => "?").join(",")})`).bind(...STAT_KEYS).all<{ key: string; value: string }>();
       const map = new Map((results ?? []).map((r) => [r.key, r.value]));
-      return {
+      const stats = {
         foundedYear: Number(map.get("stat_foundedYear")) || defaults.foundedYear,
         customers: Number(map.get("stat_customers")) || defaults.customers,
         annualConversions: Number(map.get("stat_annualConversions")) || defaults.annualConversions,
         employees: Number(map.get("stat_employees")) || defaults.employees,
       };
+      cacheSet("stats", stats);
+      return stats;
     }
     const fromEnv = {
       foundedYear: process.env.STAT_FOUNDED_YEAR,
@@ -222,7 +301,7 @@ export async function getStats(): Promise<SiteStats> {
       };
     }
     const db = await getSqlite();
-    const rows = db.prepare("SELECT key, value FROM settings WHERE key IN ('stat_foundedYear','stat_customers','stat_annualConversions','stat_employees')").all() as { key: string; value: string }[];
+    const rows = db.prepare(`SELECT key, value FROM settings WHERE key IN (${STAT_KEYS.map(() => "?").join(",")})`).all(...STAT_KEYS) as { key: string; value: string }[];
     const map = new Map(rows.map((r: { key: string; value: string }) => [r.key, r.value]));
     return {
       foundedYear: Number(map.get("stat_foundedYear")) || defaults.foundedYear,
@@ -238,16 +317,22 @@ export async function getStats(): Promise<SiteStats> {
 /* ---------------------------------- Settings --------------------------------- */
 
 export async function getSetting(key: string): Promise<string | null> {
+  const cached = cacheGet<string>(`setting:${key}`);
+  if (cached !== undefined) return cached;
   const sql = "SELECT value FROM settings WHERE key = ?";
   try {
     const d1 = getD1();
     if (d1) {
       const row = await d1.prepare(sql).bind(key).first<{ value: string }>();
-      return row?.value ?? null;
+      const value = row?.value ?? null;
+      if (value !== null) cacheSet(`setting:${key}`, value);
+      return value;
     }
     const db = await getSqlite();
     const row = db.prepare(sql).get(key) as { value: string } | undefined;
-    return row?.value ?? null;
+    const value = row?.value ?? null;
+    if (value !== null) cacheSet(`setting:${key}`, value);
+    return value;
   } catch (err) {
     console.error("[db] getSetting failed:", err);
     return null;
@@ -261,10 +346,12 @@ export async function setSetting(key: string, value: string): Promise<boolean> {
     const d1 = getD1();
     if (d1) {
       await d1.prepare(sql).bind(key, value).run();
-      return true;
+    } else {
+      const db = await getSqlite();
+      db.prepare(sql).run(key, value);
     }
-    const db = await getSqlite();
-    db.prepare(sql).run(key, value);
+    cacheSet(`setting:${key}`, value);
+    if (key.startsWith("stat_")) cacheDelete("stats");
     return true;
   } catch (err) {
     console.error("[db] setSetting failed:", err);

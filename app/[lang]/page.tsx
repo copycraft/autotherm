@@ -282,7 +282,7 @@ function PartnersSection({ dict }: { dict: Dict }) {
   const partners = [
     { name: "Carrier Transicold", body: dict.home.partners.carrier, logo: "/images/carrier-logo.png" },
     { name: "Daikin", body: dict.home.partners.daikin, logo: null },
-    { name: "Thermo King", body: dict.home.partners.thermoking, logo: null },
+    { name: "Autoclima", body: dict.home.partners.autoclima, logo: null },
   ];
   const clientLogos = [
     { src: "/images/pick-logo.jpg", alt: "Pick" },

@@ -1,17 +1,18 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { isAuthorized, unauthorized } from "@/app/lib/admin-auth";
-import { getSetting, getStats, setSetting } from "@/app/lib/db";
+import { getSettings, getStats, setSetting } from "@/app/lib/db";
 
 const MASK = "********";
 
 export async function GET(request: NextRequest) {
   if (!(await isAuthorized(request))) return unauthorized();
-  const [apiKey, from, to, stats] = await Promise.all([
-    getSetting("brevo_api_key"),
-    getSetting("email_from"),
-    getSetting("email_to"),
+  const [settings, stats] = await Promise.all([
+    getSettings(["brevo_api_key", "email_from", "email_to"]),
     getStats(),
   ]);
+  const apiKey = settings.get("brevo_api_key");
+  const from = settings.get("email_from");
+  const to = settings.get("email_to");
   return NextResponse.json({
     success: true,
     apiKey: apiKey ? MASK : "",

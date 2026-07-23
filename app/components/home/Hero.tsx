@@ -63,7 +63,7 @@ export default function Hero({
         aria-hidden="true"
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white" aria-hidden="true" />
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pt-32 pb-24 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
+      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pt-20 pb-24 sm:pt-32 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
         <motion.div style={{ y: contentY, opacity: contentOpacity }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}

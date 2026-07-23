@@ -1,5 +1,5 @@
 import "server-only";
-import { getSetting } from "./db";
+import { getSettings } from "./db";
 
 /**
  * Transactional email via the Brevo HTTP API - pure fetch(), zero Node.js
@@ -19,11 +19,10 @@ export async function sendNotificationEmail(
   mail: OutgoingMail,
 ): Promise<boolean> {
   try {
-    const [apiKey, from, to] = await Promise.all([
-      getSetting("brevo_api_key"),
-      getSetting("email_from"),
-      getSetting("email_to"),
-    ]);
+    const settings = await getSettings(["brevo_api_key", "email_from", "email_to"]);
+    const apiKey = settings.get("brevo_api_key");
+    const from = settings.get("email_from");
+    const to = settings.get("email_to");
     if (!apiKey || !from || !to) {
       console.warn("[email] Brevo not configured - skipping notification.");
       return false;
@@ -56,11 +55,15 @@ export async function sendNotificationEmail(
   }
 }
 
+const ESCAPE_MAP: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+const ESCAPE_RE = /[&<>"']/g;
+
 export function escapeHtml(value: string): string {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#39;");
+  return value.replace(ESCAPE_RE, (c) => ESCAPE_MAP[c]);
 }

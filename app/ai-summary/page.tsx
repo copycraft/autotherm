@@ -75,7 +75,7 @@ export default function AiSummaryPage() {
             Repair and service: authorized Carrier and Daikin service,
             diagnostics, error-code reading, original parts from stock, mobile
             repair, roadside assistance, annual inspections, maintenance
-            contracts, insurance claim repairs. Thermo King partner since 1995.
+            contracts, insurance claim repairs. Autoclima partner.
           </li>
         </ul>
       </section>
@@ -88,7 +88,7 @@ export default function AiSummaryPage() {
             service of Xarios and Supra models.
           </li>
           <li>Daikin - service and repair of Daikin refrigeration units.</li>
-          <li>Thermo King - historic partner since 1995: repair and service.</li>
+          <li>Autoclima - service and repair of cooling units.</li>
         </ul>
       </section>
 

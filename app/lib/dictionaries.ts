@@ -122,7 +122,7 @@ export interface Dict {
       lead: string;
       carrier: string;
       daikin: string;
-      thermoking: string;
+      autoclima: string;
     };
     configuratorTeaser: {
       eyebrow: string;
@@ -376,10 +376,10 @@ export const dictionaries: Record<Lang, Dict> = {
       partners: {
         eyebrow: "Hűtéstechnikai partnereink",
         title: "A világ vezető hűtőmárkái. Egy műhelyben.",
-        lead: "Hivatalos Carrier Transicold partnerként értékesítünk, beépítünk és szervizelünk – emellett Daikin és Thermo King egységek javítását is vállaljuk.",
+        lead: "Hivatalos Carrier Transicold partnerként értékesítünk, beépítünk és szervizelünk – emellett Daikin és Autoclima egységek javítását is vállaljuk.",
         carrier: "Hivatalos partner – értékesítés, beépítés, szerviz",
         daikin: "Daikin hűtőegységek szervize és javítása",
-        thermoking: "Történelmi partnerünk 1995 óta – javítás és szerviz",
+        autoclima: "Autoclima hűtőegységek javítása és karbantartása",
       },
       configuratorTeaser: {
         eyebrow: "Online konfigurátor",
@@ -637,11 +637,11 @@ export const dictionaries: Record<Lang, Dict> = {
       },
       partners: {
         eyebrow: "Cooling partners",
-        title: "Carrier, Daikin, Thermo King. One workshop.",
-        lead: "As an official Carrier Transicold partner we sell, install and service - and we also repair Daikin and Thermo King units.",
+        title: "Carrier, Daikin, Autoclima. One workshop.",
+        lead: "As an official Carrier Transicold partner we sell, install and service - and we also repair Daikin and Autoclima units.",
         carrier: "Official partner - sales, installation, service",
         daikin: "Service and repair of Daikin cooling units",
-        thermoking: "Historic partner since 1995 - repair and service",
+        autoclima: "Service and repair of Autoclima cooling units",
       },
       configuratorTeaser: {
         eyebrow: "Online configurator",
@@ -897,11 +897,11 @@ export const dictionaries: Record<Lang, Dict> = {
       },
       partners: {
         eyebrow: "Kältetechnik-Partner",
-        title: "Carrier, Daikin, Thermo King. Eine Werkstatt.",
-        lead: "Als offizieller Carrier Transicold Partner verkaufen, montieren und warten wir - zusätzlich reparieren wir Daikin- und Thermo King-Aggregate.",
+        title: "Carrier, Daikin, Autoclima. Eine Werkstatt.",
+        lead: "Als offizieller Carrier Transicold Partner verkaufen, montieren und warten wir - zusätzlich reparieren wir Daikin- und Autoclima-Aggregate.",
         carrier: "Offizieller Partner - Verkauf, Einbau, Service",
         daikin: "Service und Reparatur von Daikin-Aggregaten",
-        thermoking: "Historischer Partner seit 1995 - Reparatur und Service",
+        autoclima: "Service und Reparatur von Autoclima-Aggregaten",
       },
       configuratorTeaser: {
         eyebrow: "Online-Konfigurator",
@@ -1157,10 +1157,10 @@ export const dictionaries: Record<Lang, Dict> = {
       partners: {
         eyebrow: "Parteneri frigorifici",
         title: "Cele mai importante mărci de refrigerare. Un singur atelier.",
-        lead: "Ca partener oficial Carrier Transicold vindem, montăm și întreținem - și reparăm și unități Daikin și Thermo King.",
+        lead: "Ca partener oficial Carrier Transicold vindem, montăm și întreținem - și reparăm și unități Daikin și Autoclima.",
         carrier: "Partener oficial - vânzare, montaj, service",
         daikin: "Service și reparații unități Daikin",
-        thermoking: "Partener istoric din 1995 - reparații și service",
+        autoclima: "Service și reparații unități Autoclima",
       },
       configuratorTeaser: {
         eyebrow: "Configurator online",
