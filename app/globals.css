@@ -156,7 +156,7 @@ body {
 }
 
 /* Frost text gradient for display headlines */
-@utility text-frost-gradient {
+.text-frost-gradient {
   color: var(--color-frost-300);
   background: linear-gradient(
     100deg,
@@ -166,7 +166,11 @@ body {
   );
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+}
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .text-frost-gradient {
+    color: transparent;
+  }
 }
 
 /* ------------------------------ Scrollbar --------------------------------- */
