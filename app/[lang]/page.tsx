@@ -34,6 +34,7 @@ export default async function HomePage({
   if (!isLang(lang)) notFound();
   const dict = getDict(lang);
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
+  const configuratorHref = pathFor("configurator", lang) ?? `/${lang}`;
   const aboutHref = pathFor("about", lang) ?? `/${lang}`;
   const galleryHref = pathFor("gallery", lang) ?? `/${lang}`;
 
