@@ -63,7 +63,7 @@ export default function Hero({
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white" aria-hidden="true" />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pt-20 pb-24 sm:pt-32 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-        <motion.div style={{ y: contentY }}>
+        <motion.div style={{ y: contentY, color: "#fff" }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,7 +78,8 @@ export default function Hero({
 
           <h1 className="mt-8 text-5xl font-black tracking-tighter sm:text-6xl xl:text-7xl">
             <motion.span
-              className="block text-white"
+              className="block"
+              style={{ color: "#fff" }}
               initial="hidden"
               animate="visible"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.25 } } }}
@@ -95,6 +96,7 @@ export default function Hero({
             </motion.span>
             <motion.span
               className="block"
+              style={{ color: "#fff" }}
               initial="hidden"
               animate="visible"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.45 } } }}
