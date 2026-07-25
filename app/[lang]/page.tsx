@@ -34,7 +34,7 @@ export default async function HomePage({
   if (!isLang(lang)) notFound();
   const dict = getDict(lang);
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
-  const configuratorHref = pathFor("configurator", lang) ?? `/${lang}`;
+  const aboutHref = pathFor("about", lang) ?? `/${lang}`;
   const galleryHref = pathFor("gallery", lang) ?? `/${lang}`;
 
   return (
@@ -47,7 +47,7 @@ export default async function HomePage({
         ctaPrimary={dict.home.hero.ctaPrimary}
         ctaPrimaryHref={quoteHref}
         ctaSecondary={dict.home.hero.ctaSecondary}
-        ctaSecondaryHref={configuratorHref}
+        ctaSecondaryHref={aboutHref}
         badge={dict.home.hero.badge}
         scrollHint={dict.common.scrollDown}
         image="/images/e4566315cd28.jpg"

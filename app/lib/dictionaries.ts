@@ -290,7 +290,7 @@ export const dictionaries: Record<Lang, Dict> = {
         titleB: "forró teljesítmény.",
         lead: "Hűtőautók, hűtős furgonok és egyedi járműfelépítmények gyártása 3,5 tonnáig – hivatalos Carrier Transicold partnerként, több mint 30 év tapasztalattal.",
         ctaPrimary: "Árajánlatot kérek",
-        ctaSecondary: "Konfigurátor indítása",
+        ctaSecondary: "Történetünk",
         badge: "Hivatalos Carrier Transicold partner",
       },
       stats: {
@@ -552,7 +552,7 @@ export const dictionaries: Record<Lang, Dict> = {
         titleB: "Hot performance.",
         lead: "Refrigerated vans, cooled vehicle bodies and custom commercial conversions up to 3.5 t - built by an official Carrier Transicold partner with 30+ years of experience.",
         ctaPrimary: "Request a quote",
-        ctaSecondary: "Launch configurator",
+        ctaSecondary: "Our story",
         badge: "Official Carrier Transicold partner",
       },
       stats: {
@@ -812,7 +812,7 @@ export const dictionaries: Record<Lang, Dict> = {
         titleB: "Leistung glühend heiß.",
         lead: "Kühlfahrzeuge, Kühlkoffer und individuelle Nutzfahrzeugaufbauten bis 3,5 t - gebaut von einem offiziellen Carrier Transicold Partner mit über 30 Jahren Erfahrung.",
         ctaPrimary: "Angebot anfordern",
-        ctaSecondary: "Konfigurator starten",
+        ctaSecondary: "Unsere Geschichte",
         badge: "Offizieller Carrier Transicold Partner",
       },
       stats: {
@@ -1071,7 +1071,7 @@ export const dictionaries: Record<Lang, Dict> = {
         titleB: "Performanță fierbinte.",
         lead: "Furgonete frigorifice, carosări și suprastructuri comerciale personalizate până la 3,5 t - construite de un partener oficial Carrier Transicold cu peste 30 de ani de experiență.",
         ctaPrimary: "Solicită ofertă",
-        ctaSecondary: "Pornește configuratorul",
+        ctaSecondary: "Povestea noastră",
         badge: "Partener oficial Carrier Transicold",
       },
       stats: {
