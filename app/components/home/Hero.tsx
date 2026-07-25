@@ -54,7 +54,7 @@ export default function Hero({
   return (
     <section
       ref={ref}
-      className="mesh-hero relative flex min-h-[100svh] items-start overflow-hidden lg:items-center"
+      className="mesh-hero relative flex min-h-[100svh] items-start lg:items-center lg:overflow-hidden"
     >
       <div className="grid-overlay absolute inset-0" aria-hidden="true" />
       <motion.div
