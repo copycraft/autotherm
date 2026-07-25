@@ -102,14 +102,17 @@ export default function Hero({
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.45 } } }}
               aria-label={titleB}
             >
-              {words(titleB).map((w, i) => (
-                <span key={i} className="inline-block overflow-hidden align-bottom pb-1">
-                  <motion.span variants={textWord} className="inline-block will-change-transform">
-                    {w}
-                    {i < words(titleB).length - 1 ? "\u00A0" : ""}
-                  </motion.span>
-                </span>
-              ))}
+              {words(titleB).map((w, i) => {
+                const isLast = i === words(titleB).length - 1;
+                return (
+                  <span key={i} className={`inline-block overflow-hidden align-bottom pb-1 ${isLast ? "text-frost-gradient" : ""}`}>
+                    <motion.span variants={textWord} className="inline-block will-change-transform">
+                      {w}
+                      {!isLast ? "\u00A0" : ""}
+                    </motion.span>
+                  </span>
+                );
+              })}
             </motion.span>
           </h1>
 
