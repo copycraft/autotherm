@@ -76,7 +76,7 @@ export default function Hero({
             </p>
           </motion.div>
 
-          <h1 className="mt-8 text-5xl font-black tracking-tighter sm:text-6xl xl:text-7xl">
+          <h1 className="mt-8 text-4xl font-black tracking-tighter sm:text-6xl xl:text-7xl">
             <motion.span
               className="block"
               style={{ color: "#fff" }}
@@ -89,7 +89,7 @@ export default function Hero({
                 <span key={i} className="inline-block overflow-hidden align-bottom pb-1">
                   <motion.span variants={textWord} className="inline-block will-change-transform">
                     {w}
-                      {i < words(titleA).length - 1 ? " " : ""}
+                      {i < words(titleA).length - 1 ? "\u00A0" : ""}
                   </motion.span>
                 </span>
               ))}
@@ -108,7 +108,7 @@ export default function Hero({
                   <span key={i} className={`inline-block overflow-hidden align-bottom pb-1 ${isLast ? "text-frost-gradient" : ""}`}>
                     <motion.span variants={textWord} className="inline-block will-change-transform">
                       {w}
-                      {!isLast ? " " : ""}
+                      {!isLast ? "\u00A0" : ""}
                     </motion.span>
                   </span>
                 );
