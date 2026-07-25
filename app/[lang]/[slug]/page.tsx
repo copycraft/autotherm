@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import Configurator from "@/app/components/configurator/Configurator";
 import { Reveal } from "@/app/components/motion/Reveal";
 import RevealText from "@/app/components/motion/RevealText";
 import BlogPage from "@/app/components/templates/BlogPage";
@@ -110,14 +109,6 @@ export default async function SubPage({
         </>
       );
 
-    case "configurator":
-      return (
-        <>
-          {breadcrumb}
-          <ConfiguratorScreen lang={lang} page={path} />
-        </>
-      );
-
     case "blog": {
       // Force request-time rendering - posts come live from D1.
       await connection();
@@ -157,47 +148,4 @@ export default async function SubPage({
       );
     }
   }
-}
-
-/* ------------------------- Configurator page shell ------------------------- */
-
-async function ConfiguratorScreen({ lang, page }: { lang: Lang; page: string }) {
-  const dict = getDict(lang);
-  const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
-  return (
-    <>
-      <section className="mesh-hero relative overflow-hidden pt-40 pb-20">
-        <div className="grid-overlay absolute inset-0" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal direction="up" distance={16}>
-            <p className="text-xs font-bold tracking-[0.22em] text-frost-300 uppercase">
-              {dict.configurator.stepOf.toUpperCase()} 1–5
-            </p>
-          </Reveal>
-          <RevealText
-            as="h1"
-            text={dict.configurator.title}
-            delay={0.1}
-            className="mt-5 block max-w-3xl text-4xl font-black tracking-tighter text-balance text-white sm:text-6xl"
-          />
-          <Reveal delay={0.3}>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-300">
-              {dict.configurator.subtitle}
-            </p>
-          </Reveal>
-        </div>
-      </section>
-      <section className="mesh-light py-16 sm:py-24">
-        <Configurator dict={dict} lang={lang} page={page} />
-      </section>
-      <StatsBand lang={lang} dict={dict} />
-      <PartnersMarquee dict={dict} />
-      <CtaBand
-        title={dict.home.ctaBand.title}
-        body={dict.home.ctaBand.body}
-        primaryLabel={dict.home.ctaBand.primary}
-        quoteHref={quoteHref}
-      />
-    </>
-  );
 }

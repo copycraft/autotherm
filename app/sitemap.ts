@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: isHome || key === "blog" ? "weekly" : "monthly",
         priority: isHome
           ? 1.0
-          : key === "quotation" || key === "products" || key === "configurator"
+          : key === "quotation" || key === "products"
             ? 0.9
             : 0.7,
         alternates: { languages: languageMap },

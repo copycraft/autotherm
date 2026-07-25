@@ -23,7 +23,6 @@ export type PageKey =
   | "commercialBodies"
   | "bodyRepair"
   | "ourService"
-  | "configurator"
   | "vanIsolations"
   | "deceasedTransport"
   | "cooledBodies"
@@ -72,12 +71,6 @@ export const ROUTES: Record<PageKey, Partial<Record<Lang, string>>> = {
   },
   bodyRepair: { hu: "jarmufelepitmeny-javitas" },
   ourService: { hu: "szervizunk" },
-  configurator: {
-    hu: "konfigurator",
-    en: "configurator",
-    de: "configurator",
-    ro: "configurator",
-  },
   vanIsolations: { en: "van-isolations" },
   deceasedTransport: { en: "deceased-transport" },
   cooledBodies: { en: "cooled-refrigerated-vehicle-bodies" },
