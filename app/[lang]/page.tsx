@@ -34,7 +34,7 @@ export default async function HomePage({
   if (!isLang(lang)) notFound();
   const dict = getDict(lang);
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
-  const configuratorHref = pathFor("configurator", lang) ?? `/${lang}`;
+  const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
   const aboutHref = pathFor("about", lang) ?? `/${lang}`;
   const galleryHref = pathFor("gallery", lang) ?? `/${lang}`;
 
@@ -59,7 +59,6 @@ export default async function HomePage({
       <ProductsBento lang={lang} dict={dict} />
       <ProcessSection dict={dict} />
       <VideoSection dict={dict} />
-      <ConfiguratorTeaser dict={dict} href={configuratorHref} galleryHref={galleryHref} galleryLabel={dict.common.viewAll} />
       <CtaBand dict={dict} quoteHref={quoteHref} />
     </>
   );
@@ -215,63 +214,6 @@ function VideoSection({ dict }: { dict: Dict }) {
             className="aspect-video w-full shadow-lifted ring-1 ring-white/10"
           />
         </DollyImage>
-      </div>
-    </section>
-  );
-}
-
-/* --------------------------- Configurator teaser ---------------------------- */
-
-function ConfiguratorTeaser({
-  dict,
-  href,
-  galleryHref,
-  galleryLabel,
-}: {
-  dict: Dict;
-  href: string;
-  galleryHref: string;
-  galleryLabel: string;
-}) {
-  return (
-    <section className="bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="panel-ring relative overflow-hidden rounded-4xl bg-ink-50">
-          <div className="grid grid-cols-1 items-center gap-10 p-8 sm:p-14 lg:grid-cols-2">
-            <div>
-              <Reveal>
-                <p className="text-xs font-bold tracking-[0.22em] text-brand-600 uppercase">
-                  {dict.home.configuratorTeaser.eyebrow}
-                </p>
-                <h2 className="mt-4 text-4xl font-extrabold tracking-tighter text-balance text-ink-900 sm:text-5xl">
-                  {dict.home.configuratorTeaser.title}
-                </h2>
-                <p className="mt-6 text-lg leading-relaxed text-ink-600">
-                  {dict.home.configuratorTeaser.lead}
-                </p>
-              </Reveal>
-              <Reveal delay={0.2} className="mt-8 flex flex-wrap gap-4">
-                <MagneticButton href={href} variant="primary">
-                  {dict.home.configuratorTeaser.cta}
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
-                    <path d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </MagneticButton>
-                <MagneticButton href={galleryHref} variant="frost">
-                  {galleryLabel}
-                </MagneticButton>
-              </Reveal>
-            </div>
-            <DollyImage className="relative">
-              <SmartVideo
-                src="/videos/configurator-preview.mp4"
-                poster="/images/a404687637b3.jpg"
-                hoverToPlay
-                className="aspect-[4/3] w-full shadow-lifted"
-              />
-            </DollyImage>
-          </div>
-        </div>
       </div>
     </section>
   );
