@@ -45,7 +45,6 @@ export default function Hero({
     offset: ["start start", "end start"],
   });
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -110]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0]);
   const cardY = useTransform(scrollYProgress, [0, 1], [0, 70]);
   const glowY = useTransform(scrollYProgress, [0, 1], [0, 160]);
 
@@ -64,7 +63,7 @@ export default function Hero({
       />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white" aria-hidden="true" />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pt-20 pb-24 sm:pt-32 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-        <motion.div style={{ y: contentY, opacity: contentOpacity }}>
+        <motion.div style={{ y: contentY }}>
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,7 +76,7 @@ export default function Hero({
             </p>
           </motion.div>
 
-          <h1 className="mt-8 text-5xl font-black tracking-tighter text-balance sm:text-6xl xl:text-7xl">
+          <h1 className="mt-8 text-5xl font-black tracking-tighter sm:text-6xl xl:text-7xl">
             <motion.span
               className="block text-white"
               initial="hidden"
@@ -102,7 +101,7 @@ export default function Hero({
               aria-label={titleB}
             >
               {words(titleB).map((w, i) => (
-                <span key={i} className="text-frost-gradient inline-block overflow-hidden align-bottom pb-1">
+                <span key={i} className="inline-block overflow-hidden align-bottom pb-1">
                   <motion.span variants={textWord} className="inline-block will-change-transform">
                     {w}
                     {i < words(titleB).length - 1 ? "\u00A0" : ""}
@@ -174,7 +173,6 @@ export default function Hero({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}
-        style={{ opacity: contentOpacity }}
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
         aria-hidden="true"
       >
