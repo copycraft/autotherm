@@ -139,7 +139,7 @@ export default function Header({
             />
           </Link>
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+          <nav className="flex-1 hidden items-center justify-center gap-1 lg:flex" aria-label="Primary">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -167,7 +167,7 @@ export default function Header({
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="ml-auto flex items-center gap-3">
             <div className="hidden items-center gap-1.5 md:flex" role="group" aria-label="Language">
               {langs.map((l) => (
                 <Link

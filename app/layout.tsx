@@ -115,7 +115,7 @@ export default function RootLayout({
         <ProductJsonLd />
         <WebSiteJsonLd />
       </head>
-      <body className="flex min-h-full flex-col font-sans antialiased">
+      <body className="flex min-h-full flex-col overflow-x-hidden font-sans antialiased">
         {children}
       </body>
     </html>
