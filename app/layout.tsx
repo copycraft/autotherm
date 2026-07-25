@@ -106,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="hu"
-      className={`${raleway.variable} h-full`}
+      className={`${raleway.variable} h-full overflow-x-hidden`}
       data-scroll-behavior="smooth"
     >
       <head>
