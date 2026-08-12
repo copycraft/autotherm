@@ -3,8 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Reveal, EASE_CINEMATIC } from "@/app/components/motion/Reveal";
-import RevealText from "@/app/components/motion/RevealText";
+import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
+import PageHero from "@/app/components/site/PageHero";
 import type { Dict } from "@/app/lib/dictionaries";
 import type { GalleryImage } from "@/app/lib/page-content";
 
@@ -16,9 +16,11 @@ import type { GalleryImage } from "@/app/lib/page-content";
 export default function GalleryPage({
   dict,
   images,
+  heroImage,
 }: {
   dict: Dict;
   images: GalleryImage[];
+  heroImage?: string;
 }) {
   const g = dict.gallery;
   const [filter, setFilter] = useState<string>("all");
@@ -60,29 +62,7 @@ export default function GalleryPage({
 
   return (
     <>
-      <section className="mesh-hero relative overflow-hidden pt-40 pb-24">
-        <div className="grid-overlay absolute inset-0" aria-hidden="true" />
-        <div className="pointer-events-none absolute -top-32 left-1/3 h-[34rem] w-[34rem] rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal direction="up" distance={16}>
-            <div className="glass-dark inline-flex items-center gap-2 rounded-full px-4 py-2">
-              <span className="h-1.5 w-1.5 animate-shimmer rounded-full bg-frost-300" aria-hidden="true" />
-              <p className="text-[11px] font-bold tracking-[0.18em] text-frost-200 uppercase">
-                {g.eyebrow}
-              </p>
-            </div>
-          </Reveal>
-          <RevealText
-            as="h1"
-            text={g.title}
-            delay={0.1}
-            className="mt-5 block max-w-3xl text-4xl font-black tracking-tighter text-balance text-white sm:text-6xl"
-          />
-          <Reveal delay={0.3}>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-300">{g.lead}</p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero eyebrow={g.eyebrow} title={g.title} lead={g.lead} image={heroImage} />
 
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -95,7 +75,7 @@ export default function GalleryPage({
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
                 aria-pressed={filter === cat.id}
-                className={`rounded-full px-5 py-2.5 text-sm font-bold tracking-tight transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none ${
+                className={`rounded-lg px-5 py-2.5 text-sm font-bold tracking-tight transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none ${
                   filter === cat.id
                     ? "bg-brand-600 text-white shadow-glow"
                     : "bg-ink-50 text-ink-600 ring-1 ring-ink-200 hover:bg-ink-100"

@@ -1,11 +1,18 @@
+import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import CookieConsent from "@/app/components/site/CookieConsent";
+import SmoothScroll from "@/app/components/motion/SmoothScroll";
 import Footer from "@/app/components/site/Footer";
 import HeaderContainer from "@/app/components/site/HeaderContainer";
-import StickyQuoteCTA from "@/app/components/site/StickyQuoteCTA";
 import { LANGS, isLang } from "@/app/lib/constants";
+
+const CookieConsent = dynamic(
+  () => import("@/app/components/site/CookieConsent"),
+);
+const StickyQuoteCTA = dynamic(
+  () => import("@/app/components/site/StickyQuoteCTA"),
+);
 import { dictionaries, getDict } from "@/app/lib/dictionaries";
 import { pathFor } from "@/app/lib/routes";
 import { buildPageMetadata } from "@/app/lib/seo";
@@ -41,7 +48,7 @@ export default async function LangLayout({
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
 
   return (
-    <>
+    <SmoothScroll>
       <HeaderContainer
         lang={lang}
         navLabels={dict.nav}
@@ -50,6 +57,10 @@ export default async function LangLayout({
         openMenuLabel={dict.common.openMenu}
         closeMenuLabel={dict.common.closeMenu}
       />
+      {/* The page body transitions via template.tsx (which React remounts on
+          every navigation). Header and footer live here in the layout, persist
+          across routes, and are pinned in globals.css so they stay put while
+          the content dissolves. */}
       <main className="flex-1">{children}</main>
       <Footer lang={lang} />
       <StickyQuoteCTA href={quoteHref} label={dict.stickyCta} />
@@ -58,6 +69,6 @@ export default async function LangLayout({
         accept={dict.cookie.accept}
         decline={dict.cookie.decline}
       />
-    </>
+    </SmoothScroll>
   );
 }

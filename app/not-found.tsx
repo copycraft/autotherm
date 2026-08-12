@@ -13,8 +13,7 @@ export default function NotFound() {
   ];
   return (
     <main className="mesh-hero relative flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <div className="grid-overlay pointer-events-none absolute inset-0" aria-hidden="true" />
-      <p className="text-frost-gradient text-8xl font-black tracking-tighter sm:text-9xl">
+      <p className="text-8xl font-black tracking-tighter text-frost-300 sm:text-9xl">
         404
       </p>
       <h1 className="mt-6 text-2xl font-bold tracking-tight text-white">
@@ -31,7 +30,7 @@ export default function NotFound() {
           <Link
             key={l.href}
             href={l.href}
-            className="glass-dark rounded-full px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 focus-visible:outline-none"
+            className="glass-dark rounded-lg px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 focus-visible:outline-none"
           >
             {l.label}
           </Link>

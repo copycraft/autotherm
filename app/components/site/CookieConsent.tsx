@@ -62,7 +62,7 @@ export default function CookieConsent({
                 onClick={() => choose("accepted")}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
-                className="rounded-full bg-brand-600 px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-brand-500 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="rounded-lg bg-brand-600 px-5 py-2.5 text-[13px] font-bold text-white transition-colors hover:bg-brand-500 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 {accept}
               </motion.button>
@@ -71,7 +71,7 @@ export default function CookieConsent({
                 onClick={() => choose("declined")}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
-                className="rounded-full px-5 py-2.5 text-[13px] font-semibold text-ink-600 ring-1 ring-ink-200 transition-colors hover:bg-ink-100 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+                className="rounded-lg px-5 py-2.5 text-[13px] font-semibold text-ink-600 ring-1 ring-ink-200 transition-colors hover:bg-ink-100 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
               >
                 {decline}
               </motion.button>

@@ -15,6 +15,7 @@ import StatsBand from "@/app/components/site/StatsBand";
 import { LANGS, isLang, type Lang } from "@/app/lib/constants";
 import { getPublishedPosts } from "@/app/lib/db";
 import { getDict } from "@/app/lib/dictionaries";
+import { HERO_IMAGE_FALLBACK, heroImageFor } from "@/app/lib/hero-images";
 import { BreadcrumbJsonLd } from "@/app/lib/json-ld";
 import { galleryImages, infoPages, legalPages } from "@/app/lib/page-content";
 import { ROUTES, keyForSlug, pathFor, slugsFor } from "@/app/lib/routes";
@@ -66,6 +67,7 @@ export default async function SubPage({
   const dict = getDict(lang);
   const path = pathFor(key, lang) ?? `/${lang}`;
   const seo = getSeoEntry(key, lang);
+  const heroImage = heroImageFor[key] ?? HERO_IMAGE_FALLBACK;
 
   const breadcrumb = (
     <BreadcrumbJsonLd
@@ -81,7 +83,7 @@ export default async function SubPage({
       return (
         <>
           {breadcrumb}
-          <GalleryPage dict={dict} images={galleryImages} />
+          <GalleryPage dict={dict} images={galleryImages} heroImage={heroImage} />
           <StatsBand lang={lang} dict={dict} />
           <PartnersMarquee dict={dict} />
           <CtaBand
@@ -97,7 +99,7 @@ export default async function SubPage({
       return (
         <>
           {breadcrumb}
-          <ContactPage lang={lang} dict={dict} page={path} />
+          <ContactPage lang={lang} dict={dict} page={path} heroImage={heroImage} />
         </>
       );
 
@@ -105,7 +107,7 @@ export default async function SubPage({
       return (
         <>
           {breadcrumb}
-          <QuotationPage lang={lang} dict={dict} page={path} />
+          <QuotationPage lang={lang} dict={dict} page={path} heroImage={heroImage} />
         </>
       );
 
@@ -116,7 +118,7 @@ export default async function SubPage({
       return (
         <>
           {breadcrumb}
-          <BlogPage dict={dict} lang={lang} posts={posts} />
+          <BlogPage dict={dict} lang={lang} posts={posts} heroImage={heroImage} />
         </>
       );
     }
@@ -143,7 +145,7 @@ export default async function SubPage({
       return (
         <>
           {breadcrumb}
-          <InfoPage content={content} lang={lang} dict={dict} />
+          <InfoPage content={content} lang={lang} dict={dict} heroImage={heroImage} />
         </>
       );
     }

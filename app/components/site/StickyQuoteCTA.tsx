@@ -45,7 +45,7 @@ export default function StickyQuoteCTA({
           >
             <Link
               href={href}
-              className="glass-dark block w-full rounded-full px-8 py-4 text-center text-sm font-bold tracking-tight text-white shadow-glow ring-1 ring-frost-400/40 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="glass-dark block w-full rounded-lg px-8 py-4 text-center text-sm font-bold tracking-tight text-white shadow-glow ring-1 ring-frost-400/40 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               {label}
             </Link>

@@ -27,13 +27,13 @@ Autotherm Kft. (autotherm.hu) manufactures refrigerated vehicles, cooled vans, c
 
 ## Links
 
-- Homepage: https://www.autotherm.hu/hu
-- English: https://www.autotherm.hu/en
-- German: https://www.autotherm.hu/de
-- Romanian: https://www.autotherm.hu/ro
-- Products: https://www.autotherm.hu/hu/termekeink
-- About: https://www.autotherm.hu/hu/kik-vagyunk
-- Service: https://www.autotherm.hu/hu/szerviz
-- Gallery: https://www.autotherm.hu/hu/kepgaleria
-- Contact: https://www.autotherm.hu/hu/kapcsolat
-- Quotation: https://www.autotherm.hu/hu/arajanlatkeres
+- [Homepage](https://www.autotherm.hu/hu)
+- [English](https://www.autotherm.hu/en)
+- [German](https://www.autotherm.hu/de)
+- [Romanian](https://www.autotherm.hu/ro)
+- [Products](https://www.autotherm.hu/hu/termekeink)
+- [About](https://www.autotherm.hu/hu/kik-vagyunk)
+- [Service](https://www.autotherm.hu/hu/szerviz)
+- [Gallery](https://www.autotherm.hu/hu/kepgaleria)
+- [Contact](https://www.autotherm.hu/hu/kapcsolat)
+- [Quotation](https://www.autotherm.hu/hu/arajanlatkeres)

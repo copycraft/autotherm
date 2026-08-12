@@ -29,16 +29,16 @@ export default function Footer({ lang }: { lang: Lang }) {
     .filter((x): x is { href: string; label: string } => x !== null);
 
   return (
-    <footer className="relative overflow-hidden bg-ink-950 text-ink-200" role="contentinfo">
-      <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-brand-600/20 blur-3xl"
-        aria-hidden="true"
-      />
+    <footer
+      style={{ viewTransitionName: "site-footer" }}
+      className="relative overflow-hidden border-t border-frost-400/15 bg-ink-950 text-ink-200"
+      role="contentinfo"
+    >
       <div className="relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <Image
-              src="/images/autotherm-logo.png"
+              src="/images/autotherm-logo.webp"
               alt="Autotherm"
               width={160}
               height={40}
@@ -49,14 +49,14 @@ export default function Footer({ lang }: { lang: Lang }) {
             </p>
             <div className="mt-8 flex items-center gap-5">
               <Image
-                src="/images/carrier-logo.png"
+                src="/images/carrier-logo.webp"
                 alt="Carrier Transicold"
                 width={110}
                 height={32}
                 className="h-7 w-auto opacity-60 transition-opacity hover:opacity-100"
               />
               <Image
-                src="/images/garancia-logo.png"
+                src="/images/garancia-logo.webp"
                 alt="Garancia"
                 width={64}
                 height={40}
@@ -120,6 +120,7 @@ export default function Footer({ lang }: { lang: Lang }) {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title={dict.footer.mapAria}
+                data-lenis-prevent
               />
             </div>
           </div>

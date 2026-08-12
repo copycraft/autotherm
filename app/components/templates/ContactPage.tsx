@@ -1,7 +1,7 @@
 import ContactForm from "@/app/components/forms/ContactForm";
 import { Reveal } from "@/app/components/motion/Reveal";
-import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
+import PageHero from "@/app/components/site/PageHero";
 import PartnersMarquee from "@/app/components/site/PartnersMarquee";
 import StatsBand from "@/app/components/site/StatsBand";
 import Icon from "@/app/components/ui/Icon";
@@ -13,44 +13,24 @@ export default async function ContactPage({
   lang,
   dict,
   page,
+  heroImage,
 }: {
   lang: Lang;
   dict: Dict;
   page: string;
+  heroImage?: string;
 }) {
   const c = dict.contactPage;
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
 
   return (
     <>
-      <section className="mesh-hero relative overflow-hidden pt-40 pb-24">
-        <div className="grid-overlay absolute inset-0" aria-hidden="true" />
-        <div className="pointer-events-none absolute -top-32 left-1/3 h-[34rem] w-[34rem] rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal direction="up" distance={16}>
-            <div className="glass-dark inline-flex items-center gap-2 rounded-full px-4 py-2">
-              <span className="h-1.5 w-1.5 animate-shimmer rounded-full bg-frost-300" aria-hidden="true" />
-              <p className="text-[11px] font-bold tracking-[0.18em] text-frost-200 uppercase">
-                {c.eyebrow}
-              </p>
-            </div>
-          </Reveal>
-          <RevealText
-            as="h1"
-            text={c.title}
-            delay={0.1}
-            className="mt-5 block max-w-3xl text-4xl font-black tracking-tighter text-balance text-white sm:text-6xl"
-          />
-          <Reveal delay={0.3}>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-300">{c.lead}</p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero eyebrow={c.eyebrow} title={c.title} lead={c.lead} image={heroImage} />
 
       <section className="mesh-light py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[0.85fr_1.15fr] lg:px-8">
           <Reveal className="h-full">
-            <div className="panel-ring flex h-full flex-col gap-8 rounded-4xl bg-white p-8 shadow-soft sm:p-10">
+            <div className="panel-ring flex h-full flex-col gap-8 rounded-4xl bg-white p-8 shadow-soft transition-shadow duration-300 hover:shadow-lifted sm:p-10">
               <h2 className="text-2xl font-extrabold tracking-tight text-ink-900">
                 {c.infoTitle}
               </h2>
@@ -130,6 +110,7 @@ export default async function ContactPage({
           referrerPolicy="no-referrer-when-downgrade"
           title={dict.footer.mapAria}
           className="block grayscale-[35%]"
+          data-lenis-prevent
         />
       </section>
 

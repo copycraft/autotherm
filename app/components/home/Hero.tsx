@@ -2,17 +2,18 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import MagneticButton from "@/app/components/motion/MagneticButton";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import { textWord } from "@/app/components/motion/RevealText";
+import Eyebrow from "@/app/components/ui/Eyebrow";
 
 /**
- * Cinematic homepage hero.
- * - Dark mesh-gradient stage with engineering grid overlay
- * - Word-staggered display headline (first line white, second frost gradient)
- * - Scroll-linked parallax: content drifts up + fades as the user scrolls
- * - Floating product image card with slow parallax counter-motion
+ * Photographic homepage hero.
+ * - Full-bleed plant photography carries the page; no synthetic gradients
+ * - Layered scrim keeps the headline legible over a bright, high-key image
+ * - Scroll-linked parallax: the plate drifts slower than the copy
+ * - Hard edge into the next section (no soft fade) for an editorial cut
  */
 export default function Hero({
   eyebrow,
@@ -44,75 +45,82 @@ export default function Hero({
     target: ref,
     offset: ["start start", "end start"],
   });
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -110]);
-  const cardY = useTransform(scrollYProgress, [0, 1], [0, 70]);
-  const glowY = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -90]);
+  const plateY = useTransform(scrollYProgress, [0, 1], [0, 60]);
 
   const words = (text: string) => text.split(" ");
 
   return (
     <section
       ref={ref}
-      className="mesh-hero relative flex min-h-[100svh] items-start lg:items-center lg:overflow-hidden"
+      className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink-950 lg:items-center"
     >
-      <div className="grid-overlay absolute inset-0" aria-hidden="true" />
-      <motion.div
-        style={{ y: glowY }}
-        className="pointer-events-none absolute -top-32 left-1/3 h-[34rem] w-[34rem] rounded-full bg-brand-500/25 blur-3xl"
+      <motion.div style={{ y: plateY }} className="absolute inset-0" aria-hidden="true">
+        <Image
+          src={image}
+          alt=""
+          fill
+          preload
+          quality={90}
+          sizes="100vw"
+          className="scale-105 object-cover object-center"
+        />
+      </motion.div>
+
+      {/* Scrim: flat base for overall legibility, then weighted left (desktop
+          reading column) and bottom (mobile, where copy sits low). */}
+      <div className="absolute inset-0 bg-ink-950/45" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/55 to-ink-950/10 lg:bg-gradient-to-r lg:from-ink-950 lg:via-ink-950/72 lg:to-transparent"
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white" aria-hidden="true" />
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-4 pt-20 pb-24 sm:pt-32 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8">
-        <motion.div style={{ y: contentY, color: "#fff" }}>
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-32 pb-20 sm:px-6 sm:pb-28 lg:px-8 lg:py-32">
+        <motion.div style={{ y: contentY }} className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE_CINEMATIC, delay: 0.1 }}
-            className="glass-dark inline-flex items-center gap-2 rounded-full px-4 py-2"
           >
-            <span className="h-1.5 w-1.5 animate-shimmer rounded-full bg-frost-300" aria-hidden="true" />
-            <p className="text-[11px] font-bold tracking-[0.18em] text-frost-200 uppercase">
-              {eyebrow}
-            </p>
+            <Eyebrow label={eyebrow} />
           </motion.div>
 
-          <h1 className="mt-8 text-4xl font-black tracking-tighter sm:text-6xl xl:text-7xl">
+          <h1 className="mt-8 text-4xl font-black tracking-tighter text-white sm:text-6xl xl:text-7xl">
             <motion.span
               className="block"
-              style={{ color: "#fff" }}
               initial="hidden"
               animate="visible"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.25 } } }}
               aria-label={titleA}
             >
               {words(titleA).map((w, i) => (
-                <span key={i} className="inline-block overflow-hidden align-bottom pb-1">
-                  <motion.span variants={textWord} className="inline-block will-change-transform">
-                    {w}
-                      {i < words(titleA).length - 1 ? "\u00A0" : ""}
-                  </motion.span>
-                </span>
+                <Fragment key={i}>
+                  <span className="inline-block overflow-hidden align-bottom pb-1">
+                    <motion.span variants={textWord} className="inline-block will-change-transform">
+                      {w}
+                    </motion.span>
+                  </span>
+                  {i < words(titleA).length - 1 ? " " : null}
+                </Fragment>
               ))}
             </motion.span>
             <motion.span
               className="block"
-              style={{ color: "#fff" }}
               initial="hidden"
               animate="visible"
               variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.04, delayChildren: 0.45 } } }}
               aria-label={titleB}
             >
-              {words(titleB).map((w, i) => {
-                const isLast = i === words(titleB).length - 1;
-                return (
-                  <span key={i} className={`inline-block overflow-hidden align-bottom pb-1 ${isLast ? "text-frost-gradient" : ""}`}>
+              {words(titleB).map((w, i) => (
+                <Fragment key={i}>
+                  <span className="inline-block overflow-hidden align-bottom pb-1">
                     <motion.span variants={textWord} className="inline-block will-change-transform">
                       {w}
-                      {!isLast ? "\u00A0" : ""}
                     </motion.span>
                   </span>
-                );
-              })}
+                  {i < words(titleB).length - 1 ? " " : null}
+                </Fragment>
+              ))}
             </motion.span>
           </h1>
 
@@ -120,7 +128,7 @@ export default function Hero({
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: EASE_CINEMATIC, delay: 0.7 }}
-            className="mt-8 max-w-xl text-lg leading-relaxed text-ink-300"
+            className="mt-8 max-w-xl text-lg leading-relaxed text-ink-200"
           >
             {lead}
           </motion.p>
@@ -141,36 +149,21 @@ export default function Hero({
               {ctaSecondary}
             </MagneticButton>
           </motion.div>
-        </motion.div>
 
-        <motion.div
-          style={{ y: cardY }}
-          initial={{ opacity: 0, scale: 0.94, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 1.1, ease: EASE_CINEMATIC, delay: 0.5 }}
-          className="relative hidden lg:block"
-        >
-          <div className="relative overflow-hidden rounded-4xl shadow-lifted ring-1 ring-white/15">
-            <Image
-              src={image}
-              alt=""
-              aria-hidden="true"
-              width={880}
-              height={660}
-              preload
-              sizes="(min-width: 1024px) 45vw, 100vw"
-              className="h-[30rem] w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950/70 via-transparent to-transparent" aria-hidden="true" />
-            <div className="glass-dark absolute inset-x-5 bottom-5 flex items-center gap-3 rounded-2xl px-5 py-4">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-frost-400/20 text-frost-300" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                  <path d="M12 2v20M4 6l16 12M20 6L4 18" />
-                </svg>
-              </span>
-              <p className="text-sm font-semibold text-white">{badge}</p>
-            </div>
-          </div>
+          {/* Credential line — a caption on the photograph, not a floating card. */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, ease: EASE_CINEMATIC, delay: 1.05 }}
+            className="mt-12 flex items-center gap-4 border-t border-white/15 pt-5"
+          >
+            <span className="text-frost-300" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
+                <path d="M12 2v20M4 6l16 12M20 6L4 18" />
+              </svg>
+            </span>
+            <p className="text-[13px] font-semibold tracking-tight text-ink-200">{badge}</p>
+          </motion.div>
         </motion.div>
       </div>
 
@@ -178,16 +171,16 @@ export default function Hero({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.6, duration: 1 }}
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 sm:flex"
+        className="absolute right-8 bottom-8 hidden flex-col items-center gap-2 lg:flex"
         aria-hidden="true"
       >
-        <p className="text-[10px] font-bold tracking-[0.25em] text-ink-400 uppercase">
+        <p className="text-[10px] font-bold tracking-[0.25em] text-ink-300 uppercase [writing-mode:vertical-rl]">
           {scrollHint}
         </p>
         <motion.span
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-          className="block h-8 w-[1.5px] rounded-full bg-gradient-to-b from-frost-300 to-transparent"
+          animate={{ scaleY: [0.3, 1, 0.3] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="block h-10 w-px origin-top bg-frost-300/70"
         />
       </motion.div>
     </section>

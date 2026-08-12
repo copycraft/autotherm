@@ -61,7 +61,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: `${siteUrl}/images/autotherm-logo.png`,
+        url: `${siteUrl}/images/autotherm-logo.webp`,
         width: 800,
         height: 600,
         alt: "Autotherm",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: "Autotherm – Refrigerated vehicle manufacturer since 1992",
     description:
       "Autotherm: manufacturer of refrigerated vehicles since 1992. Carrier Transicold partner.",
-    images: [`${siteUrl}/images/autotherm-logo.png`],
+    images: [`${siteUrl}/images/autotherm-logo.webp`],
   },
   verification: {
     google: "G-DDQGPSF5SD",
@@ -104,11 +104,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="hu"
-      className={`${raleway.variable} h-full overflow-x-hidden`}
-      data-scroll-behavior="smooth"
-    >
+    <html lang="hu" className={`${raleway.variable} h-full overflow-x-hidden`}>
       <head>
         <OrganizationJsonLd />
         <LocalBusinessJsonLd />

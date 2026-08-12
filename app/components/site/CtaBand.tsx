@@ -16,7 +16,6 @@ export default function CtaBand({
 }) {
   return (
     <section className="mesh-hero relative overflow-hidden py-24 sm:py-32">
-      <div className="grid-overlay absolute inset-0" aria-hidden="true" />
       <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
         <Reveal>
           <h2 className="text-4xl font-black tracking-tighter text-balance text-white sm:text-6xl">

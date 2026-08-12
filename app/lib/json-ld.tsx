@@ -30,7 +30,7 @@ export function OrganizationJsonLd() {
           "Autotherm SRL",
         ],
         url: siteUrl,
-        logo: absoluteUrl("/images/autotherm-logo.png"),
+        logo: absoluteUrl("/images/autotherm-logo.webp"),
         foundingDate: String(FOUNDED_YEAR),
         founders: COMPANY.founders.map((name) => ({ "@type": "Person", name })),
         numberOfEmployees: {
@@ -70,7 +70,7 @@ export function LocalBusinessJsonLd() {
         "@type": "LocalBusiness",
         "@id": `${siteUrl}/#localbusiness`,
         name: "Autotherm Kft.",
-        image: absoluteUrl("/images/autotherm-logo.png"),
+        image: absoluteUrl("/images/autotherm-logo.webp"),
         url: siteUrl,
         telephone: "+36-20-910-2050",
         email: COMPANY.email,
@@ -177,7 +177,7 @@ export function ProductJsonLd() {
         name: "Autotherm Insulated Refrigerated Vehicles",
         description:
           "Custom refrigerated vehicles and van isolations. Available with Carrier or Daikin cooling units.",
-        image: absoluteUrl("/images/autotherm-logo.png"),
+        image: absoluteUrl("/images/autotherm-logo.webp"),
         brand: { "@type": "Brand", name: "Autotherm" },
         manufacturer: { "@type": "Organization", name: "Autotherm Kft." },
         offers: {

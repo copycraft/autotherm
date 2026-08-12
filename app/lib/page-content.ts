@@ -54,7 +54,7 @@ export const infoPages: Partial<
       eyebrow: "Kik vagyunk?",
       title: "Három évtized a hideg szolgálatában",
       lead: "Az Autotherm Kft.-t 1992-ben alapította Csurgó László és Dkfm. Peter Knerer Szegeden. Ma 33 munkatárssal, négy gyártócsarnokban, 1500 m²-en építjük Magyarország és Európa hűtőautóit.",
-      heroImage: "/images/b2e2e8348e1b.jpg",
+      heroImage: "/images/b2e2e8348e1b.webp",
       features: [
         {
           icon: "factory",
@@ -99,9 +99,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/be3495baa194.jpg",
-        "/images/be8bb6a35e77.jpg",
-        "/images/d029c0586d66.jpg",
+        "/images/be3495baa194.webp",
+        "/images/be8bb6a35e77.webp",
+        "/images/d029c0586d66.webp",
       ],
       cta: {
         title: "Ismerjük meg egymást!",
@@ -112,7 +112,7 @@ export const infoPages: Partial<
       eyebrow: "Who we are",
       title: "Three decades in the service of cold",
       lead: "Autotherm Ltd. was founded in 1992 in Szeged, Hungary, by László Csurgó and Dkfm. Peter Knerer. Today 33 specialists build Europe's refrigerated vehicles across four production halls and 1,500 m².",
-      heroImage: "/images/b2e2e8348e1b.jpg",
+      heroImage: "/images/b2e2e8348e1b.webp",
       features: [
         {
           icon: "factory",
@@ -157,9 +157,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/be3495baa194.jpg",
-        "/images/be8bb6a35e77.jpg",
-        "/images/d029c0586d66.jpg",
+        "/images/be3495baa194.webp",
+        "/images/be8bb6a35e77.webp",
+        "/images/d029c0586d66.webp",
       ],
       cta: {
         title: "Let's get acquainted!",
@@ -170,7 +170,7 @@ export const infoPages: Partial<
       eyebrow: "Wer sind wir?",
       title: "Drei Jahrzehnte im Dienst der Kälte",
       lead: "Autotherm wurde 1992 in Szeged, Ungarn, von László Csurgó und Dkfm. Peter Knerer gegründet. Heute bauen 33 Spezialisten in vier Produktionshallen auf 1.500 m² die Kühlfahrzeuge Europas.",
-      heroImage: "/images/b2e2e8348e1b.jpg",
+      heroImage: "/images/b2e2e8348e1b.webp",
       features: [
         {
           icon: "factory",
@@ -215,9 +215,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/be3495baa194.jpg",
-        "/images/be8bb6a35e77.jpg",
-        "/images/d029c0586d66.jpg",
+        "/images/be3495baa194.webp",
+        "/images/be8bb6a35e77.webp",
+        "/images/d029c0586d66.webp",
       ],
       cta: {
         title: "Lernen wir uns kennen!",
@@ -228,7 +228,7 @@ export const infoPages: Partial<
       eyebrow: "Cine suntem noi?",
       title: "Trei decenii în slujba frigului",
       lead: "Autotherm a fost fondată în 1992 la Szeged, Ungaria, de László Csurgó și Dkfm. Peter Knerer. Astăzi, 33 de specialiști construiesc vehiculele frigorifice ale Europei în patru hale de producție, pe 1.500 m².",
-      heroImage: "/images/b2e2e8348e1b.jpg",
+      heroImage: "/images/b2e2e8348e1b.webp",
       features: [
         {
           icon: "factory",
@@ -273,9 +273,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/be3495baa194.jpg",
-        "/images/be8bb6a35e77.jpg",
-        "/images/d029c0586d66.jpg",
+        "/images/be3495baa194.webp",
+        "/images/be8bb6a35e77.webp",
+        "/images/d029c0586d66.webp",
       ],
       cta: {
         title: "Să ne cunoaștem!",
@@ -290,7 +290,7 @@ export const infoPages: Partial<
       eyebrow: "Termékeink",
       title: "Járművek, amelyek tartják a hideget",
       lead: "Hűtős furgonok, hűtődobozos felépítmények, haszonjármű felépítmények és elhunytszállító járművek - mind egyedi igényekre méretezve, 3,5 tonnáig.",
-      heroImage: "/images/e4566315cd28.jpg",
+      heroImage: "/images/e4566315cd28.webp",
       features: [
         {
           icon: "snowflake",
@@ -338,9 +338,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/e7f13b6c4bc5.jpg",
-        "/images/fca243146ad0.jpg",
-        "/images/db347b9ebd92.jpg",
+        "/images/e7f13b6c4bc5.webp",
+        "/images/fca243146ad0.webp",
+        "/images/db347b9ebd92.webp",
       ],
       cta: {
         title: "Nem találja, amit keres?",
@@ -351,7 +351,7 @@ export const infoPages: Partial<
       eyebrow: "Our products",
       title: "Vehicles that keep their cool",
       lead: "Refrigerated vans, cooled box bodies, commercial vehicle bodies and deceased transport vehicles - all engineered to your needs, up to 3.5 t.",
-      heroImage: "/images/e4566315cd28.jpg",
+      heroImage: "/images/e4566315cd28.webp",
       features: [
         {
           icon: "snowflake",
@@ -399,9 +399,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/e7f13b6c4bc5.jpg",
-        "/images/fca243146ad0.jpg",
-        "/images/db347b9ebd92.jpg",
+        "/images/e7f13b6c4bc5.webp",
+        "/images/fca243146ad0.webp",
+        "/images/db347b9ebd92.webp",
       ],
       cta: {
         title: "Can't find what you need?",
@@ -412,7 +412,7 @@ export const infoPages: Partial<
       eyebrow: "Kühlfahrzeug",
       title: "Fahrzeuge, die kühl bleiben",
       lead: "Kühltransporter, Kühlkoffer, Nutzfahrzeugaufbauten und Bestattungswagen - alle nach Ihren Anforderungen konstruiert, bis 3,5 t.",
-      heroImage: "/images/e4566315cd28.jpg",
+      heroImage: "/images/e4566315cd28.webp",
       features: [
         {
           icon: "snowflake",
@@ -460,9 +460,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/e7f13b6c4bc5.jpg",
-        "/images/fca243146ad0.jpg",
-        "/images/db347b9ebd92.jpg",
+        "/images/e7f13b6c4bc5.webp",
+        "/images/fca243146ad0.webp",
+        "/images/db347b9ebd92.webp",
       ],
       cta: {
         title: "Nicht das Passende gefunden?",
@@ -473,7 +473,7 @@ export const infoPages: Partial<
       eyebrow: "Carosări & furgonete frigorifice",
       title: "Vehicule care își păstrează răceala",
       lead: "Furgonete frigorifice, cutii frigorifice, suprastructuri comerciale și vehicule funerare - toate proiectate după nevoile dumneavoastră, până la 3,5 t.",
-      heroImage: "/images/e4566315cd28.jpg",
+      heroImage: "/images/e4566315cd28.webp",
       features: [
         {
           icon: "snowflake",
@@ -521,9 +521,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/e7f13b6c4bc5.jpg",
-        "/images/fca243146ad0.jpg",
-        "/images/db347b9ebd92.jpg",
+        "/images/e7f13b6c4bc5.webp",
+        "/images/fca243146ad0.webp",
+        "/images/db347b9ebd92.webp",
       ],
       cta: {
         title: "Nu găsiți ce căutați?",
@@ -538,7 +538,7 @@ export const infoPages: Partial<
       eyebrow: "Szerviz",
       title: "Carrier és Daikin szakszerviz",
       lead: "Raktérhűtő berendezések szervizelése, javítása és karbantartása - eredeti alkatrészek raktárról, gyári diagnosztika, hibakód-olvasás.",
-      heroImage: "/images/b05d04ca1183.jpg",
+      heroImage: "/images/b05d04ca1183.webp",
       features: [
         {
           icon: "wrench",
@@ -588,7 +588,7 @@ export const infoPages: Partial<
       eyebrow: "Carrier raktérhűtő",
       title: "Hivatalos Carrier Transicold képviselet",
       lead: "Carrier raktérhűtők értékesítése, beépítése és szervizelése - Xarios és Supra modellek, hőtechnikai méretezéssel, gyári garanciával.",
-      heroImage: "/images/45196215f76f.jpg",
+      heroImage: "/images/45196215f76f.webp",
       features: [
         {
           icon: "snowflake",
@@ -638,7 +638,7 @@ export const infoPages: Partial<
       eyebrow: "Miért mi?",
       title: "Ezért választanak minket évtizedek óta",
       lead: "A hűtőautó bizalmi termék: az áruja, a határidői és a jó híre múlik rajta. Mi ezt a bizalmat 1992 óta építjük - járművenként.",
-      heroImage: "/images/d029c0586d66.jpg",
+      heroImage: "/images/d029c0586d66.webp",
       features: [
         {
           icon: "medal",
@@ -680,7 +680,7 @@ export const infoPages: Partial<
       eyebrow: "Why us?",
       title: "Why clients have chosen us for decades",
       lead: "A refrigerated vehicle is a product of trust: your cargo, your deadlines and your reputation ride on it. We've been building that trust since 1992 - one vehicle at a time.",
-      heroImage: "/images/d029c0586d66.jpg",
+      heroImage: "/images/d029c0586d66.webp",
       features: [
         {
           icon: "medal",
@@ -722,7 +722,7 @@ export const infoPages: Partial<
       eyebrow: "Warum gerade wir?",
       title: "Darum wählen uns Kunden seit Jahrzehnten",
       lead: "Ein Kühlfahrzeug ist ein Vertrauensprodukt: Ihre Ware, Ihre Termine und Ihr Ruf hängen daran. Dieses Vertrauen bauen wir seit 1992 auf - Fahrzeug für Fahrzeug.",
-      heroImage: "/images/d029c0586d66.jpg",
+      heroImage: "/images/d029c0586d66.webp",
       features: [
         {
           icon: "medal",
@@ -768,7 +768,7 @@ export const infoPages: Partial<
       eyebrow: "Haszonjármű felépítmények",
       title: "Felépítmények 3,5 tonnáig - pontosan méretre",
       lead: "Alumínium dobozok, hűtős dobozok, platós-ponyvás és speciális felépítmények bármilyen alvázra - a tervezéstől a forgalomba helyezésig.",
-      heroImage: "/images/8bd1648f42cf.jpg",
+      heroImage: "/images/8bd1648f42cf.webp",
       features: [
         {
           icon: "layers",
@@ -805,9 +805,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/a51e2c833b3a.jpg",
-        "/images/82308068d05b.jpg",
-        "/images/785d3105c7c6.jpg",
+        "/images/a51e2c833b3a.webp",
+        "/images/82308068d05b.webp",
+        "/images/785d3105c7c6.webp",
       ],
       cta: {
         title: "Alváza már van?",
@@ -818,7 +818,7 @@ export const infoPages: Partial<
       eyebrow: "Commercial vehicle bodies",
       title: "Bodies up to 3.5 tons - built exactly to size",
       lead: "Aluminium boxes, refrigerated boxes, flatbed-tarpaulin and special bodies on any chassis make - from design to registration.",
-      heroImage: "/images/8bd1648f42cf.jpg",
+      heroImage: "/images/8bd1648f42cf.webp",
       features: [
         {
           icon: "layers",
@@ -855,9 +855,9 @@ export const infoPages: Partial<
         },
       ],
       gallery: [
-        "/images/a51e2c833b3a.jpg",
-        "/images/82308068d05b.jpg",
-        "/images/785d3105c7c6.jpg",
+        "/images/a51e2c833b3a.webp",
+        "/images/82308068d05b.webp",
+        "/images/785d3105c7c6.webp",
       ],
       cta: {
         title: "Already have a chassis?",
@@ -872,7 +872,7 @@ export const infoPages: Partial<
       eyebrow: "Járműfelépítmény javítás",
       title: "Sérült felépítmény? Gyorsan rendbe hozzuk.",
       lead: "Károsodott szendvicspanelek cseréje, horpadások, beázások és ajtószerkezetek javítása - akár teljes biztosítói ügyintézéssel.",
-      heroImage: "/images/b2c54816a378.jpg",
+      heroImage: "/images/b2c54816a378.webp",
       features: [
         {
           icon: "wrench",
@@ -908,7 +908,7 @@ export const infoPages: Partial<
       eyebrow: "Szervizünk",
       title: "Teljes körű raktérhűtő szerviz Szegeden",
       lead: "Diagnosztika, javítás, karbantartás - a Carrier és a Daikin hivatalos szervizpartnereként, gyári alkatrészekkel és műszerezettséggel.",
-      heroImage: "/images/0e90d9793302.jpg",
+      heroImage: "/images/0e90d9793302.webp",
       features: [
         {
           icon: "wrench",
@@ -959,7 +959,7 @@ export const infoPages: Partial<
       eyebrow: "Van isolations",
       title: "Insulation that holds the temperature - and its value",
       lead: "Professional van isolation and cooling unit installation with Carrier and Daikin systems, built for HACCP-compliant cold chain operation.",
-      heroImage: "/images/79539d1d7438.jpg",
+      heroImage: "/images/79539d1d7438.webp",
       features: [
         {
           icon: "layers",
@@ -1009,7 +1009,7 @@ export const infoPages: Partial<
       eyebrow: "Deceased transport",
       title: "Dignity, engineered",
       lead: "Temperature-controlled funeral transport vehicles with stainless steel interiors and multi-level configurations - respectful, hygienic, reliable.",
-      heroImage: "/images/ae97125a0c4f.jpg",
+      heroImage: "/images/ae97125a0c4f.webp",
       features: [
         {
           icon: "thermometer",
@@ -1045,7 +1045,7 @@ export const infoPages: Partial<
       eyebrow: "Refrigerated vehicle bodies",
       title: "Cooled box bodies, built to your specification",
       lead: "Custom cooled and refrigerated vehicle bodies for 3.5 t chassis - lightweight sandwich panels, Carrier or Daikin units, any dimension.",
-      heroImage: "/images/82308068d05b.jpg",
+      heroImage: "/images/82308068d05b.webp",
       features: [
         {
           icon: "layers",
@@ -1186,34 +1186,34 @@ export interface GalleryImage {
 }
 
 export const galleryImages: GalleryImage[] = [
-  { src: "/images/05b85e04c8d3.jpg", category: "vans" },
-  { src: "/images/0e90d9793302.jpg", category: "vans" },
-  { src: "/images/15f4103a8265.jpg", category: "vans" },
-  { src: "/images/2948dab7dd9a.jpg", category: "vans" },
-  { src: "/images/300aebed8e8e.jpg", category: "vans" },
-  { src: "/images/310373572c3b.jpg", category: "vans" },
-  { src: "/images/32b4cd177558.jpg", category: "vans" },
-  { src: "/images/3cc963ec4181.jpg", category: "vans" },
-  { src: "/images/45196215f76f.jpg", category: "bodies" },
-  { src: "/images/4c7a44122714.jpg", category: "bodies" },
-  { src: "/images/688500d4a01a.jpg", category: "bodies" },
-  { src: "/images/6be9f7162b3b.jpg", category: "bodies" },
-  { src: "/images/785d3105c7c6.jpg", category: "bodies" },
-  { src: "/images/79539d1d7438.jpg", category: "vans" },
-  { src: "/images/82308068d05b.jpg", category: "bodies" },
-  { src: "/images/8bd1648f42cf.jpg", category: "bodies" },
-  { src: "/images/a404687637b3.jpg", category: "vans" },
-  { src: "/images/a51e2c833b3a.jpg", category: "bodies" },
-  { src: "/images/a68af7b4ba26.jpg", category: "special" },
-  { src: "/images/ae97125a0c4f.jpg", category: "special" },
-  { src: "/images/b05d04ca1183.jpg", category: "vans" },
-  { src: "/images/b2c54816a378.jpg", category: "bodies" },
-  { src: "/images/b2e2e8348e1b.jpg", category: "special" },
-  { src: "/images/be3495baa194.jpg", category: "special" },
-  { src: "/images/be8bb6a35e77.jpg", category: "bodies" },
-  { src: "/images/d029c0586d66.jpg", category: "vans" },
-  { src: "/images/db347b9ebd92.jpg", category: "vans" },
-  { src: "/images/e4566315cd28.jpg", category: "bodies" },
-  { src: "/images/e7f13b6c4bc5.jpg", category: "special" },
-  { src: "/images/fca243146ad0.jpg", category: "vans" },
+  { src: "/images/05b85e04c8d3.webp", category: "vans" },
+  { src: "/images/0e90d9793302.webp", category: "vans" },
+  { src: "/images/15f4103a8265.webp", category: "vans" },
+  { src: "/images/2948dab7dd9a.webp", category: "vans" },
+  { src: "/images/300aebed8e8e.webp", category: "vans" },
+  { src: "/images/310373572c3b.webp", category: "vans" },
+  { src: "/images/32b4cd177558.webp", category: "vans" },
+  { src: "/images/3cc963ec4181.webp", category: "vans" },
+  { src: "/images/45196215f76f.webp", category: "bodies" },
+  { src: "/images/4c7a44122714.webp", category: "bodies" },
+  { src: "/images/688500d4a01a.webp", category: "bodies" },
+  { src: "/images/6be9f7162b3b.webp", category: "bodies" },
+  { src: "/images/785d3105c7c6.webp", category: "bodies" },
+  { src: "/images/79539d1d7438.webp", category: "vans" },
+  { src: "/images/82308068d05b.webp", category: "bodies" },
+  { src: "/images/8bd1648f42cf.webp", category: "bodies" },
+  { src: "/images/a404687637b3.webp", category: "vans" },
+  { src: "/images/a51e2c833b3a.webp", category: "bodies" },
+  { src: "/images/a68af7b4ba26.webp", category: "special" },
+  { src: "/images/ae97125a0c4f.webp", category: "special" },
+  { src: "/images/b05d04ca1183.webp", category: "vans" },
+  { src: "/images/b2c54816a378.webp", category: "bodies" },
+  { src: "/images/b2e2e8348e1b.webp", category: "special" },
+  { src: "/images/be3495baa194.webp", category: "special" },
+  { src: "/images/be8bb6a35e77.webp", category: "bodies" },
+  { src: "/images/d029c0586d66.webp", category: "vans" },
+  { src: "/images/db347b9ebd92.webp", category: "vans" },
+  { src: "/images/e4566315cd28.webp", category: "bodies" },
+  { src: "/images/e7f13b6c4bc5.webp", category: "special" },
+  { src: "/images/fca243146ad0.webp", category: "vans" },
 ];

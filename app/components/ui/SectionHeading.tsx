@@ -21,11 +21,14 @@ export default function SectionHeading({
   return (
     <div className={`max-w-3xl ${alignCls}`}>
       <Reveal direction="up" distance={16}>
-        <p
-          className={`text-xs font-bold tracking-[0.22em] uppercase ${dark ? "text-frost-300" : "text-brand-600"}`}
-        >
-          {eyebrow}
-        </p>
+        <div className={`inline-flex items-center gap-3 ${align === "center" ? "justify-center" : ""}`}>
+          <span className={`h-px w-8 ${dark ? "bg-frost-300/70" : "bg-brand-500"}`} aria-hidden="true" />
+          <p
+            className={`text-xs font-bold tracking-[0.28em] uppercase ${dark ? "text-frost-300" : "text-brand-600"}`}
+          >
+            {eyebrow}
+          </p>
+        </div>
       </Reveal>
       <RevealText
         as="h2"

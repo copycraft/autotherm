@@ -1,13 +1,14 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useActionState } from "react";
+import { useActionState, useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import {
   initialContactState,
   submitContact,
 } from "@/app/actions/contact";
+import { useWebMCPTool } from "@/app/lib/webmcp";
 import type { Dict } from "@/app/lib/dictionaries";
 
 /**
@@ -30,7 +31,7 @@ function SubmitButton({ label, pendingLabel }: { label: string; pendingLabel: st
       whileTap={{ scale: 0.96 }}
       whileHover={{ y: -2 }}
       transition={{ type: "spring", stiffness: 400, damping: 30, mass: 0.8 }}
-      className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-600 px-8 py-4 text-sm font-bold tracking-tight text-white transition-all hover:bg-brand-500 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-70 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none sm:w-auto"
+      className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-brand-600 px-8 py-4 text-sm font-bold tracking-tight text-white transition-all hover:bg-brand-500 hover:shadow-glow disabled:cursor-not-allowed disabled:opacity-70 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none sm:w-auto"
     >
       {pending && (
         <span
@@ -56,7 +57,95 @@ export default function ContactForm({
   quotation?: boolean;
   configuration?: string;
 }) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useActionState(submitContact, initialContactState);
+
+  const toolName = quotation ? "requestQuote" : "contactUs";
+  useWebMCPTool({
+    name: toolName,
+    description: quotation
+      ? "Submit a refrigerated vehicle quotation request with contact details, vehicle info, and temperature range."
+      : "Submit a general contact enquiry with name, email, phone, and message.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        name: { type: "string", description: "Full name of the person submitting" },
+        email: { type: "string", description: "Email address for the reply" },
+        phone: { type: "string", description: "Optional phone number" },
+        ...(quotation
+          ? {
+              vehicle: {
+                type: "string",
+                description: "Vehicle type or model for the quotation",
+              },
+              tempRange: {
+                type: "string",
+                description: "Desired temperature range for the refrigerated vehicle",
+              },
+            }
+          : {}),
+        message: {
+          type: "string",
+          description: quotation
+            ? "Additional details about the quotation request"
+            : "Message content for the enquiry",
+        },
+      },
+      required: ["name", "email"],
+    },
+    async execute(inputs) {
+      const form = formRef.current;
+      if (!form) return { content: [{ type: "text", text: "Form not available" }] };
+
+      const setVal = (name: string, value: unknown) => {
+        const el = form.elements.namedItem(name) as
+          | HTMLInputElement
+          | HTMLTextAreaElement
+          | HTMLSelectElement
+          | null;
+        if (el && typeof value === "string") el.value = value;
+      };
+
+      setVal("name", inputs.name);
+      setVal("email", inputs.email);
+      setVal("phone", inputs.phone);
+      setVal("message", inputs.message);
+      if (quotation) {
+        setVal("vehicle", inputs.vehicle);
+        if (inputs.tempRange) {
+          const radio = form.querySelector(
+            `input[name="tempRange"][value="${inputs.tempRange}"]`,
+          ) as HTMLInputElement | null;
+          if (radio) radio.checked = true;
+        }
+      }
+
+      const ctx = (navigator as unknown as Record<string, unknown>)
+        .modelContext as
+        | { requestUserInteraction: (opts: {
+            type: string;
+            title: string;
+            description: string;
+            action: string;
+          }) => Promise<boolean> }
+        | undefined;
+      if (ctx?.requestUserInteraction) {
+        const confirmed = await ctx.requestUserInteraction({
+          type: "confirm",
+          title: quotation ? "Submit quotation request?" : "Submit enquiry?",
+          description: `Name: ${inputs.name}\nEmail: ${inputs.email}${inputs.phone ? `\nPhone: ${inputs.phone}` : ""}`,
+          action: "Submit",
+        });
+        if (!confirmed) {
+          return { content: [{ type: "text", text: "Submission cancelled by user" }] };
+        }
+      }
+
+      form.requestSubmit();
+      return { content: [{ type: "text", text: `${quotation ? "Quotation request" : "Enquiry"} submitted successfully` }] };
+    },
+    annotations: { readOnlyHint: false },
+  });
 
   if (state.status === "success") {
     return (
@@ -87,7 +176,7 @@ export default function ContactForm({
   }
 
   return (
-    <form action={formAction} className="flex flex-col gap-5" noValidate={false}>
+    <form ref={formRef} action={formAction} className="flex flex-col gap-5" noValidate={false}>
       <input type="hidden" name="page" value={page} />
       <input type="hidden" name="lang" value={lang} />
       {configuration && (

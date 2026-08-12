@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import { Fragment } from "react";
 import { EASE_CINEMATIC } from "./Reveal";
 
 /**
@@ -56,12 +57,16 @@ export default function RevealText({
       aria-label={text}
     >
       {words.map((w, i) => (
-        <span key={`${w}-${i}`} className="inline-block overflow-hidden align-bottom pb-1">
-          <motion.span variants={word} className="inline-block will-change-transform">
-            {w}
-            {i < words.length - 1 ? "\u00A0" : ""}
-          </motion.span>
-        </span>
+        <Fragment key={`${w}-${i}`}>
+          <span className="inline-block overflow-hidden align-bottom pb-1">
+            <motion.span variants={word} className="inline-block will-change-transform">
+              {w}
+            </motion.span>
+          </span>
+          {/* Real space, outside the mask: a trailing space inside an
+              inline-block is trimmed, and a non-breaking one blocks wrapping. */}
+          {i < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </MotionTag>
   );

@@ -49,27 +49,33 @@ export default function MagneticButton({
   ariaLabel?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const x = useSpring(mx, { stiffness: 200, damping: 20, mass: 0.6 });
   const y = useSpring(my, { stiffness: 200, damping: 20, mass: 0.6 });
 
-  function handleMouseMove(e: React.MouseEvent) {
+  function handleMouseEnter() {
     const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
+    if (el) rectRef.current = el.getBoundingClientRect();
+  }
+
+  function handleMouseMove(e: React.MouseEvent) {
+    const rect = rectRef.current;
+    if (!rect) return;
     mx.set((e.clientX - rect.left - rect.width / 2) * 0.18);
     my.set((e.clientY - rect.top - rect.height / 2) * 0.18);
   }
 
   function handleMouseLeave() {
+    rectRef.current = null;
     mx.set(0);
     my.set(0);
   }
 
   const inner = (
     <motion.span
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold tracking-tight transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none ${styles[variant]} ${disabled ? "pointer-events-none opacity-60" : ""}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg px-7 py-3.5 text-sm font-bold tracking-tight transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none ${styles[variant]} ${disabled ? "pointer-events-none opacity-60" : ""}`}
       whileHover={{ y: -2 }}
       whileTap={{ scale: 0.96 }}
       transition={SPRING}
@@ -80,6 +86,7 @@ export default function MagneticButton({
 
   const motionWrapProps: HTMLMotionProps<"div"> = {
     style: { x, y },
+    onMouseEnter: handleMouseEnter,
     onMouseMove: handleMouseMove,
     onMouseLeave: handleMouseLeave,
   };
@@ -90,7 +97,7 @@ export default function MagneticButton({
         <Link
           href={href}
           aria-label={ariaLabel}
-          className="rounded-full focus-visible:outline-none"
+          className="rounded-lg focus-visible:outline-none"
         >
           {inner}
         </Link>
@@ -105,7 +112,7 @@ export default function MagneticButton({
         onClick={onClick}
         disabled={disabled}
         aria-label={ariaLabel}
-        className="rounded-full focus-visible:outline-none"
+        className="rounded-lg focus-visible:outline-none"
       >
         {inner}
       </button>

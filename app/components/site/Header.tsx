@@ -117,6 +117,7 @@ export default function Header({
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: EASE_CINEMATIC }}
+        style={{ viewTransitionName: "site-header" }}
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
           scrolled || open
             ? "glass shadow-[0_2px_10px_rgba(5,11,24,0.04),0_8px_30px_rgba(5,11,24,0.06)]"
@@ -130,7 +131,7 @@ export default function Header({
             aria-label="Autotherm"
           >
             <Image
-              src="/images/autotherm-logo.png"
+              src="/images/autotherm-logo.webp"
               alt="Autotherm"
               width={148}
               height={36}
@@ -145,7 +146,7 @@ export default function Header({
                 key={item.href}
                 href={item.href}
                 aria-current={item.active ? "page" : undefined}
-                className={`relative rounded-full px-3.5 py-2 text-[13px] font-semibold tracking-tight transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none ${
+                className={`relative rounded-full px-3.5 py-2 text-[13px] font-semibold tracking-tight text-nowrap transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none ${
                   scrolled
                     ? item.active
                       ? "text-brand-700"
@@ -201,7 +202,7 @@ export default function Header({
 
             <Link
               href={quoteHref}
-              className={`hidden rounded-full px-5 py-2.5 text-[13px] font-bold tracking-tight transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex ${
+              className={`hidden rounded-lg px-5 py-2.5 text-[13px] font-bold tracking-tight text-nowrap transition-all duration-200 focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex ${
                 scrolled
                   ? "bg-brand-600 text-white hover:bg-brand-500 hover:shadow-glow"
                   : "bg-white/95 text-ink-900 hover:bg-white"

@@ -1,8 +1,8 @@
 import { marked } from "marked";
 import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
-import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
+import PageHero from "@/app/components/site/PageHero";
 import PartnersMarquee from "@/app/components/site/PartnersMarquee";
 import StatsBand from "@/app/components/site/StatsBand";
 import type { Lang } from "@/app/lib/constants";
@@ -14,10 +14,12 @@ export default async function BlogPage({
   dict,
   lang,
   posts,
+  heroImage,
 }: {
   dict: Dict;
   lang: Lang;
   posts: BlogPost[];
+  heroImage?: string;
 }) {
   const b = dict.blogPage;
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
@@ -34,29 +36,7 @@ export default async function BlogPage({
 
   return (
     <>
-      <section className="mesh-hero relative overflow-hidden pt-40 pb-24">
-        <div className="grid-overlay absolute inset-0" aria-hidden="true" />
-        <div className="pointer-events-none absolute -top-32 left-1/3 h-[34rem] w-[34rem] rounded-full bg-brand-500/25 blur-3xl" aria-hidden="true" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Reveal direction="up" distance={16}>
-            <div className="glass-dark inline-flex items-center gap-2 rounded-full px-4 py-2">
-              <span className="h-1.5 w-1.5 animate-shimmer rounded-full bg-frost-300" aria-hidden="true" />
-              <p className="text-[11px] font-bold tracking-[0.18em] text-frost-200 uppercase">
-                {b.eyebrow}
-              </p>
-            </div>
-          </Reveal>
-          <RevealText
-            as="h1"
-            text={b.title}
-            delay={0.1}
-            className="mt-5 block max-w-3xl text-4xl font-black tracking-tighter text-balance text-white sm:text-6xl"
-          />
-          <Reveal delay={0.3}>
-            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-ink-300">{b.lead}</p>
-          </Reveal>
-        </div>
-      </section>
+      <PageHero eyebrow={b.eyebrow} title={b.title} lead={b.lead} image={heroImage} />
 
       <section className="bg-white py-20 sm:py-28">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">

@@ -801,53 +801,6 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
       ],
     },
   },
-  configurator: {
-    hu: {
-      title: "Járműkonfigurátor – állítsa össze saját hűtőautóját | Autotherm",
-      description:
-        "Állítsa össze saját hűtőautóját online konfigurátorunkkal! Válasszon márkát, típust, felépítményt, hűtőberendezést és belső burkolatot.",
-      extraKeywords: [
-        "hűtőautó konfigurátor", "járműkonfigurátor", "hűtőautó összeállítás",
-        "online hűtőautó építő", "hűtős furgon konfigurátor",
-        "jármű felépítmény konfigurátor", "hűtőautó extrák választás",
-        "hűtőautó egyedi igények", "hűtőautó típus választás",
-        "raktérhűtő konfigurátor", "Carrier hűtőberendezés választás",
-        "furgon méret kalkulátor", "hűtős furgon összeállítás online",
-      ],
-    },
-    en: {
-      title: "Vehicle Configurator – Build Your Own Refrigerated Van | Autotherm",
-      description:
-        "Configure your own refrigerated vehicle online. Choose brand, model, body type, cooling unit and interior lining.",
-      extraKeywords: [
-        "refrigerated van configurator", "vehicle configurator",
-        "custom refrigerated van builder", "online van configurator",
-        "build your own refrigerated van", "van configuration tool",
-        "cooling unit selection", "refrigerated van options",
-        "custom body type configurator",
-      ],
-    },
-    de: {
-      title: "Fahrzeugkonfigurator – Bauen Sie Ihren eigenen Kühltransporter | Autotherm",
-      description:
-        "Konfigurieren Sie Ihr eigenes Kühlfahrzeug online. Wählen Sie Marke, Modell, Aufbauart, Kühlaggregat und Innenausstattung.",
-      extraKeywords: [
-        "Kühlfahrzeug Konfigurator", "Fahrzeugkonfigurator",
-        "Kühltransporter Konfiguration", "Online Konfigurator Kühlfahrzeug",
-        "Kühlkoffer Konfigurator", "Kühlaggregat Auswahl", "Aufbauart Konfigurator",
-      ],
-    },
-    ro: {
-      title: "Configurator vehicul – Construiți propriul furgon frigorific | Autotherm",
-      description:
-        "Configurați propriul vehicul frigorific online. Alegeți marcă, model, tip caroserie, unitate frigorifică și izolație interioară.",
-      extraKeywords: [
-        "configurator furgon frigorific", "configurator vehicul",
-        "constructor furgon frigorific", "configurator online furgon",
-        "selectare unitate frigorifică", "configurator tip caroserie",
-      ],
-    },
-  },
   vanIsolations: {
     en: {
       title: "Van Isolations & Cooling Unit Installation | Autotherm",
@@ -974,7 +927,7 @@ export function buildPageMetadata(key: PageKey, lang: Lang): Metadata {
       url: canonical,
       images: [
         {
-          url: absoluteUrl("/images/autotherm-logo.png"),
+          url: absoluteUrl("/images/autotherm-logo.webp"),
           width: 800,
           height: 600,
           alt: "Autotherm",
@@ -985,7 +938,7 @@ export function buildPageMetadata(key: PageKey, lang: Lang): Metadata {
       card: "summary_large_image",
       title: entry.title,
       description: entry.description,
-      images: [absoluteUrl("/images/autotherm-logo.png")],
+      images: [absoluteUrl("/images/autotherm-logo.webp")],
     },
   };
 }
