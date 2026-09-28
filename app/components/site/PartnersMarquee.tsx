@@ -1,10 +1,5 @@
 import Image from "next/image";
-import {
-  DollyImage,
-  Reveal,
-  RevealGroup,
-  RevealItem,
-} from "@/app/components/motion/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
 import type { Dict } from "@/app/lib/dictionaries";
 
 const clientLogos = [

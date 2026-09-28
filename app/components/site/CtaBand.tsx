@@ -1,7 +1,6 @@
 import MagneticButton from "@/app/components/motion/MagneticButton";
 import { Reveal } from "@/app/components/motion/Reveal";
 import { COMPANY } from "@/app/lib/constants";
-import type { Dict } from "@/app/lib/dictionaries";
 
 export default function CtaBand({
   title,
