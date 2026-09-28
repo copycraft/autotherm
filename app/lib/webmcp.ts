@@ -31,19 +31,25 @@ function getModelContext() {
 
 export function useWebMCPTool(tool: WebMCPTool) {
   const toolRef = useRef(tool);
-  toolRef.current = tool;
+
+  // Keep the latest tool in the ref after commit - never write refs during render.
+  useEffect(() => {
+    toolRef.current = tool;
+  });
 
   useEffect(() => {
     const ctx = getModelContext();
     if (!ctx) return;
+    // Unregister the name we registered, even if the tool is renamed later.
+    const registered = toolRef.current;
     try {
-      ctx.registerTool(toolRef.current);
+      ctx.registerTool(registered);
     } catch {
       /* not supported */
     }
     return () => {
       try {
-        ctx.unregisterTool(toolRef.current.name);
+        ctx.unregisterTool(registered.name);
       } catch {
         /* not supported */
       }
