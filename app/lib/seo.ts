@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BCP47, LANGS, LOCALES, type Lang } from "./constants";
+import { BCP47, LANGS, LOCALES, yearsSince, type Lang } from "./constants";
 import { alternatesFor, pathFor, type PageKey } from "./routes";
 
 export const siteUrl = "https://www.autotherm.hu";
@@ -355,7 +355,7 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
         "Autotherm Kft. Szeged", "hűtőautó gyártás története", "Csurgó László hűtőautó",
         "hűtőautó gyártó Magyarországon", "magyar hűtőautó gyártó", "hűtőipari cég Szeged",
         "raktérhűtő szerviz története", "hűtőgép szerviz múltja",
-        "3000 elégedett ügyfél hűtőautó", "33 éve a hűtőiparban",
+        "3000 elégedett ügyfél hűtőautó", `${yearsSince()} éve a hűtőiparban`,
       ],
     },
     en: {
@@ -368,7 +368,7 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
         "Hungarian refrigerated vehicle manufacturer",
         "refrigerated vehicle company founded 1992", "Szeged vehicle body builder",
         "Carrier Transicold partner Hungary", "3000 customers refrigerated vehicles",
-        "33 years refrigerated experience", "Thermo King history Autotherm",
+        `${yearsSince()} years refrigerated experience`, "refrigerated vehicle expertise since 1992",
       ],
     },
     de: {
@@ -379,7 +379,7 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
         "Autotherm Geschichte", "Kühlfahrzeug Unternehmen", "Carrier Vertrieb Ungarn",
         "László Csurgó Gründer", "Peter Knerer Gründer", "Kühlfahrzeug Hersteller seit 1992",
         "Firmengeschichte Kühlfahrzeugbau", "Carrier Partner Ungarn Geschichte",
-        "Thermo King Historie Autotherm", "3000 Kunden Kühlfahrzeuge",
+        "Kühlfahrzeug Erfahrung seit 1992", "3000 Kunden Kühlfahrzeuge",
         "Kühlservice Südugarn",
       ],
     },
@@ -392,7 +392,7 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
         "László Csurgó fondator", "Peter Knerer fondator",
         "companie carosări frigorifice 1992", "istorie Autotherm SRL",
         "partener Carrier Ungaria istorie", "3000 clienți carosări frigorifice",
-        "experiență 32 ani carosări", "Thermo King service istorie",
+        `experiență ${yearsSince()} ani carosări`, "experiență vehicule frigorifice din 1992",
       ],
     },
   },
@@ -490,7 +490,7 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
     hu: {
       title: "Miért az Autotherm? – Hűtőautó gyártás | Előnyeink",
       description:
-        "Miért válassza az Autotherm Kft.-t? Több mint 30 év tapasztalat, Carrier képviselet, gyors árajánlat, egyedi gyártás. Ismerje meg előnyeinket!",
+        `Miért válassza az Autotherm Kft.-t? ${yearsSince()} év tapasztalat, Carrier képviselet, gyors árajánlat, egyedi gyártás. Ismerje meg előnyeinket!`,
       extraKeywords: [
         "miért autotherm", "autotherm előnyök", "hűtőautó gyártás tapasztalat",
         "melyik hűtőautó gyártót válasszam", "hűtőautó gyártó összehasonlítás",
@@ -502,9 +502,9 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
       ],
     },
     en: {
-      title: "Why Choose Autotherm? – 30+ Years of Refrigerated Vehicle Expertise",
+      title: `Why Choose Autotherm? – ${yearsSince()} Years of Refrigerated Vehicle Expertise`,
       description:
-        "30+ years of experience, official Carrier partnership, fast quotation, custom manufacturing. Discover our advantages.",
+        `${yearsSince()} years of experience, official Carrier partnership, fast quotation, custom manufacturing. Discover our advantages.`,
       extraKeywords: [
         "why choose Autotherm", "refrigerated vehicle advantages",
         "best refrigerated van company", "reliable refrigerated vehicle builder",
@@ -515,9 +515,9 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
       ],
     },
     de: {
-      title: "Warum gerade wir? – 30+ Jahre Kühlfahrzeug Expertise | Autotherm",
+      title: `Warum gerade wir? – ${yearsSince()} Jahre Kühlfahrzeug Expertise | Autotherm`,
       description:
-        "Über 30 Jahre Erfahrung, offizielle Carrier-Partnerschaft, schnelle Angebote, maßgeschneiderte Fertigung. Unsere Vorteile.",
+        `${yearsSince()} Jahre Erfahrung, offizielle Carrier-Partnerschaft, schnelle Angebote, maßgeschneiderte Fertigung. Unsere Vorteile.`,
       extraKeywords: [
         "warum Autotherm", "Kühlfahrzeug Vorteile", "zuverlässiger Kühlfahrzeug Hersteller",
         "Kühlfahrzeug Garantie", "Carrier autorisierter Partner",

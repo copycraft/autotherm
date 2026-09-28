@@ -47,22 +47,6 @@ export default function Footer({ lang }: { lang: Lang }) {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-300">
               {dict.footer.tagline}
             </p>
-            <div className="mt-8 flex items-center gap-5">
-              <Image
-                src="/images/carrier-logo.webp"
-                alt="Carrier Transicold"
-                width={110}
-                height={32}
-                className="h-7 w-auto opacity-60 transition-opacity hover:opacity-100"
-              />
-              <Image
-                src="/images/garancia-logo.webp"
-                alt="Garancia"
-                width={64}
-                height={40}
-                className="h-9 w-auto opacity-60 transition-opacity hover:opacity-100"
-              />
-            </div>
           </div>
 
           <div>

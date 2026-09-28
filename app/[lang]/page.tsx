@@ -286,7 +286,6 @@ function PartnersSection({ dict }: { dict: Dict }) {
     { src: "/images/hovany-logo.webp", alt: "Hovány" },
     { src: "/images/elite-logo.webp", alt: "Elite" },
     { src: "/images/monster-logo.webp", alt: "Monster" },
-    { src: "/images/garancia-logo.webp", alt: "Garancia" },
     { src: "/images/carrier-logo.webp", alt: "Carrier Transicold" },
   ];
   return (

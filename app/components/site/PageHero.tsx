@@ -103,7 +103,7 @@ export default function PageHero({
                 silently welds the words together once a title wraps. */}
             {words.map((w, i) => (
               <Fragment key={i}>
-                <span className="inline-block overflow-hidden align-bottom pb-1">
+                <span className="-mx-[0.1em] inline-block overflow-hidden px-[0.1em] align-bottom pb-1">
                   <motion.span variants={textWord} className="inline-block will-change-transform">
                     {w}
                   </motion.span>

@@ -12,7 +12,6 @@ const clientLogos = [
   { src: "/images/hovany-logo.jpg", alt: "Hovány" },
   { src: "/images/elite-logo.png", alt: "Elite" },
   { src: "/images/monster-logo.png", alt: "Monster" },
-  { src: "/images/garancia-logo.png", alt: "Garancia" },
   { src: "/images/carrier-logo.png", alt: "Carrier Transicold" },
 ];
 

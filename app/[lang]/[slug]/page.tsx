@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { connection } from "next/server";
-import { Reveal } from "@/app/components/motion/Reveal";
-import RevealText from "@/app/components/motion/RevealText";
+import AboutPage from "@/app/components/templates/AboutPage";
 import BlogPage from "@/app/components/templates/BlogPage";
 import ContactPage from "@/app/components/templates/ContactPage";
 import GalleryPage from "@/app/components/templates/GalleryPage";
-import InfoPage from "@/app/components/templates/InfoPage";
 import LegalPage from "@/app/components/templates/LegalPage";
+import ProductsPage from "@/app/components/templates/ProductsPage";
 import QuotationPage from "@/app/components/templates/QuotationPage";
+import ServicePage from "@/app/components/templates/ServicePage";
+import SolutionPage from "@/app/components/templates/SolutionPage";
+import WhyUsPage from "@/app/components/templates/WhyUsPage";
 import CtaBand from "@/app/components/site/CtaBand";
 import PartnersMarquee from "@/app/components/site/PartnersMarquee";
 import StatsBand from "@/app/components/site/StatsBand";
@@ -18,8 +20,23 @@ import { getDict } from "@/app/lib/dictionaries";
 import { HERO_IMAGE_FALLBACK, heroImageFor } from "@/app/lib/hero-images";
 import { BreadcrumbJsonLd } from "@/app/lib/json-ld";
 import { galleryImages, infoPages, legalPages } from "@/app/lib/page-content";
-import { ROUTES, keyForSlug, pathFor, slugsFor } from "@/app/lib/routes";
+import { ROUTES, keyForSlug, pathFor, slugsFor, type PageKey } from "@/app/lib/routes";
 import { absoluteUrl, buildPageMetadata, getSeoEntry } from "@/app/lib/seo";
+
+/**
+ * Each informational page gets a layout suited to what it is - story,
+ * catalogue, workshop, manifesto - below the shared photographic header.
+ * Single-product pages (bodies, isolations, …) fall back to SolutionPage.
+ */
+const INFO_TEMPLATES: Partial<Record<PageKey, typeof SolutionPage>> = {
+  about: AboutPage,
+  products: ProductsPage,
+  whyUs: WhyUsPage,
+  service: ServicePage,
+  ourService: ServicePage,
+  carrierService: ServicePage,
+  bodyRepair: ServicePage,
+};
 
 /**
  * Universal localized subpage router.
@@ -142,10 +159,11 @@ export default async function SubPage({
     default: {
       const content = infoPages[key]?.[lang];
       if (!content) notFound();
+      const Template = INFO_TEMPLATES[key] ?? SolutionPage;
       return (
         <>
           {breadcrumb}
-          <InfoPage content={content} lang={lang} dict={dict} heroImage={heroImage} />
+          <Template content={content} lang={lang} dict={dict} heroImage={heroImage} />
         </>
       );
     }

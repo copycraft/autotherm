@@ -104,14 +104,20 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="hu" className={`${raleway.variable} h-full overflow-x-hidden`}>
+    <html
+      lang="hu"
+      className={`${raleway.variable} h-full overflow-x-hidden supports-[overflow:clip]:overflow-x-clip`}
+    >
       <head>
         <OrganizationJsonLd />
         <LocalBusinessJsonLd />
         <ProductJsonLd />
         <WebSiteJsonLd />
       </head>
-      <body className="flex min-h-full flex-col overflow-x-hidden font-sans antialiased">
+      {/* overflow-x: clip, not hidden - `hidden` turns <body> into its own
+          scroll container, which silently breaks every position:sticky element.
+          `hidden` stays as the fallback for browsers without `clip`. */}
+      <body className="flex min-h-full flex-col overflow-x-hidden font-sans antialiased supports-[overflow:clip]:overflow-x-clip">
         {children}
       </body>
     </html>

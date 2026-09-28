@@ -58,7 +58,7 @@ export default function RevealText({
     >
       {words.map((w, i) => (
         <Fragment key={`${w}-${i}`}>
-          <span className="inline-block overflow-hidden align-bottom pb-1">
+          <span className="-mx-[0.1em] inline-block overflow-hidden px-[0.1em] align-bottom pb-1">
             <motion.span variants={word} className="inline-block will-change-transform">
               {w}
             </motion.span>

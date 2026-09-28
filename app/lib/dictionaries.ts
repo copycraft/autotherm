@@ -1,4 +1,4 @@
-import type { Lang } from "./constants";
+import { yearsSince, type Lang } from "./constants";
 import type { PageKey } from "./routes";
 
 /**
@@ -287,7 +287,7 @@ export const dictionaries: Record<Lang, Dict> = {
         eyebrow: "",
         titleA: "Hidegben is",
         titleB: "forró teljesítmény.",
-        lead: "Hűtőautók, hűtős furgonok és egyedi járműfelépítmények gyártása 3,5 tonnáig – hivatalos Carrier Transicold partnerként, több mint 30 év tapasztalattal.",
+        lead: `Hűtőautók, hűtős furgonok és egyedi járműfelépítmények gyártása 3,5 tonnáig – hivatalos Carrier Transicold partnerként, ${yearsSince()} év tapasztalattal.`,
         ctaPrimary: "Árajánlatot kérek",
         ctaSecondary: "Történetünk",
         badge: "Hivatalos Carrier Transicold partner",
@@ -548,7 +548,7 @@ export const dictionaries: Record<Lang, Dict> = {
         eyebrow: "",
         titleA: "Cold inside.",
         titleB: "Hot performance.",
-        lead: "Refrigerated vans, cooled vehicle bodies and custom commercial conversions up to 3.5 t - built by an official Carrier Transicold partner with 30+ years of experience.",
+        lead: `Refrigerated vans, cooled vehicle bodies and custom commercial conversions up to 3.5 t - built by an official Carrier Transicold partner with ${yearsSince()} years of experience.`,
         ctaPrimary: "Request a quote",
         ctaSecondary: "Our story",
         badge: "Official Carrier Transicold partner",
@@ -807,7 +807,7 @@ export const dictionaries: Record<Lang, Dict> = {
         eyebrow: "",
         titleA: "Innen eiskalt.",
         titleB: "Leistung glühend heiß.",
-        lead: "Kühlfahrzeuge, Kühlkoffer und individuelle Nutzfahrzeugaufbauten bis 3,5 t - gebaut von einem offiziellen Carrier Transicold Partner mit über 30 Jahren Erfahrung.",
+        lead: `Kühlfahrzeuge, Kühlkoffer und individuelle Nutzfahrzeugaufbauten bis 3,5 t - gebaut von einem offiziellen Carrier Transicold Partner mit ${yearsSince()} Jahren Erfahrung.`,
         ctaPrimary: "Angebot anfordern",
         ctaSecondary: "Unsere Geschichte",
         badge: "Offizieller Carrier Transicold Partner",
@@ -1065,7 +1065,7 @@ export const dictionaries: Record<Lang, Dict> = {
         eyebrow: "",
         titleA: "Frig înăuntru.",
         titleB: "Performanță fierbinte.",
-        lead: "Furgonete frigorifice, carosări și suprastructuri comerciale personalizate până la 3,5 t - construite de un partener oficial Carrier Transicold cu peste 30 de ani de experiență.",
+        lead: `Furgonete frigorifice, carosări și suprastructuri comerciale personalizate până la 3,5 t - construite de un partener oficial Carrier Transicold cu ${yearsSince()} de ani de experiență.`,
         ctaPrimary: "Solicită ofertă",
         ctaSecondary: "Povestea noastră",
         badge: "Partener oficial Carrier Transicold",

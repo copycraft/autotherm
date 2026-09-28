@@ -1,6 +1,12 @@
 "use client";
 
-import { motion, useAnimationControls, useInView, type Variants } from "framer-motion";
+import {
+  motion,
+  useAnimationControls,
+  useInView,
+  useReducedMotion,
+  type Variants,
+} from "framer-motion";
 import {
   createContext,
   useContext,
@@ -233,8 +239,20 @@ export function RevealItem({
 }
 
 /**
- * Image reveal with a camera-dolly scale. The plate also drifts in from the
- * scroll direction, and a fast approach tightens the move.
+ * Curtain wipe, expressed as clip-path insets. The plate uncovers from the
+ * edge the scroll is coming from: scrolling down it rises from the bottom,
+ * scrolling back up it drops from the top. The insets overshoot by 12% on
+ * every other side so the element's own shadow is never clipped mid-wipe.
+ */
+const WIPE_OPEN = "inset(-12% -12% -12% -12%)";
+function wipeClosed(sign: 1 | -1) {
+  return sign === 1 ? "inset(100% -12% -12% -12%)" : "inset(-12% -12% 100% -12%)";
+}
+
+/**
+ * Image reveal: a curtain wipe with a camera-dolly scale underneath it. The
+ * plate also drifts in from the scroll direction, and a fast approach
+ * tightens the move.
  */
 export function DollyImage({
   children,
@@ -247,21 +265,38 @@ export function DollyImage({
   const inView = useInView(ref, { once: true, amount: 0.3 });
   const { timing, revealed } = useRevealTiming(inView, true);
   const controls = useAnimationControls();
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     if (!revealed.current) return;
+    const duration = 1.1 - timing.speed * 0.4;
+    if (reduced) {
+      controls.set({ clipPath: "none" });
+      controls.start({ opacity: 1, transition: { duration: 0.3 } });
+      return;
+    }
     controls.set({
-      opacity: 0,
-      scale: 1.05 + timing.speed * 0.03,
+      opacity: 1,
+      clipPath: wipeClosed(timing.sign),
+      scale: 1.08 + timing.speed * 0.03,
       y: 24 * timing.sign,
     });
-    controls.start({
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 1.1 - timing.speed * 0.4, ease: EASE_CINEMATIC },
-    });
-  }, [timing, controls, revealed]);
+    controls
+      .start({
+        clipPath: WIPE_OPEN,
+        scale: 1,
+        y: 0,
+        transition: {
+          duration,
+          ease: EASE_CINEMATIC,
+          // The scale settles a touch after the wipe lands, like a lens easing off.
+          scale: { duration: duration * 1.25, ease: EASE_CINEMATIC },
+        },
+      })
+      // Drop the clip entirely once open: hover zooms and ring focus styles
+      // should never be clipped by a leftover inset.
+      .then(() => controls.set({ clipPath: "none" }));
+  }, [timing, controls, revealed, reduced]);
 
   return (
     <motion.div

@@ -1,4 +1,4 @@
-import type { Lang } from "./constants";
+import { yearsSince, type Lang } from "./constants";
 import type { PageKey } from "./routes";
 
 /**
@@ -25,6 +25,9 @@ export interface InfoFeature {
   icon: IconName;
   title: string;
   body: string;
+  /** Product showcase rows (products page) use an image and an optional deep link. */
+  image?: string;
+  href?: PageKey;
 }
 
 export interface InfoSection {
@@ -32,6 +35,26 @@ export interface InfoSection {
   body: string[];
   bullets?: string[];
   image?: string;
+}
+
+export interface InfoTimeline {
+  title: string;
+  items: { year: string; title: string; body: string }[];
+}
+
+export interface InfoQuote {
+  text: string;
+  author: string;
+}
+
+export interface InfoSteps {
+  title: string;
+  items: { title: string; body: string }[];
+}
+
+export interface InfoStrip {
+  title: string;
+  items: string[];
 }
 
 export interface InfoPageContent {
@@ -42,8 +65,122 @@ export interface InfoPageContent {
   features?: InfoFeature[];
   sections?: InfoSection[];
   gallery?: string[];
+  timeline?: InfoTimeline;
+  quote?: InfoQuote;
+  steps?: InfoSteps;
+  strip?: InfoStrip;
   cta: { title: string; body: string };
 }
+
+/* ------------------------- Shared page building blocks ------------------------ */
+
+const thisYear = String(new Date().getFullYear());
+
+const aboutTimeline: Record<Lang, InfoTimeline> = {
+  hu: {
+    title: "Történetünk",
+    items: [
+      { year: "1991", title: "Tapasztalat Ausztriából", body: "Csurgó László Ausztriában szerez gyakorlati tapasztalatot a hűtőjármű-iparban." },
+      { year: "1992", title: "Megalakul az Autotherm", body: "Szegeden megalapítjuk a céget, és elsőként hozzuk be a Carrier hűtőberendezéseket a formálódó magyar piacra." },
+      { year: "1995", title: "Thermo King szerviz", body: "Elindul a Thermo King egységek szervizelése - Dél-Magyarország vezető raktérhűtő szervizközpontjává válunk." },
+      { year: "2007", title: "Újra Carrier képviselet", body: "Visszakapjuk a Carrier Transicold képviseletet, és a 3,5 tonnás kategória első számú Carrier értékesítőjévé válunk." },
+      { year: "2012", title: "Új telephely, tízszeres kapacitás", body: "Beköltözünk a Napos úti, 1500 m²-es, négycsarnokos telephelyre - a gyártókapacitás a tízszeresére nő." },
+      { year: thisYear, title: "Ma", body: `${yearsSince()} év, több mint 3000 ügyfél és évente 280+ jármű - ugyanazzal a gondossággal, mint az első napon.` },
+    ],
+  },
+  en: {
+    title: "Our story",
+    items: [
+      { year: "1991", title: "Experience from Austria", body: "László Csurgó gains hands-on experience in the refrigerated vehicle industry while working in Austria." },
+      { year: "1992", title: "Autotherm is founded", body: "We found the company in Szeged and introduce Carrier refrigeration equipment to the emerging Hungarian market." },
+      { year: "1995", title: "Thermo King service", body: "We start servicing Thermo King units and become the leading reefer service centre in Southern Hungary." },
+      { year: "2007", title: "Carrier representation regained", body: "We regain Carrier Transicold representation and become Hungary's top seller of Carrier units for 3.5 t vehicles." },
+      { year: "2012", title: "New facility, 10× capacity", body: "We move into our 1,500 m², four-hall facility on Napos út - production capacity grows tenfold." },
+      { year: thisYear, title: "Today", body: `${yearsSince()} years, over 3,000 clients and 280+ vehicles a year - built with the same care as on day one.` },
+    ],
+  },
+  de: {
+    title: "Unsere Geschichte",
+    items: [
+      { year: "1991", title: "Erfahrung aus Österreich", body: "László Csurgó sammelt in Österreich praktische Erfahrung in der Kühlfahrzeugbranche." },
+      { year: "1992", title: "Gründung von Autotherm", body: "Wir gründen das Unternehmen in Szeged und bringen Carrier-Kühltechnik auf den aufstrebenden ungarischen Markt." },
+      { year: "1995", title: "Thermo King Service", body: "Wir beginnen mit dem Service von Thermo King Aggregaten und werden zum führenden Kühlservicezentrum Südungarns." },
+      { year: "2007", title: "Wieder Carrier-Vertretung", body: "Wir erhalten die Carrier Transicold Vertretung zurück und werden Ungarns größter Carrier-Händler für 3,5-t-Fahrzeuge." },
+      { year: "2012", title: "Neuer Standort, 10× Kapazität", body: "Wir beziehen unser 1.500 m² großes Werk mit vier Hallen in der Napos út - die Kapazität verzehnfacht sich." },
+      { year: thisYear, title: "Heute", body: `${yearsSince()} Jahre, über 3.000 Kunden und 280+ Fahrzeuge pro Jahr - gebaut mit derselben Sorgfalt wie am ersten Tag.` },
+    ],
+  },
+  ro: {
+    title: "Povestea noastră",
+    items: [
+      { year: "1991", title: "Experiență din Austria", body: "László Csurgó acumulează experiență practică în industria vehiculelor frigorifice, lucrând în Austria." },
+      { year: "1992", title: "Se înființează Autotherm", body: "Fondăm compania la Szeged și aducem echipamentele frigorifice Carrier pe piața maghiară în formare." },
+      { year: "1995", title: "Service Thermo King", body: "Începem service-ul unităților Thermo King și devenim principalul centru de service frigorific din sudul Ungariei." },
+      { year: "2007", title: "Din nou reprezentanță Carrier", body: "Recâștigăm reprezentanța Carrier Transicold și devenim cel mai mare vânzător Carrier pentru vehicule de 3,5 t din Ungaria." },
+      { year: "2012", title: "Sediu nou, capacitate de 10×", body: "Ne mutăm în sediul de 1.500 m² cu patru hale de pe Napos út - capacitatea de producție crește de zece ori." },
+      { year: thisYear, title: "Astăzi", body: `${yearsSince()} de ani, peste 3.000 de clienți și 280+ vehicule pe an - construite cu aceeași grijă ca în prima zi.` },
+    ],
+  },
+};
+
+const aboutQuote: Record<Lang, InfoQuote> = {
+  hu: { text: "Napról napra jobbnak lenni abban, amit csinálunk.", author: "Az Autotherm filozófiája" },
+  en: { text: "To be better every day at what we do.", author: "The Autotherm philosophy" },
+  de: { text: "Jeden Tag ein Stück besser werden in dem, was wir tun.", author: "Die Autotherm-Philosophie" },
+  ro: { text: "Să devenim în fiecare zi mai buni în ceea ce facem.", author: "Filozofia Autotherm" },
+};
+
+const fordQuote: Partial<Record<Lang, InfoQuote>> = {
+  hu: { text: "Többet tenni a világért, mint amennyit a világ tesz érted - ez a siker.", author: "Henry Ford - cégünk mottója" },
+  en: { text: "To do more for the world than the world does for you - that is success.", author: "Henry Ford - our company motto" },
+  de: { text: "Mehr für die Welt tun, als die Welt für dich tut - das ist Erfolg.", author: "Henry Ford - unser Firmenmotto" },
+};
+
+const baseVehicleModels = [
+  "Fiat Ducato",
+  "Mercedes-Benz Sprinter",
+  "Ford Transit",
+  "Renault Master",
+  "Volkswagen Crafter",
+  "Iveco Daily",
+];
+
+const baseVehicles: Record<Lang, InfoStrip> = {
+  hu: { title: "Alapjárművek, amelyekre építünk", items: baseVehicleModels },
+  en: { title: "Base vehicles we build on", items: baseVehicleModels },
+  de: { title: "Basisfahrzeuge, auf die wir aufbauen", items: baseVehicleModels },
+  ro: { title: "Vehicule de bază pe care construim", items: baseVehicleModels },
+};
+
+const serviceSteps: InfoSteps = {
+  title: "Így zajlik a szerviz",
+  items: [
+    { title: "Bejelentés", body: "Hívjon vagy írjon - röviden írja le a hibajelenséget, a jármű és a hűtőegység típusát." },
+    { title: "Időpont", body: "Egyeztetett időpontot adunk, és előre lefoglaljuk a szükséges alkatrészeket." },
+    { title: "Diagnosztika és javítás", body: "Gyári eszközökkel feltárjuk a hiba okát, és csak a jóváhagyott munkát végezzük el." },
+    { title: "Átadás", body: "Teljesítménymérés után, dokumentáltan adjuk vissza a járművet - indulhat a következő fuvar." },
+  ],
+};
+
+const carrierSteps: InfoSteps = {
+  title: "A beépítés menete",
+  items: [
+    { title: "Adatok", body: "Küldje el a raktér méreteit, a szállított árut és a kívánt hőmérsékletet." },
+    { title: "Méretezés", body: "Hőtechnikai számítással kiválasztjuk a megfelelő Xarios vagy Supra egységet." },
+    { title: "Beépítés", body: "Gyári előírás szerinti beépítés 2-3 munkanap alatt, eredeti alkatrészekkel." },
+    { title: "Mérés és átadás", body: "Vákuumozás, teljesítménymérés és dokumentált átadás gyári garanciával." },
+  ],
+};
+
+const repairSteps: InfoSteps = {
+  title: "A javítás menete",
+  items: [
+    { title: "Fotók", body: "Küldjön néhány fotót a sérülésről e-mailben vagy üzenetben." },
+    { title: "Előzetes ajánlat", body: "Akár aznap előzetes javítási ajánlatot adunk, biztosítói ügy esetén a kárfelvételt is intézzük." },
+    { title: "Javítás", body: "Előre lefoglalt anyaggal és időablakkal, a lehető legrövidebb állásidővel dolgozunk." },
+    { title: "Átadás", body: "A helyreállított hőszigetelést ellenőrizzük, és dokumentáltan adjuk vissza a járművet." },
+  ],
+};
 
 export const infoPages: Partial<
   Record<PageKey, Partial<Record<Lang, InfoPageContent>>>
@@ -52,7 +189,7 @@ export const infoPages: Partial<
   about: {
     hu: {
       eyebrow: "Kik vagyunk?",
-      title: "Három évtized a hideg szolgálatában",
+      title: `${yearsSince()} év a hideg szolgálatában`,
       lead: "Az Autotherm Kft.-t 1992-ben alapította Csurgó László és Dkfm. Peter Knerer Szegeden. Ma 33 munkatárssal, négy gyártócsarnokban, 1500 m²-en építjük Magyarország és Európa hűtőautóit.",
       heroImage: "/images/b2e2e8348e1b.webp",
       features: [
@@ -73,8 +210,8 @@ export const infoPages: Partial<
         },
         {
           icon: "clock",
-          title: "1995 óta Thermo King múlt",
-          body: "Történelmi partnerségünk a Thermo Kinggel a kilencvenes évekig nyúlik vissza - a tapasztalat nálunk generációs tudás.",
+          title: "Tapasztalat 1995 óta",
+          body: "1995 óta építünk be és szervizelünk mindenféle márkájú és típusú hűtőberendezést - a tapasztalat nálunk generációs tudás.",
         },
       ],
       sections: [
@@ -103,6 +240,8 @@ export const infoPages: Partial<
         "/images/be8bb6a35e77.webp",
         "/images/d029c0586d66.webp",
       ],
+      timeline: aboutTimeline.hu,
+      quote: aboutQuote.hu,
       cta: {
         title: "Ismerjük meg egymást!",
         body: "Mondja el, mit szállít - mi megtervezzük hozzá a tökéletes járművet.",
@@ -110,7 +249,7 @@ export const infoPages: Partial<
     },
     en: {
       eyebrow: "Who we are",
-      title: "Three decades in the service of cold",
+      title: `${yearsSince()} years in the service of cold`,
       lead: "Autotherm Ltd. was founded in 1992 in Szeged, Hungary, by László Csurgó and Dkfm. Peter Knerer. Today 33 specialists build Europe's refrigerated vehicles across four production halls and 1,500 m².",
       heroImage: "/images/b2e2e8348e1b.webp",
       features: [
@@ -131,8 +270,8 @@ export const infoPages: Partial<
         },
         {
           icon: "clock",
-          title: "Thermo King heritage since 1995",
-          body: "Our historic partnership with Thermo King reaches back to the nineties - experience here is generational knowledge.",
+          title: "Experience since 1995",
+          body: "Since 1995 we have installed and serviced cooling units of every make and type - here, experience is generational knowledge.",
         },
       ],
       sections: [
@@ -161,6 +300,8 @@ export const infoPages: Partial<
         "/images/be8bb6a35e77.webp",
         "/images/d029c0586d66.webp",
       ],
+      timeline: aboutTimeline.en,
+      quote: aboutQuote.en,
       cta: {
         title: "Let's get acquainted!",
         body: "Tell us what you transport - we'll engineer the right vehicle for it.",
@@ -168,7 +309,7 @@ export const infoPages: Partial<
     },
     de: {
       eyebrow: "Wer sind wir?",
-      title: "Drei Jahrzehnte im Dienst der Kälte",
+      title: `${yearsSince()} Jahre im Dienst der Kälte`,
       lead: "Autotherm wurde 1992 in Szeged, Ungarn, von László Csurgó und Dkfm. Peter Knerer gegründet. Heute bauen 33 Spezialisten in vier Produktionshallen auf 1.500 m² die Kühlfahrzeuge Europas.",
       heroImage: "/images/b2e2e8348e1b.webp",
       features: [
@@ -189,8 +330,8 @@ export const infoPages: Partial<
         },
         {
           icon: "clock",
-          title: "Thermo King Erbe seit 1995",
-          body: "Unsere historische Partnerschaft mit Thermo King reicht in die Neunziger zurück - Erfahrung ist bei uns Generationenwissen.",
+          title: "Erfahrung seit 1995",
+          body: "Seit 1995 bauen wir Kühlaggregate aller Marken und Typen ein und warten sie - Erfahrung ist bei uns Generationenwissen.",
         },
       ],
       sections: [
@@ -219,6 +360,8 @@ export const infoPages: Partial<
         "/images/be8bb6a35e77.webp",
         "/images/d029c0586d66.webp",
       ],
+      timeline: aboutTimeline.de,
+      quote: aboutQuote.de,
       cta: {
         title: "Lernen wir uns kennen!",
         body: "Sagen Sie uns, was Sie transportieren - wir konstruieren das perfekte Fahrzeug dafür.",
@@ -226,7 +369,7 @@ export const infoPages: Partial<
     },
     ro: {
       eyebrow: "Cine suntem noi?",
-      title: "Trei decenii în slujba frigului",
+      title: `${yearsSince()} de ani în slujba frigului`,
       lead: "Autotherm a fost fondată în 1992 la Szeged, Ungaria, de László Csurgó și Dkfm. Peter Knerer. Astăzi, 33 de specialiști construiesc vehiculele frigorifice ale Europei în patru hale de producție, pe 1.500 m².",
       heroImage: "/images/b2e2e8348e1b.webp",
       features: [
@@ -247,8 +390,8 @@ export const infoPages: Partial<
         },
         {
           icon: "clock",
-          title: "Moștenire Thermo King din 1995",
-          body: "Parteneriatul nostru istoric cu Thermo King datează din anii '90 - experiența este la noi cunoaștere de generații.",
+          title: "Experiență din 1995",
+          body: "Din 1995 montăm și întreținem unități frigorifice de toate mărcile și tipurile - la noi, experiența este cunoaștere de generații.",
         },
       ],
       sections: [
@@ -277,6 +420,8 @@ export const infoPages: Partial<
         "/images/be8bb6a35e77.webp",
         "/images/d029c0586d66.webp",
       ],
+      timeline: aboutTimeline.ro,
+      quote: aboutQuote.ro,
       cta: {
         title: "Să ne cunoaștem!",
         body: "Spuneți-ne ce transportați - noi proiectăm vehiculul potrivit pentru asta.",
@@ -294,31 +439,37 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
+          image: "/images/a404687637b3.webp", href: "vanIsolations",
           title: "Hűtős furgonok",
           body: "Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter és Iveco Daily átalakítások - fagyasztott (-18°C…-20°C), hűtött (0°C…+4°C) vagy több hőmérsékletű kivitelben.",
         },
         {
           icon: "layers",
+          image: "/images/82308068d05b.webp", href: "cooledBodies",
           title: "Hűtődobozos felépítmények",
           body: "Könnyűszerkezetes szendvicspaneles dobozok 3,5 tonnás alvázakra, Carrier vagy Daikin hűtőegységgel, egyedi méretben.",
         },
         {
           icon: "truck",
+          image: "/images/8bd1648f42cf.webp", href: "commercialBodies",
           title: "Haszonjármű felépítmények",
           body: "Alumínium dobozok, platós-ponyvás és speciális felépítmények - alumínium, rozsdamentes vagy üvegszálas (GRP) belső burkolattal.",
         },
         {
           icon: "heart",
+          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
           title: "Elhunytszállító járművek",
           body: "Kegyeleti szempontból kifogástalan, +18°C-ra temperált, rozsdamentes belső terű járművek, akár többszintes kialakítással.",
         },
         {
           icon: "wrench",
+          image: "/images/45196215f76f.webp",
           title: "Alvázas felépítmények",
           body: "Egyedi építésű 3,5 tonnás felépítmények bármilyen alvázra - a tervezéstől a forgalomba helyezésig.",
         },
         {
           icon: "shield",
+          image: "/images/b05d04ca1183.webp", href: "service",
           title: "Javítás és szerviz",
           body: "Felépítmények és hűtőberendezések javítása, karbantartása - Carrier és Daikin szakszerviz, mobil szerviz, éves felülvizsgálatok.",
         },
@@ -342,6 +493,7 @@ export const infoPages: Partial<
         "/images/fca243146ad0.webp",
         "/images/db347b9ebd92.webp",
       ],
+      strip: baseVehicles.hu,
       cta: {
         title: "Nem találja, amit keres?",
         body: "Speciális igénye van? Pont ez a specialitásunk. Kérjen egyedi ajánlatot!",
@@ -355,31 +507,37 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
+          image: "/images/a404687637b3.webp", href: "vanIsolations",
           title: "Refrigerated vans",
           body: "Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter and Iveco Daily conversions - frozen (-18°C…-20°C), chilled (0°C…+4°C) or multi-temperature.",
         },
         {
           icon: "layers",
+          image: "/images/82308068d05b.webp", href: "cooledBodies",
           title: "Cooled box bodies",
           body: "Lightweight sandwich-panel boxes for 3.5 t chassis with Carrier or Daikin cooling units, built to custom dimensions.",
         },
         {
           icon: "truck",
+          image: "/images/8bd1648f42cf.webp", href: "commercialBodies",
           title: "Commercial vehicle bodies",
           body: "Aluminium boxes, flatbed-tarpaulin and special bodies - with aluminium, stainless steel or GRP interior lining.",
         },
         {
           icon: "heart",
+          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
           title: "Deceased transport vehicles",
           body: "Dignified vehicles tempered to +18°C with stainless steel interiors, up to multi-level configurations.",
         },
         {
           icon: "wrench",
+          image: "/images/45196215f76f.webp",
           title: "Chassis bodies",
           body: "Custom-built 3.5 t bodies on any chassis make - from design to registration.",
         },
         {
           icon: "shield",
+          image: "/images/b05d04ca1183.webp", href: "service",
           title: "Repair & service",
           body: "Repair and maintenance of bodies and cooling units - authorized Carrier and Daikin service, mobile repair, annual inspections.",
         },
@@ -403,6 +561,7 @@ export const infoPages: Partial<
         "/images/fca243146ad0.webp",
         "/images/db347b9ebd92.webp",
       ],
+      strip: baseVehicles.en,
       cta: {
         title: "Can't find what you need?",
         body: "Special requirements are our speciality. Request a custom quote!",
@@ -416,31 +575,37 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
+          image: "/images/a404687637b3.webp", href: "vanIsolations",
           title: "Kühltransporter",
           body: "Umbauten für Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter und Iveco Daily - Tiefkühl (-18°C…-20°C), gekühlt (0°C…+4°C) oder Mehrtemperatur.",
         },
         {
           icon: "layers",
+          image: "/images/82308068d05b.webp", href: "cooledBodies",
           title: "Kühlkoffer",
           body: "Leichte Sandwichpaneel-Koffer für 3,5-t-Fahrgestelle mit Carrier- oder Daikin-Aggregaten, in Sondermaßen gefertigt.",
         },
         {
           icon: "truck",
+          image: "/images/8bd1648f42cf.webp", href: "commercialBodies",
           title: "Nutzfahrzeugaufbauten",
           body: "Aluminiumkoffer, Pritsche mit Plane und Spezialaufbauten - mit Aluminium-, Edelstahl- oder GFK-Innenverkleidung.",
         },
         {
           icon: "heart",
+          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
           title: "Bestattungswagen",
           body: "Würdevolle, auf +18°C temperierte Fahrzeuge mit Edelstahl-Innenausbau, bis zu mehrstöckigen Konfigurationen.",
         },
         {
           icon: "wrench",
+          image: "/images/45196215f76f.webp",
           title: "Fahrgestellaufbauten",
           body: "Individuell gebaute 3,5-t-Aufbauten auf jedem Fahrgestell - von der Konstruktion bis zur Zulassung.",
         },
         {
           icon: "shield",
+          image: "/images/b05d04ca1183.webp", href: "service",
           title: "Reparatur & Service",
           body: "Reparatur und Wartung von Aufbauten und Kühlaggregaten - autorisierter Carrier- und Daikin-Service, mobiler Service, Jahresinspektionen.",
         },
@@ -464,6 +629,7 @@ export const infoPages: Partial<
         "/images/fca243146ad0.webp",
         "/images/db347b9ebd92.webp",
       ],
+      strip: baseVehicles.de,
       cta: {
         title: "Nicht das Passende gefunden?",
         body: "Sonderwünsche sind unsere Spezialität. Fordern Sie ein individuelles Angebot an!",
@@ -477,31 +643,37 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
+          image: "/images/a404687637b3.webp", href: "vanIsolations",
           title: "Furgonete frigorifice",
           body: "Conversii Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter și Iveco Daily - congelare (-18°C…-20°C), refrigerare (0°C…+4°C) sau multi-temperatură.",
         },
         {
           icon: "layers",
+          image: "/images/82308068d05b.webp", href: "cooledBodies",
           title: "Cutii frigorifice",
           body: "Cutii ușoare din panouri sandwich pentru șasiuri de 3,5 t, cu unități Carrier sau Daikin, la dimensiuni personalizate.",
         },
         {
           icon: "truck",
+          image: "/images/8bd1648f42cf.webp", href: "commercialBodies",
           title: "Suprastructuri comerciale",
           body: "Cutii din aluminiu, platforme cu prelată și suprastructuri speciale - cu interior din aluminiu, inox sau GRP.",
         },
         {
           icon: "heart",
+          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
           title: "Vehicule funerare",
           body: "Vehicule demne, temperate la +18°C, cu interior din inox, până la configurații pe mai multe niveluri.",
         },
         {
           icon: "wrench",
+          image: "/images/45196215f76f.webp",
           title: "Suprastructuri pe șasiu",
           body: "Suprastructuri de 3,5 t construite la comandă pe orice marcă de șasiu - de la proiectare la înmatriculare.",
         },
         {
           icon: "shield",
+          image: "/images/b05d04ca1183.webp", href: "service",
           title: "Reparații & service",
           body: "Reparații și întreținere pentru suprastructuri și unități frigorifice - service autorizat Carrier și Daikin, service mobil, inspecții anuale.",
         },
@@ -525,6 +697,7 @@ export const infoPages: Partial<
         "/images/fca243146ad0.webp",
         "/images/db347b9ebd92.webp",
       ],
+      strip: baseVehicles.ro,
       cta: {
         title: "Nu găsiți ce căutați?",
         body: "Cerințele speciale sunt specialitatea noastră. Solicitați o ofertă personalizată!",
@@ -575,6 +748,7 @@ export const infoPages: Partial<
           ],
         },
       ],
+      steps: serviceSteps,
       cta: {
         title: "Szervizidőpontot egyeztetne?",
         body: "Hívjon minket munkanapokon 8:00 és 16:30 között, vagy írjon üzenetet!",
@@ -625,6 +799,7 @@ export const infoPages: Partial<
           ],
         },
       ],
+      steps: carrierSteps,
       cta: {
         title: "Melyik Carrier egység való Önnek?",
         body: "Küldje el a raktér méreteit és a szállított árut - díjmentesen méretezzük a hűtőegységet.",
@@ -642,7 +817,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "medal",
-          title: "30+ év tapasztalat",
+          title: `${yearsSince()} év tapasztalat`,
           body: "Több ezer átalakítás tapasztalata épül be minden új járműbe - a tipikus hibákat mi már 1995-ben kijavítottuk.",
         },
         {
@@ -671,6 +846,7 @@ export const infoPages: Partial<
           body: "Legjobb referenciánk, hogy ügyfeleink flottabővítéskor is hozzánk térnek vissza.",
         },
       ],
+      quote: fordQuote.hu,
       cta: {
         title: "Győződjön meg róla személyesen!",
         body: "Látogasson el szegedi telephelyünkre, vagy kérjen ajánlatot még ma.",
@@ -684,7 +860,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "medal",
-          title: "30+ years of experience",
+          title: `${yearsSince()} years of experience`,
           body: "The experience of thousands of conversions is built into every new vehicle - we fixed the typical mistakes back in 1995.",
         },
         {
@@ -713,6 +889,7 @@ export const infoPages: Partial<
           body: "Our best reference: customers come back to us when they expand their fleets.",
         },
       ],
+      quote: fordQuote.en,
       cta: {
         title: "See for yourself!",
         body: "Visit our Szeged facility, or request a quote today.",
@@ -726,7 +903,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "medal",
-          title: "30+ Jahre Erfahrung",
+          title: `${yearsSince()} Jahre Erfahrung`,
           body: "Die Erfahrung aus Tausenden Umbauten steckt in jedem neuen Fahrzeug - die typischen Fehler haben wir schon 1995 behoben.",
         },
         {
@@ -755,6 +932,7 @@ export const infoPages: Partial<
           body: "Unsere beste Referenz: Kunden kommen bei Flottenerweiterungen zu uns zurück.",
         },
       ],
+      quote: fordQuote.de,
       cta: {
         title: "Überzeugen Sie sich selbst!",
         body: "Besuchen Sie unser Werk in Szeged oder fordern Sie noch heute ein Angebot an.",
@@ -895,6 +1073,7 @@ export const infoPages: Partial<
           body: "Megelőző karbantartás és állapotfelmérés - a kis hibák még kicsiként derüljenek ki.",
         },
       ],
+      steps: repairSteps,
       cta: {
         title: "Kár érte a felépítményt?",
         body: "Küldjön fotókat a sérülésről - előzetes javítási ajánlatot adunk akár aznap.",
@@ -946,6 +1125,7 @@ export const infoPages: Partial<
           ],
         },
       ],
+      steps: serviceSteps,
       cta: {
         title: "Kérjen szervizidőpontot!",
         body: "Hívjon minket, vagy írja meg a hibajelenséget - visszahívjuk időponttal.",
