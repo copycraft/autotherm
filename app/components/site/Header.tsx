@@ -133,9 +133,9 @@ export default function Header({
             <Image
               src="/images/autotherm-logo.webp"
               alt="Autotherm"
-              width={148}
-              height={36}
-              className={`h-8 w-auto transition-[filter] duration-300 lg:h-9 ${scrolled || open ? "" : "brightness-0 invert"}`}
+              width={281}
+              height={24}
+              className={`h-5 w-auto transition-[filter] duration-300 lg:h-6 ${scrolled || open ? "" : "brightness-0 invert"}`}
               preload
             />
           </Link>

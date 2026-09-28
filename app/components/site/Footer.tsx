@@ -40,9 +40,9 @@ export default function Footer({ lang }: { lang: Lang }) {
             <Image
               src="/images/autotherm-logo.webp"
               alt="Autotherm"
-              width={160}
-              height={40}
-              className="h-9 w-auto brightness-0 invert"
+              width={281}
+              height={24}
+              className="h-6 w-auto brightness-0 invert"
             />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-300">
               {dict.footer.tagline}
