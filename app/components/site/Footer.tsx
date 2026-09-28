@@ -129,7 +129,9 @@ export default function Footer({ lang }: { lang: Lang }) {
             ))}
           </div>
         </div>
-        <p className="mx-auto max-w-7xl px-4 pb-6 text-center text-[11px] leading-relaxed text-ink-500 sm:px-6 sm:text-left lg:px-8">
+        {/* Bottom padding clears the fixed EU infoblokk, so at the very end of
+            the page it sits below the legal links rather than on top of them. */}
+        <p className="mx-auto max-w-7xl px-4 pb-[calc(var(--infoblokk-h)+1.5rem)] text-center text-[11px] leading-relaxed text-ink-500 sm:px-6 sm:text-left lg:px-8">
           {dict.footer.copyright}
         </p>
       </div>

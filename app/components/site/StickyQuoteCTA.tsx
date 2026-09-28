@@ -36,7 +36,9 @@ export default function StickyQuoteCTA({
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 96, opacity: 0 }}
           transition={{ duration: 0.5, ease: EASE_CINEMATIC }}
-          className="fixed inset-x-0 bottom-[5vh] z-40 flex justify-center px-6 sm:hidden"
+          // Floats above the EU infoblokk in the bottom-right corner, clear of
+          // its close button (which straddles the badge's top edge).
+          className="fixed inset-x-0 bottom-[calc(var(--infoblokk-h)+1.5rem)] z-40 flex justify-center px-6 sm:hidden"
         >
           <motion.div
             whileTap={{ scale: 0.96 }}

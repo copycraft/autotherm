@@ -211,23 +211,42 @@ body {
 }
 
 /* The chrome persists across routes — snapshotting and re-fading it would make
-   the header flicker and the footer slide. Pin both. */
+   the header flicker and the footer slide. Pin both (and the EU infoblokk). */
 ::view-transition-group(site-header),
-::view-transition-group(site-footer) {
+::view-transition-group(site-footer),
+::view-transition-group(site-infoblokk) {
   animation: none;
 }
 ::view-transition-old(site-header),
-::view-transition-old(site-footer) {
+::view-transition-old(site-footer),
+::view-transition-old(site-infoblokk) {
   display: none;
 }
 ::view-transition-new(site-header),
-::view-transition-new(site-footer) {
+::view-transition-new(site-footer),
+::view-transition-new(site-infoblokk) {
   animation: none;
 }
 ::view-transition-group(site-header) {
   z-index: 100;
 }
+::view-transition-group(site-infoblokk) {
+  z-index: 90;
+}
 
+/* ------------------------- Széchenyi 2020 infoblokk ------------------------ */
+
+/* One size for the fixed EU corner badge. The footer and the mobile quote
+   pill read the height from here to keep clear of it. Aspect: 700 × 484. */
+:root {
+  --infoblokk-w: 9.5rem;
+  --infoblokk-h: calc(var(--infoblokk-w) * 484 / 700);
+}
+@media (min-width: 640px) {
+  :root {
+    --infoblokk-w: 17.5rem;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(*),
   ::view-transition-new(*),

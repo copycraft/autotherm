@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import SmoothScroll from "@/app/components/motion/SmoothScroll";
 import Footer from "@/app/components/site/Footer";
 import HeaderContainer from "@/app/components/site/HeaderContainer";
+import Infoblokk from "@/app/components/site/Infoblokk";
 import { LANGS, isLang } from "@/app/lib/constants";
 
 const CookieConsent = dynamic(
@@ -63,6 +64,7 @@ export default async function LangLayout({
           the content dissolves. */}
       <main className="flex-1">{children}</main>
       <Footer lang={lang} />
+      <Infoblokk closeLabel={dict.gallery.close} />
       <StickyQuoteCTA href={quoteHref} label={dict.stickyCta} />
       <CookieConsent
         text={dict.cookie.text}
