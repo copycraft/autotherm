@@ -5,6 +5,7 @@ import AboutPage from "@/app/components/templates/AboutPage";
 import BlogPage from "@/app/components/templates/BlogPage";
 import ContactPage from "@/app/components/templates/ContactPage";
 import GalleryPage from "@/app/components/templates/GalleryPage";
+import GrantsPage from "@/app/components/templates/GrantsPage";
 import LegalPage from "@/app/components/templates/LegalPage";
 import ProductsPage from "@/app/components/templates/ProductsPage";
 import QuotationPage from "@/app/components/templates/QuotationPage";
@@ -153,6 +154,14 @@ export default async function SubPage({
         <>
           {breadcrumb}
           <LegalPage content={legalPages.privacy} lang={lang} dict={dict} />
+        </>
+      );
+
+    case "grants":
+      return (
+        <>
+          {breadcrumb}
+          <GrantsPage heroImage={heroImage} />
         </>
       );
 

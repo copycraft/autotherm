@@ -27,7 +27,8 @@ export type PageKey =
   | "deceasedTransport"
   | "cooledBodies"
   | "terms"
-  | "privacy";
+  | "privacy"
+  | "grants";
 
 export const ROUTES: Record<PageKey, Partial<Record<Lang, string>>> = {
   home: { hu: "", en: "", de: "", ro: "" },
@@ -76,7 +77,15 @@ export const ROUTES: Record<PageKey, Partial<Record<Lang, string>>> = {
   cooledBodies: { en: "cooled-refrigerated-vehicle-bodies" },
   terms: { hu: "altalanos-szerzodesi-feltetelek" },
   privacy: { hu: "adatkezelesi-tajekoztato" },
+  // Reached only through the Széchenyi 2020 infoblokk - see HIDDEN_KEYS.
+  grants: { hu: "ginop-palyazat" },
 };
+
+/**
+ * Routable pages that are deliberately kept out of navigation and the
+ * sitemap. They still render and can be linked to directly.
+ */
+export const HIDDEN_KEYS: ReadonlySet<PageKey> = new Set<PageKey>(["grants"]);
 
 /** Absolute path for a page in a given language, e.g. `/hu/kik-vagyunk`. */
 export function pathFor(key: PageKey, lang: Lang): string | null {

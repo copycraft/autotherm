@@ -6,6 +6,7 @@ import { Fragment, useRef, type ReactNode } from "react";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import { textWord } from "@/app/components/motion/RevealText";
 import Eyebrow from "@/app/components/ui/Eyebrow";
+import { heroImagePosition } from "@/app/lib/hero-images";
 
 /**
  * Shared photographic page header.
@@ -22,8 +23,9 @@ export default function PageHero({
   title,
   lead,
   image,
-  /** Bias the crop upward by default: several plates carry a bottom watermark. */
-  imagePosition = "center 40%",
+  /** Defaults to the plate's registered focal point (hero-images.ts), else a
+      slight upward bias: several older plates carry a bottom watermark. */
+  imagePosition,
   children,
 }: {
   eyebrow?: string;
@@ -64,7 +66,10 @@ export default function PageHero({
             quality={90}
             sizes="100vw"
             className="scale-105 object-cover"
-            style={{ objectPosition: imagePosition }}
+            style={{
+              objectPosition:
+                imagePosition ?? (image && heroImagePosition[image]) ?? "center 40%",
+            }}
           />
         </motion.div>
       )}

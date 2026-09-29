@@ -24,7 +24,6 @@ export default function Hero({
   ctaPrimaryHref,
   ctaSecondary,
   ctaSecondaryHref,
-  badge,
   scrollHint,
   image,
 }: {
@@ -36,7 +35,6 @@ export default function Hero({
   ctaPrimaryHref: string;
   ctaSecondary: string;
   ctaSecondaryHref: string;
-  badge: string;
   scrollHint: string;
   image: string;
 }) {
@@ -148,21 +146,6 @@ export default function Hero({
             <MagneticButton href={ctaSecondaryHref} variant="ghost">
               {ctaSecondary}
             </MagneticButton>
-          </motion.div>
-
-          {/* Credential line — a caption on the photograph, not a floating card. */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.9, ease: EASE_CINEMATIC, delay: 1.05 }}
-            className="mt-12 flex items-center gap-4 border-t border-white/15 pt-5"
-          >
-            <span className="text-frost-300" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-                <path d="M12 2v20M4 6l16 12M20 6L4 18" />
-              </svg>
-            </span>
-            <p className="text-[13px] font-semibold tracking-tight text-ink-200">{badge}</p>
           </motion.div>
         </motion.div>
       </div>

@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { LANGS } from "./lib/constants";
-import { ROUTES, alternatesFor, pathFor, type PageKey } from "./lib/routes";
+import { HIDDEN_KEYS, ROUTES, alternatesFor, pathFor, type PageKey } from "./lib/routes";
 import { siteUrl } from "./lib/seo";
 
 /**
@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
 
   for (const key of Object.keys(ROUTES) as PageKey[]) {
+    if (HIDDEN_KEYS.has(key)) continue;
     const alternates = alternatesFor(key);
     const languageMap = Object.fromEntries(
       Object.entries(alternates).map(([l, p]) => [l, `${siteUrl}${p}`]),

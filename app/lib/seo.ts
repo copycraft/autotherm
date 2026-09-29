@@ -874,6 +874,18 @@ const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
       ],
     },
   },
+  grants: {
+    hu: {
+      title: "GINOP pályázatok – Széchenyi 2020 | Autotherm Kft.",
+      description:
+        "Az Autotherm Kft. Széchenyi 2020 keretében, európai uniós támogatással megvalósított GINOP projektjei: vákuumasztal beszerzése, FlexiCold fejlesztés és informatikai fejlesztés.",
+      extraKeywords: [
+        "GINOP pályázat", "Széchenyi 2020", "Autotherm GINOP",
+        "GINOP-1.2.2-15-2015-01034", "GINOP-2.1.7-15-2016-00674",
+        "GINOP-3.2.2-8-2-4-16-2017-00330", "FlexiCold",
+      ],
+    },
+  },
 };
 
 /* -------------------------------------------------------------------------- */

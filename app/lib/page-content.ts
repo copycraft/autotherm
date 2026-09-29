@@ -238,7 +238,7 @@ export const infoPages: Partial<
       gallery: [
         "/images/be3495baa194.webp",
         "/images/be8bb6a35e77.webp",
-        "/images/d029c0586d66.webp",
+        "/images/sprinter-evaporator.webp",
       ],
       timeline: aboutTimeline.hu,
       quote: aboutQuote.hu,
@@ -298,7 +298,7 @@ export const infoPages: Partial<
       gallery: [
         "/images/be3495baa194.webp",
         "/images/be8bb6a35e77.webp",
-        "/images/d029c0586d66.webp",
+        "/images/sprinter-evaporator.webp",
       ],
       timeline: aboutTimeline.en,
       quote: aboutQuote.en,
@@ -358,7 +358,7 @@ export const infoPages: Partial<
       gallery: [
         "/images/be3495baa194.webp",
         "/images/be8bb6a35e77.webp",
-        "/images/d029c0586d66.webp",
+        "/images/sprinter-evaporator.webp",
       ],
       timeline: aboutTimeline.de,
       quote: aboutQuote.de,
@@ -418,7 +418,7 @@ export const infoPages: Partial<
       gallery: [
         "/images/be3495baa194.webp",
         "/images/be8bb6a35e77.webp",
-        "/images/d029c0586d66.webp",
+        "/images/sprinter-evaporator.webp",
       ],
       timeline: aboutTimeline.ro,
       quote: aboutQuote.ro,
@@ -439,7 +439,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
-          image: "/images/a404687637b3.webp", href: "vanIsolations",
+          image: "/images/sprinter-reefer-front.webp", href: "vanIsolations",
           title: "Hűtős furgonok",
           body: "Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter és Iveco Daily átalakítások - fagyasztott (-18°C…-20°C), hűtött (0°C…+4°C) vagy több hőmérsékletű kivitelben.",
         },
@@ -457,7 +457,7 @@ export const infoPages: Partial<
         },
         {
           icon: "heart",
-          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
+          image: "/images/deceased-platform-side.webp", href: "deceasedTransport",
           title: "Elhunytszállító járművek",
           body: "Kegyeleti szempontból kifogástalan, +18°C-ra temperált, rozsdamentes belső terű járművek, akár többszintes kialakítással.",
         },
@@ -507,7 +507,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
-          image: "/images/a404687637b3.webp", href: "vanIsolations",
+          image: "/images/sprinter-reefer-front.webp", href: "vanIsolations",
           title: "Refrigerated vans",
           body: "Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter and Iveco Daily conversions - frozen (-18°C…-20°C), chilled (0°C…+4°C) or multi-temperature.",
         },
@@ -525,7 +525,7 @@ export const infoPages: Partial<
         },
         {
           icon: "heart",
-          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
+          image: "/images/deceased-platform-side.webp", href: "deceasedTransport",
           title: "Deceased transport vehicles",
           body: "Dignified vehicles tempered to +18°C with stainless steel interiors, up to multi-level configurations.",
         },
@@ -575,7 +575,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
-          image: "/images/a404687637b3.webp", href: "vanIsolations",
+          image: "/images/sprinter-reefer-front.webp", href: "vanIsolations",
           title: "Kühltransporter",
           body: "Umbauten für Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter und Iveco Daily - Tiefkühl (-18°C…-20°C), gekühlt (0°C…+4°C) oder Mehrtemperatur.",
         },
@@ -593,7 +593,7 @@ export const infoPages: Partial<
         },
         {
           icon: "heart",
-          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
+          image: "/images/deceased-platform-side.webp", href: "deceasedTransport",
           title: "Bestattungswagen",
           body: "Würdevolle, auf +18°C temperierte Fahrzeuge mit Edelstahl-Innenausbau, bis zu mehrstöckigen Konfigurationen.",
         },
@@ -643,7 +643,7 @@ export const infoPages: Partial<
       features: [
         {
           icon: "snowflake",
-          image: "/images/a404687637b3.webp", href: "vanIsolations",
+          image: "/images/sprinter-reefer-front.webp", href: "vanIsolations",
           title: "Furgonete frigorifice",
           body: "Conversii Fiat Ducato, Mercedes Sprinter, Ford Transit, Renault Master, VW Crafter și Iveco Daily - congelare (-18°C…-20°C), refrigerare (0°C…+4°C) sau multi-temperatură.",
         },
@@ -661,7 +661,7 @@ export const infoPages: Partial<
         },
         {
           icon: "heart",
-          image: "/images/ae97125a0c4f.webp", href: "deceasedTransport",
+          image: "/images/deceased-platform-side.webp", href: "deceasedTransport",
           title: "Vehicule funerare",
           body: "Vehicule demne, temperate la +18°C, cu interior din inox, până la configurații pe mai multe niveluri.",
         },
@@ -813,7 +813,7 @@ export const infoPages: Partial<
       eyebrow: "Miért mi?",
       title: "Ezért választanak minket évtizedek óta",
       lead: "A hűtőautó bizalmi termék: az áruja, a határidői és a jó híre múlik rajta. Mi ezt a bizalmat 1992 óta építjük - járművenként.",
-      heroImage: "/images/d029c0586d66.webp",
+      heroImage: "/images/sprinter-evaporator.webp",
       features: [
         {
           icon: "medal",
@@ -856,7 +856,7 @@ export const infoPages: Partial<
       eyebrow: "Why us?",
       title: "Why clients have chosen us for decades",
       lead: "A refrigerated vehicle is a product of trust: your cargo, your deadlines and your reputation ride on it. We've been building that trust since 1992 - one vehicle at a time.",
-      heroImage: "/images/d029c0586d66.webp",
+      heroImage: "/images/sprinter-evaporator.webp",
       features: [
         {
           icon: "medal",
@@ -899,7 +899,7 @@ export const infoPages: Partial<
       eyebrow: "Warum gerade wir?",
       title: "Darum wählen uns Kunden seit Jahrzehnten",
       lead: "Ein Kühlfahrzeug ist ein Vertrauensprodukt: Ihre Ware, Ihre Termine und Ihr Ruf hängen daran. Dieses Vertrauen bauen wir seit 1992 auf - Fahrzeug für Fahrzeug.",
-      heroImage: "/images/d029c0586d66.webp",
+      heroImage: "/images/sprinter-evaporator.webp",
       features: [
         {
           icon: "medal",
@@ -1139,7 +1139,7 @@ export const infoPages: Partial<
       eyebrow: "Van isolations",
       title: "Insulation that holds the temperature - and its value",
       lead: "Professional van isolation and cooling unit installation with Carrier and Daikin systems, built for HACCP-compliant cold chain operation.",
-      heroImage: "/images/79539d1d7438.webp",
+      heroImage: "/images/sprinter-reefer-interior.webp",
       features: [
         {
           icon: "layers",
@@ -1189,7 +1189,7 @@ export const infoPages: Partial<
       eyebrow: "Deceased transport",
       title: "Dignity, engineered",
       lead: "Temperature-controlled funeral transport vehicles with stainless steel interiors and multi-level configurations - respectful, hygienic, reliable.",
-      heroImage: "/images/ae97125a0c4f.webp",
+      heroImage: "/images/deceased-interior-portrait.webp",
       features: [
         {
           icon: "thermometer",
@@ -1211,6 +1211,11 @@ export const infoPages: Partial<
           title: "Respectful execution",
           body: "Discreet exterior, dignified interior detailing - built with the sensitivity the task deserves.",
         },
+      ],
+      gallery: [
+        "/images/deceased-platform-out.webp",
+        "/images/deceased-drawer.webp",
+        "/images/deceased-tier-rails.webp",
       ],
       cta: {
         title: "Specialised requirements?",
@@ -1366,6 +1371,11 @@ export interface GalleryImage {
 }
 
 export const galleryImages: GalleryImage[] = [
+  { src: "/images/sprinter-side-door.webp", category: "vans" },
+  { src: "/images/sprinter-rear-three-quarter.webp", category: "vans" },
+  { src: "/images/sprinter-rear-curtain.webp", category: "vans" },
+  { src: "/images/deceased-autotherm-sign.webp", category: "special" },
+  { src: "/images/deceased-interior-long.webp", category: "special" },
   { src: "/images/05b85e04c8d3.webp", category: "vans" },
   { src: "/images/0e90d9793302.webp", category: "vans" },
   { src: "/images/15f4103a8265.webp", category: "vans" },
@@ -1374,7 +1384,6 @@ export const galleryImages: GalleryImage[] = [
   { src: "/images/310373572c3b.webp", category: "vans" },
   { src: "/images/32b4cd177558.webp", category: "vans" },
   { src: "/images/3cc963ec4181.webp", category: "vans" },
-  { src: "/images/45196215f76f.webp", category: "bodies" },
   { src: "/images/4c7a44122714.webp", category: "bodies" },
   { src: "/images/688500d4a01a.webp", category: "bodies" },
   { src: "/images/6be9f7162b3b.webp", category: "bodies" },
@@ -1391,7 +1400,7 @@ export const galleryImages: GalleryImage[] = [
   { src: "/images/b2e2e8348e1b.webp", category: "special" },
   { src: "/images/be3495baa194.webp", category: "special" },
   { src: "/images/be8bb6a35e77.webp", category: "bodies" },
-  { src: "/images/d029c0586d66.webp", category: "vans" },
+  { src: "/images/sprinter-evaporator.webp", category: "vans" },
   { src: "/images/db347b9ebd92.webp", category: "vans" },
   { src: "/images/e4566315cd28.webp", category: "bodies" },
   { src: "/images/e7f13b6c4bc5.webp", category: "special" },

@@ -1,14 +1,7 @@
 import Image from "next/image";
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import ClientLogoStrip from "@/app/components/site/ClientLogoStrip";
 import type { Dict } from "@/app/lib/dictionaries";
-
-const clientLogos = [
-  { src: "/images/pick-logo.jpg", alt: "Pick" },
-  { src: "/images/hovany-logo.jpg", alt: "Hovány" },
-  { src: "/images/elite-logo.png", alt: "Elite" },
-  { src: "/images/monster-logo.png", alt: "Monster" },
-  { src: "/images/carrier-logo.png", alt: "Carrier Transicold" },
-];
 
 export default function PartnersMarquee({ dict }: { dict: Dict }) {
   const partners = [
@@ -93,31 +86,7 @@ export default function PartnersMarquee({ dict }: { dict: Dict }) {
             </RevealItem>
           ))}
         </RevealGroup>
-        <Reveal className="mt-16 overflow-hidden" delay={0.1}>
-          <div className="relative">
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-ink-50 to-transparent"
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-ink-50 to-transparent"
-              aria-hidden="true"
-            />
-            <div className="flex w-max animate-marquee items-center gap-16 py-4">
-              {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <Image
-                  key={`${logo.alt}-${i}`}
-                  src={logo.src}
-                  alt={i < clientLogos.length ? logo.alt : ""}
-                  aria-hidden={i >= clientLogos.length ? true : undefined}
-                  width={120}
-                  height={48}
-                  className="h-10 w-auto opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
-                />
-              ))}
-            </div>
-          </div>
-        </Reveal>
+        <ClientLogoStrip />
       </div>
     </section>
   );

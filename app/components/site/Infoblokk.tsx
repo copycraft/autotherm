@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useSyncExternalStore } from "react";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 
@@ -47,11 +48,26 @@ function dismiss() {
  * hydration without a mismatch.
  *
  * The frame is non-interactive (the transparent area above the arc would
- * otherwise swallow clicks on the content underneath); only the close button
- * takes pointer events. Size comes from --infoblokk-w (globals.css), which the
+ * otherwise swallow clicks on the content underneath). Only the close button
+ * and the badge link take pointer events, and the link is clipped to the
+ * visible panel. It opens the hidden GINOP grants page. Size comes from --infoblokk-w (globals.css), which the
  * footer and mobile quote pill also clear.
  */
-export default function Infoblokk({ closeLabel }: { closeLabel: string }) {
+/**
+ * Outline of the opaque panel below the blue arc, traced from the image's
+ * alpha channel (x in 5% steps). Used to clip the link's clickable area.
+ */
+const PANEL_SHAPE =
+  "polygon(10% 80.4%, 15% 59.7%, 20% 47.5%, 25% 38.2%, 30% 31.2%, 35.1% 25.2%, 40.1% 20.5%, 45.1% 16.5%, 50.1% 13.4%, 55.1% 11%, 60.1% 9.3%, 65.1% 8.1%, 70.1% 7.4%, 75.1% 7.4%, 80.1% 7.9%, 85.1% 8.9%, 90.1% 10.7%, 95.1% 13%, 100% 15.7%, 100% 100%, 10% 100%)";
+
+export default function Infoblokk({
+  href,
+  closeLabel,
+}: {
+  /** The GINOP grants page. */
+  href: string;
+  closeLabel: string;
+}) {
   const dismissed = useSyncExternalStore(subscribe, isDismissed, () => false);
 
   // Once closed, stop the footer and mobile quote pill reserving room for it.
@@ -71,14 +87,22 @@ export default function Infoblokk({ closeLabel }: { closeLabel: string }) {
           className="pointer-events-none fixed right-0 bottom-0 z-30 w-(--infoblokk-w) print:hidden"
           style={{ viewTransitionName: "site-infoblokk" }}
         >
-          <Image
-            src="/images/szechenyi-2020-infoblokk.webp"
-            alt="Széchenyi 2020 – Magyarország Kormánya, Európai Unió, Európai Regionális Fejlesztési Alap – Befektetés a jövőbe"
-            width={700}
-            height={484}
-            sizes="(min-width: 640px) 17.5rem, 9.5rem"
-            className="h-auto w-full"
-          />
+          {/* The link is clipped to the white panel inside the arc, so only
+              the visible badge is clickable - clip-path also clips hit-testing. */}
+          <Link
+            href={href}
+            className="pointer-events-auto block outline-none focus-visible:brightness-90"
+            style={{ clipPath: PANEL_SHAPE }}
+          >
+            <Image
+              src="/images/szechenyi-2020-infoblokk.webp"
+              alt="Széchenyi 2020 – Magyarország Kormánya, Európai Unió, Európai Regionális Fejlesztési Alap – Befektetés a jövőbe. GINOP pályázatok"
+              width={700}
+              height={484}
+              sizes="(min-width: 640px) 17.5rem, 9.5rem"
+              className="h-auto w-full"
+            />
+          </Link>
           {/* Centred on the frame's top edge, above where the arc meets the
               right side - so it never covers the logos. */}
           <button

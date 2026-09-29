@@ -88,7 +88,6 @@ export interface Dict {
       lead: string;
       ctaPrimary: string;
       ctaSecondary: string;
-      badge: string;
     };
     stats: {
       years: string;
@@ -290,7 +289,6 @@ export const dictionaries: Record<Lang, Dict> = {
         lead: `Hűtőautók, hűtős furgonok és egyedi járműfelépítmények gyártása 3,5 tonnáig – hivatalos Carrier Transicold partnerként, ${yearsSince()} év tapasztalattal.`,
         ctaPrimary: "Árajánlatot kérek",
         ctaSecondary: "Történetünk",
-        badge: "Hivatalos Carrier Transicold partner",
       },
       stats: {
         years: "év tapasztalat",
@@ -310,7 +308,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Hűtős furgonok",
             body: "Raktérszigetelés és hűtőberendezés beépítés Fiat, Mercedes, Ford, Renault, VW és Iveco furgonokba – fagyasztott, hűtött vagy több hőmérsékletű kivitelben.",
             href: "products",
-            image: "/images/a404687637b3.webp",
+            image: "/images/sprinter-reefer-front.webp",
           },
           {
             title: "Hűtős doboz felépítmények",
@@ -328,7 +326,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Elhunytszállító járművek",
             body: "Kegyeleti szempontból is kifogástalan, temperált (+18°C), rozsdamentes kialakítású elhunytszállító járművek, akár többszintes kivitelben.",
             href: "products",
-            image: "/images/ae97125a0c4f.webp",
+            image: "/images/deceased-platform-side.webp",
           },
           {
             title: "Carrier raktérhűtő szerviz",
@@ -551,7 +549,6 @@ export const dictionaries: Record<Lang, Dict> = {
         lead: `Refrigerated vans, cooled vehicle bodies and custom commercial conversions up to 3.5 t - built by an official Carrier Transicold partner with ${yearsSince()} years of experience.`,
         ctaPrimary: "Request a quote",
         ctaSecondary: "Our story",
-        badge: "Official Carrier Transicold partner",
       },
       stats: {
         years: "years of experience",
@@ -571,7 +568,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Refrigerated vans",
             body: "Van isolation and cooling unit installation for Fiat, Mercedes, Ford, Renault, VW and Iveco - frozen, chilled or multi-temperature.",
             href: "products",
-            image: "/images/a404687637b3.webp",
+            image: "/images/sprinter-reefer-front.webp",
           },
           {
             title: "Refrigerated box bodies",
@@ -589,7 +586,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Deceased transport vehicles",
             body: "Dignified, temperature-controlled (+18°C) funeral transport vehicles with stainless steel interiors, up to multi-level configurations.",
             href: "deceasedTransport",
-            image: "/images/ae97125a0c4f.webp",
+            image: "/images/deceased-platform-side.webp",
           },
           {
             title: "Van isolations",
@@ -810,7 +807,6 @@ export const dictionaries: Record<Lang, Dict> = {
         lead: `Kühlfahrzeuge, Kühlkoffer und individuelle Nutzfahrzeugaufbauten bis 3,5 t - gebaut von einem offiziellen Carrier Transicold Partner mit ${yearsSince()} Jahren Erfahrung.`,
         ctaPrimary: "Angebot anfordern",
         ctaSecondary: "Unsere Geschichte",
-        badge: "Offizieller Carrier Transicold Partner",
       },
       stats: {
         years: "Jahre Erfahrung",
@@ -830,7 +826,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Kühltransporter",
             body: "Kastenwagenisolierung und Aggregat-Einbau für Fiat, Mercedes, Ford, Renault, VW und Iveco - Tiefkühl-, Kühl- oder Mehrtemperatur-Ausführung.",
             href: "products",
-            image: "/images/a404687637b3.webp",
+            image: "/images/sprinter-reefer-front.webp",
           },
           {
             title: "Kühlkoffer-Aufbauten",
@@ -848,7 +844,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Bestattungswagen",
             body: "Würdevolle, temperierte (+18°C) Bestattungsfahrzeuge mit Edelstahl-Innenausbau, auch mehrstöckig.",
             href: "products",
-            image: "/images/ae97125a0c4f.webp",
+            image: "/images/deceased-platform-side.webp",
           },
           {
             title: "Carrier Verkauf & Service",
@@ -1068,7 +1064,6 @@ export const dictionaries: Record<Lang, Dict> = {
         lead: `Furgonete frigorifice, carosări și suprastructuri comerciale personalizate până la 3,5 t - construite de un partener oficial Carrier Transicold cu ${yearsSince()} de ani de experiență.`,
         ctaPrimary: "Solicită ofertă",
         ctaSecondary: "Povestea noastră",
-        badge: "Partener oficial Carrier Transicold",
       },
       stats: {
         years: "ani de experiență",
@@ -1088,7 +1083,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Furgonete frigorifice",
             body: "Izolare și montaj de unități frigorifice pentru Fiat, Mercedes, Ford, Renault, VW și Iveco - congelare, refrigerare sau multi-temperatură.",
             href: "products",
-            image: "/images/a404687637b3.webp",
+            image: "/images/sprinter-reefer-front.webp",
           },
           {
             title: "Cutii frigorifice",
@@ -1106,7 +1101,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Vehicule funerare",
             body: "Vehicule funerare demne, cu temperatură controlată (+18°C) și interior din inox, până la configurații pe mai multe niveluri.",
             href: "products",
-            image: "/images/ae97125a0c4f.webp",
+            image: "/images/deceased-platform-side.webp",
           },
           {
             title: "Vânzare & service Carrier",

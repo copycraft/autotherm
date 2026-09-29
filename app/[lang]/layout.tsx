@@ -64,7 +64,10 @@ export default async function LangLayout({
           the content dissolves. */}
       <main className="flex-1">{children}</main>
       <Footer lang={lang} />
-      <Infoblokk closeLabel={dict.gallery.close} />
+      <Infoblokk
+        href={pathFor("grants", lang) ?? pathFor("grants", "hu") ?? `/${lang}`}
+        closeLabel={dict.gallery.close}
+      />
       <StickyQuoteCTA href={quoteHref} label={dict.stickyCta} />
       <CookieConsent
         text={dict.cookie.text}

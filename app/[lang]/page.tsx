@@ -16,6 +16,7 @@ import {
   RevealItem,
 } from "@/app/components/motion/Reveal";
 import VelocityStretch from "@/app/components/motion/VelocityStretch";
+import ClientLogoStrip from "@/app/components/site/ClientLogoStrip";
 import SectionHeading from "@/app/components/ui/SectionHeading";
 import { COMPANY, isLang, type Lang } from "@/app/lib/constants";
 import { getDict, type Dict } from "@/app/lib/dictionaries";
@@ -49,7 +50,6 @@ export default async function HomePage({
         ctaPrimaryHref={quoteHref}
         ctaSecondary={dict.home.hero.ctaSecondary}
         ctaSecondaryHref={aboutHref}
-        badge={dict.home.hero.badge}
         scrollHint={dict.common.scrollDown}
         image="/images/688500d4a01a.webp"
       />
@@ -281,13 +281,6 @@ function PartnersSection({ dict }: { dict: Dict }) {
       h: 64,
     },
   ];
-  const clientLogos = [
-    { src: "/images/pick-logo.webp", alt: "Pick" },
-    { src: "/images/hovany-logo.webp", alt: "Hovány" },
-    { src: "/images/elite-logo.webp", alt: "Elite" },
-    { src: "/images/monster-logo.webp", alt: "Monster" },
-    { src: "/images/carrier-logo.webp", alt: "Carrier Transicold" },
-  ];
   return (
     <section className="mesh-light py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -332,31 +325,7 @@ function PartnersSection({ dict }: { dict: Dict }) {
           ))}
         </RevealGroup>
 
-        <Reveal className="mt-16 overflow-hidden" delay={0.1}>
-          <div className="relative">
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-ink-50 to-transparent"
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-ink-50 to-transparent"
-              aria-hidden="true"
-            />
-            <div className="flex w-max animate-marquee items-center gap-16 py-4">
-              {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <Image
-                  key={`${logo.alt}-${i}`}
-                  src={logo.src}
-                  alt={i < clientLogos.length ? logo.alt : ""}
-                  aria-hidden={i >= clientLogos.length ? true : undefined}
-                  width={120}
-                  height={48}
-                  className="h-10 w-auto opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
-                />
-              ))}
-            </div>
-          </div>
-        </Reveal>
+        <ClientLogoStrip />
       </div>
     </section>
   );
