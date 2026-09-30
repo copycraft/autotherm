@@ -1,22 +1,46 @@
 [
   {
-    "src": "/clients/Carrier%20Transicold.webp",
+    "src": "/clients/01-Carrier%20Transicold.svg",
     "name": "Carrier Transicold"
   },
   {
-    "src": "/clients/Elite.webp",
-    "name": "Elite"
+    "src": "/clients/02-Pappas%20Auto.svg",
+    "name": "Pappas Auto"
   },
   {
-    "src": "/clients/Hov%C3%A1ny.webp",
+    "src": "/clients/03-Monster%20Energy.webp",
+    "name": "Monster Energy"
+  },
+  {
+    "src": "/clients/04-Duna%20Aut%C3%B3.svg",
+    "name": "Duna Autó"
+  },
+  {
+    "src": "/clients/05-Pick%20Szeged.webp",
+    "name": "Pick Szeged"
+  },
+  {
+    "src": "/clients/06-Linartech%20Aut%C3%B3.svg",
+    "name": "Linartech Autó"
+  },
+  {
+    "src": "/clients/07-Hov%C3%A1ny.webp",
     "name": "Hovány"
   },
   {
-    "src": "/clients/Monster.webp",
-    "name": "Monster"
+    "src": "/clients/08-MAN%20Kamion%20%C3%A9s%20Busz.svg",
+    "name": "MAN Kamion és Busz"
   },
   {
-    "src": "/clients/Pick.webp",
-    "name": "Pick"
+    "src": "/clients/09-H%C3%BAsfut%C3%A1r.webp",
+    "name": "Húsfutár"
+  },
+  {
+    "src": "/clients/10-Szalay%20Aut%C3%B3h%C3%A1z.webp",
+    "name": "Szalay Autóház"
+  },
+  {
+    "src": "/clients/11-Petr%C3%A1nyi%20Aut%C3%B3.svg",
+    "name": "Petrányi Autó"
   }
 ]

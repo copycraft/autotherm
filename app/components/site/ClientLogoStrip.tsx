@@ -28,7 +28,12 @@ export default function ClientLogoStrip() {
           className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-ink-50 to-transparent"
           aria-hidden="true"
         />
-        <div className="flex w-max animate-marquee items-center gap-16 py-4">
+        {/* ~7s per logo keeps the scroll speed the same however many there are
+            (the stock 38s loop suited five). */}
+        <div
+          className="flex w-max animate-marquee items-center gap-16 py-4"
+          style={{ animationDuration: `${Math.max(30, clientLogos.length * 7)}s` }}
+        >
           {loop.map((logo, i) => {
             const decorative = i >= clientLogos.length;
             return (
@@ -41,9 +46,11 @@ export default function ClientLogoStrip() {
                 // only seed the aspect ratio until the file loads.
                 width={160}
                 height={64}
-                // The image optimiser doesn't process SVG; serve those as-is.
-                unoptimized={logo.src.toLowerCase().endsWith(".svg")}
-                className="h-10 w-auto max-w-[180px] object-contain opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
+                // Logos are served untouched: the optimiser re-encodes at
+                // quality 75, which softens their hard edges, and it doesn't
+                // process SVG at all.
+                unoptimized
+                className="h-10 w-auto max-w-[240px] object-contain opacity-50 grayscale transition-opacity hover:opacity-100 hover:grayscale-0"
               />
             );
           })}
