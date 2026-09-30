@@ -1056,7 +1056,7 @@ export const infoPages: Partial<
       eyebrow: "Járműfelépítmény javítás",
       title: "Sérült felépítmény? Gyorsan rendbe hozzuk.",
       lead: "Károsodott szendvicspanelek cseréje, horpadások, beázások és ajtószerkezetek javítása - akár teljes biztosítói ügyintézéssel.",
-      heroImage: "/images/b2c54816a378.webp",
+      heroImage: "/images/body-repair-floor.webp",
       features: [
         {
           icon: "wrench",
