@@ -7,6 +7,7 @@ import MagneticButton from "@/app/components/motion/MagneticButton";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import { textWord } from "@/app/components/motion/RevealText";
 import Eyebrow from "@/app/components/ui/Eyebrow";
+import { heroImagePosition } from "@/app/lib/hero-images";
 
 /**
  * Photographic homepage hero.
@@ -26,6 +27,7 @@ export default function Hero({
   ctaSecondaryHref,
   scrollHint,
   image,
+  imagePosition,
 }: {
   eyebrow: string;
   titleA: string;
@@ -37,6 +39,8 @@ export default function Hero({
   ctaSecondaryHref: string;
   scrollHint: string;
   image: string;
+  /** Defaults to the plate's registered focal point (hero-images.ts). */
+  imagePosition?: string;
 }) {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -61,7 +65,10 @@ export default function Hero({
           preload
           quality={90}
           sizes="100vw"
-          className="scale-105 object-cover object-center"
+          className="scale-105 object-cover"
+          style={{
+            objectPosition: imagePosition ?? heroImagePosition[image] ?? "50% 50%",
+          }}
         />
       </motion.div>
 

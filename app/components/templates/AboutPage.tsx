@@ -78,6 +78,9 @@ export default async function AboutPage({
                   height={540}
                   sizes="(min-width: 1024px) 36rem, 100vw"
                   className="aspect-[4/3] w-full object-cover"
+                  /* Tuned to the green MAN 3/4-front plate: the cab sits left,
+                     dead centre crops the bumper off. */
+                  style={{ objectPosition: "10% 50%" }}
                 />
               </div>
             </DollyImage>

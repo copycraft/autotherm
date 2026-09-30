@@ -31,11 +31,21 @@ export const HERO_IMAGE_FALLBACK = COLD;
 /**
  * Focal point per plate (CSS object-position). Headers are far wider than a
  * 16:9 photo on desktop and far narrower on phones, so each plate is aimed at
- * its subject instead of the default upper-middle crop.
+ * its subject instead of the default upper-middle crop. Values were picked
+ * off the full plates: on a 390px phone only a ~35–40% vertical slice of a
+ * header plate is visible, so the x value is what matters there.
  */
 export const heroImagePosition: Partial<Record<string, string>> = {
-  [PRODUCT]: "62% 45%",
-  [DETAIL]: "58% 72%",
+  // Fleet lineup: aim at the Iveco cab (roof cooler + plate visible) instead
+  // of the dead-centre gap between two vans.
+  [PLANT]: "62% 60%",
+  // Snow box truck: the subject is the cab on the left; centre shows nothing
+  // but blank box side.
+  [COLD]: "20% 55%",
+  // Black Sprinter: cab front sits right of centre; keep the bumper in frame.
+  [PRODUCT]: "70% 45%",
+  // Roof unit: Carrier badge + hall door 5 sit right; keep them, lose sky.
+  [DETAIL]: "68% 65%",
   [FUNERAL]: "50% 28%",
   [MECHANICAL]: "50% 30%",
 };
