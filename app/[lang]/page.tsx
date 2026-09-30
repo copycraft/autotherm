@@ -241,7 +241,7 @@ function VideoSection({ dict }: { dict: Dict }) {
           <VelocityStretch>
             <SmartVideo
               src="/videos/production.mp4"
-              poster="/images/b2e2e8348e1b.webp"
+              poster="/images/daily-box-front-three-quarter.webp"
               label={dict.home.video.title}
               className="aspect-video w-full shadow-lifted ring-1 ring-white/10"
             />

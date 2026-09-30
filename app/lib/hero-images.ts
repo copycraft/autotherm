@@ -10,7 +10,7 @@ import type { PageKey } from "@/app/lib/routes";
  * on the right.
  *
  * Still waiting on a real shot for the service pages (a technician at work);
- * MECHANICAL is a 1334px stopgap until then.
+ * MECHANICAL is the roof-unit close-up until then.
  */
 
 /** Fleet lined up outside the Szeged plant — the company itself. */
@@ -19,8 +19,8 @@ const PLANT = "/images/688500d4a01a.webp";
 const COLD = "/images/05b85e04c8d3.webp";
 /** Roof-mounted cooling unit on the black Sprinter — detail and build quality. */
 const DETAIL = "/images/header-roof-unit.webp";
-/** Tail lift and underrun detail — mechanical service work. */
-const MECHANICAL = "/images/4c7a44122714.webp";
+/** Carrier roof unit on the Iveco Daily box — the equipment the service pages are about. */
+const MECHANICAL = "/images/header-service-unit.webp";
 /** Black Sprinter refrigerated van in front of the plant — the core product. */
 const PRODUCT = "/images/header-sprinter-plant.webp";
 /** Deceased-transport interior, doors open, lit — the specialist build. */
@@ -37,6 +37,7 @@ export const heroImagePosition: Partial<Record<string, string>> = {
   [PRODUCT]: "62% 45%",
   [DETAIL]: "58% 72%",
   [FUNERAL]: "50% 28%",
+  [MECHANICAL]: "50% 30%",
 };
 
 export const heroImageFor: Partial<Record<PageKey, string>> = {

@@ -320,7 +320,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Haszonjármű felépítmények",
             body: "Alumínium dobozok, platós-ponyvás és speciális felépítmények – alumínium, rozsdamentes vagy üvegszálas belső burkolattal.",
             href: "commercialBodies",
-            image: "/images/8bd1648f42cf.webp",
+            image: "/images/daily-box-doors-open.webp",
           },
           {
             title: "Elhunytszállító járművek",
@@ -332,7 +332,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Carrier raktérhűtő szerviz",
             body: "Xarios és Supra raktérhűtők értékesítése, beépítése és szervizelése – eredeti alkatrészek raktárról, diagnosztika, hibakód-olvasás.",
             href: "service",
-            image: "/images/b05d04ca1183.webp",
+            image: "/images/daily-box-roof-unit.webp",
           },
           {
             title: "Felépítmény javítás",
@@ -580,7 +580,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Commercial vehicle bodies",
             body: "Aluminium boxes, flatbed-tarpaulin and special bodies - with aluminium, stainless steel or GRP interior lining.",
             href: "commercialBodies",
-            image: "/images/8bd1648f42cf.webp",
+            image: "/images/daily-box-doors-open.webp",
           },
           {
             title: "Deceased transport vehicles",
@@ -592,7 +592,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Van isolations",
             body: "Thermal-bridge-free insulation with hygienic washable lining - ready for HACCP-compliant cold chain operation.",
             href: "vanIsolations",
-            image: "/images/b05d04ca1183.webp",
+            image: "/images/daily-box-roof-unit.webp",
           },
           {
             title: "Carrier sales & service",
@@ -838,7 +838,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Nutzfahrzeugaufbauten",
             body: "Aluminiumkoffer, Pritsche mit Plane und Spezialaufbauten - mit Aluminium-, Edelstahl- oder GFK-Innenverkleidung.",
             href: "products",
-            image: "/images/8bd1648f42cf.webp",
+            image: "/images/daily-box-doors-open.webp",
           },
           {
             title: "Bestattungswagen",
@@ -850,7 +850,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Carrier Verkauf & Service",
             body: "Verkauf, Einbau und Service von Carrier Xarios- und Supra-Aggregaten - Originalteile ab Lager, Diagnose, Fehlercode-Auslesen.",
             href: "products",
-            image: "/images/b05d04ca1183.webp",
+            image: "/images/daily-box-roof-unit.webp",
           },
           {
             title: "Aufbau-Reparatur",
@@ -1095,7 +1095,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Suprastructuri comerciale",
             body: "Cutii din aluminiu, platforme cu prelată și suprastructuri speciale - cu interior din aluminiu, inox sau GRP.",
             href: "products",
-            image: "/images/8bd1648f42cf.webp",
+            image: "/images/daily-box-doors-open.webp",
           },
           {
             title: "Vehicule funerare",
@@ -1107,7 +1107,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Vânzare & service Carrier",
             body: "Vânzare, montaj și service pentru unitățile Carrier Xarios și Supra - piese originale din stoc, diagnoză, citire coduri de eroare.",
             href: "products",
-            image: "/images/b05d04ca1183.webp",
+            image: "/images/daily-box-roof-unit.webp",
           },
           {
             title: "Reparații suprastructuri",
