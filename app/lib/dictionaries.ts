@@ -314,7 +314,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Hűtős doboz felépítmények",
             body: "Könnyűszerkezetes szendvicspaneles hűtődobozok 3,5 tonnás alvázakra, Carrier vagy Daikin hűtőegységgel, egyedi méretben.",
             href: "products",
-            image: "/images/82308068d05b.webp",
+            image: "/images/daily-box-front-three-quarter.webp",
           },
           {
             title: "Haszonjármű felépítmények",
@@ -574,7 +574,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Refrigerated box bodies",
             body: "Lightweight sandwich-panel refrigerated boxes for 3.5 t chassis with Carrier or Daikin cooling units, built to custom dimensions.",
             href: "cooledBodies",
-            image: "/images/82308068d05b.webp",
+            image: "/images/daily-box-front-three-quarter.webp",
           },
           {
             title: "Commercial vehicle bodies",
@@ -832,7 +832,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Kühlkoffer-Aufbauten",
             body: "Leichte Sandwichpaneel-Kühlkoffer für 3,5-t-Fahrgestelle mit Carrier- oder Daikin-Aggregaten, in Sondermaßen gefertigt.",
             href: "products",
-            image: "/images/82308068d05b.webp",
+            image: "/images/daily-box-front-three-quarter.webp",
           },
           {
             title: "Nutzfahrzeugaufbauten",
@@ -1089,7 +1089,7 @@ export const dictionaries: Record<Lang, Dict> = {
             title: "Cutii frigorifice",
             body: "Cutii frigorifice ușoare din panouri sandwich pentru șasiuri de 3,5 t, cu unități Carrier sau Daikin, la dimensiuni personalizate.",
             href: "products",
-            image: "/images/82308068d05b.webp",
+            image: "/images/daily-box-front-three-quarter.webp",
           },
           {
             title: "Suprastructuri comerciale",

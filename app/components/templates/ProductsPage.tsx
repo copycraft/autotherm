@@ -109,7 +109,7 @@ export default async function ProductsPage({
                     <h2 className="mt-5 text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl">
                       {p.title}
                     </h2>
-                    <p className="mt-5 max-w-lg text-lg leading-relaxed text-ink-600">{p.body}</p>
+                    <p className="mt-5 max-w-lg text-lg leading-relaxed whitespace-pre-line text-ink-600">{p.body}</p>
                     <div className="mt-8 flex flex-wrap items-center gap-6">
                       {href && (
                         <Link

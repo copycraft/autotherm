@@ -130,10 +130,10 @@ export default async function SolutionPage({
       {content.gallery && content.gallery.length > 0 && (
         <section className="bg-white py-24">
           <RevealGroup className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-3 sm:px-6 lg:px-8">
-            {content.gallery.slice(0, 3).map((src, i) => (
+            {content.gallery.slice(0, 6).map((src, i) => (
               <RevealItem
                 key={src}
-                className={`overflow-hidden rounded-3xl ${i === 1 ? "sm:translate-y-10" : ""}`}
+                className={`overflow-hidden rounded-3xl ${i % 3 === 1 ? "sm:translate-y-10" : ""}`}
               >
                 <Image
                   src={src}
