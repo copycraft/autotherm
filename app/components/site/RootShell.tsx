@@ -27,8 +27,8 @@ export default function RootShell({
 }: {
   lang: string;
   jsonLd?: boolean;
-  /** Palette override, e.g. "eco" for ehutoauto.hu (see globals.css). */
-  theme?: "eco";
+  /** Palette override, e.g. "eco" for ehutoauto.hu, "hearse" for halottszallito.hu (see globals.css). */
+  theme?: "eco" | "hearse";
   children: React.ReactNode;
 }) {
   return (

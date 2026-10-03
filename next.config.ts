@@ -16,14 +16,30 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
  *
  * `has` host values are matched as anchored regexes against the hostname.
  */
-// ehutoauto.vastagkoppany.workers.dev is the second Worker (wrangler env "eco"),
+// ehutoauto.vastagkoppany.workers.dev is the eco Worker (wrangler env "eco"),
 // which previews the eco site online before the ehutoauto.hu DNS moves.
+// halottszallito.vastagkoppany.workers.dev (env "hearse") does the same for
+// halottszallito.hu.
 const ECO_HOST =
   "(?:(?:www\\.)?ehutoauto\\.hu|eco\\.localhost|ehutoauto\\.vastagkoppany\\.workers\\.dev)";
 const MAIN_HOST = "(?:www\\.)?(?:hutoautok|autotherm)\\.hu";
 const onEco = [{ type: "host" as const, value: ECO_HOST }];
 /** Prefixed eco languages; Hungarian is the default and has no prefix. */
 const ECO_PREFIXED = "en|de|ro";
+
+/* ---------------------------- halottszallito.hu --------------------------- */
+
+/**
+ * halottszallito.hu (the hearse / funeral-vehicle site) is served by this
+ * same app from the app/(hearse)/hearse/[lang] route tree - the exact same
+ * pattern as ehutoauto.hu. Host-matched rewrites map its clean paths onto
+ * that tree. hearse.localhost does the same in dev.
+ */
+// halottszallito.vastagkoppany.workers.dev is the third Worker (wrangler env
+// "hearse"), which previews the hearse site online before the DNS moves.
+const HEARSE_HOST =
+  "(?:(?:www\\.)?halottszallito\\.hu|hearse\\.localhost|halottszallito\\.vastagkoppany\\.workers\\.dev)";
+const onHearse = [{ type: "host" as const, value: HEARSE_HOST }];
 
 async function ecoRedirects() {
   return [
@@ -56,6 +72,43 @@ async function ecoRedirects() {
     },
     // Leftover WordPress sample page on the old ehutoauto.hu.
     { source: "/ez-egy-minta-oldal", has: onEco, destination: "/", permanent: true },
+    // The hearse tree is never a public URL on the eco domain.
+    { source: "/hearse", has: onEco, destination: "/", permanent: true },
+    { source: "/hearse/:path*", has: onEco, destination: "/", permanent: true },
+  ];
+}
+
+async function hearseRedirects() {
+  return [
+    // One canonical host, as on the main site.
+    {
+      source: "/:path*",
+      has: [{ type: "host" as const, value: "www\\.halottszallito\\.hu" }],
+      destination: "https://halottszallito.hu/:path*",
+      permanent: true,
+    },
+    // Hungarian is unprefixed, so a /hu prefix just drops off.
+    { source: "/hu", has: onHearse, destination: "/", permanent: true },
+    { source: "/hu/:path*", has: onHearse, destination: "/:path*", permanent: true },
+    // The internal trees are never public URLs on the hearse domain.
+    { source: "/hearse/hu", has: onHearse, destination: "/", permanent: true },
+    { source: "/hearse/hu/:path*", has: onHearse, destination: "/:path*", permanent: true },
+    { source: "/hearse", has: onHearse, destination: "/", permanent: true },
+    { source: "/hearse/:path*", has: onHearse, destination: "/:path*", permanent: true },
+    { source: "/eco", has: onHearse, destination: "/", permanent: true },
+    { source: "/eco/:path*", has: onHearse, destination: "/", permanent: true },
+    {
+      source: "/hearse/hu/:path*",
+      has: [{ type: "host" as const, value: MAIN_HOST }],
+      destination: "https://halottszallito.hu/:path*",
+      permanent: true,
+    },
+    {
+      source: "/hearse/:path*",
+      has: [{ type: "host" as const, value: MAIN_HOST }],
+      destination: "https://halottszallito.hu/:path*",
+      permanent: true,
+    },
   ];
 }
 
@@ -73,16 +126,37 @@ async function ecoRewrites() {
     // Every other page path is Hungarian; framework files, the API and anything
     // with a file extension (images, fonts, logos) are served as they are.
     {
-      source: `/:path((?!_next/|api/|eco(?:/|$)|(?:hu|${ECO_PREFIXED})(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)`,
+      source: `/:path((?!_next/|api/|eco(?:/|$)|hearse(?:/|$)|(?:hu|${ECO_PREFIXED})(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)`,
       has: onEco,
       destination: "/eco/hu/:path",
     },
   ];
 }
 
+async function hearseRewrites() {
+  return [
+    { source: "/", has: onHearse, destination: "/hearse/hu" },
+    { source: "/sitemap.xml", has: onHearse, destination: "/hearse/sitemap.xml" },
+    { source: "/robots.txt", has: onHearse, destination: "/hearse/robots.txt" },
+    // The hearse site's own icon (app/favicon.ico is the main site's).
+    { source: "/favicon.ico", has: onHearse, destination: "/images/hearse/favicon-32.png" },
+    // English, German and Romanian: "/en", "/en/why-us". Deeper paths go
+    // to the hearse tree too (and 404 there) so they never reach main-site pages.
+    { source: `/:lang(${ECO_PREFIXED})`, has: onHearse, destination: "/hearse/:lang" },
+    { source: `/:lang(${ECO_PREFIXED})/:path+`, has: onHearse, destination: "/hearse/:lang/:path+" },
+    // Every other page path is Hungarian; framework files, the API and anything
+    // with a file extension (images, fonts, logos) are served as they are.
+    {
+      source: `/:path((?!_next/|api/|hearse(?:/|$)|eco(?:/|$)|(?:hu|${ECO_PREFIXED})(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)`,
+      has: onHearse,
+      destination: "/hearse/hu/:path",
+    },
+  ];
+}
+
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["192.168.2.72", "eco.localhost"],
-  redirects: ecoRedirects,
+  allowedDevOrigins: ["192.168.2.72", "eco.localhost", "hearse.localhost"],
+  redirects: async () => [...(await ecoRedirects()), ...(await hearseRedirects())],
   // The workers.dev addresses are previews; keep them out of search results
   // so they never compete with hutoautok.hu / ehutoauto.hu.
   headers: async () => [
@@ -92,7 +166,7 @@ const nextConfig: NextConfig = {
       headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
     },
   ],
-  rewrites: async () => ({ beforeFiles: await ecoRewrites(), afterFiles: [], fallback: [] }),
+  rewrites: async () => ({ beforeFiles: [...(await ecoRewrites()), ...(await hearseRewrites())], afterFiles: [], fallback: [] }),
   experimental: {
     globalNotFound: true,
     // Enables React's <ViewTransition> during route navigation, so pages

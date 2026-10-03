@@ -121,6 +121,50 @@ html[data-theme="eco"] {
     0 6px 22px rgba(5, 150, 105, 0.24);
 }
 
+/* --------------------- Hearse theme (halottszallito.hu) -------------------- */
+
+/* The hearse site shares every component with the main site; it re-tints
+   them by redefining the palette tokens. Charcoal ink, deep bronze brand
+   (brand-600 keeps white button text at contrast), muted gold accent.
+   Light sections stay light; dark sections turn near-black. */
+html[data-theme="hearse"] {
+  /* Brand - deep bronze / antique gold */
+  --color-brand-50: #faf7ec;
+  --color-brand-100: #f3ead0;
+  --color-brand-200: #e6d49e;
+  --color-brand-300: #d7ba6d;
+  --color-brand-400: #c9a24a;
+  --color-brand-500: #a98530;
+  --color-brand-600: #7d6220;
+  --color-brand-700: #66501d;
+  --color-brand-800: #55431e;
+  --color-brand-900: #46381c;
+  --color-brand-950: #241b08;
+
+  /* Ink - charcoal neutrals, near-black at the dark end */
+  --color-ink-50: #f6f6f5;
+  --color-ink-100: #e9e9e7;
+  --color-ink-200: #d3d3cf;
+  --color-ink-300: #aeaea6;
+  --color-ink-400: #87867d;
+  --color-ink-500: #64635c;
+  --color-ink-600: #4c4b45;
+  --color-ink-700: #3c3b36;
+  --color-ink-800: #2a2925;
+  --color-ink-900: #141311;
+  --color-ink-950: #080807;
+
+  /* Frost - pale gold accent */
+  --color-frost-100: #faf3dd;
+  --color-frost-200: #f2e3b3;
+  --color-frost-300: #e7cd7e;
+  --color-frost-400: #dbb654;
+  --color-frost-500: #c9a24a;
+
+  --shadow-glow: 0 0 0 1px rgba(169, 133, 48, 0.25),
+    0 6px 22px rgba(169, 133, 48, 0.22);
+}
+
 /* --------------------------------- Base ---------------------------------- */
 
 html {

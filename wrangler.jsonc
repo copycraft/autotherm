@@ -7,10 +7,11 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS",
-    // Run the app first for /favicon.ico so the eco host can rewrite it to its
-    // own icon (assets otherwise bypass routing); the rewrite target must be
-    // listed too, as OpenNext only serves listed paths from the routing layer.
-    "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png"]
+    // Run the app first for /favicon.ico so the eco and hearse hosts can
+    // rewrite it to their own icons (assets otherwise bypass routing); the
+    // rewrite targets must be listed too, as OpenNext only serves listed
+    // paths from the routing layer.
+    "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png"]
   },
   "services": [
     {
@@ -26,8 +27,8 @@
     }
   ],
   "env": {
-    // Second Worker for ehutoauto.hu, deployed from the same build
-    // (`npm run deploy` publishes both). Its workers.dev address,
+    // Eco Worker for ehutoauto.hu, deployed from the same build
+    // (`npm run deploy` publishes all three). Its workers.dev address,
     // ehutoauto.vastagkoppany.workers.dev, is an eco host in next.config.ts,
     // so it previews the eco site before the ehutoauto.hu DNS moves.
     // Bindings are not inherited by environments, hence repeated here; the
@@ -40,12 +41,39 @@
         // Run the app first for /favicon.ico so the eco host can rewrite it to its
         // own icon (assets otherwise bypass routing); the rewrite target must be
         // listed too, as OpenNext only serves listed paths from the routing layer.
-        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png"]
+        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png"]
       },
       "services": [
         {
           "binding": "WORKER_SELF_REFERENCE",
           "service": "ehutoauto"
+        }
+      ],
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "autotherm-db",
+          "database_id": "ed4282f5-5910-44ee-9645-796a725da3e9"
+        }
+      ]
+    },
+    // Third Worker for halottszallito.hu, deployed from the same build
+    // (`npm run deploy` publishes all three). Its workers.dev address,
+    // halottszallito.vastagkoppany.workers.dev, is a hearse host in
+    // next.config.ts, so it previews the hearse site before the DNS moves.
+    // Bindings are not inherited by environments, hence repeated here; the
+    // database is shared so enquiries and admin settings stay in one place.
+    "hearse": {
+      "name": "halottszallito",
+      "assets": {
+        "directory": ".open-next/assets",
+        "binding": "ASSETS",
+        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png"]
+      },
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "halottszallito"
         }
       ],
       "d1_databases": [

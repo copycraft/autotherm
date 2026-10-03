@@ -102,6 +102,36 @@ export function EcoWordmark({ light }: { light: boolean }) {
   );
 }
 
+/** Halottszállító wordmark: gold "A" mark + name, with a "by Autotherm" endorsement. */
+export function HearseWordmark({ light }: { light: boolean }) {
+  return (
+    <span className="flex items-center gap-2.5" aria-hidden="true">
+      <svg
+        viewBox="0 0 32 32"
+        className={`h-8 w-8 shrink-0 transition-colors duration-300 lg:h-9 lg:w-9 ${light ? "text-frost-300" : "text-brand-600"}`}
+      >
+        <circle cx="16" cy="16" r="14.5" fill="none" stroke="currentColor" strokeWidth="2" />
+        <path
+          fill="currentColor"
+          d="M16 8l6.5 14h-3.4L16 14.6 12.9 22H9.5L16 8z"
+        />
+      </svg>
+      <span className="flex flex-col leading-none">
+        <span
+          className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
+        >
+          Halott<span className={light ? "text-frost-300" : "text-brand-600"}>szállító</span>
+        </span>
+        <span
+          className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
+        >
+          by Autotherm
+        </span>
+      </span>
+    </span>
+  );
+}
+
 export default function Header({
   homeHref,
   nav,
@@ -114,8 +144,8 @@ export default function Header({
   closeMenuLabel,
   brand = "autotherm",
 }: {
-  /** "eco" swaps the logo for the eHűtőautó wordmark (ehutoauto.hu). */
-  brand?: "autotherm" | "eco";
+  /** "eco" swaps the logo for the eHűtőautó wordmark (ehutoauto.hu); "hearse" for the Halottszállító wordmark (halottszallito.hu). */
+  brand?: "autotherm" | "eco" | "hearse";
   homeHref: string;
   nav: NavEntry[];
   langs: LangEntry[];
@@ -167,10 +197,12 @@ export default function Header({
           <Link
             href={homeHref}
             className="flex shrink-0 items-center gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-            aria-label={brand === "eco" ? "eHűtőautó – Autotherm" : "Autotherm"}
+            aria-label={brand === "eco" ? "eHűtőautó – Autotherm" : brand === "hearse" ? "Halottszállító – Autotherm" : "Autotherm"}
           >
             {brand === "eco" ? (
               <EcoWordmark light={!(scrolled || open)} />
+            ) : brand === "hearse" ? (
+              <HearseWordmark light={!(scrolled || open)} />
             ) : (
               <Image
                 src="/images/autotherm-logo.webp"
