@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import {
   ADS_ID,
   GA_ID,
+  META_PIXEL_ID,
   noteLanding,
   persistAttribution,
   trackEvent,
@@ -54,6 +55,41 @@ function loadGoogle() {
   document.head.appendChild(s);
 }
 
+let metaLoaded = false;
+
+/** Meta (Facebook / Instagram) Pixel - only loaded after consent. */
+function loadMeta() {
+  if (metaLoaded || !META_PIXEL_ID) return;
+  metaLoaded = true;
+
+  // Port of Meta's official snippet: a queueing stub until fbevents.js loads.
+  type Fbq = ((...a: unknown[]) => void) & {
+    callMethod?: (...a: unknown[]) => void;
+    queue: unknown[];
+    push: unknown;
+    loaded: boolean;
+    version: string;
+  };
+  const fbq = function () {
+    // eslint-disable-next-line prefer-spread, prefer-rest-params
+    if (fbq.callMethod) fbq.callMethod.apply(fbq, arguments as unknown as unknown[]);
+    // eslint-disable-next-line prefer-rest-params
+    else fbq.queue.push(arguments);
+  } as Fbq;
+  fbq.push = fbq;
+  fbq.loaded = true;
+  fbq.version = "2.0";
+  fbq.queue = [];
+  window.fbq = fbq;
+
+  const s = document.createElement("script");
+  s.async = true;
+  s.src = "https://connect.facebook.net/en_US/fbevents.js";
+  document.head.appendChild(s);
+  fbq("init", META_PIXEL_ID);
+  fbq("track", "PageView");
+}
+
 function revoke() {
   if (!loaded || !window.gtag) return;
   window.gtag("consent", "update", {
@@ -72,6 +108,7 @@ export default function Analytics() {
       if (readConsent() === "accepted") {
         persistAttribution();
         loadGoogle();
+        loadMeta();
       } else {
         revoke();
       }

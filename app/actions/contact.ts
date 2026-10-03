@@ -1,5 +1,7 @@
 "use server";
 
+import type { ContactFormState } from "@/app/lib/contact-state";
+import { recordLead } from "@/app/lib/leads";
 import { sendOrder } from "@/app/lib/orders-api";
 import { escapeHtml, sendNotificationEmail } from "@/app/lib/email";
 
@@ -8,13 +10,6 @@ import { escapeHtml, sendNotificationEmail } from "@/app/lib/email";
  * Consumed by useActionState - forms function natively without JavaScript
  * (progressive enhancement), and get optimistic pending UI with it.
  */
-
-export interface ContactFormState {
-  status: "idle" | "success" | "error";
-  invalid?: string[];
-}
-
-export const initialContactState: ContactFormState = { status: "idle" };
 
 function asText(value: FormDataEntryValue | null): string {
   return typeof value === "string" ? value.trim() : "";
@@ -82,6 +77,12 @@ export async function submitContact(
     });
 
     if (!saved && !mailed) return { status: "error" };
+
+    await recordLead({
+      attributionJson: asText(formData.get("attribution_json")),
+      formType: asText(formData.get("form_type")),
+      lang,
+    });
     return { status: "success" };
   } catch (err) {
     console.error("[action] submitContact failed:", err);

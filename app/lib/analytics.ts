@@ -10,6 +10,7 @@ import { readConsent } from "@/app/lib/consent";
 
 export const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "";
 export const ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "";
+export const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
 
 const ATTR_KEY = "autotherm-attribution";
 
@@ -40,6 +41,7 @@ declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
   }
 }
 
@@ -150,8 +152,22 @@ export function attributionSummary(): string {
   }
 }
 
+/** Structured first/last touch as JSON for the server ("" without consent or data). */
+export function attributionJson(): string {
+  if (readConsent() !== "accepted") return "";
+  try {
+    return window.localStorage.getItem(ATTR_KEY) ?? "";
+  } catch {
+    return "";
+  }
+}
+
 /** Send a GA4 event; silently does nothing unless analytics is loaded. */
 export function trackEvent(name: string, params: Record<string, unknown> = {}): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", name, params);
+  if (typeof window === "undefined") return;
+  if (typeof window.gtag === "function") window.gtag("event", name, params);
+  // Meta: a finished enquiry is the "Lead" standard event.
+  if (name === "generate_lead" && typeof window.fbq === "function") {
+    window.fbq("track", "Lead");
+  }
 }

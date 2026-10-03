@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import type { BlogPost, Submission } from "@/app/lib/db";
+import CampaignsPanel from "./CampaignsPanel";
 
 /**
  * Admin dashboard - /at-admin (robots-disallowed).
@@ -17,7 +18,7 @@ const LANG_FIELDS = [
   { code: "ro", label: "Română" },
 ] as const;
 
-type Tab = "submissions" | "blog" | "settings";
+type Tab = "submissions" | "blog" | "campaigns" | "settings";
 
 interface PostDraft {
   id: number | null;
@@ -240,6 +241,7 @@ export default function AdminPage() {
             [
               ["submissions", `Submissions (${submissions.length})`],
               ["blog", `Blog (${posts.length})`],
+              ["campaigns", "Campaigns"],
               ["settings", "Settings"],
             ] as [Tab, string][]
           ).map(([id, label]) => (
@@ -294,6 +296,8 @@ export default function AdminPage() {
             ))}
           </div>
         )}
+
+        {tab === "campaigns" && <CampaignsPanel authHeader={authHeader} />}
 
         {tab === "blog" && (
           <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-2">

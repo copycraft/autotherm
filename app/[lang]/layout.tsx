@@ -37,15 +37,8 @@ export async function generateMetadata({
   if (!isLang(lang)) return {};
   const home = buildPageMetadata("home", lang);
   // This layout is the root layout, so the site-wide defaults live here too.
-  // The "%s | Autotherm" template applies to the pages below this layout.
-  return {
-    ...rootMetadata,
-    ...home,
-    title: {
-      template: "%s | Autotherm",
-      default: typeof home.title === "string" ? home.title : "Autotherm",
-    },
-  };
+  // No title template: every page title already carries its own brand suffix.
+  return { ...rootMetadata, ...home };
 }
 
 export default async function LangLayout({

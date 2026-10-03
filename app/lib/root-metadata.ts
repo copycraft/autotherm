@@ -46,9 +46,9 @@ export const rootMetadata: Metadata = {
     url: siteUrl,
     images: [
       {
-        url: `${siteUrl}/images/autotherm-logo.webp`,
-        width: 800,
-        height: 600,
+        url: `${siteUrl}/images/og-banner.jpg`,
+        width: 1200,
+        height: 630,
         alt: "Autotherm",
       },
     ],
@@ -58,7 +58,7 @@ export const rootMetadata: Metadata = {
     title: "Autotherm – Refrigerated vehicle manufacturer since 1992",
     description:
       "Autotherm: manufacturer of refrigerated vehicles since 1992. Carrier Transicold partner.",
-    images: [`${siteUrl}/images/autotherm-logo.webp`],
+    images: [`${siteUrl}/images/og-banner.jpg`],
   },
   verification: {
     google: "G-DDQGPSF5SD",

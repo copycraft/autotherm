@@ -2,14 +2,12 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useActionState, useEffect, useRef, useState } from "react";
-import { attributionSummary, trackEvent } from "@/app/lib/analytics";
+import { attributionJson, attributionSummary, trackEvent } from "@/app/lib/analytics";
 import { CONSENT_EVENT } from "@/app/lib/consent";
 import { useFormStatus } from "react-dom";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
-import {
-  initialContactState,
-  submitContact,
-} from "@/app/actions/contact";
+import { submitContact } from "@/app/actions/contact";
+import { initialContactState } from "@/app/lib/contact-state";
 import { useWebMCPTool } from "@/app/lib/webmcp";
 import type { Dict } from "@/app/lib/dictionaries";
 
@@ -65,9 +63,14 @@ export default function ContactForm({
   // Where the visitor came from (ad / search / referral). Empty unless they
   // accepted cookies; sent along with the enquiry so leads can be traced.
   const [attribution, setAttribution] = useState("");
+  const [attributionData, setAttributionData] = useState("");
   useEffect(() => {
     // Deferred so Analytics has persisted the touch before we read it.
-    const sync = () => setTimeout(() => setAttribution(attributionSummary()), 0);
+    const sync = () =>
+      setTimeout(() => {
+        setAttribution(attributionSummary());
+        setAttributionData(attributionJson());
+      }, 0);
     sync();
     window.addEventListener(CONSENT_EVENT, sync);
     return () => window.removeEventListener(CONSENT_EVENT, sync);
@@ -203,6 +206,8 @@ export default function ContactForm({
       <input type="hidden" name="page" value={page} />
       <input type="hidden" name="lang" value={lang} />
       <input type="hidden" name="attribution" value={attribution} />
+      <input type="hidden" name="attribution_json" value={attributionData} />
+      <input type="hidden" name="form_type" value={quotation ? "quotation" : "contact"} />
       {configuration && (
         <input type="hidden" name="configuration" value={configuration} />
       )}

@@ -141,6 +141,23 @@ CREATE TABLE IF NOT EXISTS posts (
   created_at TEXT DEFAULT (datetime('now', '+1 hour')),
   updated_at TEXT DEFAULT (datetime('now', '+1 hour'))
 );
+CREATE TABLE IF NOT EXISTS leads (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created_at TEXT DEFAULT (datetime('now', '+1 hour')),
+  form_type TEXT DEFAULT '',
+  lang TEXT DEFAULT '',
+  source TEXT DEFAULT '',
+  medium TEXT DEFAULT '',
+  campaign TEXT DEFAULT '',
+  term TEXT DEFAULT '',
+  content TEXT DEFAULT '',
+  click_id TEXT DEFAULT '',
+  landing TEXT DEFAULT '',
+  first_source TEXT DEFAULT '',
+  first_medium TEXT DEFAULT '',
+  first_campaign TEXT DEFAULT ''
+);
+CREATE INDEX IF NOT EXISTS idx_leads_created ON leads (created_at);
 `;
 
 // Deliberately typed loosely: better-sqlite3 is only present in local dev.
@@ -208,6 +225,70 @@ export async function getAllSubmissions(): Promise<Submission[]> {
     return db.prepare(sql).all() as Submission[];
   } catch (err) {
     console.error("[db] getAllSubmissions failed:", err);
+    return [];
+  }
+}
+
+/* ----------------------------------- Leads ---------------------------------- */
+
+/**
+ * Campaign attribution per lead. Holds traffic-source fields only (no name,
+ * e-mail or message), so it can be kept and reported on freely. Rows exist
+ * only for visitors who accepted cookies; the rest never reach this table.
+ */
+export interface LeadInput {
+  form_type: string;
+  lang: string;
+  source: string;
+  medium: string;
+  campaign: string;
+  term: string;
+  content: string;
+  click_id: string;
+  landing: string;
+  first_source: string;
+  first_medium: string;
+  first_campaign: string;
+}
+
+export interface LeadRow extends LeadInput {
+  id: number;
+  created_at: string;
+}
+
+export async function insertLead(input: LeadInput): Promise<boolean> {
+  const cols = Object.keys(input) as (keyof LeadInput)[];
+  const sql = `INSERT INTO leads (${cols.join(", ")}) VALUES (${cols.map(() => "?").join(", ")})`;
+  const args = cols.map((c) => input[c]);
+  try {
+    const d1 = getD1();
+    if (d1) {
+      await d1.prepare(sql).bind(...args).run();
+      return true;
+    }
+    const db = await getSqlite();
+    db.prepare(sql).run(...args);
+    return true;
+  } catch (err) {
+    console.error("[db] insertLead failed:", err);
+    return false;
+  }
+}
+
+/** Leads from the last `days` days, newest first. */
+export async function getRecentLeads(days = 90): Promise<LeadRow[]> {
+  const sql = `SELECT * FROM leads WHERE created_at >= datetime('now', '+1 hour', ?) ORDER BY id DESC LIMIT 2000`;
+  const arg = `-${Math.max(1, Math.floor(days))} days`;
+  try {
+    const d1 = getD1();
+    if (d1) {
+      const { results } = await d1.prepare(sql).bind(arg).all<LeadRow>();
+      return results ?? [];
+    }
+    const db = await getSqlite();
+    return db.prepare(sql).all(arg) as LeadRow[];
+  } catch (err) {
+    console.error("[db] getRecentLeads failed:", err);
     return [];
   }
 }

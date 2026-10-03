@@ -29,3 +29,22 @@ CREATE TABLE IF NOT EXISTS posts (
   created_at TEXT DEFAULT (datetime('now', '+1 hour')),
   updated_at TEXT DEFAULT (datetime('now', '+1 hour'))
 );
+
+-- Campaign attribution per lead. No personal data: only traffic-source fields.
+CREATE TABLE IF NOT EXISTS leads (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  created_at TEXT DEFAULT (datetime('now', '+1 hour')),
+  form_type TEXT DEFAULT '',
+  lang TEXT DEFAULT '',
+  source TEXT DEFAULT '',
+  medium TEXT DEFAULT '',
+  campaign TEXT DEFAULT '',
+  term TEXT DEFAULT '',
+  content TEXT DEFAULT '',
+  click_id TEXT DEFAULT '',
+  landing TEXT DEFAULT '',
+  first_source TEXT DEFAULT '',
+  first_medium TEXT DEFAULT '',
+  first_campaign TEXT DEFAULT ''
+);
+CREATE INDEX IF NOT EXISTS idx_leads_created ON leads (created_at);

@@ -939,10 +939,10 @@ export function buildPageMetadata(key: PageKey, lang: Lang): Metadata {
       url: canonical,
       images: [
         {
-          url: absoluteUrl("/images/autotherm-logo.webp"),
-          width: 800,
-          height: 600,
-          alt: "Autotherm",
+          url: absoluteUrl("/images/og-banner.jpg"),
+          width: 1200,
+          height: 630,
+          alt: "Autotherm – hűtőautó gyártás 1992 óta",
         },
       ],
     },
@@ -950,7 +950,7 @@ export function buildPageMetadata(key: PageKey, lang: Lang): Metadata {
       card: "summary_large_image",
       title: entry.title,
       description: entry.description,
-      images: [absoluteUrl("/images/autotherm-logo.webp")],
+      images: [absoluteUrl("/images/og-banner.jpg")],
     },
   };
 }
