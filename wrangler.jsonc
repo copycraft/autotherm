@@ -6,7 +6,11 @@
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
-    "binding": "ASSETS"
+    "binding": "ASSETS",
+    // Run the app first for /favicon.ico so the eco host can rewrite it to its
+    // own icon (assets otherwise bypass routing); the rewrite target must be
+    // listed too, as OpenNext only serves listed paths from the routing layer.
+    "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png"]
   },
   "services": [
     {
@@ -32,7 +36,11 @@
       "name": "ehutoauto",
       "assets": {
         "directory": ".open-next/assets",
-        "binding": "ASSETS"
+        "binding": "ASSETS",
+        // Run the app first for /favicon.ico so the eco host can rewrite it to its
+        // own icon (assets otherwise bypass routing); the rewrite target must be
+        // listed too, as OpenNext only serves listed paths from the routing layer.
+        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png"]
       },
       "services": [
         {
