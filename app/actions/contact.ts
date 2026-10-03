@@ -1,6 +1,6 @@
 "use server";
 
-import { insertSubmission } from "@/app/lib/db";
+import { sendOrder } from "@/app/lib/orders-api";
 import { escapeHtml, sendNotificationEmail } from "@/app/lib/email";
 
 /**
@@ -56,9 +56,9 @@ export async function submitContact(
     if (attribution) parts.push(`--\n${attribution}`);
     const fullMessage = parts.join("\n\n");
 
-    // Persist first (best effort), notify second - neither failure is fatal
+    // Forward to the orders API first (best effort), notify second - neither failure is fatal
     // for the other.
-    const saved = await insertSubmission({
+    const saved = await sendOrder({
       name,
       email,
       phone: phone || null,

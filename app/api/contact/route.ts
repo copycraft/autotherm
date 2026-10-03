@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { insertSubmission } from "@/app/lib/db";
+import { sendOrder } from "@/app/lib/orders-api";
 import { escapeHtml, sendNotificationEmail } from "@/app/lib/email";
 
 /**
@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const saved = await insertSubmission({
+    const saved = await sendOrder({
       name,
       email,
       phone: body.phone?.trim() || null,

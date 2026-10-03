@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { connection } from "next/server";
 import AboutPage from "@/app/components/templates/AboutPage";
-import BlogPage from "@/app/components/templates/BlogPage";
 import ContactPage from "@/app/components/templates/ContactPage";
 import GalleryPage from "@/app/components/templates/GalleryPage";
 import GrantsPage from "@/app/components/templates/GrantsPage";
@@ -16,7 +14,6 @@ import CtaBand from "@/app/components/site/CtaBand";
 import PartnersMarquee from "@/app/components/site/PartnersMarquee";
 import StatsBand from "@/app/components/site/StatsBand";
 import { LANGS, isLang, type Lang } from "@/app/lib/constants";
-import { getPublishedPosts } from "@/app/lib/db";
 import { getDict } from "@/app/lib/dictionaries";
 import { HERO_IMAGE_FALLBACK, heroImageFor } from "@/app/lib/hero-images";
 import { BreadcrumbJsonLd } from "@/app/lib/json-ld";
@@ -128,18 +125,6 @@ export default async function SubPage({
           <QuotationPage lang={lang} dict={dict} page={path} heroImage={heroImage} />
         </>
       );
-
-    case "blog": {
-      // Force request-time rendering - posts come live from D1.
-      await connection();
-      const posts = await getPublishedPosts();
-      return (
-        <>
-          {breadcrumb}
-          <BlogPage dict={dict} lang={lang} posts={posts} heroImage={heroImage} />
-        </>
-      );
-    }
 
     case "terms":
       return (
