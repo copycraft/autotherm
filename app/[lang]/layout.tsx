@@ -17,7 +17,12 @@ const StickyQuoteCTA = dynamic(
 );
 import { dictionaries, getDict } from "@/app/lib/dictionaries";
 import { pathFor } from "@/app/lib/routes";
+import RootShell from "@/app/components/site/RootShell";
+import { rootMetadata, rootViewport } from "@/app/lib/root-metadata";
 import { buildPageMetadata } from "@/app/lib/seo";
+
+export const viewport = rootViewport;
+
 
 export function generateStaticParams(): { lang: string }[] {
   return LANGS.map((lang) => ({ lang }));
@@ -30,7 +35,17 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { lang } = await params;
   if (!isLang(lang)) return {};
-  return buildPageMetadata("home", lang);
+  const home = buildPageMetadata("home", lang);
+  // This layout is the root layout, so the site-wide defaults live here too.
+  // The "%s | Autotherm" template applies to the pages below this layout.
+  return {
+    ...rootMetadata,
+    ...home,
+    title: {
+      template: "%s | Autotherm",
+      default: typeof home.title === "string" ? home.title : "Autotherm",
+    },
+  };
 }
 
 export default async function LangLayout({
@@ -50,6 +65,7 @@ export default async function LangLayout({
   const quoteHref = pathFor("quotation", lang) ?? `/${lang}`;
 
   return (
+    <RootShell lang={lang}>
     <SmoothScroll>
       <HeaderContainer
         lang={lang}
@@ -77,5 +93,6 @@ export default async function LangLayout({
       />
       <Analytics />
     </SmoothScroll>
+    </RootShell>
   );
 }

@@ -1,20 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Raleway } from "next/font/google";
-import "./globals.css";
-import {
-  LocalBusinessJsonLd,
-  OrganizationJsonLd,
-  ProductJsonLd,
-  WebSiteJsonLd,
-} from "@/app/lib/json-ld";
 import { baseKeywords, siteUrl } from "@/app/lib/seo";
-
-const raleway = Raleway({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-raleway",
-  display: "swap",
-});
 
 const rootKeywords = [
   ...baseKeywords.hu.slice(0, 40),
@@ -23,7 +8,7 @@ const rootKeywords = [
   ...baseKeywords.ro.slice(0, 30),
 ];
 
-export const metadata: Metadata = {
+export const rootMetadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     template: "%s | Autotherm",
@@ -94,32 +79,8 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport: Viewport = {
+export const rootViewport: Viewport = {
   themeColor: "#050b18",
   width: "device-width",
   initialScale: 1,
 };
-
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html
-      lang="hu"
-      className={`${raleway.variable} h-full overflow-x-hidden supports-[overflow:clip]:overflow-x-clip`}
-    >
-      <head>
-        <OrganizationJsonLd />
-        <LocalBusinessJsonLd />
-        <ProductJsonLd />
-        <WebSiteJsonLd />
-      </head>
-      {/* overflow-x: clip, not hidden - `hidden` turns <body> into its own
-          scroll container, which silently breaks every position:sticky element.
-          `hidden` stays as the fallback for browsers without `clip`. */}
-      <body className="flex min-h-full flex-col overflow-x-hidden font-sans antialiased supports-[overflow:clip]:overflow-x-clip">
-        {children}
-      </body>
-    </html>
-  );
-}

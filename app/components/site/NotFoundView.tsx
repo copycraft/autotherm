@@ -4,7 +4,7 @@ import Link from "next/link";
  * Global 404 - rendered outside the [lang] segment, so it offers all four
  * language homepages instead of guessing.
  */
-export default function NotFound() {
+export default function NotFoundView() {
   const langs = [
     { href: "/hu", label: "Magyar", text: "Az oldal nem található" },
     { href: "/en", label: "English", text: "Page not found" },

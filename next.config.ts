@@ -6,6 +6,7 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["192.168.2.72"],
   experimental: {
+    globalNotFound: true,
     // Enables React's <ViewTransition> during route navigation, so pages
     // cross-dissolve instead of hard-swapping. Browsers without the View
     // Transitions API simply render the swap instantly — no fallback needed.
