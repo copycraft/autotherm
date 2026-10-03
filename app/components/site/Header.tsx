@@ -66,6 +66,42 @@ function Flag({ code }: { code: string }) {
   }
 }
 
+/** eHűtőautó wordmark: leaf mark + name, with an "by Autotherm" endorsement. */
+export function EcoWordmark({ light }: { light: boolean }) {
+  return (
+    <span className="flex items-center gap-2.5" aria-hidden="true">
+      <svg
+        viewBox="0 0 32 32"
+        className={`h-8 w-8 shrink-0 transition-colors duration-300 lg:h-9 lg:w-9 ${light ? "text-frost-300" : "text-brand-600"}`}
+      >
+        <path
+          fill="currentColor"
+          d="M27 4C14 4 6 10.5 6 19.5c0 2.6.8 4.9 2.1 6.7L5 29.3 6.7 31l3.1-3.1c1.8 1.3 4.1 2.1 6.7 2.1C25.5 30 28 20.5 27 4Z"
+        />
+        <path
+          d="M10 26c4-6 8.5-10.5 14-14"
+          fill="none"
+          stroke={light ? "#04120b" : "#ffffff"}
+          strokeWidth="1.8"
+          strokeLinecap="round"
+        />
+      </svg>
+      <span className="flex flex-col leading-none">
+        <span
+          className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
+        >
+          e<span className={light ? "text-frost-300" : "text-brand-600"}>Hűtőautó</span>
+        </span>
+        <span
+          className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
+        >
+          by Autotherm
+        </span>
+      </span>
+    </span>
+  );
+}
+
 export default function Header({
   homeHref,
   nav,
@@ -76,7 +112,10 @@ export default function Header({
   phoneHref,
   openMenuLabel,
   closeMenuLabel,
+  brand = "autotherm",
 }: {
+  /** "eco" swaps the logo for the eHűtőautó wordmark (ehutoauto.hu). */
+  brand?: "autotherm" | "eco";
   homeHref: string;
   nav: NavEntry[];
   langs: LangEntry[];
@@ -128,16 +167,20 @@ export default function Header({
           <Link
             href={homeHref}
             className="flex shrink-0 items-center gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-            aria-label="Autotherm"
+            aria-label={brand === "eco" ? "eHűtőautó – Autotherm" : "Autotherm"}
           >
-            <Image
-              src="/images/autotherm-logo.webp"
-              alt="Autotherm"
-              width={281}
-              height={24}
-              className={`h-5 w-auto transition-[filter] duration-300 lg:h-6 ${scrolled || open ? "" : "brightness-0 invert"}`}
-              preload
-            />
+            {brand === "eco" ? (
+              <EcoWordmark light={!(scrolled || open)} />
+            ) : (
+              <Image
+                src="/images/autotherm-logo.webp"
+                alt="Autotherm"
+                width={281}
+                height={24}
+                className={`h-5 w-auto transition-[filter] duration-300 lg:h-6 ${scrolled || open ? "" : "brightness-0 invert"}`}
+                preload
+              />
+            )}
           </Link>
 
           <nav className="flex-1 hidden items-center justify-center gap-1 lg:flex" aria-label="Primary">

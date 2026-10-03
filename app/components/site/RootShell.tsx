@@ -22,15 +22,19 @@ const raleway = Raleway({
 export default function RootShell({
   lang,
   jsonLd = true,
+  theme,
   children,
 }: {
   lang: string;
   jsonLd?: boolean;
+  /** Palette override, e.g. "eco" for ehutoauto.hu (see globals.css). */
+  theme?: "eco";
   children: React.ReactNode;
 }) {
   return (
     <html
       lang={lang}
+      data-theme={theme}
       className={`${raleway.variable} h-full overflow-x-hidden supports-[overflow:clip]:overflow-x-clip`}
     >
       {jsonLd && (

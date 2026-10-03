@@ -7,11 +7,16 @@ export default function CtaBand({
   body,
   primaryLabel,
   quoteHref,
+  phone = COMPANY.phone,
+  phoneHref = COMPANY.phoneHref,
 }: {
   title: string;
   body: string;
   primaryLabel: string;
   quoteHref: string;
+  /** Defaults to the company line; the eco site uses its sales contact. */
+  phone?: string;
+  phoneHref?: string;
 }) {
   return (
     <section className="mesh-hero relative overflow-hidden py-24 sm:py-32">
@@ -31,8 +36,8 @@ export default function CtaBand({
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
           </MagneticButton>
-          <MagneticButton href={COMPANY.phoneHref} variant="ghost">
-            {COMPANY.phone}
+          <MagneticButton href={phoneHref} variant="ghost">
+            {phone}
           </MagneticButton>
         </Reveal>
       </div>

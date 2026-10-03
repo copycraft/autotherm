@@ -20,5 +20,33 @@
       "database_name": "autotherm-db",
       "database_id": "ed4282f5-5910-44ee-9645-796a725da3e9"
     }
-  ]
+  ],
+  "env": {
+    // Second Worker for ehutoauto.hu, deployed from the same build
+    // (`npm run deploy` publishes both). Its workers.dev address,
+    // ehutoauto.vastagkoppany.workers.dev, is an eco host in next.config.ts,
+    // so it previews the eco site before the ehutoauto.hu DNS moves.
+    // Bindings are not inherited by environments, hence repeated here; the
+    // database is shared so enquiries and admin settings stay in one place.
+    "eco": {
+      "name": "ehutoauto",
+      "assets": {
+        "directory": ".open-next/assets",
+        "binding": "ASSETS"
+      },
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "ehutoauto"
+        }
+      ],
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "autotherm-db",
+          "database_id": "ed4282f5-5910-44ee-9645-796a725da3e9"
+        }
+      ]
+    }
+  }
 }

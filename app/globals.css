@@ -77,6 +77,50 @@
   }
 }
 
+/* ---------------------- Eco theme (ehutoauto.hu) ------------------------- */
+
+/* The electric-vehicle site shares every component with the main site; it
+   re-tints them by redefining the palette tokens. Tailwind utilities read
+   these variables, so bg-brand-600 / text-ink-900 / mesh-hero all turn green.
+   brand-600 (#047857) keeps white button text at 5.5:1 contrast. */
+html[data-theme="eco"] {
+  /* Brand - forest green */
+  --color-brand-50: #ecfdf5;
+  --color-brand-100: #d1fae5;
+  --color-brand-200: #a7f3d0;
+  --color-brand-300: #6ee7b7;
+  --color-brand-400: #10b981;
+  --color-brand-500: #059669;
+  --color-brand-600: #047857;
+  --color-brand-700: #065f46;
+  --color-brand-800: #064e3b;
+  --color-brand-900: #053d30;
+  --color-brand-950: #022c22;
+
+  /* Ink - green-tinted neutrals, deep evergreen at the dark end */
+  --color-ink-50: #f4f8f5;
+  --color-ink-100: #e7efe9;
+  --color-ink-200: #cddcd2;
+  --color-ink-300: #a3bcac;
+  --color-ink-400: #769a84;
+  --color-ink-500: #557a65;
+  --color-ink-600: #425f4f;
+  --color-ink-700: #364e41;
+  --color-ink-800: #2e4236;
+  --color-ink-900: #0b1a12;
+  --color-ink-950: #04120b;
+
+  /* Frost - fresh lime accent */
+  --color-frost-100: #ecfccb;
+  --color-frost-200: #d9f99d;
+  --color-frost-300: #bef264;
+  --color-frost-400: #a3e635;
+  --color-frost-500: #84cc16;
+
+  --shadow-glow: 0 0 0 1px rgba(5, 150, 105, 0.22),
+    0 6px 22px rgba(5, 150, 105, 0.24);
+}
+
 /* --------------------------------- Base ---------------------------------- */
 
 html {
