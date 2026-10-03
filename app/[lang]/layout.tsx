@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import SmoothScroll from "@/app/components/motion/SmoothScroll";
 import Analytics from "@/app/components/site/Analytics";
+import NewSiteNotice from "@/app/components/site/NewSiteNotice";
 import Footer from "@/app/components/site/Footer";
 import HeaderContainer from "@/app/components/site/HeaderContainer";
 import Infoblokk from "@/app/components/site/Infoblokk";
@@ -22,6 +23,14 @@ import { rootMetadata, rootViewport } from "@/app/lib/root-metadata";
 import { buildPageMetadata } from "@/app/lib/seo";
 
 export const viewport = rootViewport;
+
+/** Shown once to visitors redirected from the old autotherm.hu site. */
+const NEW_SITE_NOTICE = {
+  hu: { title: "Új weboldalunk van!", body: "Megújult az Autotherm honlapja. Olvassa el a blogunkon, mi változott.", cta: "Olvassa el a bejegyzést" },
+  en: { title: "We have a new website!", body: "Autotherm's website has been rebuilt. Read on our blog what's new.", cta: "Read the post" },
+  de: { title: "Wir haben eine neue Website!", body: "Die Autotherm-Website wurde erneuert. Lesen Sie in unserem Blog, was neu ist.", cta: "Beitrag lesen" },
+  ro: { title: "Avem un site nou!", body: "Site-ul Autotherm a fost reînnoit. Citiți pe blog ce este nou.", cta: "Citiți articolul" },
+} as const;
 
 
 export function generateStaticParams(): { lang: string }[] {
@@ -85,6 +94,13 @@ export default async function LangLayout({
         decline={dict.cookie.decline}
       />
       <Analytics />
+      <NewSiteNotice
+        title={NEW_SITE_NOTICE[lang].title}
+        body={NEW_SITE_NOTICE[lang].body}
+        cta={NEW_SITE_NOTICE[lang].cta}
+        close={dict.gallery.close}
+        href={pathFor("blog", lang) ?? `/${lang}`}
+      />
     </SmoothScroll>
     </RootShell>
   );
