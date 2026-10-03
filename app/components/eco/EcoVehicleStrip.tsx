@@ -29,8 +29,8 @@ export default function EcoVehicleStrip() {
             width={521}
             height={365}
             // Loaded up front: browser lazy-loading doesn't reliably fire for
-            // items inside the pinned, transformed track, and these five files
-            // are ~20 KB each. Already sized for this card, so served as-is.
+            // items inside the pinned, transformed track, and these files are
+            // ~15 KB each. Already sized for this card, so served as-is.
             loading="eager"
             unoptimized
             className="mt-2 aspect-[521/365] h-auto w-full object-contain"

@@ -93,16 +93,20 @@ export const ECO_FEATURES: { icon: IconName; title: string; body: string }[] = [
 ];
 
 /**
- * Electric vans converted to refrigerated vehicles, with the studio shots from
- * the original ehutoauto.hu (white-background cut-outs, 521×365 - shown on
- * white cards at about native size).
+ * Electric vans converted to refrigerated vehicles, current model years, from
+ * small to large. Manufacturer studio shots, cut out and centred on a white
+ * 521×365 canvas so every card matches (shown at about native size).
  */
 export const ECO_VEHICLES: { make: string; model: string; image: string }[] = [
-  { make: "BYD", model: "T3 EV", image: "/images/eco/byd-t3-ev.webp" },
-  { make: "Peugeot", model: "e-Partner", image: "/images/eco/peugeot-e-partner.webp" },
-  { make: "Citroën", model: "e-Berlingo", image: "/images/eco/citroen-e-berlingo.webp" },
-  { make: "Nissan", model: "e-NV200", image: "/images/eco/nissan-e-nv200.webp" },
-  { make: "Opel", model: "Combo-e", image: "/images/eco/opel-combo-e.webp" },
+  { make: "Peugeot", model: "E-Partner", image: "/images/eco/peugeot-e-partner.webp" },
+  { make: "Citroën", model: "ë-Berlingo", image: "/images/eco/citroen-e-berlingo.webp" },
+  { make: "Opel", model: "Combo Electric", image: "/images/eco/opel-combo-electric.webp" },
+  { make: "Toyota", model: "Proace City Electric", image: "/images/eco/toyota-proace-city-electric.webp" },
+  { make: "Nissan", model: "Townstar EV", image: "/images/eco/nissan-townstar-ev.webp" },
+  { make: "BYD", model: "ETP3", image: "/images/eco/byd-etp3.webp" },
+  { make: "Kia", model: "PV5 Cargo", image: "/images/eco/kia-pv5-cargo.webp" },
+  { make: "Mercedes-Benz", model: "eVito", image: "/images/eco/mercedes-evito.webp" },
+  { make: "Mercedes-Benz", model: "eSprinter", image: "/images/eco/mercedes-esprinter.webp" },
 ];
 
 /** Shared by the home and "why electric" pages. */
@@ -134,7 +138,7 @@ export const ECO_SEO: Record<EcoPage, { title: string; description: string }> = 
   vehicles: {
     title: "Átalakítható elektromos furgonok | eHűtőautó – Autotherm",
     description:
-      "BYD T3 EV, Peugeot e-Partner, Citroën e-Berlingo, Nissan e-NV200, Opel Combo-e – elektromos kisteherautók hűtőautóvá alakítása.",
+      "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito és eSprinter – elektromos furgonok hűtőautóvá alakítása.",
   },
   quote: {
     title: "Árajánlatkérés – elektromos hűtőautó | eHűtőautó – Autotherm",

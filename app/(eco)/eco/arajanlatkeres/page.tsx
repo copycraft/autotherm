@@ -17,7 +17,7 @@ export default function EcoQuotePage() {
   const dict = getDict("hu");
   // Same form and pipeline as the main site; the page value tags the lead as
   // coming from ehutoauto.hu, and the vehicle hint points at electric vans.
-  const form = { ...dict.form, vehiclePlaceholder: "Pl. Citroën e-Berlingo, Nissan e-NV200" };
+  const form = { ...dict.form, vehiclePlaceholder: "Pl. Citroën ë-Berlingo, Kia PV5 Cargo" };
 
   return (
     <>
