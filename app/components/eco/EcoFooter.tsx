@@ -1,16 +1,20 @@
 import Link from "next/link";
 import { EcoWordmark } from "@/app/components/site/Header";
-import { COMPANY, FOUNDED_YEAR, thisYear } from "@/app/lib/constants";
-import { ECO_CONTACT, ECO_NAV, ECO_PATHS, MAIN_SITE_URL } from "@/app/lib/eco";
+import { COMPANY, FOUNDED_YEAR, thisYear, type Lang } from "@/app/lib/constants";
+import { ECO_CONTACT, ECO_PAGES, MAIN_SITE_URL, ecoPath, getEcoDict } from "@/app/lib/eco";
 
 const linkCls =
   "rounded text-sm text-ink-300 transition-colors hover:text-frost-300 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 focus-visible:outline-none";
 
 /**
  * Footer for ehutoauto.hu. Legal pages and company information live on the
- * main site, so those links point there.
+ * main site, so those links point there (the legal pages exist in Hungarian
+ * only).
  */
-export default function EcoFooter() {
+export default function EcoFooter({ lang }: { lang: Lang }) {
+  const dict = getEcoDict(lang);
+  const t = dict.footer;
+
   return (
     <footer
       style={{ viewTransitionName: "site-footer" }}
@@ -22,14 +26,13 @@ export default function EcoFooter() {
           <div>
             <EcoWordmark light />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-300">
-              Elektromos hűtőautók önellátó hűtőegységgel – az Autotherm Kft.-től,
-              {` ${FOUNDED_YEAR} óta a hűtőautók szakértőjétől.`}
+              {t.tagline.replace("{year}", String(FOUNDED_YEAR))}
             </p>
             <a
-              href={MAIN_SITE_URL}
+              href={`${MAIN_SITE_URL}/${lang}`}
               className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-frost-300 transition-colors hover:text-white"
             >
-              Autotherm hűtőautók
+              {t.mainSite}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
                 <path d="M7 17L17 7M9 7h8v8" />
               </svg>
@@ -37,21 +40,23 @@ export default function EcoFooter() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase">Menü</h3>
-            <nav className="mt-5 flex flex-col gap-3" aria-label="Lábléc">
-              {ECO_NAV.map(({ key, label }) => (
-                <Link key={key} href={ECO_PATHS[key]} className={linkCls}>
-                  {label}
+            <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase">{t.menu}</h3>
+            <nav className="mt-5 flex flex-col gap-3" aria-label={t.navLabel}>
+              {ECO_PAGES.map((page) => (
+                <Link key={page} href={ecoPath(page, lang)} className={linkCls}>
+                  {dict.nav[page]}
                 </Link>
               ))}
             </nav>
           </div>
 
           <div>
-            <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase">Kapcsolattartó</h3>
+            <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase">
+              {dict.common.contactPerson}
+            </h3>
             <address className="mt-5 flex flex-col gap-3 text-sm not-italic text-ink-300">
               <p className="font-semibold text-white">{ECO_CONTACT.name}</p>
-              <p className="-mt-2 text-ink-400">{ECO_CONTACT.role}</p>
+              <p className="-mt-2 text-ink-400">{dict.contactRole}</p>
               <a href={ECO_CONTACT.phoneHref} className={`${linkCls} font-semibold text-white`}>
                 {ECO_CONTACT.phone}
               </a>
@@ -62,7 +67,9 @@ export default function EcoFooter() {
           </div>
 
           <div>
-            <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase">Autotherm Kft.</h3>
+            <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase">
+              {COMPANY.tradingNames[lang]}
+            </h3>
             <address className="mt-5 flex flex-col gap-3 text-sm not-italic text-ink-300">
               <p>{COMPANY.address.full}</p>
               <a href={COMPANY.phoneHref} className={linkCls}>
@@ -79,14 +86,14 @@ export default function EcoFooter() {
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 pt-6 pb-[calc(var(--infoblokk-h)+1.5rem)] text-xs text-ink-400 sm:flex-row sm:px-6 lg:px-8">
           <p>
-            &copy; {FOUNDED_YEAR}&ndash;{thisYear} {COMPANY.legalName} &mdash; minden jog fenntartva
+            &copy; {FOUNDED_YEAR}&ndash;{thisYear} {COMPANY.legalName} &mdash; {t.rights}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a href={`${MAIN_SITE_URL}/hu/altalanos-szerzodesi-feltetelek`} className={linkCls}>
-              ÁSZF
+              {t.terms}
             </a>
             <a href={`${MAIN_SITE_URL}/hu/adatkezelesi-tajekoztato`} className={linkCls}>
-              Adatkezelés
+              {t.privacy}
             </a>
           </div>
         </div>

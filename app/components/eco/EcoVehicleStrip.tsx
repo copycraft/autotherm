@@ -1,19 +1,22 @@
 import Image from "next/image";
 import { PinnedHorizontalScroll } from "@/app/components/motion/HorizontalGallery";
-import { ECO_PATHS, ECO_VEHICLES } from "@/app/lib/eco";
+import type { Lang } from "@/app/lib/constants";
+import { ECO_VEHICLES, ecoPath, getEcoDict } from "@/app/lib/eco";
 
 /**
  * The convertible electric vans, scrolled through sideways: each studio shot
  * on its own white card (the photos are white-background cut-outs) with the
  * make and model under the car.
  */
-export default function EcoVehicleStrip() {
+export default function EcoVehicleStrip({ lang }: { lang: Lang }) {
+  const { strip } = getEcoDict(lang);
+
   return (
     <PinnedHorizontalScroll
       tone="light"
-      eyebrow="Átalakítható típusok"
-      title="Elektromos furgonok, amelyeket hűtőautóvá alakítunk"
-      cta={{ href: ECO_PATHS.vehicles, label: "Minden jármű" }}
+      eyebrow={strip.eyebrow}
+      title={strip.title}
+      cta={{ href: ecoPath("vehicles", lang), label: strip.cta }}
     >
       {ECO_VEHICLES.map((v, i) => (
         <figure

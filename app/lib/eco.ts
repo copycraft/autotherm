@@ -1,45 +1,104 @@
+import type { Metadata } from "next";
+import { LANGS, type Lang } from "./constants";
 import type { IconName } from "./page-content";
+import { ECO_DICTS } from "./eco-i18n";
 
 /**
  * ehutoauto.hu - the electric refrigerated vehicle site.
  *
  * Same app as hutoautok.hu: next.config.ts rewrites requests on the eco host to
- * the app/(eco)/eco route tree, which has its own root layout, green theme
- * (data-theme="eco" in globals.css), navigation and pages. Hungarian only.
+ * the app/(eco)/eco/[lang] route tree, which has its own root layout, green
+ * theme (data-theme="eco" in globals.css), navigation and pages.
  *
- * Copy is the company's own from the original ehutoauto.hu site, regrouped
- * into pages; no specs or figures beyond what they published.
+ * Hungarian is the default language and keeps the unprefixed paths
+ * ("/technologia"); English, German and Romanian live under /en, /de and /ro
+ * with their own slugs. Copy is in app/lib/eco-i18n; the Hungarian text is the
+ * company's own from the original ehutoauto.hu site.
  *
- * Links are written for the eco domain ("/technologia"). Preview locally at
- * http://eco.localhost:<port>/ so they resolve the same way.
+ * Preview locally at http://eco.localhost:<port>/ so links resolve the same way.
  */
 
 export const ECO_SITE_URL = "https://ehutoauto.hu";
 export const ECO_NAME = "eHűtőautó";
+export const ECO_DEFAULT_LANG: Lang = "hu";
 
-/** Public paths on the eco domain. */
-export const ECO_PATHS = {
-  home: "/",
-  why: "/miert-elektromos",
-  technology: "/technologia",
-  vehicles: "/jarmuvek",
-  quote: "/arajanlatkeres",
-} as const;
+export const ECO_PAGES = ["home", "why", "technology", "vehicles", "quote"] as const;
+export type EcoPage = (typeof ECO_PAGES)[number];
 
-export type EcoPage = keyof typeof ECO_PATHS;
+/** Page slugs per language ("" is the language's home page). */
+export const ECO_SLUGS: Record<Lang, Record<EcoPage, string>> = {
+  hu: {
+    home: "",
+    why: "miert-elektromos",
+    technology: "technologia",
+    vehicles: "jarmuvek",
+    quote: "arajanlatkeres",
+  },
+  en: {
+    home: "",
+    why: "why-electric",
+    technology: "technology",
+    vehicles: "vehicles",
+    quote: "request-a-quote",
+  },
+  de: {
+    home: "",
+    why: "warum-elektrisch",
+    technology: "technologie",
+    vehicles: "fahrzeuge",
+    quote: "angebot-anfordern",
+  },
+  ro: {
+    home: "",
+    why: "de-ce-electric",
+    technology: "tehnologie",
+    vehicles: "vehicule",
+    quote: "cerere-oferta",
+  },
+};
 
-export const ECO_NAV: { key: EcoPage; label: string }[] = [
-  { key: "home", label: "Főoldal" },
-  { key: "why", label: "Miért elektromos?" },
-  { key: "technology", label: "Technológia" },
-  { key: "vehicles", label: "Járművek" },
-  { key: "quote", label: "Árajánlatkérés" },
-];
+/** Public path of a page on the eco domain: "/technologia", "/en/technology". */
+export function ecoPath(page: EcoPage, lang: Lang): string {
+  const prefix = lang === ECO_DEFAULT_LANG ? "" : `/${lang}`;
+  const slug = ECO_SLUGS[lang][page];
+  return slug ? `${prefix}/${slug}` : prefix || "/";
+}
+
+export function ecoPageForSlug(lang: Lang, slug: string): EcoPage | null {
+  return ECO_PAGES.find((p) => p !== "home" && ECO_SLUGS[lang][p] === slug) ?? null;
+}
+
+/** Reads a public eco path back into its language and page, for the header. */
+export function parseEcoPath(pathname: string): { lang: Lang; page: EcoPage | null } {
+  const [first = "", ...rest] = pathname.split("/").filter(Boolean);
+  const prefixed = (LANGS as readonly string[]).includes(first) && first !== ECO_DEFAULT_LANG;
+  const lang = (prefixed ? first : ECO_DEFAULT_LANG) as Lang;
+  const slug = (prefixed ? rest : [first, ...rest]).filter(Boolean).join("/");
+  return { lang, page: slug ? ecoPageForSlug(lang, slug) : "home" };
+}
+
+export function getEcoDict(lang: Lang) {
+  return ECO_DICTS[lang];
+}
+
+/** Title, description, canonical and hreflang alternates for one page. */
+export function ecoMetadata(page: EcoPage, lang: Lang): Metadata {
+  const { title, description } = ECO_DICTS[lang].seo[page];
+  const languages: Record<string, string> = Object.fromEntries(
+    LANGS.map((l) => [l, ecoPath(page, l)]),
+  );
+  languages["x-default"] = ecoPath(page, ECO_DEFAULT_LANG);
+  return {
+    title,
+    description,
+    alternates: { canonical: ecoPath(page, lang), languages },
+  };
+}
 
 /** Sales contact for electric conversions (from the original site). */
 export const ECO_CONTACT = {
   name: "Busa Ádám",
-  role: "Értékesítés – elektromos hűtőautók",
+  initials: "BÁ",
   phone: "+36 20 223 1316",
   phoneHref: "tel:+36202231316",
   email: "busa.adam@autotherm.hu",
@@ -49,47 +108,16 @@ export const ECO_CONTACT = {
 /** The main site, for cross-links (legal pages, company info). */
 export const MAIN_SITE_URL = "https://hutoautok.hu";
 
-export const ECO_FEATURES: { icon: IconName; title: string; body: string }[] = [
-  {
-    icon: "layers",
-    title: "Önellátó akkupakk",
-    body: "A hűtőegység saját akkumulátorról működik, nem a jármű hajtóakkujáról.",
-  },
-  {
-    icon: "truck",
-    title: "Változatlan hatótáv",
-    body: "Mivel a hűtés nem a hajtóakkuból fogyaszt, a furgon hatótávja nem csökken.",
-  },
-  {
-    icon: "clock",
-    title: "Ciklikus töltésű akkupakk",
-    body: "Az akkupakk ciklikusan töltődik, így a hűtés folyamatosan rendelkezésre áll.",
-  },
-  {
-    icon: "spark",
-    title: "Akkis + hálózati hűtő",
-    body: "Akkumulátorról és elektromos hálózatról is üzemeltethető.",
-  },
-  {
-    icon: "thermometer",
-    title: "Hosszú hűtési üzemidő",
-    body: "Pár órán belül feltölthető, és hosszú hűtési üzemidővel rendelkezik.",
-  },
-  {
-    icon: "heart",
-    title: "Emissziómentes és csendes",
-    body: "Nincs kipufogógáz és motorzaj – ideális a belvárosi kiszállításhoz.",
-  },
-  {
-    icon: "check",
-    title: "Kiszámítható és biztonságos",
-    body: "Kiszámítható hatótáv és biztonságos hűtés minden fuvaron.",
-  },
-  {
-    icon: "shield",
-    title: "Garanciális és megbízható",
-    body: "Garanciális hűtős átalakítás az Autotherm-től, 1992 óta a hűtőautók szakértőjétől.",
-  },
+/** Icons for the eight system features, in the order of `features` in the copy. */
+export const ECO_FEATURE_ICONS: IconName[] = [
+  "layers",
+  "truck",
+  "clock",
+  "spark",
+  "thermometer",
+  "heart",
+  "check",
+  "shield",
 ];
 
 /**
@@ -108,41 +136,3 @@ export const ECO_VEHICLES: { make: string; model: string; image: string }[] = [
   { make: "Mercedes-Benz", model: "eVito", image: "/images/eco/mercedes-evito.webp" },
   { make: "Mercedes-Benz", model: "eSprinter", image: "/images/eco/mercedes-esprinter.webp" },
 ];
-
-/** Shared by the home and "why electric" pages. */
-export const ECO_CASE = {
-  title: "Alternatíva az elektromos hűtőautó? Egyértelműen: IGEN!",
-  body: [
-    "Az előnyök nyilvánvalóak: Az elektromos hűtős furgonok emissziómentesek, csendesek és jót tesznek a cég arculatának és zsebének. A friss termékek logisztikájának azonban mindenekelőtt két dologra van szüksége: Megbízhatóságra a hőmérséklet-szabályozásban és a hatótávolság maximális kihasználására.",
-    "Az elektromos hűtőautók különösen alkalmasak a belváros forgalomban vagy a nagyvárosokból a környező területekre való kiszállításokhoz. Függetlenül attól, hogy húst, süteményt, gyümölcsöt, zöldséget vagy más hűtött ételt szállít, egy elektromos hűtős furgonnal ugyanolyan jó hűtési teljesítményt érhet el, mint a szokásos szigetelt dobozos kisteherautóknál. Az elektromos hűtőautók pár órán belül feltölthetőek és hosszú hűtési üzemidővel rendelkeznek.",
-    "Az önálló akkupakkal rendelkező hűtőegység előnye pedig azt jelenti, hogy a hűtési láncolat akár egy álló jármű esetében sem szakad meg, mert az egység tovább működik – mindez hatótávolság csökkenés nélkül!",
-  ],
-};
-
-export const ECO_SEO: Record<EcoPage, { title: string; description: string }> = {
-  home: {
-    title: "Elektromos hűtőautó önellátó hűtőegységgel | eHűtőautó – Autotherm",
-    description:
-      "Elektromos furgonok hűtős átalakítása önellátó, saját akkupakkal működő hűtőegységgel – változatlan hatótáv, emissziómentes és csendes hűtött szállítás. Autotherm Kft.",
-  },
-  why: {
-    title: "Miért elektromos hűtőautó? | eHűtőautó – Autotherm",
-    description:
-      "Emissziómentes, csendes és gazdaságos: miért jó választás az elektromos hűtőautó a belvárosi és elővárosi frissáru-logisztikában.",
-  },
-  technology: {
-    title: "Önellátó hűtőegység saját akkupakkal | eHűtőautó – Autotherm",
-    description:
-      "Így működik az önellátó, ciklikus töltésű akkupakkal rendelkező hűtőegység: a hűtés nem a hajtóakkuból fogyaszt, a hűtési lánc álló járműnél sem szakad meg.",
-  },
-  vehicles: {
-    title: "Átalakítható elektromos furgonok | eHűtőautó – Autotherm",
-    description:
-      "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito és eSprinter – elektromos furgonok hűtőautóvá alakítása.",
-  },
-  quote: {
-    title: "Árajánlatkérés – elektromos hűtőautó | eHűtőautó – Autotherm",
-    description:
-      "Kérjen árajánlatot elektromos hűtőautó átalakításra önellátó hűtőegységgel. Személyre szabott megoldás, átvételi és visszaküldési szolgáltatással.",
-  },
-};

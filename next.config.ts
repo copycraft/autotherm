@@ -7,10 +7,12 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 
 /**
  * ehutoauto.hu (the electric refrigerated vehicle site) is served by this same
- * app from the app/(eco)/eco route tree. Host-matched rewrites map its clean
- * paths ("/technologia") onto that tree; eco.localhost does the same in dev
- * (browsers resolve *.localhost to this machine). Done here rather than in a
- * proxy so it runs in the Cloudflare routing layer.
+ * app from the app/(eco)/eco/[lang] route tree. Host-matched rewrites map its
+ * clean paths onto that tree - Hungarian unprefixed ("/technologia" →
+ * /eco/hu/technologia), the other languages prefixed ("/en/technology" →
+ * /eco/en/technology). eco.localhost does the same in dev (browsers resolve
+ * *.localhost to this machine). Done here rather than in a proxy so it runs in
+ * the Cloudflare routing layer.
  *
  * `has` host values are matched as anchored regexes against the hostname.
  */
@@ -20,6 +22,8 @@ const ECO_HOST =
   "(?:(?:www\\.)?ehutoauto\\.hu|eco\\.localhost|ehutoauto\\.vastagkoppany\\.workers\\.dev)";
 const MAIN_HOST = "(?:www\\.)?(?:hutoautok|autotherm)\\.hu";
 const onEco = [{ type: "host" as const, value: ECO_HOST }];
+/** Prefixed eco languages; Hungarian is the default and has no prefix. */
+const ECO_PREFIXED = "en|de|ro";
 
 async function ecoRedirects() {
   return [
@@ -30,9 +34,20 @@ async function ecoRedirects() {
       destination: "https://ehutoauto.hu/:path*",
       permanent: true,
     },
+    // Hungarian is unprefixed, so a /hu prefix just drops off.
+    { source: "/hu", has: onEco, destination: "/", permanent: true },
+    { source: "/hu/:path*", has: onEco, destination: "/:path*", permanent: true },
     // The internal tree is never a public URL on either domain.
+    { source: "/eco/hu", has: onEco, destination: "/", permanent: true },
+    { source: "/eco/hu/:path*", has: onEco, destination: "/:path*", permanent: true },
     { source: "/eco", has: onEco, destination: "/", permanent: true },
     { source: "/eco/:path*", has: onEco, destination: "/:path*", permanent: true },
+    {
+      source: "/eco/hu/:path*",
+      has: [{ type: "host" as const, value: MAIN_HOST }],
+      destination: "https://ehutoauto.hu/:path*",
+      permanent: true,
+    },
     {
       source: "/eco/:path*",
       has: [{ type: "host" as const, value: MAIN_HOST }],
@@ -46,17 +61,21 @@ async function ecoRedirects() {
 
 async function ecoRewrites() {
   return [
-    { source: "/", has: onEco, destination: "/eco" },
+    { source: "/", has: onEco, destination: "/eco/hu" },
     { source: "/sitemap.xml", has: onEco, destination: "/eco/sitemap.xml" },
     { source: "/robots.txt", has: onEco, destination: "/eco/robots.txt" },
     // The eco site's own icon (app/favicon.ico is the main site's).
     { source: "/favicon.ico", has: onEco, destination: "/images/eco/favicon-32.png" },
-    // Every other page path; framework files, the API and anything with a file
-    // extension (images, fonts, logos) are served as they are.
+    // English, German and Romanian: "/en", "/en/technology". Deeper paths go
+    // to the eco tree too (and 404 there) so they never reach main-site pages.
+    { source: `/:lang(${ECO_PREFIXED})`, has: onEco, destination: "/eco/:lang" },
+    { source: `/:lang(${ECO_PREFIXED})/:path+`, has: onEco, destination: "/eco/:lang/:path+" },
+    // Every other page path is Hungarian; framework files, the API and anything
+    // with a file extension (images, fonts, logos) are served as they are.
     {
-      source: "/:path((?!_next/|api/|eco(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)",
+      source: `/:path((?!_next/|api/|eco(?:/|$)|(?:hu|${ECO_PREFIXED})(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)`,
       has: onEco,
-      destination: "/eco/:path",
+      destination: "/eco/hu/:path",
     },
   ];
 }

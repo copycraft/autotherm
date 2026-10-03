@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "@/app/components/motion/MagneticButton";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import Eyebrow from "@/app/components/ui/Eyebrow";
+import type { EcoDict } from "@/app/lib/eco-i18n";
 
 /**
  * ehutoauto.hu home hero. No photography yet (there are no electric-van
@@ -11,9 +12,13 @@ import Eyebrow from "@/app/components/ui/Eyebrow";
  * refrigerated van on charge that traces itself in.
  */
 export default function EcoHero({
+  copy,
+  quoteLabel,
   quoteHref,
   technologyHref,
 }: {
+  copy: EcoDict["hero"];
+  quoteLabel: string;
   quoteHref: string;
   technologyHref: string;
 }) {
@@ -37,38 +42,36 @@ export default function EcoHero({
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 pt-32 pb-20 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-32">
         <div className="lg:col-span-6">
           <motion.div {...fade(0.1)}>
-            <Eyebrow label="Autotherm · Elektromos hűtőautók" />
+            <Eyebrow label={copy.eyebrow} />
           </motion.div>
           <motion.h1
             {...fade(0.2)}
             className="mt-8 text-5xl font-black tracking-tighter text-balance text-white sm:text-6xl xl:text-7xl"
           >
-            Elektromos hűtőautó
+            {copy.title}
           </motion.h1>
           <motion.p
             {...fade(0.35)}
             className="mt-4 text-2xl font-extrabold tracking-tight text-frost-300 sm:text-3xl"
           >
-            A jövő zöld vagy semmilyen.
+            {copy.tagline}
           </motion.p>
           <motion.p {...fade(0.5)} className="mt-8 max-w-xl text-lg leading-relaxed text-ink-200">
-            Az elektromos meghajtású haszongépjárművek piaca gyorsan növekszik. Mi az
-            Autotherm-nél azon dolgozunk, hogy azonosítsuk az ügyfeleink számára legjobb
-            megoldást fejlesztések és új technológiák bevezetésével.
+            {copy.lead}
           </motion.p>
           <motion.div {...fade(0.65)} className="mt-10 flex flex-wrap items-center gap-4">
             <MagneticButton href={quoteHref} variant="primary">
-              Árajánlatot kérek
+              {quoteLabel}
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4" aria-hidden="true">
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </MagneticButton>
             <MagneticButton href={technologyHref} variant="ghost">
-              Hogyan működik?
+              {copy.howItWorks}
             </MagneticButton>
           </motion.div>
           <motion.ul {...fade(0.8)} className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-6">
-            {["Emissziómentes és csendes", "Változatlan hatótáv", "Önellátó akkupakk"].map((t) => (
+            {copy.points.map((t) => (
               <li key={t} className="flex items-center gap-2 text-sm font-semibold text-ink-200">
                 <span className="h-1.5 w-1.5 rounded-full bg-frost-300" aria-hidden="true" />
                 {t}
