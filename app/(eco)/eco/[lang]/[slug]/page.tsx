@@ -21,7 +21,8 @@ const PAGES: Record<Exclude<EcoPage, "home">, ComponentType<{ lang: Lang }>> = {
 
 type Params = Promise<{ lang: string; slug: string }>;
 
-export const dynamicParams = false;
+// No `dynamicParams = false`: on Cloudflare, OpenNext checks that against the
+// public (pre-rewrite) path, so every page 404'd; unknown slugs 404 below.
 
 export function generateStaticParams(): { lang: string; slug: string }[] {
   return LANGS.flatMap((lang) =>
