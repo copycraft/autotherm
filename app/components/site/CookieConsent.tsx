@@ -3,8 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
-
-const STORAGE_KEY = "autotherm-cookie-consent";
+import { readConsent, writeConsent } from "@/app/lib/consent";
 
 /**
  * Glassmorphic cookie consent bar.
@@ -23,22 +22,14 @@ export default function CookieConsent({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    try {
-      if (!window.localStorage.getItem(STORAGE_KEY)) {
-        const id = setTimeout(() => setVisible(true), 0);
-        return () => clearTimeout(id);
-      }
-    } catch {
-      // Storage unavailable (private mode) - stay hidden rather than nag.
+    if (readConsent() === null) {
+      const id = setTimeout(() => setVisible(true), 0);
+      return () => clearTimeout(id);
     }
   }, []);
 
   function choose(value: "accepted" | "declined") {
-    try {
-      window.localStorage.setItem(STORAGE_KEY, value);
-    } catch {
-      // Ignore storage failures.
-    }
+    writeConsent(value);
     setVisible(false);
   }
 

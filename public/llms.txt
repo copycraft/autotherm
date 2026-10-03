@@ -1,6 +1,6 @@
 # Autotherm Kft. — Refrigerated Vehicle Manufacturer
 
-Autotherm Kft. (autotherm.hu) manufactures refrigerated vehicles, cooled vans, commercial vehicle bodies, and deceased transport vehicles. Founded in 1992 in Szeged, Hungary.
+Autotherm Kft. (hutoautok.hu) manufactures refrigerated vehicles, cooled vans, commercial vehicle bodies, and deceased transport vehicles. Founded in 1992 in Szeged, Hungary.
 
 ## Key Facts
 
@@ -27,13 +27,13 @@ Autotherm Kft. (autotherm.hu) manufactures refrigerated vehicles, cooled vans, c
 
 ## Links
 
-- [Homepage](https://www.autotherm.hu/hu)
-- [English](https://www.autotherm.hu/en)
-- [German](https://www.autotherm.hu/de)
-- [Romanian](https://www.autotherm.hu/ro)
-- [Products](https://www.autotherm.hu/hu/termekeink)
-- [About](https://www.autotherm.hu/hu/kik-vagyunk)
-- [Service](https://www.autotherm.hu/hu/szerviz)
-- [Gallery](https://www.autotherm.hu/hu/kepgaleria)
-- [Contact](https://www.autotherm.hu/hu/kapcsolat)
-- [Quotation](https://www.autotherm.hu/hu/arajanlatkeres)
+- [Homepage](https://hutoautok.hu/hu)
+- [English](https://hutoautok.hu/en)
+- [German](https://hutoautok.hu/de)
+- [Romanian](https://hutoautok.hu/ro)
+- [Products](https://hutoautok.hu/hu/termekeink)
+- [About](https://hutoautok.hu/hu/kik-vagyunk)
+- [Service](https://hutoautok.hu/hu/szerviz)
+- [Gallery](https://hutoautok.hu/hu/kepgaleria)
+- [Contact](https://hutoautok.hu/hu/kapcsolat)
+- [Quotation](https://hutoautok.hu/hu/arajanlatkeres)

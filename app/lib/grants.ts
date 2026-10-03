@@ -7,11 +7,8 @@
 
 export const GRANT_APPLICANT = "AUTOTHERM Kereskedelmi és Szolgáltató Kft.";
 
-/**
- * The supporting PDFs still live on the old WordPress site. If that site is
- * retired, copy them into /public/documents and point this base there.
- */
-const LEGACY_UPLOADS = "https://www.autotherm.hu/wp-content/uploads";
+/** Supporting PDFs, hosted locally from /public/at-contents. */
+const CONTENTS = "/at-contents";
 
 export type GrantListItem = string | { lead: string; text: string };
 
@@ -167,7 +164,7 @@ export const grants: Grant[] = [
     ],
     publication: {
       label: "A pályázat tudományos eredményének publikációja",
-      href: `${LEGACY_UPLOADS}/2020/11/Publikacio_Autotherm-Kft_GINOP-2.1.7-15-2016-00674.pdf`,
+      href: `${CONTENTS}/Publikacio_Autotherm-Kft_GINOP-2.1.7-15-2016-00674.pdf`,
     },
     talk: {
       title: "Autotherm – Lépés a jövő felé – kerekasztal beszélgetés és előadás",
@@ -176,15 +173,15 @@ export const grants: Grant[] = [
     documents: [
       {
         label: "Kettősfunkciójú, nagy hiszterézisű hőmérséklet szabályzó berendezés",
-        href: `${LEGACY_UPLOADS}/2022/05/Kett%C5%91sfunkci%C3%B3j%C3%BA-nagy-hiszter%C3%A9zis%C5%B1-h%C5%91m%C3%A9rs%C3%A9klet-szab%C3%A1lyz%C3%B3-berendez%C3%A9s.pdf`,
+        href: `${CONTENTS}/Kettosfunkcioju-nagy-hiszterezisu-homerseklet-szabalyzo-berendezes.pdf`,
       },
       {
         label: "Waeco prezentáció",
-        href: `${LEGACY_UPLOADS}/2022/05/Waeco-presentation-_202203.pdf`,
+        href: `${CONTENTS}/Waeco-presentation-_202203.pdf`,
       },
       {
         label: "Alkalmazkodó Járműhűtés Zanotti – Autotherm ismertető beszélgetés",
-        href: `${LEGACY_UPLOADS}/2022/05/Alkalmazkod%C3%B3-J%C3%A1rm%C5%B1h%C5%B1t%C3%A9s-Zanotti-Autotherm-ismertet%C5%91-besz%C3%A9lget%C3%A9s-20220214.pdf`,
+        href: `${CONTENTS}/Alkalmazkodo-Jarmuhutes-Zanotti-Autotherm-ismerteto-beszelgetes-20220214.pdf`,
       },
     ],
   },

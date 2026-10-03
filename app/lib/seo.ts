@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { BCP47, LANGS, LOCALES, yearsSince, type Lang } from "./constants";
 import { alternatesFor, pathFor, type PageKey } from "./routes";
 
-export const siteUrl = "https://www.autotherm.hu";
+export const siteUrl = "https://hutoautok.hu";
 
 /* -------------------------------------------------------------------------- */
 /*  Keyword corpus - the complete, battle-tested keyword sets per language.   */

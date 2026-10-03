@@ -35,7 +35,7 @@ export const COMPANY = {
   phoneHref: "tel:+36209102050",
   email: "autotherm@autotherm.hu",
   emailHref: "mailto:autotherm@autotherm.hu",
-  website: "https://www.autotherm.hu",
+  website: "https://hutoautok.hu",
   facebook: "https://www.facebook.com/rakterhutes/",
   openingHours: "08:00–16:30",
 } as const;

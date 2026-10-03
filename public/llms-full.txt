@@ -4,7 +4,7 @@
 
 **Legal Name:** AUTOTHERM Kereskedelmi és Szolgáltató Kft.
 **Trading Names:** Autotherm Kft. (Hungary), Autotherm Ltd. (English), Autotherm GmbH (German), Autotherm SRL (Romanian)
-**Website:** https://www.autotherm.hu
+**Website:** https://hutoautok.hu
 **Founded:** 1992
 **Founders:** Csurgó László, Dkfm. Peter Knerer
 **Headquarters:** 6728 Szeged, Napos út 3., Hungary
@@ -70,7 +70,7 @@ The company serves customers in Hungary, Austria, Germany, Romania, and the Euro
 
 ## Contact
 
-- **Website:** https://www.autotherm.hu
+- **Website:** https://hutoautok.hu
 - **Phone:** +36 20 910 20 50
 - **Email:** autotherm@autotherm.hu
 - **Address:** 6728 Szeged, Napos út 3., Hungary

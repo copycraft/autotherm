@@ -51,6 +51,9 @@ export async function submitContact(
     if (vehicle) parts.push(`Vehicle: ${vehicle}`);
     if (tempRange) parts.push(`Temperature range: ${tempRange}`);
     if (configuration) parts.push(`Configuration:\n${configuration}`);
+    // Traffic source, only present when the visitor accepted cookies.
+    const attribution = asText(formData.get("attribution")).slice(0, 600);
+    if (attribution) parts.push(`--\n${attribution}`);
     const fullMessage = parts.join("\n\n");
 
     // Persist first (best effort), notify second - neither failure is fatal

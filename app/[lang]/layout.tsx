@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import SmoothScroll from "@/app/components/motion/SmoothScroll";
+import Analytics from "@/app/components/site/Analytics";
 import Footer from "@/app/components/site/Footer";
 import HeaderContainer from "@/app/components/site/HeaderContainer";
 import Infoblokk from "@/app/components/site/Infoblokk";
@@ -74,6 +75,7 @@ export default async function LangLayout({
         accept={dict.cookie.accept}
         decline={dict.cookie.decline}
       />
+      <Analytics />
     </SmoothScroll>
   );
 }

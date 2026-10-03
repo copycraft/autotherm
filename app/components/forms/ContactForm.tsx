@@ -1,7 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useActionState, useRef } from "react";
+import { useActionState, useEffect, useRef, useState } from "react";
+import { attributionSummary, trackEvent } from "@/app/lib/analytics";
+import { CONSENT_EVENT } from "@/app/lib/consent";
 import { useFormStatus } from "react-dom";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import {
@@ -59,6 +61,27 @@ export default function ContactForm({
 }) {
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useActionState(submitContact, initialContactState);
+
+  // Where the visitor came from (ad / search / referral). Empty unless they
+  // accepted cookies; sent along with the enquiry so leads can be traced.
+  const [attribution, setAttribution] = useState("");
+  useEffect(() => {
+    // Deferred so Analytics has persisted the touch before we read it.
+    const sync = () => setTimeout(() => setAttribution(attributionSummary()), 0);
+    sync();
+    window.addEventListener(CONSENT_EVENT, sync);
+    return () => window.removeEventListener(CONSENT_EVENT, sync);
+  }, []);
+
+  const succeeded = state.status === "success";
+  useEffect(() => {
+    if (succeeded) {
+      trackEvent("generate_lead", {
+        form_type: quotation ? "quotation" : "contact",
+        language: lang,
+      });
+    }
+  }, [succeeded, quotation, lang]);
 
   const toolName = quotation ? "requestQuote" : "contactUs";
   useWebMCPTool({
@@ -179,6 +202,7 @@ export default function ContactForm({
     <form ref={formRef} action={formAction} className="flex flex-col gap-5" noValidate={false}>
       <input type="hidden" name="page" value={page} />
       <input type="hidden" name="lang" value={lang} />
+      <input type="hidden" name="attribution" value={attribution} />
       {configuration && (
         <input type="hidden" name="configuration" value={configuration} />
       )}

@@ -58,7 +58,7 @@ export default async function HomePage({
       <PartnersSection dict={dict} />
       <ProductsBento lang={lang} dict={dict} />
       <ProcessSection dict={dict} />
-      <VideoSection dict={dict} />
+      {/* Video section is kept (see VideoSection below) but currently not shown. */}
       <CtaBand dict={dict} quoteHref={quoteHref} />
     </>
   );
@@ -227,6 +227,8 @@ function ProcessSection({ dict }: { dict: Dict }) {
 
 /* --------------------------------- Video ----------------------------------- */
 
+// Currently unused: re-add `<VideoSection dict={dict} />` to HomePage to show it.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function VideoSection({ dict }: { dict: Dict }) {
   return (
     <section className="mesh-hero relative overflow-hidden py-24 sm:py-32">

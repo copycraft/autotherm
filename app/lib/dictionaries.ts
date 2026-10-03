@@ -230,7 +230,7 @@ export const dictionaries: Record<Lang, Dict> = {
       tagline: "Hűtőautók és járműfelépítmények gyártása 1992 óta.",
     },
     cookie: {
-      text: "Weboldalunk sütiket használ a felhasználói élmény javítása érdekében. Az oldal használatával elfogadja az adatkezelési tájékoztatóban foglaltakat.",
+      text: "Az „Elfogadom” gombbal hozzájárul, hogy statisztikai és hirdetésmérő sütiket (Google Analytics, Google Ads) használjunk, hogy lássuk, honnan érkeznek látogatóink. Az „Elutasítom” gombbal ezek nélkül is használhatja az oldalt. Részletek az adatkezelési tájékoztatóban.",
       accept: "Elfogadom",
       decline: "Elutasítom",
     },
@@ -492,7 +492,7 @@ export const dictionaries: Record<Lang, Dict> = {
       tagline: "Manufacturing refrigerated vehicles and bodies since 1992.",
     },
     cookie: {
-      text: "We use cookies to improve your experience. By using this site you accept our privacy policy.",
+      text: "By clicking Accept you allow statistics and ad-measurement cookies (Google Analytics, Google Ads) that show us where our visitors come from. You can use the site fully if you decline. See our privacy policy for details.",
       accept: "Accept",
       decline: "Decline",
     },
@@ -747,7 +747,7 @@ export const dictionaries: Record<Lang, Dict> = {
       tagline: "Kühlfahrzeuge und Aufbauten seit 1992.",
     },
     cookie: {
-      text: "Wir verwenden Cookies, um Ihr Erlebnis zu verbessern. Durch die Nutzung dieser Seite akzeptieren Sie unsere Datenschutzerklärung.",
+      text: "Mit „Akzeptieren“ erlauben Sie Statistik- und Werbemessungs-Cookies (Google Analytics, Google Ads), damit wir sehen, woher unsere Besucher kommen. Die Seite funktioniert auch bei „Ablehnen“. Details in der Datenschutzerklärung.",
       accept: "Akzeptieren",
       decline: "Ablehnen",
     },
@@ -1004,7 +1004,7 @@ export const dictionaries: Record<Lang, Dict> = {
       tagline: "Producem vehicule frigorifice și suprastructuri din 1992.",
     },
     cookie: {
-      text: "Folosim cookie-uri pentru a vă îmbunătăți experiența. Prin utilizarea acestui site acceptați politica noastră de confidențialitate.",
+      text: "Prin „Accept” permiteți cookie-uri de statistică și măsurare a reclamelor (Google Analytics, Google Ads), pentru a vedea de unde vin vizitatorii. Puteți folosi site-ul și dacă refuzați. Detalii în politica de confidențialitate.",
       accept: "Accept",
       decline: "Refuz",
     },

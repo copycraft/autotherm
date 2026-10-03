@@ -11,20 +11,6 @@ const nextConfig: NextConfig = {
     // Transitions API simply render the swap instantly — no fallback needed.
     viewTransition: true,
   },
-  images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "www.autotherm.hu",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "autotherm.hu",
-        pathname: "/**",
-      },
-    ],
-  },
 };
 
 /* ----------------------------- Client logo strip ---------------------------- */
