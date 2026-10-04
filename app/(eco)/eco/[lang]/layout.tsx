@@ -11,10 +11,10 @@ import RootShell from "@/app/components/site/RootShell";
 import { LANGS, LOCALES, isLang } from "@/app/lib/constants";
 import { dictionaries, getDict } from "@/app/lib/dictionaries";
 import {
-  ECO_NAME,
   ECO_SITE_URL,
   MAIN_SITE_URL,
   ecoMetadata,
+  ecoName,
   ecoPath,
   getEcoDict,
 } from "@/app/lib/eco";
@@ -47,7 +47,7 @@ export async function generateMetadata({
     ...home,
     metadataBase: new URL(ECO_SITE_URL),
     title: { default: String(home.title), template: "%s" },
-    applicationName: ECO_NAME,
+    applicationName: ecoName(lang),
     authors: [{ name: "Autotherm" }],
     publisher: "Autotherm",
     robots: { index: true, follow: true },
@@ -65,14 +65,14 @@ export async function generateMetadata({
       type: "website",
       locale: LOCALES[lang],
       alternateLocale: LANGS.filter((l) => l !== lang).map((l) => LOCALES[l]),
-      siteName: ECO_NAME,
+      siteName: ecoName(lang),
       url: ecoPath("home", lang),
       images: [
         {
           url: `${MAIN_SITE_URL}/images/og-banner.jpg`,
           width: 1200,
           height: 630,
-          alt: "Zero Emission – Autotherm",
+          alt: `${ecoName(lang)} – Autotherm`,
         },
       ],
     },

@@ -11,11 +11,11 @@ import RootShell from "@/app/components/site/RootShell";
 import { LANGS, LOCALES, isLang } from "@/app/lib/constants";
 import { dictionaries, getDict } from "@/app/lib/dictionaries";
 import {
-  HEARSE_NAME,
   HEARSE_SITE_URL,
   MAIN_SITE_URL,
   getHearseDict,
   hearseMetadata,
+  hearseName,
   hearsePath,
 } from "@/app/lib/hearse";
 import { rootViewport } from "@/app/lib/root-metadata";
@@ -47,7 +47,7 @@ export async function generateMetadata({
     ...home,
     metadataBase: new URL(HEARSE_SITE_URL),
     title: { default: String(home.title), template: "%s" },
-    applicationName: HEARSE_NAME,
+    applicationName: hearseName(lang),
     authors: [{ name: "Autotherm" }],
     publisher: "Autotherm",
     robots: { index: true, follow: true },
@@ -65,14 +65,14 @@ export async function generateMetadata({
       type: "website",
       locale: LOCALES[lang],
       alternateLocale: LANGS.filter((l) => l !== lang).map((l) => LOCALES[l]),
-      siteName: HEARSE_NAME,
+      siteName: hearseName(lang),
       url: hearsePath("home", lang),
       images: [
         {
           url: `${MAIN_SITE_URL}/images/og-banner.jpg`,
           width: 1200,
           height: 630,
-          alt: "Mortecontrol – Autotherm",
+          alt: `${hearseName(lang)} – Autotherm`,
         },
       ],
     },

@@ -6,6 +6,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
+import type { Lang } from "@/app/lib/constants";
+import { ecoName } from "@/app/lib/eco";
+import { hearseName } from "@/app/lib/hearse";
 
 /**
  * Glassmorphic sticky header.
@@ -66,8 +69,12 @@ function Flag({ code }: { code: string }) {
   }
 }
 
-/** Zero Emission wordmark: leaf mark + name, with an "by Autotherm" endorsement. */
-export function EcoWordmark({ light }: { light: boolean }) {
+/**
+ * Eco wordmark: leaf mark + brand name, with a "by Autotherm" endorsement.
+ * Hungarian shows the original eHűtőautó, other languages Zero Emission.
+ */
+export function EcoWordmark({ light, lang }: { light: boolean; lang: Lang }) {
+  const second = lang === "hu" ? "Hűtőautó" : "Emission";
   return (
     <span className="flex items-center gap-2.5" aria-hidden="true">
       <svg
@@ -90,7 +97,8 @@ export function EcoWordmark({ light }: { light: boolean }) {
         <span
           className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
         >
-          Zero <span className={light ? "text-frost-300" : "text-brand-600"}>Emission</span>
+          {lang === "hu" ? "e" : "Zero "}
+          <span className={light ? "text-frost-300" : "text-brand-600"}>{second}</span>
         </span>
         <span
           className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
@@ -102,8 +110,13 @@ export function EcoWordmark({ light }: { light: boolean }) {
   );
 }
 
-/** Mortecontrol wordmark: gold "A" mark + name, with a "by Autotherm" endorsement. */
-export function HearseWordmark({ light }: { light: boolean }) {
+/**
+ * Hearse wordmark: gold "A" mark + brand name, with a "by Autotherm"
+ * endorsement. Hungarian shows the original Halottszállító, other languages
+ * Mortecontrol.
+ */
+export function HearseWordmark({ light, lang }: { light: boolean; lang: Lang }) {
+  const second = lang === "hu" ? "szállító" : "control";
   return (
     <span className="flex items-center gap-2.5" aria-hidden="true">
       <svg
@@ -120,7 +133,8 @@ export function HearseWordmark({ light }: { light: boolean }) {
         <span
           className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
         >
-          Morte<span className={light ? "text-frost-300" : "text-brand-600"}>control</span>
+          {lang === "hu" ? "Halott" : "Morte"}
+          <span className={light ? "text-frost-300" : "text-brand-600"}>{second}</span>
         </span>
         <span
           className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
@@ -143,8 +157,9 @@ export default function Header({
   openMenuLabel,
   closeMenuLabel,
   brand = "autotherm",
+  lang,
 }: {
-  /** "eco" swaps the logo for the Zero Emission wordmark (ehutoauto.hu); "hearse" for the Mortecontrol wordmark (halottszallito.hu). */
+  /** "eco" swaps the logo for the eco wordmark (ehutoauto.hu); "hearse" for the hearse wordmark (halottszallito.hu). */
   brand?: "autotherm" | "eco" | "hearse";
   homeHref: string;
   nav: NavEntry[];
@@ -155,11 +170,15 @@ export default function Header({
   phoneHref: string;
   openMenuLabel: string;
   closeMenuLabel: string;
+  /** Current language - picks the brand name on eco/hearse (hu keeps the original). */
+  lang: Lang;
 }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
   const pathname = usePathname();
+  const brandName =
+    brand === "eco" ? ecoName(lang) : brand === "hearse" ? hearseName(lang) : "Autotherm";
 
   useEffect(() => {
     const unsubscribe = scrollY.on("change", (v) => setScrolled(v > 24));
@@ -197,12 +216,12 @@ export default function Header({
           <Link
             href={homeHref}
             className="flex shrink-0 items-center gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-            aria-label={brand === "eco" ? "Zero Emission – Autotherm" : brand === "hearse" ? "Mortecontrol – Autotherm" : "Autotherm"}
+            aria-label={brand === "autotherm" ? "Autotherm" : `${brandName} – Autotherm`}
           >
             {brand === "eco" ? (
-              <EcoWordmark light={!(scrolled || open)} />
+              <EcoWordmark light={!(scrolled || open)} lang={lang} />
             ) : brand === "hearse" ? (
-              <HearseWordmark light={!(scrolled || open)} />
+              <HearseWordmark light={!(scrolled || open)} lang={lang} />
             ) : (
               <Image
                 src="/images/autotherm-logo.webp"

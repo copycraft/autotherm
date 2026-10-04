@@ -39,6 +39,7 @@ export default function HearseHeader({
   return (
     <Header
       brand="hearse"
+      lang={lang}
       homeHref={hearsePath("home", lang)}
       nav={nav}
       langs={langs}

@@ -20,7 +20,13 @@ import { HEARSE_DICTS } from "./hearse-i18n";
  */
 
 export const HEARSE_SITE_URL = "https://halottszallito.hu";
-export const HEARSE_NAME = "Mortecontrol";
+/**
+ * Brand name per language: Hungarian keeps the original Halottszállító, the
+ * other languages use Mortecontrol.
+ */
+export function hearseName(lang: Lang): string {
+  return lang === "hu" ? "Halottszállító" : "Mortecontrol";
+}
 export const HEARSE_DEFAULT_LANG: Lang = "hu";
 
 export const HEARSE_PAGES = ["home", "why", "product", "builds", "quote"] as const;

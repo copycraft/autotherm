@@ -55,6 +55,7 @@ export default function HeaderContainer({
   return (
     <Header
       homeHref={`/${lang}`}
+      lang={lang}
       nav={nav}
       langs={langs}
       quoteHref={quoteHref}

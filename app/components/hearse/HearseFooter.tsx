@@ -24,7 +24,7 @@ export default function HearseFooter({ lang }: { lang: Lang }) {
       <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <HearseWordmark light />
+            <HearseWordmark light lang={lang} />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-300">
               {t.tagline.replace("{year}", String(FOUNDED_YEAR))}
             </p>

@@ -19,7 +19,13 @@ import { ECO_DICTS } from "./eco-i18n";
  */
 
 export const ECO_SITE_URL = "https://ehutoauto.hu";
-export const ECO_NAME = "Zero Emission";
+/**
+ * Brand name per language: Hungarian keeps the original eHűtőautó, the other
+ * languages use Zero Emission.
+ */
+export function ecoName(lang: Lang): string {
+  return lang === "hu" ? "eHűtőautó" : "Zero Emission";
+}
 export const ECO_DEFAULT_LANG: Lang = "hu";
 
 export const ECO_PAGES = ["home", "why", "technology", "vehicles", "quote"] as const;

@@ -12,27 +12,27 @@ export const hu: HearseDict = {
   },
   seo: {
     home: {
-      title: "Halottasautó gyártás – halottszállító és pompaautó | Mortecontrol – Autotherm",
+      title: "Halottasautó gyártás – halottszállító és pompaautó | Halottszállító – Autotherm",
       description:
         "Halottszállító és pompaautó gyártás, 3,5 tonnás furgonok halottszállító átalakítása rejtett raktérhűtéssel és teljes ügyintézéssel. Autotherm Kft., Szeged.",
     },
     why: {
-      title: "Miért mi? Halottaskocsi gyártás és átalakítás | Mortecontrol – Autotherm",
+      title: "Miért mi? Halottaskocsi gyártás és átalakítás | Halottszállító – Autotherm",
       description:
         "Halottaskocsi gyártás és átalakítás 1992 óta: egy kézben a felépítménygyártás, a raktérhűtés és a teljes ügyintézés.",
     },
     product: {
-      title: "Halottszállító autó gyártás – műszaki tartalom | Mortecontrol – Autotherm",
+      title: "Halottszállító autó gyártás – műszaki tartalom | Halottszállító – Autotherm",
       description:
         "Hőhídmentes AT Strong szigetelés, mosható poliészter vagy rozsdamentes belső burkolat, +18 °C-os raktérhűtés, díszített pompaautó kivitel.",
     },
     builds: {
-      title: "Halottas autó átalakításaink képekben | Mortecontrol – Autotherm",
+      title: "Halottas autó átalakításaink képekben | Halottszállító – Autotherm",
       description:
         "Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert és Opel Vivaro halottszállító átalakítások képekben.",
     },
     quote: {
-      title: "Halottasautó árak – gyors árajánlat | Mortecontrol – Autotherm",
+      title: "Halottasautó árak – gyors árajánlat | Halottszállító – Autotherm",
       description:
         "Kérjen árajánlatot halottszállító vagy pompaautó átalakításra – munkatársunk 12 órán belül PDF-ben küldi ajánlatát.",
     },

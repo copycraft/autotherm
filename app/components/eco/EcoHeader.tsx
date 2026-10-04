@@ -39,6 +39,7 @@ export default function EcoHeader({
   return (
     <Header
       brand="eco"
+      lang={lang}
       homeHref={ecoPath("home", lang)}
       nav={nav}
       langs={langs}
