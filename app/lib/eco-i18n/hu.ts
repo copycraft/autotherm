@@ -4,7 +4,7 @@ const quoteBody = "Elektromos hűtőautó önellátó hűtőegységgel!";
 const pickupBody =
   "Vegye igénybe járművének átvételi és visszaküldési ajánlatunkat egy átfogó és gondtalan szolgáltatáshoz!";
 const individual = "Az egyedi igények egyedi megoldásokat igényelnek.";
-const tagline = "A jövő zöld vagy semmilyen.";
+const tagline = "A jövő zöld, vagy semmilyen.";
 const approach =
   "A hatótávolság megtartásának érdekében 6 m³ rakterű furgonok esetében mi egy önellátó, saját, ciklikus töltésű akkupakkal rendelkező hűtőegység mellett tettük le a voksunkat.";
 const efficient =
