@@ -22,7 +22,7 @@ type Variant = "primary" | "ghost" | "frost";
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-brand-600 text-white hover:bg-brand-500 shadow-[0_2px_10px_rgba(39,79,226,0.25),0_8px_30px_rgba(39,79,226,0.25)] hover:shadow-glow",
+    "bg-brand-600 text-white hover:bg-brand-500 shadow-button hover:shadow-glow",
   ghost:
     "glass-dark text-white hover:bg-white/10 ring-1 ring-white/15 hover:ring-white/30",
   frost:
