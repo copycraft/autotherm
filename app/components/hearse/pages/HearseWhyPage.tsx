@@ -1,4 +1,3 @@
-import HearseGuarantees from "@/app/components/hearse/HearseGuarantees";
 import HearseTestimonials from "@/app/components/hearse/HearseTestimonials";
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
 import CtaBand from "@/app/components/site/CtaBand";
@@ -16,9 +15,7 @@ export default function HearseWhyPage({ lang }: { lang: Lang }) {
     <>
       <PageHero eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
 
-      <HearseGuarantees lang={lang} />
-
-      {/* Seven reasons */}
+      {/* Six reasons */}
       <section className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>

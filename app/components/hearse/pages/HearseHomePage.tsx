@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import HearseBuildsStrip from "@/app/components/hearse/HearseBuildsStrip";
 import HearseContactCard from "@/app/components/hearse/HearseContactCard";
-import HearseGuarantees from "@/app/components/hearse/HearseGuarantees";
 import HearseHero from "@/app/components/hearse/HearseHero";
 import HearseTestimonials from "@/app/components/hearse/HearseTestimonials";
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
@@ -104,8 +103,6 @@ export default function HearseHomePage({ lang }: { lang: Lang }) {
       </section>
 
       <HearseBuildsStrip lang={lang} />
-
-      <HearseGuarantees lang={lang} />
 
       <HearseTestimonials lang={lang} limit={1} />
 

@@ -20,7 +20,7 @@ export const en: HearseDict = {
     why: {
       title: "Why us? Hearse building and conversion | Halottszállító – Autotherm",
       description:
-        "Guarantees you won't find elsewhere: a 3-year insulation warranty and our \"what you see is what you get\" guarantee.",
+        "Hearse building and conversion since 1992: body building, cargo cooling and all the paperwork under one roof.",
     },
     product: {
       title: "Funeral vehicle manufacturing – specification | Halottszállító – Autotherm",
@@ -87,20 +87,6 @@ export const en: HearseDict = {
     eyebrow: "Gallery",
     title: "Our conversions in pictures",
     cta: "All conversions",
-  },
-  guarantees: {
-    eyebrow: "Our guarantees",
-    title: "Guarantees our trade has never seen before!",
-    items: [
-      {
-        title: "\"What you see is what you get\" guarantee",
-        body: "Like our offer but still have doubts? That's what our \"what you see is what you get\" guarantee is for! Bring us the vehicle you want converted, and if you doubt we can deliver what you expect and imagine, we'll pay your travel costs – and since we took up your time, we'll treat you to a hearty Szeged fish soup!",
-      },
-      {
-        title: "3-year insulation warranty",
-        body: "We give a 3-year warranty on the cargo-space insulation of 3.5-tonne vans – unique in Hungary!",
-      },
-    ],
   },
   testimonials: {
     eyebrow: "What our customers say",
@@ -177,16 +163,12 @@ export const en: HearseDict = {
   why: {
     eyebrow: "Why us?",
     title: "Hearse building and conversion from a market leader",
-    lead: "Function – appearance – quality: the Autotherm funeral vehicle. Take a look at our unique guarantees!",
-    reasonsTitle: "7 reasons to choose us",
+    lead: "Function – appearance – quality: the Autotherm funeral vehicle.",
+    reasonsTitle: "6 reasons to choose us",
     reasons: [
       {
         title: "{years} years in the trade",
         body: "Our company was founded in 1992 as Autotherm Kft. Its founders, László Csurgó and an Austrian businessman, Dkfm. Peter Knerer, set it up to bring Carrier refrigeration units to the emerging Hungarian market. From 1995 we also took on Thermo King repairs and became the leading refrigeration service in southern Hungary.",
-      },
-      {
-        title: "Our guarantees",
-        body: "Our guarantees let you order from us with complete peace of mind: we give a 3-year warranty on our insulation, and there is our \"what you see is what you get\" guarantee too.",
       },
       {
         title: "Everything in one hand",

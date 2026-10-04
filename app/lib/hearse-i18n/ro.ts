@@ -20,7 +20,7 @@ export const ro: HearseDict = {
     why: {
       title: "De ce noi? Fabricarea și transformarea dricurilor | Halottszállító – Autotherm",
       description:
-        "Garanții unice: 3 ani garanție pentru izolație și garanția „Primiți ce vedeți”.",
+        "Fabricarea și transformarea dricurilor din 1992: suprastructuri, răcire și toate formalitățile dintr-o singură mână.",
     },
     product: {
       title: "Fabricare de mașini funerare – dotări | Halottszállító – Autotherm",
@@ -87,20 +87,6 @@ export const ro: HearseDict = {
     eyebrow: "Galerie",
     title: "Transformările noastre în imagini",
     cta: "Toate transformările",
-  },
-  guarantees: {
-    eyebrow: "Garanțiile noastre",
-    title: "Garanții cum meseria noastră n-a mai văzut!",
-    items: [
-      {
-        title: "Garanția „Primiți ce vedeți”",
-        body: "Vă place oferta noastră, dar aveți totuși îndoieli? Pentru asta există garanția „Primiți ce vedeți”! Aduceți-ne vehiculul de transformat și, dacă vă îndoiți că vă putem îndeplini așteptările și ideile, vă plătim cheltuielile de drum – și, pentru că v-am răpit timpul, vă invităm la o ciorbă de pește de Szeged!",
-      },
-      {
-        title: "3 ani garanție pentru izolație",
-        body: "Pentru izolația spațiului de încărcare al dubelor de 3,5 tone oferim – unic în Ungaria – 3 ani garanție!",
-      },
-    ],
   },
   testimonials: {
     eyebrow: "Ce spun clienții",
@@ -177,16 +163,12 @@ export const ro: HearseDict = {
   why: {
     eyebrow: "De ce noi?",
     title: "Fabricarea și transformarea dricurilor de la liderul pieței",
-    lead: "Funcționalitate – aspect – calitate: mașina funerară Autotherm. Priviți garanțiile noastre unice!",
-    reasonsTitle: "7 motive să ne alegeți",
+    lead: "Funcționalitate – aspect – calitate: mașina funerară Autotherm.",
+    reasonsTitle: "6 motive să ne alegeți",
     reasons: [
       {
         title: "{years} de ani în meserie",
         body: "Firma noastră a fost înființată în 1992 sub numele Autotherm Kft. Fondatorii, László Csurgó și omul de afaceri austriac Dkfm. Peter Knerer, au vrut să introducă agregatele frigorifice Carrier pe piața maghiară în plină dezvoltare. Din 1995 am preluat și reparațiile Thermo King și am devenit service-ul frigorific de referință din sudul Ungariei.",
-      },
-      {
-        title: "Garanțiile noastre",
-        body: "Cu garanțiile noastre comandați în deplină siguranță: pentru izolație oferim 3 ani garanție și, în plus, există garanția „Primiți ce vedeți”.",
       },
       {
         title: "Totul dintr-o singură mână",

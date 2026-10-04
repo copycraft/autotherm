@@ -20,7 +20,7 @@ export const de: HearseDict = {
     why: {
       title: "Warum wir? Bau und Umbau von Leichenwagen | Halottszállító – Autotherm",
       description:
-        "Einzigartige Garantien: 3 Jahre Garantie auf die Laderaumisolierung und unsere „Sie bekommen, was Sie sehen“-Garantie.",
+        "Bau und Umbau von Leichenwagen seit 1992: Aufbau, Laderaumkühlung und komplette Abwicklung aus einer Hand.",
     },
     product: {
       title: "Bau von Bestattungsfahrzeugen – Ausstattung | Halottszállító – Autotherm",
@@ -87,20 +87,6 @@ export const de: HearseDict = {
     eyebrow: "Galerie",
     title: "Unsere Umbauten in Bildern",
     cta: "Alle Umbauten",
-  },
-  guarantees: {
-    eyebrow: "Unsere Garantien",
-    title: "Garantien, wie es sie in unserer Branche noch nie gab!",
-    items: [
-      {
-        title: "„Sie bekommen, was Sie sehen“-Garantie",
-        body: "Unser Angebot gefällt Ihnen, aber Sie haben noch Zweifel? Dafür gibt es unsere „Sie bekommen, was Sie sehen“-Garantie! Bringen Sie uns das Fahrzeug, das umgebaut werden soll, und wenn Sie bezweifeln, dass wir Ihre Erwartungen und Vorstellungen umsetzen können, erstatten wir Ihnen die Reisekosten – und weil wir Ihre Zeit beansprucht haben, laden wir Sie zu einer Szegediner Fischsuppe ein!",
-      },
-      {
-        title: "3 Jahre Garantie auf die Isolierung",
-        body: "Auf die Laderaumisolierung von 3,5-Tonnern geben wir – einzigartig in Ungarn – 3 Jahre Garantie!",
-      },
-    ],
   },
   testimonials: {
     eyebrow: "Das sagen unsere Kunden",
@@ -177,16 +163,12 @@ export const de: HearseDict = {
   why: {
     eyebrow: "Warum wir?",
     title: "Bau und Umbau von Leichenwagen vom Marktführer",
-    lead: "Funktion – Optik – Qualität: das Bestattungsfahrzeug von Autotherm. Sehen Sie sich unsere einzigartigen Garantien an!",
-    reasonsTitle: "7 Gründe, sich für uns zu entscheiden",
+    lead: "Funktion – Optik – Qualität: das Bestattungsfahrzeug von Autotherm.",
+    reasonsTitle: "6 Gründe, sich für uns zu entscheiden",
     reasons: [
       {
         title: "{years} Jahre in der Branche",
         body: "Unser Unternehmen wurde 1992 als Autotherm Kft. gegründet. Die Gründer, László Csurgó und der österreichische Unternehmer Dkfm. Peter Knerer, wollten Carrier-Kühlaggregate auf dem aufstrebenden ungarischen Markt etablieren. Ab 1995 übernahmen wir auch Reparaturen an Thermo-King-Geräten und wurden zum führenden Kühlservice in Südungarn.",
-      },
-      {
-        title: "Unsere Garantien",
-        body: "Mit unseren Garantien bestellen Sie bei uns völlig sicher: Auf unsere Isolierung geben wir 3 Jahre Garantie, und dazu kommt unsere „Sie bekommen, was Sie sehen“-Garantie.",
       },
       {
         title: "Alles aus einer Hand",

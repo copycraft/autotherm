@@ -19,7 +19,7 @@ export const hu: HearseDict = {
     why: {
       title: "Miért mi? Halottaskocsi gyártás és átalakítás | Halottszállító – Autotherm",
       description:
-        "Egyedülálló garanciák: 3 éves raktérszigetelési garancia és „Azt kapja, amit lát” garancia.",
+        "Halottaskocsi gyártás és átalakítás 1992 óta: egy kézben a felépítménygyártás, a raktérhűtés és a teljes ügyintézés.",
     },
     product: {
       title: "Halottszállító autó gyártás – műszaki tartalom | Halottszállító – Autotherm",
@@ -86,20 +86,6 @@ export const hu: HearseDict = {
     eyebrow: "Galéria",
     title: "Átalakításaink képekben",
     cta: "Minden átalakítás",
-  },
-  guarantees: {
-    eyebrow: "Garanciáink",
-    title: "Garancia, amilyet még nem látott a mi szakmánk!",
-    items: [
-      {
-        title: "„Azt kapja, amit lát” garancia",
-        body: "Szimpatikus az ajánlatunk, de mégis kétségei vannak? Erre való az „Azt kapja, amit lát” garanciánk! Elhozza hozzánk átalakítandó járművét, és ha kételkedik abban, hogy meg tudnánk valósítani az elvárásait, elképzeléseit, kifizetjük az útiköltségét – és mert raboltuk az idejét, meghívjuk egy finom szegedi halászlére!",
-      },
-      {
-        title: "3 éves raktérszigetelési garancia",
-        body: "A 3,5 tonnás, furgon jellegű haszonjárművek rakterének szigetelésére – Magyarországon egyedülálló módon – 3 év garanciát vállalunk!",
-      },
-    ],
   },
   testimonials: {
     eyebrow: "Rólunk mondták",
@@ -179,16 +165,12 @@ export const hu: HearseDict = {
   why: {
     eyebrow: "Miért mi?",
     title: "Halottaskocsi gyártás és átalakítás piacvezető cégtől",
-    lead: "Funkció – látvány – minőség: Autotherm halottszállító autó. Tekintse meg egyedülálló garanciáinkat!",
-    reasonsTitle: "7 érv, miért minket válasszon",
+    lead: "Funkció – látvány – minőség: Autotherm halottszállító autó.",
+    reasonsTitle: "6 érv, miért minket válasszon",
     reasons: [
       {
         title: "{years} éve a szakmában",
         body: "Cégünk 1992-ben alakult Autotherm Kft. néven. Az alapítók, Csurgó László és egy osztrák üzletember, Dkfm. Peter Knerer azzal a céllal hozták létre, hogy meghonosítsák a Carrier hűtőberendezéseket az éledező magyar hűtős piacon. 1995-től a Thermo King berendezések javítását is felvállalva Dél-Magyarország meghatározó hűtőgépszervize lettünk.",
-      },
-      {
-        title: "Garanciáink",
-        body: "Garanciáink által teljes biztonságban rendelhet nálunk: raktérszigetelésünkre 3 év garanciát vállalunk, és ott van az „Azt kapja, amit lát” garanciánk is.",
       },
       {
         title: "Egy kézben minden",
