@@ -20,7 +20,7 @@ export const en: HearseDict = {
     why: {
       title: "Why us? Hearse building and conversion | Halottszállító – Autotherm",
       description:
-        "Guarantees you won't find elsewhere: a 30-day buy-back guarantee, a 3-year insulation warranty and our \"what you see is what you get\" guarantee.",
+        "Guarantees you won't find elsewhere: a 3-year insulation warranty and our \"what you see is what you get\" guarantee.",
     },
     product: {
       title: "Funeral vehicle manufacturing – specification | Halottszállító – Autotherm",
@@ -95,10 +95,6 @@ export const en: HearseDict = {
       {
         title: "\"What you see is what you get\" guarantee",
         body: "Like our offer but still have doubts? That's what our \"what you see is what you get\" guarantee is for! Bring us the vehicle you want converted, and if you doubt we can deliver what you expect and imagine, we'll pay your travel costs – and since we took up your time, we'll treat you to a hearty Szeged fish soup!",
-      },
-      {
-        title: "30-day buy-back guarantee",
-        body: "Nobody in the refrigerated vehicle market has dared to offer this before! If our conversion doesn't hold the agreed temperature, within 30 days we remove everything from the vehicle and refund the price!",
       },
       {
         title: "3-year insulation warranty",
@@ -190,7 +186,7 @@ export const en: HearseDict = {
       },
       {
         title: "Our guarantees",
-        body: "Our guarantees let you order from us with complete peace of mind: we are the only ones in the refrigerated vehicle trade to offer a money-back guarantee, we give a 3-year warranty on our insulation, and there is our \"what you see is what you get\" guarantee too.",
+        body: "Our guarantees let you order from us with complete peace of mind: we give a 3-year warranty on our insulation, and there is our \"what you see is what you get\" guarantee too.",
       },
       {
         title: "Everything in one hand",

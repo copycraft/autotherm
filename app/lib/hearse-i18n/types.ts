@@ -37,7 +37,7 @@ export interface HearseDict {
   /** The 3.5 t conversion summary with its six features. */
   conversion: { eyebrow: string; title: string; features: string[]; details: string };
   strip: { eyebrow: string; title: string; cta: string };
-  /** See-what-you-get, 30-day buy-back, 3-year insulation warranty. */
+  /** See-what-you-get, 3-year insulation warranty. */
   guarantees: { eyebrow: string; title: string; items: TitleBody[] };
   testimonials: { eyebrow: string; title: string; items: { quote: string; name: string; role: string }[] };
   homeContact: { eyebrow: string; title: string };

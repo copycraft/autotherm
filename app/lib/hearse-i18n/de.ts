@@ -20,7 +20,7 @@ export const de: HearseDict = {
     why: {
       title: "Warum wir? Bau und Umbau von Leichenwagen | Halottszállító – Autotherm",
       description:
-        "Einzigartige Garantien: 30-Tage-Rückkaufgarantie, 3 Jahre Garantie auf die Laderaumisolierung und unsere „Sie bekommen, was Sie sehen“-Garantie.",
+        "Einzigartige Garantien: 3 Jahre Garantie auf die Laderaumisolierung und unsere „Sie bekommen, was Sie sehen“-Garantie.",
     },
     product: {
       title: "Bau von Bestattungsfahrzeugen – Ausstattung | Halottszállító – Autotherm",
@@ -95,10 +95,6 @@ export const de: HearseDict = {
       {
         title: "„Sie bekommen, was Sie sehen“-Garantie",
         body: "Unser Angebot gefällt Ihnen, aber Sie haben noch Zweifel? Dafür gibt es unsere „Sie bekommen, was Sie sehen“-Garantie! Bringen Sie uns das Fahrzeug, das umgebaut werden soll, und wenn Sie bezweifeln, dass wir Ihre Erwartungen und Vorstellungen umsetzen können, erstatten wir Ihnen die Reisekosten – und weil wir Ihre Zeit beansprucht haben, laden wir Sie zu einer Szegediner Fischsuppe ein!",
-      },
-      {
-        title: "30-Tage-Rückkaufgarantie",
-        body: "Das hat sich auf dem Kühlfahrzeugmarkt noch niemand getraut! Hält unser Umbau die vereinbarte Temperatur nicht, bauen wir innerhalb von 30 Tagen alles wieder aus und erstatten Ihnen den Preis!",
       },
       {
         title: "3 Jahre Garantie auf die Isolierung",
@@ -190,7 +186,7 @@ export const de: HearseDict = {
       },
       {
         title: "Unsere Garantien",
-        body: "Mit unseren Garantien bestellen Sie bei uns völlig sicher: Als Einzige in der Kühlfahrzeugbranche bieten wir eine Geld-zurück-Garantie, auf unsere Isolierung geben wir 3 Jahre Garantie, und dazu kommt unsere „Sie bekommen, was Sie sehen“-Garantie.",
+        body: "Mit unseren Garantien bestellen Sie bei uns völlig sicher: Auf unsere Isolierung geben wir 3 Jahre Garantie, und dazu kommt unsere „Sie bekommen, was Sie sehen“-Garantie.",
       },
       {
         title: "Alles aus einer Hand",

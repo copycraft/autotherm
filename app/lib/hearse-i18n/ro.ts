@@ -20,7 +20,7 @@ export const ro: HearseDict = {
     why: {
       title: "De ce noi? Fabricarea și transformarea dricurilor | Halottszállító – Autotherm",
       description:
-        "Garanții unice: garanție de răscumpărare 30 de zile, 3 ani garanție pentru izolație și garanția „Primiți ce vedeți”.",
+        "Garanții unice: 3 ani garanție pentru izolație și garanția „Primiți ce vedeți”.",
     },
     product: {
       title: "Fabricare de mașini funerare – dotări | Halottszállító – Autotherm",
@@ -95,10 +95,6 @@ export const ro: HearseDict = {
       {
         title: "Garanția „Primiți ce vedeți”",
         body: "Vă place oferta noastră, dar aveți totuși îndoieli? Pentru asta există garanția „Primiți ce vedeți”! Aduceți-ne vehiculul de transformat și, dacă vă îndoiți că vă putem îndeplini așteptările și ideile, vă plătim cheltuielile de drum – și, pentru că v-am răpit timpul, vă invităm la o ciorbă de pește de Szeged!",
-      },
-      {
-        title: "Garanție de răscumpărare 30 de zile",
-        body: "Nimeni n-a mai îndrăznit asta pe piața vehiculelor frigorifice! Dacă transformarea noastră nu menține temperatura stabilită, în 30 de zile demontăm totul din vehicul și vă returnăm prețul!",
       },
       {
         title: "3 ani garanție pentru izolație",
@@ -190,7 +186,7 @@ export const ro: HearseDict = {
       },
       {
         title: "Garanțiile noastre",
-        body: "Cu garanțiile noastre comandați în deplină siguranță: suntem singurii din domeniul vehiculelor frigorifice care oferă garanția banilor înapoi, pentru izolație oferim 3 ani garanție și, în plus, există garanția „Primiți ce vedeți”.",
+        body: "Cu garanțiile noastre comandați în deplină siguranță: pentru izolație oferim 3 ani garanție și, în plus, există garanția „Primiți ce vedeți”.",
       },
       {
         title: "Totul dintr-o singură mână",

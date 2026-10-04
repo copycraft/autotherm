@@ -5,10 +5,10 @@ import type { Lang } from "@/app/lib/constants";
 import { getHearseDict } from "@/app/lib/hearse";
 import type { IconName } from "@/app/lib/page-content";
 
-/** See-what-you-get, 30-day buy-back, 3-year insulation warranty. */
-const ICONS: IconName[] = ["heart", "shield", "medal"];
+/** See-what-you-get, 3-year insulation warranty. */
+const ICONS: IconName[] = ["heart", "medal"];
 
-/** The company's three guarantees, on a dark band. */
+/** The company's guarantees, on a dark band. */
 export default function HearseGuarantees({ lang }: { lang: Lang }) {
   const { guarantees } = getHearseDict(lang);
 
@@ -21,7 +21,7 @@ export default function HearseGuarantees({ lang }: { lang: Lang }) {
             {guarantees.title}
           </h2>
         </Reveal>
-        <RevealGroup className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <RevealGroup className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
           {guarantees.items.map((g, i) => (
             <RevealItem key={g.title} className="rounded-3xl bg-white/5 p-8 ring-1 ring-frost-300/20">
               <Icon name={ICONS[i]} className="h-7 w-7 text-frost-300" />

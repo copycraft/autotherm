@@ -41,6 +41,24 @@ const HEARSE_HOST =
   "(?:(?:www\\.)?halottszallito\\.hu|hearse\\.localhost|halottszallito\\.vastagkoppany\\.workers\\.dev)";
 const onHearse = [{ type: "host" as const, value: HEARSE_HOST }];
 
+/**
+ * Unprefixed (Hungarian) page paths on a microsite host → its tree's /hu.
+ * Framework files, the API, the internal trees, language prefixes and
+ * anything with a dot (images, fonts, logos) are left alone. Deeper paths go
+ * to the tree too (and 404 there) so they never reach main-site pages; they
+ * are matched segment by segment, because a single param holding "a/b" gets
+ * its slash encoded and OpenNext then answered 500.
+ */
+function hungarianRewrites(has: { type: "host"; value: string }[], tree: string) {
+  // "(?:/|$)", not "$": the lookahead sees the rest of the path, and an
+  // earlier rewrite's target ("/hearse/hu") must not match again.
+  const first = `(?!(?:_next|api|eco|hearse|hu|${ECO_PREFIXED})(?:/|$))[^/.]+`;
+  return [
+    { source: `/:page(${first})`, has, destination: `/${tree}/hu/:page` },
+    { source: `/:page(${first})/:rest([^/.]+)+`, has, destination: `/${tree}/hu/:page/:rest+` },
+  ];
+}
+
 async function ecoRedirects() {
   return [
     // One canonical host, as on the main site.
@@ -98,13 +116,8 @@ async function hearseRedirects() {
       ["/3d-hutoauto-ford-custom", "/halottas-auto-atalakitasaink"],
       ["/ro/masini-funerare", "/ro"],
     ].map(([source, destination]) => ({ source, has: onHearse, destination, permanent: true })),
-    // "/?portfolio=…" was WordPress's own link to the product page.
-    {
-      source: "/",
-      has: [...onHearse, { type: "query" as const, key: "portfolio" }],
-      destination: "/termekunk",
-      permanent: true,
-    },
+    // (WordPress's "/?portfolio=…" links just land on the home page: OpenNext
+    // ignores `has: query` on redirects, which sent every "/" request away.)
     // Hungarian is unprefixed, so a /hu prefix just drops off.
     { source: "/hu", has: onHearse, destination: "/", permanent: true },
     { source: "/hu/:path*", has: onHearse, destination: "/:path*", permanent: true },
@@ -141,13 +154,8 @@ async function ecoRewrites() {
     // to the eco tree too (and 404 there) so they never reach main-site pages.
     { source: `/:lang(${ECO_PREFIXED})`, has: onEco, destination: "/eco/:lang" },
     { source: `/:lang(${ECO_PREFIXED})/:path+`, has: onEco, destination: "/eco/:lang/:path+" },
-    // Every other page path is Hungarian; framework files, the API and anything
-    // with a file extension (images, fonts, logos) are served as they are.
-    {
-      source: `/:path((?!_next/|api/|eco(?:/|$)|hearse(?:/|$)|(?:hu|${ECO_PREFIXED})(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)`,
-      has: onEco,
-      destination: "/eco/hu/:path",
-    },
+    // Every other page path is Hungarian.
+    ...hungarianRewrites(onEco, "eco"),
   ];
 }
 
@@ -162,13 +170,8 @@ async function hearseRewrites() {
     // to the hearse tree too (and 404 there) so they never reach main-site pages.
     { source: `/:lang(${ECO_PREFIXED})`, has: onHearse, destination: "/hearse/:lang" },
     { source: `/:lang(${ECO_PREFIXED})/:path+`, has: onHearse, destination: "/hearse/:lang/:path+" },
-    // Every other page path is Hungarian; framework files, the API and anything
-    // with a file extension (images, fonts, logos) are served as they are.
-    {
-      source: `/:path((?!_next/|api/|hearse(?:/|$)|eco(?:/|$)|(?:hu|${ECO_PREFIXED})(?:/|$))(?!.*\\.[A-Za-z0-9]+$).+)`,
-      has: onHearse,
-      destination: "/hearse/hu/:path",
-    },
+    // Every other page path is Hungarian.
+    ...hungarianRewrites(onHearse, "hearse"),
   ];
 }
 

@@ -19,7 +19,7 @@ export const hu: HearseDict = {
     why: {
       title: "Miért mi? Halottaskocsi gyártás és átalakítás | Halottszállító – Autotherm",
       description:
-        "Egyedülálló garanciák: 30 napos visszavásárlási garancia, 3 éves raktérszigetelési garancia és „Azt kapja, amit lát” garancia.",
+        "Egyedülálló garanciák: 3 éves raktérszigetelési garancia és „Azt kapja, amit lát” garancia.",
     },
     product: {
       title: "Halottszállító autó gyártás – műszaki tartalom | Halottszállító – Autotherm",
@@ -94,10 +94,6 @@ export const hu: HearseDict = {
       {
         title: "„Azt kapja, amit lát” garancia",
         body: "Szimpatikus az ajánlatunk, de mégis kétségei vannak? Erre való az „Azt kapja, amit lát” garanciánk! Elhozza hozzánk átalakítandó járművét, és ha kételkedik abban, hogy meg tudnánk valósítani az elvárásait, elképzeléseit, kifizetjük az útiköltségét – és mert raboltuk az idejét, meghívjuk egy finom szegedi halászlére!",
-      },
-      {
-        title: "30 napos visszavásárlási garancia",
-        body: "Ezt még senki nem merte bevállalni a hűtőautós piacon! Ha az átalakításunk nem teljesíti az elvárt hőmérsékletet, 30 napon belül kiszerelünk mindent az autóból, és visszafizetjük az árát!",
       },
       {
         title: "3 éves raktérszigetelési garancia",
@@ -192,7 +188,7 @@ export const hu: HearseDict = {
       },
       {
         title: "Garanciáink",
-        body: "Garanciáink által teljes biztonságban rendelhet nálunk: pénzvisszafizetési garanciát csak mi adunk a hűtőautós szakmában, raktérszigetelésünkre 3 év garanciát vállalunk, és ott van az „Azt kapja, amit lát” garanciánk is.",
+        body: "Garanciáink által teljes biztonságban rendelhet nálunk: raktérszigetelésünkre 3 év garanciát vállalunk, és ott van az „Azt kapja, amit lát” garanciánk is.",
       },
       {
         title: "Egy kézben minden",
