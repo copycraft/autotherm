@@ -1,45 +1,41 @@
 import type { HearseDict } from "./types";
 
-const individual = "Individual needs call for individual solutions.";
-const tagline = "In the spirit of eternity.";
-const approach =
-  "Conversion of 3.5-tonne vans into hearse cargo areas: AT Strong® insulation, stainless or fibreglass lining, concealed cooling that holds a dignified +18 °C even in heatwaves.";
-const efficient =
-  "Quiet, reliable cooling worthy of funeral services, warranty-backed conversion and full paperwork handling make the hearses we build truly dependable.";
+const quoteTitle = "Request our quote now!";
+const quoteBody = "Ask for a quote on a funeral vehicle conversion today!";
 
 export const en: HearseDict = {
   nav: {
     home: "Home",
     why: "Why us?",
-    product: "Product",
-    builds: "Hearse vans",
+    product: "Our product",
+    builds: "Funeral vehicles",
     quote: "Request a quote",
   },
   seo: {
     home: {
-      title: "Hearse manufacturing, funeral van conversion | Halottszállító – Autotherm",
+      title: "Funeral vehicle manufacturing – removal vans and hearses | Halottszállító – Autotherm",
       description:
-        "Hearse and ceremonial funeral van manufacturing, refrigerated hearse conversions with concealed cooling and full paperwork. Autotherm Ltd.",
+        "Removal van and hearse manufacturing: 3.5-tonne vans converted for transporting the deceased, with concealed cargo cooling and all paperwork handled. Autotherm Ltd., Szeged, Hungary.",
     },
     why: {
-      title: "Why us? Hearse building since 1992 | Halottszállító – Autotherm",
+      title: "Why us? Hearse building and conversion | Halottszállító – Autotherm",
       description:
-        "Unique warranties, market-leading speed, meticulous workmanship: why Autotherm builds your hearse.",
+        "Guarantees you won't find elsewhere: a 30-day buy-back guarantee, a 3-year insulation warranty and our \"what you see is what you get\" guarantee.",
     },
     product: {
-      title: "Hearse refrigerated van: AT Strong® insulation, +18 °C cooling | Halottszállító",
+      title: "Funeral vehicle manufacturing – specification | Halottszállító – Autotherm",
       description:
-        "How the hearse cargo area is built: AT Strong® insulation, stainless or fibreglass lining, concealed cooling, coffin tray and urn holder.",
+        "Thermal-bridge-free AT Strong insulation, washable polyester or stainless-steel lining, +18 °C cargo cooling and decorated hearse versions.",
     },
     builds: {
-      title: "Hearse vans: finished conversions in pictures | Halottszállító – Autotherm",
+      title: "Our funeral vehicle conversions in pictures | Halottszállító – Autotherm",
       description:
-        "Ford Transit, Ford Custom, Mercedes Vito and more hearse conversions – see our finished hearses.",
+        "Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert and Opel Vivaro funeral vehicle conversions in pictures.",
     },
     quote: {
-      title: "Hearse prices – fast quote for a funeral van | Halottszállító",
+      title: "Funeral vehicle prices – fast quote | Halottszállító – Autotherm",
       description:
-        "Request a quote for a hearse or ceremonial van conversion. Tailored solution, quote within 12 hours.",
+        "Request a quote for a removal van or hearse conversion – our colleague sends the quote as a PDF within 12 hours.",
     },
   },
   common: {
@@ -50,138 +46,211 @@ export const en: HearseDict = {
     contactPerson: "Contact person",
     phone: "Phone",
     email: "E-mail",
-    callIntro: "If you'd rather request a quote by phone, call our colleague.",
+    callIntro: "If you'd rather ask for a quote by phone, call our sales advisor!",
   },
-  contactRole: "Sales – hearse vehicles",
-  pickup: {
-    title: "Pick-up and return",
-    body: "Take advantage of our vehicle pick-up and return offer for a complete, hassle-free service!",
-  },
+  contactRole: "Sales advisor",
   hero: {
-    eyebrow: "Autotherm · Hearse vehicles",
-    title: "Hearse vehicle",
-    tagline,
-    lead: "Hearse and ceremonial van manufacturing, refrigerated conversion and cooling service – tailored to individual needs, for a dignified farewell.",
-    howItWorks: "How is it built?",
-    points: ["Concealed cooling", "Full paperwork", "Unique warranties"],
+    eyebrow: "Tailored to your needs",
+    title: "Funeral vehicle conversions",
+    lead: "Funeral vehicle manufacturing: removal vans and hearses, refrigerated conversions and Carrier cargo-cooling service.",
+    buildsLabel: "Our conversions",
+    points: ["AT Strong® insulation", "+18 °C cargo cooling", "All paperwork handled"],
   },
-  home: {
-    introEyebrow: "Tailor-made hearses",
-    introTitle: individual,
-    introLead: "Hearse conversions into 3.5-tonne commercial vehicles.",
-    introBody: [
-      `As a hearse manufacturer, Autotherm Ltd. serves the dignified farewell. ${approach}`,
-      efficient,
+  pillars: {
+    eyebrow: "Converting removal vans",
+    items: [
+      { title: "Manufacturing", body: "Fitting out the cargo space of 3.5-tonne vans for transporting the deceased." },
+      { title: "Cargo cooling", body: "Concealed cargo cooling, holding a guaranteed +18 °C even in a heatwave." },
+      { title: "Paperwork", body: "Technical design documents, vehicle inspection and registration all handled." },
     ],
-    introLink: "How our product is built",
-    contactEyebrow: "Personal advice",
-    contactTitle: "Thinking of a different model? Ask our colleague.",
-    cta: {
-      title: "Request our quote now!",
-      body: "Hearse and ceremonial van conversion tailored to individual needs! Take advantage of our pick-up and return offer.",
-    },
   },
-  features: [
-    { title: "AT Strong® insulation", body: "Our own insulation technology, backed by a 3-year warranty." },
-    { title: "Concealed cooling", body: "Guaranteed +18 °C in the cargo area even in heatwaves, invisibly installed." },
-    { title: "Stainless lining", body: "Stainless or fibreglass lining – hygienic, washable, dignified finish." },
-    { title: "Coffin tray and rails", body: "Pull-out coffin tray, fixing rails and urn holder for safe transport." },
-    { title: "Multi-level versions", body: "Single and multi-level layouts, special solutions for individual needs." },
-    { title: "Ford and Mercedes bases", body: "Built on Ford Transit, Custom and Mercedes Vito – proven base vehicles." },
-    { title: "Fast build", body: "Market-leading speed, with the routine of hundreds of conversions a year." },
-    { title: "Warranty-backed", body: "Money-back guarantee and 3-year insulation warranty from Autotherm." },
-  ],
-  case: {
-    title: "A hearse from Autotherm? Clearly: YES!",
-    body: [
-      "The advantages are obvious: Autotherm hearses are dignified, quiet and reliable – good for the standard of the funeral service and the image of the company. Transporting the deceased needs two things above all: reliable cooling and dignified workmanship.",
-      "Hearses are built for the daily tasks of funeral services: for coffin or cremation ceremonies alike. Whatever the base vehicle – Ford Transit, Custom or Mercedes Vito – an Autotherm conversion delivers the same meticulous cooling and finish as the largest European builders.",
-      "And concealed cooling means the dignified +18 °C holds even in a heatwave – quietly, invisibly!",
+  welcome: {
+    greeting: "Welcome!",
+    body: "Imagine our company as a restaurant for a moment. I believe that even in our dry, technical trade we can offer the kind of service you would get in a Michelin-starred restaurant. When you dine with us, we want you to leave not just full, but with an experience! Our waiters gladly help you choose the combination of flavours you are after, and in the kitchen our chefs prepare the dish from quality ingredients with outstanding precision. My mission is for us to be the Michelin-starred restaurant of funeral vehicle manufacturing!",
+    name: "Péter Vastag",
+    role: "Managing owner of Autotherm",
+  },
+  conversion: {
+    eyebrow: "Our product",
+    title: "3.5 t van converted for transporting the deceased",
+    features: [
+      "AT Strong® insulation",
+      "Stainless-steel or fibreglass lining",
+      "+18 °C cargo cooling",
+      "Multi-level version",
+      "Special solutions",
+      "All paperwork handled",
     ],
+    details: "Details",
   },
   strip: {
-    eyebrow: "Finished conversions",
-    title: "Hearse vans we have converted",
-    cta: "All vehicles",
+    eyebrow: "Gallery",
+    title: "Our conversions in pictures",
+    cta: "All conversions",
+  },
+  guarantees: {
+    eyebrow: "Our guarantees",
+    title: "Guarantees our trade has never seen before!",
+    items: [
+      {
+        title: "\"What you see is what you get\" guarantee",
+        body: "Like our offer but still have doubts? That's what our \"what you see is what you get\" guarantee is for! Bring us the vehicle you want converted, and if you doubt we can deliver what you expect and imagine, we'll pay your travel costs – and since we took up your time, we'll treat you to a hearty Szeged fish soup!",
+      },
+      {
+        title: "30-day buy-back guarantee",
+        body: "Nobody in the refrigerated vehicle market has dared to offer this before! If our conversion doesn't hold the agreed temperature, within 30 days we remove everything from the vehicle and refund the price!",
+      },
+      {
+        title: "3-year insulation warranty",
+        body: "We give a 3-year warranty on the cargo-space insulation of 3.5-tonne vans – unique in Hungary!",
+      },
+    ],
+  },
+  testimonials: {
+    eyebrow: "What our customers say",
+    title: "They trusted us with their vehicles",
+    items: [
+      {
+        quote: "I spent months going through builders' offers, weighing every little detail. Three years and 38 converted vehicles later, I still consider the Autotherm team the best decision!",
+        name: "Tibor Mayer",
+        role: "Subcontractor of Fönix Pharma Zrt.",
+      },
+      {
+        quote: "Deadlines kept, quality work – in a word: guaranteed!",
+        name: "Balázs Neuberger",
+        role: "Neuberger és Fiai Kft. – managing director",
+      },
+      {
+        quote: "The team's high standards, their precision and the management's attitude to special requests are excellent. It was a real pleasure to work with such a flexible, resourceful team of experts.",
+        name: "János Zollai",
+        role: "Zollai Kft. – owner, managing director",
+      },
+      {
+        quote: "They did great work converting a new truck of ours into a refrigerated vehicle, and we are completely satisfied. All the paperwork and approvals for the vehicle were handled quickly and precisely.",
+        name: "Tamás Nádasdi",
+        role: "Palian Kft. – managing director",
+      },
+    ],
+  },
+  homeContact: {
+    eyebrow: "Personal advice",
+    title: "Ask for an express quote online or by phone!",
+  },
+  homeCta: { title: quoteTitle, body: quoteBody },
+  product: {
+    eyebrow: "Our product",
+    title: "Funeral vehicle manufacturing",
+    lead: "Removal vans and decorated hearses from a market-leading funeral vehicle builder. Refrigerated funeral cars and vans.",
+    specTitle: "Specification",
+    spec: [
+      "60 mm insulated floor",
+      "Thermal-bridge-free insulation: our own 50 mm AT Strong sandwich-panel walls and a 60 mm Tel insulation blanket",
+      "Interior: 1.8 mm white, glossy, washable polyester sheet, stainless steel, or to your specification",
+      "Panels fixed and sealed with high-grade automotive adhesive sealant",
+      "Floor surface in hard-wearing plastic or stainless steel",
+      "Square wheel-arch covers with rounded corners",
+      "Optional extras tailored entirely to your needs",
+      "Interior lining materials meet the requirements of the Hungarian veterinary and public health authorities",
+    ],
+    detailsTitle: "Details",
+    details: ["Pull-out tray", "Coffin tray", "Steel lining", "Urn holder", "Fixing rails", "Waeco controller"],
+    coolingTitle: "Cargo cooling",
+    cooling: [
+      "Concealed cargo cooling, holding a guaranteed +18 °C even in a heatwave.",
+      "Optional: a Waeco cargo cooler integrated with the vehicle's own air conditioning (cools only while the engine runs).",
+    ],
+    ceremonialTitle: "The hearse",
+    ceremonial: [
+      "The hearse that carries the coffin is an essential part of every funeral.",
+      "Its task is to cover, at walking pace among the mourners, the path of up to several hundred metres through the cemetery from the bier to the final resting place, as the deceased is accompanied on their last journey.",
+      "With its elegance, the hearse adds to the solemnity of the farewell and expresses the family's respect and esteem for the deceased.",
+    ],
+    cta: { title: quoteTitle, body: quoteBody },
+  },
+  builds: {
+    eyebrow: "Our conversions",
+    title: "Funeral vehicle manufacturing. Fast conversion – fair price.",
+    lead: "Take a look at the removal vans and hearses we have converted.",
+    all: "All",
+    leather: "leather",
+    imageAlt: "Funeral vehicle conversion",
+    prev: "Previous image",
+    next: "Next image",
+    cta: { title: quoteTitle, body: quoteBody },
   },
   why: {
     eyebrow: "Why us?",
-    title: "7 reasons to choose us",
-    lead: "We are one of Hungary's leading hearse and refrigerated van converters – since 1992.",
-    logisticsEyebrow: "Where we come from",
-    logistics: [
-      "Our company was founded in 1992 as Autotherm Ltd. As a Carrier, then Thermo King service, we became the region's leading cooling service.",
-      "Today production runs on 1500 m² in 4 halls: body building, insulation, metalwork, cooling installation and service.",
+    title: "Hearse building and conversion from a market leader",
+    lead: "Function – appearance – quality: the Autotherm funeral vehicle. Take a look at our unique guarantees!",
+    reasonsTitle: "7 reasons to choose us",
+    reasons: [
+      {
+        title: "{years} years in the trade",
+        body: "Our company was founded in 1992 as Autotherm Kft. Its founders, László Csurgó and an Austrian businessman, Dkfm. Peter Knerer, set it up to bring Carrier refrigeration units to the emerging Hungarian market. From 1995 we also took on Thermo King repairs and became the leading refrigeration service in southern Hungary.",
+      },
+      {
+        title: "Our guarantees",
+        body: "Our guarantees let you order from us with complete peace of mind: we are the only ones in the refrigerated vehicle trade to offer a money-back guarantee, we give a 3-year warranty on our insulation, and there is our \"what you see is what you get\" guarantee too.",
+      },
+      {
+        title: "Everything in one hand",
+        body: "There are two kinds of company in the refrigerated vehicle trade: body builders and refrigeration specialists. We have both under one roof, so we serve our customers quickly and flexibly!",
+      },
+      {
+        title: "24/7 service",
+        body: "Drawing on {years} years of cargo-cooling service experience, we are on call around the clock to help with cooling problems – whether it's a truck's cargo refrigeration unit or the direct-drive cooler of a 3.5-tonne vehicle.",
+      },
+      {
+        title: "Customer service",
+        body: "You can always reach us! We make a point of serving customers and enquirers as quickly as possible with quotes, expert advice and spare parts.",
+      },
+      {
+        title: "Volume",
+        body: "With more than {conversions} vehicles converted every year, we lead the 3.5-tonne refrigerated vehicle market – so you get a Rolls-Royce-standard vehicle as quickly as possible!",
+      },
+      {
+        title: "Our philosophy",
+        body: "Every day is driven by professionalism: expert information, fast and precise quotes, high-quality, reliable products and long-term, flexible cooperation – all at fair prices.",
+      },
     ],
-    quote: "Decades in the trade – with warranties nobody else dares to offer.",
-    benefitsTitle: "The advantages are obvious",
-    benefits: [
-      { title: "Decades in the trade", body: "Building refrigerated and hearse vehicles since 1992 – thousands of happy customers." },
-      { title: "Our warranties", body: "Money-back guarantee, 3-year insulation warranty and our 'what you see is what you get' promise." },
-      { title: "Everything in one hand", body: "Body building and cooling under one roof – fast and flexible." },
-      { title: "24-hour service", body: "24-hour standby for cooling trouble, backed by our own service history." },
-      { title: "Customer service", body: "Free green-line number and fast, precise quotes within 12 hours." },
-      { title: "Volume", body: "Hundreds of conversions a year – market leaders in the 3.5-tonne class." },
-      { title: "Our philosophy", body: "'Do more for the world than the world does for you – that is success.'" },
+    oneHandTitle: "Everything in one hand",
+    oneHand: [
+      {
+        title: "Body building",
+        body: "Our bodies carry the highest rating, with a galvanised, powder-coated subframe: they resist rust, and the load stays safe even in a heatwave.",
+      },
+      {
+        title: "Cargo-space insulation",
+        body: "We have been developing our insulation technology for {insulationYears} years, since the very beginning. Its quality and finish bring repeat customers from Austria, Germany and Switzerland.",
+      },
+      {
+        title: "Carrier Transicold partner",
+        body: "Carrier leads the European cargo-cooling market, and we are a key partner because we fit more of its units than anyone else in Hungary.",
+      },
+      {
+        title: "All paperwork handled",
+        body: "Once we take over the vehicle there is no paperwork for you: we handle every permit, document, inspection and registration, and keep in touch with the dealer.",
+      },
     ],
-    bestEyebrow: "What we are proudest of",
-    best: ["Money-back guarantee", "3-year cargo insulation warranty"],
-    cargoEyebrow: "For every funeral task",
-    cargo: ["Coffin ceremony", "Cremation ceremony", "Deceased transport", "Ceremonial van service", "Wreath transport"],
-    cta: {
-      title: "Choose dignified quality!",
-      body: "Hearse and ceremonial van conversion tailored to individual needs – request a tailored quote.",
-    },
-  },
-  product: {
-    eyebrow: "Product",
-    title: "Hearse refrigerated van",
-    lead: approach,
-    howTitle: "How it is built",
-    steps: [
-      { title: "AT Strong® insulation", body: "Our own insulation, with an unmatched 3-year warranty in Hungary." },
-      { title: "Stainless lining", body: "Stainless or fibreglass cladding: hygienic, washable, aesthetic cargo area." },
-      { title: "Concealed cooling", body: "The cooling unit is hidden, holding guaranteed +18 °C even in heatwaves." },
-      { title: "Coffin tray and fixings", body: "Pull-out coffin tray, rails and urn holder – safe, dignified transport." },
-    ],
-    compareEyebrow: "Why concealed cooling?",
-    compareTitle: "Cooling should work, not show",
-    driveLabel: "Visible retrofitted AC",
-    drive: ["Noisy, conspicuous outdoor unit", "Hard to clean, patched lining"],
-    ownLabel: "Concealed cooling – Autotherm",
-    own: [
-      "Invisible installation",
-      "Guaranteed +18 °C even in heatwaves",
-      "Easy-clean, hygienic cargo area",
-      "Engineering plans and registration",
-    ],
-    closing: efficient,
-    cta: {
-      title: "Wondering which solution suits your service?",
-      body: "Our colleague will explain how we convert your vehicle into a hearse.",
-    },
-  },
-  builds: {
-    eyebrow: "Hearse vans",
-    title: "Finished conversions in pictures",
-    lead: "Hearse conversions we have built – Ford Transit, Ford Custom, Mercedes Vito and more. Thinking of a different model? Ask our colleague.",
-    cardBody: "Hearse conversion with concealed cooling and stainless lining.",
-    otherEyebrow: "Another model?",
-    otherTitle: individual,
-    cta: {
-      title: "Request our quote now!",
-      body: "Hearse and ceremonial van conversion tailored to individual needs!",
-    },
+    quote: { text: "To do more for the world than the world does for you – that is success.", author: "Henry Ford" },
+    cta: { title: quoteTitle, body: quoteBody },
   },
   quote: {
     eyebrow: "Request a quote",
-    title: "Hearse prices",
-    lead: "Fast quote for a ceremonial van conversion! Individual needs call for individual solutions – tell us which vehicle and which funeral task you need a solution for.",
+    title: "Funeral vehicle prices",
+    lead: "A fast quote for a removal van or hearse conversion. Tell us which vehicle you need a solution for!",
     formTitle: "Quote request form",
-    vehiclePlaceholder: "E.g. Ford Transit, Mercedes Vito",
+    vehiclePlaceholder: "E.g. Mercedes Vito, Ford Transit Custom",
+    stepsTitle: "What happens after you ask for a quote?",
+    steps: [
+      { title: "Confirmation e-mail", body: "We confirm by e-mail that your request arrived and nothing went wrong technically." },
+      { title: "Technical call", body: "Our colleague calls you shortly to clarify the technical details, so the quote really reflects your needs." },
+      { title: "Your quote", body: "Our colleague sends you our quote as a PDF within 12 hours." },
+    ],
+    fact: "Did you know? We are the market leader in building removal vans and hearses!",
   },
   footer: {
-    tagline: "Hearse and ceremonial van manufacturing – from Autotherm Ltd., refrigerated vehicle specialists since {year}.",
+    tagline: "Removal vans and hearses – from Autotherm Ltd., since {year}.",
     mainSite: "Autotherm refrigerated vehicles",
     menu: "Menu",
     navLabel: "Footer",

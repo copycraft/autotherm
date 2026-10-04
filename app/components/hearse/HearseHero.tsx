@@ -15,12 +15,12 @@ export default function HearseHero({
   copy,
   quoteLabel,
   quoteHref,
-  productHref,
+  buildsHref,
 }: {
   copy: HearseDict["hero"];
   quoteLabel: string;
   quoteHref: string;
-  productHref: string;
+  buildsHref: string;
 }) {
   const reduced = useReducedMotion() ?? false;
   const fade = (delay: number) => ({
@@ -51,12 +51,6 @@ export default function HearseHero({
           >
             {copy.title}
           </motion.h1>
-          <motion.p
-            {...fade(0.35)}
-            className="mt-4 text-2xl font-extrabold tracking-tight text-frost-300 sm:text-3xl"
-          >
-            {copy.tagline}
-          </motion.p>
           <motion.p {...fade(0.5)} className="mt-8 max-w-xl text-lg leading-relaxed text-ink-200">
             {copy.lead}
           </motion.p>
@@ -67,8 +61,8 @@ export default function HearseHero({
                 <path d="M5 12h14M13 6l6 6-6 6" />
               </svg>
             </MagneticButton>
-            <MagneticButton href={productHref} variant="ghost">
-              {copy.howItWorks}
+            <MagneticButton href={buildsHref} variant="ghost">
+              {copy.buildsLabel}
             </MagneticButton>
           </motion.div>
           <motion.ul {...fade(0.8)} className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-6">

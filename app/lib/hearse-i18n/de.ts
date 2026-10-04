@@ -1,45 +1,41 @@
 import type { HearseDict } from "./types";
 
-const individual = "Individuelle Anforderungen verlangen individuelle Lösungen.";
-const tagline = "Im Zeichen der Ewigkeit.";
-const approach =
-  "Umbau von 3,5-t-Transportern zu Bestattungsfahrzeugen: AT Strong®-Isolierung, Edelstahl- oder GFK-Verkleidung, verdeckte Kühlung mit garantierten +18 °C auch bei Hitzewellen.";
-const efficient =
-  "Leise, zuverlässige Kühlung im würdigen Rahmen, Umbau mit Garantie und komplette Abwicklung machen unsere Bestattungsfahrzeuge wirklich verlässlich.";
+const quoteTitle = "Fordern Sie jetzt unser Angebot an!";
+const quoteBody = "Fordern Sie noch heute ein Angebot für den Umbau Ihres Bestattungsfahrzeugs an!";
 
 export const de: HearseDict = {
   nav: {
     home: "Startseite",
     why: "Warum wir?",
-    product: "Produkt",
+    product: "Unser Produkt",
     builds: "Bestattungsfahrzeuge",
     quote: "Angebot anfordern",
   },
   seo: {
     home: {
-      title: "Bestattungsfahrzeugbau, Leichenwagen-Umbau | Halottszállító – Autotherm",
+      title: "Bau von Bestattungsfahrzeugen – Überführungs- und Leichenwagen | Halottszállító – Autotherm",
       description:
-        "Herstellung von Bestattungs- und Zeremonienfahrzeugen, Kühlumbau von Leichenwagen mit verdeckter Kühlung und kompletter Abwicklung. Autotherm GmbH.",
+        "Bau von Überführungs- und Leichenwagen: 3,5-Tonner-Transporter für den Verstorbenentransport umgebaut, mit verdeckter Laderaumkühlung und kompletter Abwicklung. Autotherm GmbH, Szeged.",
     },
     why: {
-      title: "Warum wir? Leichenwagenbau seit 1992 | Halottszállító – Autotherm",
+      title: "Warum wir? Bau und Umbau von Leichenwagen | Halottszállító – Autotherm",
       description:
-        "Einzigartige Garantien, marktführende Geschwindigkeit, anspruchsvolle Ausführung: Darum baut Autotherm Ihr Bestattungsfahrzeug.",
+        "Einzigartige Garantien: 30-Tage-Rückkaufgarantie, 3 Jahre Garantie auf die Laderaumisolierung und unsere „Sie bekommen, was Sie sehen“-Garantie.",
     },
     product: {
-      title: "Bestattungs-Kühlfahrzeug: AT Strong®-Isolierung, +18 °C Kühlung | Halottszállító",
+      title: "Bau von Bestattungsfahrzeugen – Ausstattung | Halottszállító – Autotherm",
       description:
-        "So entsteht der Bestattungs-Laderaum: AT Strong®-Isolierung, Edelstahl- oder GFK-Verkleidung, verdeckte Kühlung, Sargwanne und Urnenhalter.",
+        "Wärmebrückenfreie AT-Strong-Isolierung, abwaschbare Polyester- oder Edelstahlverkleidung, +18 °C Laderaumkühlung und geschmückte Leichenwagen.",
     },
     builds: {
-      title: "Bestattungsfahrzeuge: fertige Umbauten in Bildern | Halottszállító – Autotherm",
+      title: "Unsere Bestattungsfahrzeug-Umbauten in Bildern | Halottszállító – Autotherm",
       description:
-        "Ford Transit, Ford Custom, Mercedes Vito und weitere Bestattungs-Umbauten – sehen Sie unsere fertigen Leichenwagen.",
+        "Umbauten auf Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert und Opel Vivaro in Bildern.",
     },
     quote: {
-      title: "Leichenwagen-Preise – schnelles Angebot | Halottszállító",
+      title: "Preise für Bestattungsfahrzeuge – schnelles Angebot | Halottszállító – Autotherm",
       description:
-        "Fordern Sie ein Angebot für den Bestattungs- oder Zeremonienwagen-Umbau an. Individuelle Lösung, Angebot innerhalb von 12 Stunden.",
+        "Fordern Sie ein Angebot für den Umbau eines Überführungs- oder Leichenwagens an – unser Kollege sendet es innerhalb von 12 Stunden als PDF.",
     },
   },
   common: {
@@ -50,138 +46,211 @@ export const de: HearseDict = {
     contactPerson: "Ansprechpartner",
     phone: "Telefon",
     email: "E-Mail",
-    callIntro: "Wenn Sie lieber telefonisch ein Angebot anfordern möchten, wenden Sie sich an unseren Kollegen.",
+    callIntro: "Wenn Sie lieber telefonisch ein Angebot anfordern möchten, rufen Sie unseren Vertriebsberater an!",
   },
-  contactRole: "Vertrieb – Bestattungsfahrzeuge",
-  pickup: {
-    title: "Abholung und Rückführung",
-    body: "Nutzen Sie unser Angebot zur Abholung und Rückführung Ihres Fahrzeugs – für einen umfassenden, sorgenfreien Service!",
-  },
+  contactRole: "Vertriebsberater",
   hero: {
-    eyebrow: "Autotherm · Bestattungsfahrzeuge",
-    title: "Bestattungsfahrzeug",
-    tagline,
-    lead: "Herstellung von Bestattungs- und Zeremonienfahrzeugen, Kühlumbau und Kühlservice – zugeschnitten auf individuelle Anforderungen, für einen würdigen Abschied.",
-    howItWorks: "Wie entsteht es?",
-    points: ["Verdeckte Kühlung", "Komplette Abwicklung", "Einzigartige Garantien"],
+    eyebrow: "Nach Ihren Wünschen gefertigt",
+    title: "Umbauten für den Verstorbenentransport",
+    lead: "Bau von Bestattungsfahrzeugen: Überführungs- und Leichenwagen, Kühlumbauten und Carrier-Laderaumkühlungsservice.",
+    buildsLabel: "Unsere Umbauten",
+    points: ["AT Strong®-Isolierung", "+18 °C Laderaumkühlung", "Komplette Abwicklung"],
   },
-  home: {
-    introEyebrow: "Maßgeschneiderte Bestattungsfahrzeuge",
-    introTitle: individual,
-    introLead: "Bestattungs-Umbauten in 3,5-t-Nutzfahrzeuge.",
-    introBody: [
-      `Als Hersteller von Bestattungsfahrzeugen steht die Autotherm GmbH im Dienst des würdigen Abschieds. ${approach}`,
-      efficient,
+  pillars: {
+    eyebrow: "Umbau von Überführungsfahrzeugen",
+    items: [
+      { title: "Fertigung", body: "Ausbau des Laderaums von 3,5-Tonnern für den Verstorbenentransport." },
+      { title: "Laderaumkühlung", body: "Verdeckte Laderaumkühlung mit garantierten +18 °C auch bei Hitze." },
+      { title: "Abwicklung", body: "Technische Unterlagen, Fahrzeugprüfung und Zulassung aus einer Hand." },
     ],
-    introLink: "So entsteht unser Produkt",
-    contactEyebrow: "Persönliche Beratung",
-    contactTitle: "Sie denken an ein anderes Modell? Fragen Sie unseren Kollegen.",
-    cta: {
-      title: "Fordern Sie jetzt unser Angebot an!",
-      body: "Bestattungs- und Zeremonienwagen-Umbau nach individuellen Anforderungen! Nutzen Sie unser Abhol- und Rückführungsangebot.",
-    },
   },
-  features: [
-    { title: "AT Strong®-Isolierung", body: "Eigene Isoliertechnik mit 3 Jahren Garantie." },
-    { title: "Verdeckte Kühlung", body: "Garantierte +18 °C im Laderaum auch bei Hitzewellen, unsichtbar eingebaut." },
-    { title: "Edelstahl-Verkleidung", body: "Edelstahl- oder GFK-Verkleidung – hygienisch, abwaschbar, würdig." },
-    { title: "Sargwanne und Schienen", body: "Ausziehbare Sargwanne, Fixierschienen und Urnenhalter für sicheren Transport." },
-    { title: "Mehrstöckige Varianten", body: "Ein- und mehrstöckige Ausführungen, Sonderlösungen für individuelle Wünsche." },
-    { title: "Ford- und Mercedes-Basis", body: "Auf Ford Transit, Custom und Mercedes Vito aufgebaut – bewährte Basisfahrzeuge." },
-    { title: "Schneller Bau", body: "Marktführende Geschwindigkeit, mit der Routine hunderter Umbauten pro Jahr." },
-    { title: "Mit Garantie", body: "Geld-zurück-Garantie und 3 Jahre Isolierungsgarantie von Autotherm." },
-  ],
-  case: {
-    title: "Ein Bestattungsfahrzeug von Autotherm? Eindeutig: JA!",
-    body: [
-      "Die Vorteile liegen auf der Hand: Autotherm-Bestattungsfahrzeuge sind würdig, leise und zuverlässig – gut für das Niveau des Bestattungsdienstes und das Image des Unternehmens. Der Transport Verstorbener braucht vor allem zwei Dinge: verlässliche Kühlung und würdige Ausführung.",
-      "Bestattungsfahrzeuge sind für die täglichen Aufgaben der Bestattungsdienste gebaut: für Sarg- wie für Einäscherungszeremonien. Ob Ford Transit, Custom oder Mercedes Vito als Basis – ein Autotherm-Umbau liefert die gleiche sorgfältige Kühlung und Ausführung wie die größten europäischen Hersteller.",
-      "Und verdeckte Kühlung bedeutet: Die würdigen +18 °C halten auch bei Hitzewellen – leise, unsichtbar!",
+  welcome: {
+    greeting: "Herzlich willkommen!",
+    body: "Stellen Sie sich unser Unternehmen einmal als Restaurant vor! Ich bin überzeugt, dass wir auch in unserem nüchternen, technischen Fach einen Service bieten können wie in einem Sternerestaurant. Wenn Sie bei uns speisen, sollen Sie nicht nur satt werden, sondern mit einem Erlebnis nach Hause gehen! Unser Service hilft Ihnen gern, genau die Geschmackskombination zu finden, die Sie suchen, und in der Küche bereiten unsere Köche das Gericht aus hochwertigen Zutaten mit größter Präzision zu. Meine Mission ist es, dass wir das Sternerestaurant unter den Herstellern von Bestattungsfahrzeugen sind!",
+    name: "Péter Vastag",
+    role: "Geschäftsführender Inhaber von Autotherm",
+  },
+  conversion: {
+    eyebrow: "Unser Produkt",
+    title: "3,5-t-Transporter als Überführungsfahrzeug",
+    features: [
+      "AT Strong®-Isolierung",
+      "Edelstahl- oder Glasfaserverkleidung",
+      "+18 °C Laderaumkühlung",
+      "Mehrstöckige Ausführung",
+      "Sonderlösungen",
+      "Komplette Abwicklung",
     ],
+    details: "Details",
   },
   strip: {
-    eyebrow: "Fertige Umbauten",
-    title: "Bestattungsfahrzeuge, die wir umgebaut haben",
-    cta: "Alle Fahrzeuge",
+    eyebrow: "Galerie",
+    title: "Unsere Umbauten in Bildern",
+    cta: "Alle Umbauten",
+  },
+  guarantees: {
+    eyebrow: "Unsere Garantien",
+    title: "Garantien, wie es sie in unserer Branche noch nie gab!",
+    items: [
+      {
+        title: "„Sie bekommen, was Sie sehen“-Garantie",
+        body: "Unser Angebot gefällt Ihnen, aber Sie haben noch Zweifel? Dafür gibt es unsere „Sie bekommen, was Sie sehen“-Garantie! Bringen Sie uns das Fahrzeug, das umgebaut werden soll, und wenn Sie bezweifeln, dass wir Ihre Erwartungen und Vorstellungen umsetzen können, erstatten wir Ihnen die Reisekosten – und weil wir Ihre Zeit beansprucht haben, laden wir Sie zu einer Szegediner Fischsuppe ein!",
+      },
+      {
+        title: "30-Tage-Rückkaufgarantie",
+        body: "Das hat sich auf dem Kühlfahrzeugmarkt noch niemand getraut! Hält unser Umbau die vereinbarte Temperatur nicht, bauen wir innerhalb von 30 Tagen alles wieder aus und erstatten Ihnen den Preis!",
+      },
+      {
+        title: "3 Jahre Garantie auf die Isolierung",
+        body: "Auf die Laderaumisolierung von 3,5-Tonnern geben wir – einzigartig in Ungarn – 3 Jahre Garantie!",
+      },
+    ],
+  },
+  testimonials: {
+    eyebrow: "Das sagen unsere Kunden",
+    title: "Sie haben uns ihre Fahrzeuge anvertraut",
+    items: [
+      {
+        quote: "Ich habe monatelang Angebote verglichen und jedes Detail abgewogen. Nach drei Jahren und 38 umgebauten Fahrzeugen halte ich das Autotherm-Team immer noch für die beste Entscheidung!",
+        name: "Tibor Mayer",
+        role: "Subunternehmer der Fönix Pharma Zrt.",
+      },
+      {
+        quote: "Termintreue, Qualitätsarbeit – mit einem Wort: Garantie!",
+        name: "Balázs Neuberger",
+        role: "Neuberger és Fiai Kft. – Geschäftsführer",
+      },
+      {
+        quote: "Der Anspruch und die Präzision des Teams und die Haltung der Geschäftsleitung zu Sonderwünschen sind hervorragend. Es war uns eine große Freude, mit einem so flexiblen, findigen Expertenteam zusammenzuarbeiten.",
+        name: "János Zollai",
+        role: "Zollai Kft. – Inhaber, Geschäftsführer",
+      },
+      {
+        quote: "Sie haben einen neuen Lkw hervorragend zum Kühlfahrzeug umgebaut, wir sind rundum zufrieden. Alle Formalitäten und Genehmigungen wurden schnell und präzise erledigt.",
+        name: "Tamás Nádasdi",
+        role: "Palian Kft. – Geschäftsführer",
+      },
+    ],
+  },
+  homeContact: {
+    eyebrow: "Persönliche Beratung",
+    title: "Fordern Sie Ihr Expressangebot online oder telefonisch an!",
+  },
+  homeCta: { title: quoteTitle, body: quoteBody },
+  product: {
+    eyebrow: "Unser Produkt",
+    title: "Bau von Bestattungsfahrzeugen",
+    lead: "Überführungsfahrzeuge und geschmückte Leichenwagen vom Marktführer. Gekühlte Bestattungsfahrzeuge und Transporter.",
+    specTitle: "Ausstattung",
+    spec: [
+      "60 mm isolierter Boden",
+      "Wärmebrückenfreie Isolierung: eigene 50 mm AT-Strong-Sandwichpaneele und 60 mm Tel-Dämmmatte",
+      "Innenfläche: 1,8 mm weiße, glänzende, abwaschbare Polyesterplatte, Edelstahl oder nach Wunsch",
+      "Paneele mit hochwertigem Spezial-Kfz-Klebedichtstoff befestigt und abgedichtet",
+      "Bodenbelag aus verschleißfestem Kunststoff oder Edelstahl",
+      "Eckige Radkastenverkleidung mit abgerundeten Kanten",
+      "Zusatzoptionen ganz nach Ihren Wünschen",
+      "Die Materialien der Innenverkleidung erfüllen die Vorgaben der ungarischen Veterinär- und Gesundheitsbehörden",
+    ],
+    detailsTitle: "Details",
+    details: ["Ausziehbare Wanne", "Sargwanne", "Stahlverkleidung", "Urnenhalter", "Befestigungsschienen", "Waeco-Steuerung"],
+    coolingTitle: "Laderaumkühlung",
+    cooling: [
+      "Verdeckte Laderaumkühlung mit garantierten +18 °C auch bei Hitze.",
+      "Optional: Waeco-Laderaumkühlung, in die Fahrzeugklimaanlage integriert (kühlt nur bei laufendem Motor).",
+    ],
+    ceremonialTitle: "Der Leichenwagen",
+    ceremonial: [
+      "Der Leichenwagen, der den Sarg trägt, gehört zu jeder Trauerfeier.",
+      "Seine Aufgabe ist es, im Schritttempo zwischen den Trauernden den oft mehrere hundert Meter langen Weg über den Friedhof von der Aufbahrung zur letzten Ruhestätte zurückzulegen, auf dem der Verstorbene auf seinem letzten Weg begleitet wird.",
+      "Mit seiner Eleganz unterstreicht der Leichenwagen die Feierlichkeit des Abschieds und bringt den Respekt und die Wertschätzung der Angehörigen für den Verstorbenen zum Ausdruck.",
+    ],
+    cta: { title: quoteTitle, body: quoteBody },
+  },
+  builds: {
+    eyebrow: "Unsere Umbauten",
+    title: "Bau von Bestattungsfahrzeugen. Schneller Umbau – fairer Preis.",
+    lead: "Sehen Sie sich unsere umgebauten Überführungs- und Leichenwagen an.",
+    all: "Alle",
+    leather: "Leder",
+    imageAlt: "Umbau zum Bestattungsfahrzeug",
+    prev: "Vorheriges Bild",
+    next: "Nächstes Bild",
+    cta: { title: quoteTitle, body: quoteBody },
   },
   why: {
     eyebrow: "Warum wir?",
-    title: "7 Gründe für uns",
-    lead: "Wir gehören zu Ungarns führenden Umbauern von Bestattungs- und Kühlfahrzeugen – seit 1992.",
-    logisticsEyebrow: "Woher wir kommen",
-    logistics: [
-      "Unser Unternehmen wurde 1992 als Autotherm GmbH gegründet. Als Carrier-, dann Thermo King-Service wurden wir zum bestimmenden Kühlservice der Region.",
-      "Heute läuft die Produktion auf 1500 m² in 4 Hallen: Aufbaufertigung, Isolierung, Metallbearbeitung, Kühleinbau und Service.",
+    title: "Bau und Umbau von Leichenwagen vom Marktführer",
+    lead: "Funktion – Optik – Qualität: das Bestattungsfahrzeug von Autotherm. Sehen Sie sich unsere einzigartigen Garantien an!",
+    reasonsTitle: "7 Gründe, sich für uns zu entscheiden",
+    reasons: [
+      {
+        title: "{years} Jahre in der Branche",
+        body: "Unser Unternehmen wurde 1992 als Autotherm Kft. gegründet. Die Gründer, László Csurgó und der österreichische Unternehmer Dkfm. Peter Knerer, wollten Carrier-Kühlaggregate auf dem aufstrebenden ungarischen Markt etablieren. Ab 1995 übernahmen wir auch Reparaturen an Thermo-King-Geräten und wurden zum führenden Kühlservice in Südungarn.",
+      },
+      {
+        title: "Unsere Garantien",
+        body: "Mit unseren Garantien bestellen Sie bei uns völlig sicher: Als Einzige in der Kühlfahrzeugbranche bieten wir eine Geld-zurück-Garantie, auf unsere Isolierung geben wir 3 Jahre Garantie, und dazu kommt unsere „Sie bekommen, was Sie sehen“-Garantie.",
+      },
+      {
+        title: "Alles aus einer Hand",
+        body: "In der Kühlfahrzeugbranche gibt es zwei Arten von Firmen: Aufbauhersteller und Kältespezialisten. Bei uns sind beide Bereiche unter einem Dach, deshalb bedienen wir unsere Kunden schnell und flexibel!",
+      },
+      {
+        title: "24/7-Service",
+        body: "Gestützt auf {years} Jahre Erfahrung im Kühlservice sind wir rund um die Uhr in Bereitschaft, um bei Kühlproblemen zu helfen – ob am Kühlaggregat eines Lkw oder an der direkt angetriebenen Kühlung eines 3,5-Tonners.",
+      },
+      {
+        title: "Kundenservice",
+        body: "Wir sind immer für Sie erreichbar! Wir legen großen Wert darauf, Kunden und Interessenten so schnell wie möglich mit Angebot, Fachberatung und Ersatzteilen zu versorgen.",
+      },
+      {
+        title: "Stückzahl",
+        body: "Mit mehr als {conversions} umgebauten Fahrzeugen pro Jahr sind wir Marktführer bei 3,5-Tonnen-Kühlfahrzeugen – so kommen Sie am schnellsten zu einem Fahrzeug in Rolls-Royce-Qualität!",
+      },
+      {
+        title: "Unsere Philosophie",
+        body: "Jeden Tag treibt uns Professionalität an: fachkundige Information, schnelle und präzise Angebote, hochwertige, zuverlässige Produkte und eine langfristige, flexible Zusammenarbeit – zu fairen Preisen.",
+      },
     ],
-    quote: "Jahrzehnte in der Branche – mit Garantien, die sonst niemand zu bieten wagt.",
-    benefitsTitle: "Die Vorteile liegen auf der Hand",
-    benefits: [
-      { title: "Jahrzehnte in der Branche", body: "Kühl- und Bestattungsfahrzeuge seit 1992 – tausende zufriedene Kunden." },
-      { title: "Unsere Garantien", body: "Geld-zurück-Garantie, 3 Jahre Isolierungsgarantie und unser „Was Sie sehen, bekommen Sie“-Versprechen." },
-      { title: "Alles in einer Hand", body: "Aufbaufertigung und Kühltechnik unter einem Dach – schnell und flexibel." },
-      { title: "24-Stunden-Service", body: "24-Stunden-Bereitschaft bei Kühlproblemen, mit eigener Servicehistorie." },
-      { title: "Kundendienst", body: "Kostenlose Hotline und schnelle, präzise Angebote innerhalb von 12 Stunden." },
-      { title: "Stückzahl", body: "Hunderte Umbauten pro Jahr – Marktführer in der 3,5-t-Klasse." },
-      { title: "Unsere Philosophie", body: "„Mehr für die Welt tun, als die Welt für dich tut – das ist Erfolg.“" },
+    oneHandTitle: "Alles aus einer Hand",
+    oneHand: [
+      {
+        title: "Aufbauherstellung",
+        body: "Unsere Aufbauten tragen die höchste Einstufung, mit verzinktem, pulverbeschichtetem Hilfsrahmen: rostbeständig, und die Ladung ist auch bei Hitze sicher.",
+      },
+      {
+        title: "Laderaumisolierung",
+        body: "Unsere Isoliertechnik entwickeln wir seit {insulationYears} Jahren, von Anfang an. Wegen ihrer Qualität und Optik kommen Stammkunden sogar aus Österreich, Deutschland und der Schweiz zu uns.",
+      },
+      {
+        title: "Carrier-Transicold-Partner",
+        body: "Carrier ist Marktführer bei Laderaumkühlung in Europa, und wir sind ein Schlüsselpartner, denn in Ungarn bauen wir die meisten Geräte ein.",
+      },
+      {
+        title: "Komplette Abwicklung",
+        body: "Nach der Fahrzeugübergabe haben Sie keinen Papierkram mehr: Wir erledigen alle Genehmigungen, Unterlagen, Prüfungen und Zulassungsformalitäten und halten Kontakt zum Autohaus.",
+      },
     ],
-    bestEyebrow: "Worauf wir am stolzesten sind",
-    best: ["Geld-zurück-Garantie", "3 Jahre Laderaum-Isolierungsgarantie"],
-    cargoEyebrow: "Für jede Bestattungsaufgabe",
-    cargo: ["Sargzeremonie", "Einäscherungszeremonie", "Überführung", "Zeremonienwagen-Service", "Kranztransport"],
-    cta: {
-      title: "Wählen Sie würdige Qualität!",
-      body: "Bestattungs- und Zeremonienwagen-Umbau nach individuellen Anforderungen – fordern Sie ein individuelles Angebot an.",
-    },
-  },
-  product: {
-    eyebrow: "Produkt",
-    title: "Bestattungs-Kühlfahrzeug",
-    lead: approach,
-    howTitle: "So entsteht es",
-    steps: [
-      { title: "AT Strong®-Isolierung", body: "Eigene Isolierung, mit in Ungarn einzigartigen 3 Jahren Garantie." },
-      { title: "Edelstahl-Verkleidung", body: "Edelstahl- oder GFK-Verkleidung: hygienischer, abwaschbarer, ästhetischer Laderaum." },
-      { title: "Verdeckte Kühlung", body: "Das Kühlaggregat ist verborgen eingebaut, mit garantierten +18 °C auch bei Hitzewellen." },
-      { title: "Sargwanne und Fixierung", body: "Ausziehbare Sargwanne, Schienen und Urnenhalter – sicherer, würdiger Transport." },
-    ],
-    compareEyebrow: "Warum verdeckte Kühlung?",
-    compareTitle: "Kühlung soll wirken, nicht auffallen",
-    driveLabel: "Sichtbare Nachrüst-Klima",
-    drive: ["Lautes, auffälliges Außengerät", "Schwer zu reinigen, geflickte Verkleidung"],
-    ownLabel: "Verdeckte Kühlung – Autotherm",
-    own: [
-      "Unsichtbarer Einbau",
-      "Garantierte +18 °C auch bei Hitzewellen",
-      "Leicht zu reinigender, hygienischer Laderaum",
-      "Technische Dokumentation und Zulassung",
-    ],
-    closing: efficient,
-    cta: {
-      title: "Welche Lösung passt zu Ihrem Dienst?",
-      body: "Unser Kollege erklärt Ihnen, wie wir Ihr Fahrzeug zum Bestattungsfahrzeug umbauen.",
-    },
-  },
-  builds: {
-    eyebrow: "Bestattungsfahrzeuge",
-    title: "Fertige Umbauten in Bildern",
-    lead: "Bestattungs-Umbauten, die wir gebaut haben – Ford Transit, Ford Custom, Mercedes Vito und mehr. Sie denken an ein anderes Modell? Fragen Sie unseren Kollegen.",
-    cardBody: "Bestattungs-Umbau mit verdeckter Kühlung und Edelstahl-Verkleidung.",
-    otherEyebrow: "Anderes Modell?",
-    otherTitle: individual,
-    cta: {
-      title: "Fordern Sie jetzt unser Angebot an!",
-      body: "Bestattungs- und Zeremonienwagen-Umbau nach individuellen Anforderungen!",
-    },
+    quote: { text: "Mehr für die Welt tun, als die Welt für dich tut – das ist Erfolg.", author: "Henry Ford" },
+    cta: { title: quoteTitle, body: quoteBody },
   },
   quote: {
     eyebrow: "Angebot anfordern",
-    title: "Leichenwagen-Preise",
-    lead: "Schnelles Angebot für einen Zeremonienwagen-Umbau! Individuelle Anforderungen verlangen individuelle Lösungen – schreiben Sie uns, für welches Fahrzeug und welche Bestattungsaufgabe Sie eine Lösung suchen.",
+    title: "Preise für Bestattungsfahrzeuge",
+    lead: "Ein schnelles Angebot für den Umbau eines Überführungs- oder Leichenwagens. Schreiben Sie uns, für welches Fahrzeug Sie eine Lösung suchen!",
     formTitle: "Angebotsformular",
-    vehiclePlaceholder: "z. B. Ford Transit, Mercedes Vito",
+    vehiclePlaceholder: "z. B. Mercedes Vito, Ford Transit Custom",
+    stepsTitle: "Was passiert nach Ihrer Anfrage?",
+    steps: [
+      { title: "Bestätigungs-E-Mail", body: "Wir bestätigen per E-Mail, dass Ihre Anfrage angekommen ist und kein technischer Fehler aufgetreten ist." },
+      { title: "Technisches Telefonat", body: "Unser Kollege ruft Sie kurz darauf an, um die technischen Details zu klären, damit das Angebot wirklich zu Ihnen passt." },
+      { title: "Ihr Angebot", body: "Unser Kollege sendet Ihnen das Angebot innerhalb von 12 Stunden als PDF." },
+    ],
+    fact: "Schon gewusst? Wir sind Marktführer beim Bau von Überführungs- und Leichenwagen!",
   },
   footer: {
-    tagline: "Herstellung von Bestattungs- und Zeremonienfahrzeugen – von der Autotherm GmbH, dem Kühlfahrzeug-Spezialisten seit {year}.",
+    tagline: "Überführungs- und Leichenwagen – von der Autotherm GmbH, seit {year}.",
     mainSite: "Autotherm Kühlfahrzeuge",
     menu: "Menü",
     navLabel: "Fußzeile",

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { LANGS, type Lang } from "./constants";
+import { FOUNDED_YEAR, LANGS, STATS, yearsSince, type Lang } from "./constants";
 import type { IconName } from "./page-content";
 import { HEARSE_DICTS } from "./hearse-i18n";
 
@@ -109,41 +109,71 @@ export const HEARSE_CONTACT = {
 /** The main site, for cross-links (legal pages, company info). */
 export const MAIN_SITE_URL = "https://hutoautok.hu";
 
-/** Icons for the eight product features, in the order of `features` in the copy. */
-export const HEARSE_FEATURE_ICONS: IconName[] = [
-  "layers",
-  "shield",
-  "thermometer",
-  "check",
-  "wrench",
-  "truck",
-  "clock",
-  "medal",
+/** Fills the figures that age in the copy: {years}, {insulationYears}, {conversions}. */
+export function fillHearseFigures(text: string): string {
+  return text
+    .replace("{years}", String(yearsSince(FOUNDED_YEAR)))
+    .replace("{insulationYears}", String(yearsSince(INSULATION_SINCE)))
+    .replace("{conversions}", String(STATS.annualConversions));
+}
+
+/** Van insulation started in 1995, with the Thermo King years (see "why us"). */
+const INSULATION_SINCE = 1995;
+
+/** Production, cooling, paperwork - the three pillars on the home page. */
+export const HEARSE_PILLAR_ICONS: IconName[] = ["factory", "thermometer", "check"];
+
+/** Detail photos on the product page, in the order of `product.details`. */
+export const HEARSE_DETAIL_PHOTOS = [
+  "/images/hearse/pull-out-tray.webp",
+  "/images/hearse/coffin-tray.webp",
+  "/images/hearse/steel-lining.webp",
+  "/images/hearse/urn-holder.webp",
+  "/images/hearse/rails.webp",
+  "/images/hearse/waeco-controller.webp",
 ];
 
-/** Icons for the seven "why us" reasons. */
-export const HEARSE_WHY_ICONS: IconName[] = [
-  "medal",
-  "shield",
-  "factory",
-  "wrench",
-  "heart",
-  "truck",
-  "check",
-];
+export interface HearseBuild {
+  make: string;
+  model: string;
+  /** Spec tags as the company names them (length, fit-out, cooler, year). */
+  spec: string[];
+  leather?: boolean;
+  photos: number;
+}
 
 /**
- * Finished hearse conversions, numbered in build order. Studio and workshop
- * shots, centred on each card (shown at about native size). Each build has a
- * cover plus its gallery; files live under /images/hearse/builds/.
+ * Finished conversions from the original site's gallery, newest first.
+ * Photos are /images/hearse/builds/NN-K.webp (NN = position here, K = 1..photos).
  */
-export const HEARSE_BUILDS: { id: string; no: string; image: string; gallery: string[] }[] =
-  Array.from({ length: 18 }, (_, i) => {
-    const n = String(i + 1).padStart(2, "0");
-    return {
-      id: `build-${n}`,
-      no: n,
-      image: `/images/hearse/builds/${n}-1.webp`,
-      gallery: [1, 2, 3, 4].map((k) => `/images/hearse/builds/${n}-${k}.webp`),
-    };
-  });
+export const HEARSE_BUILDS: HearseBuild[] = [
+  { make: "Mercedes-Benz", model: "Vito", spec: ["L2", "SF50", "2020"], leather: true, photos: 4 },
+  { make: "Peugeot", model: "Expert", spec: ["L2", "SF30", "2020"], photos: 3 },
+  { make: "Peugeot", model: "Expert", spec: ["L3", "SF30", "2020"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50", "Waeco", "2020"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50", "Waeco", "2018"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50"], photos: 4 },
+  { make: "Volkswagen", model: "Transporter", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Ford", model: "Transit Custom", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50", "Waeco", "2018"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Volkswagen", model: "Transporter", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Opel", model: "Vivaro", spec: [], photos: 4 },
+  { make: "Ford", model: "Transit Custom", spec: [], photos: 4 },
+  { make: "Ford", model: "Transit Custom", spec: [], photos: 4 },
+  { make: "Ford", model: "Transit Custom", spec: ["SF50", "Waeco"], photos: 4 },
+  { make: "Mercedes-Benz", model: "Vito", spec: [], photos: 4 },
+];
+
+export function buildPhoto(index: number, photo = 1): string {
+  return `/images/hearse/builds/${String(index + 1).padStart(2, "0")}-${photo}.webp`;
+}
+
+/** "L2 · leather · SF50 · 2020" in the given language. */
+export function buildSpec(build: HearseBuild, lang: Lang): string {
+  const tags = [...build.spec];
+  if (build.leather) tags.splice(1, 0, HEARSE_DICTS[lang].builds.leather);
+  return tags.join(" · ");
+}

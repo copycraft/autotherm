@@ -87,6 +87,24 @@ async function hearseRedirects() {
       destination: "https://halottszallito.hu/:path*",
       permanent: true,
     },
+    // Old WordPress pages that don't map 1:1 onto a new slug (the others keep
+    // their slug and just lose the /hu prefix below).
+    ...[
+      ["/hu/halottszallito-auto-gyartasa", "/"],
+      ["/hu/portfolio/halottszallito-auto", "/termekunk"],
+      ["/hu/portfolio/:path*", "/halottas-auto-atalakitasaink"],
+      ["/hu/kik-vagyunk", "/miert-mi"],
+      ["/hu/kapcsolat", "/halottasauto-arak"],
+      ["/3d-hutoauto-ford-custom", "/halottas-auto-atalakitasaink"],
+      ["/ro/masini-funerare", "/ro"],
+    ].map(([source, destination]) => ({ source, has: onHearse, destination, permanent: true })),
+    // "/?portfolio=…" was WordPress's own link to the product page.
+    {
+      source: "/",
+      has: [...onHearse, { type: "query" as const, key: "portfolio" }],
+      destination: "/termekunk",
+      permanent: true,
+    },
     // Hungarian is unprefixed, so a /hu prefix just drops off.
     { source: "/hu", has: onHearse, destination: "/", permanent: true },
     { source: "/hu/:path*", has: onHearse, destination: "/:path*", permanent: true },

@@ -1,75 +1,47 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
 import CtaBand from "@/app/components/site/CtaBand";
-import PageHero from "@/app/components/site/PageHero";
+import GalleryPage, { type GalleryItem } from "@/app/components/templates/GalleryPage";
 import type { Lang } from "@/app/lib/constants";
-import { HEARSE_BUILDS, HEARSE_CONTACT, getHearseDict, hearsePath } from "@/app/lib/hearse";
+import { HEARSE_BUILDS, HEARSE_CONTACT, buildPhoto, buildSpec, getHearseDict, hearsePath } from "@/app/lib/hearse";
 
+/**
+ * Every photo of every build, filterable by make, in the main site's gallery
+ * (lightbox, arrow keys). Each photo is captioned with its vehicle and spec.
+ */
 export default function HearseBuildsPage({ lang }: { lang: Lang }) {
   const dict = getHearseDict(lang);
   const t = dict.builds;
-  const quoteHref = hearsePath("quote", lang);
+
+  const makes = [...new Set(HEARSE_BUILDS.map((b) => b.make))];
+  const images: GalleryItem[] = HEARSE_BUILDS.flatMap((b, i) => {
+    const spec = buildSpec(b, lang);
+    const alt = spec ? `${b.make} ${b.model} – ${spec}` : `${b.make} ${b.model}`;
+    return Array.from({ length: b.photos }, (_, k) => ({
+      src: buildPhoto(i, k + 1),
+      category: b.make,
+      alt,
+    }));
+  });
+
+  const gallery = {
+    eyebrow: t.eyebrow,
+    title: t.title,
+    lead: t.lead,
+    all: t.all,
+    categories: makes.map((m) => ({ id: m, label: m })),
+    close: dict.common.close,
+    prev: t.prev,
+    nextImg: t.next,
+    imageAlt: t.imageAlt,
+  };
 
   return (
     <>
-      <PageHero eyebrow={t.eyebrow} title={t.title} lead={t.lead} />
-
-      <section className="mesh-light py-24 sm:py-32">
-        <RevealGroup className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3 lg:px-8">
-          {HEARSE_BUILDS.map((b) => (
-            <RevealItem key={b.id} className="panel-ring flex flex-col rounded-3xl bg-white p-8 shadow-soft">
-              <Image
-                src={b.image}
-                alt={`Halottszállító ${b.no}`}
-                width={640}
-                height={480}
-                sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 90vw"
-                className="aspect-[4/3] h-auto w-full rounded-2xl object-cover"
-              />
-              <p className="mt-4 border-t border-ink-100 pt-4 text-sm font-semibold text-ink-500">Autotherm</p>
-              <h2 className="text-3xl font-black tracking-tighter text-ink-900">Halottszállító {b.no}</h2>
-              <p className="mt-3 text-sm leading-relaxed text-ink-600">{t.cardBody}</p>
-              <Link
-                href={quoteHref}
-                className="group mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-bold text-brand-600"
-              >
-                {dict.common.getQuote}
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </Link>
-            </RevealItem>
-          ))}
-          <RevealItem className="flex flex-col justify-center rounded-3xl bg-ink-950 p-8">
-            <p className="text-[11px] font-bold tracking-[0.2em] text-frost-300 uppercase">
-              {t.otherEyebrow}
-            </p>
-            <h2 className="mt-3 text-2xl font-extrabold tracking-tight text-white">{t.otherTitle}</h2>
-            <a
-              href={HEARSE_CONTACT.phoneHref}
-              className="mt-6 text-lg font-bold text-frost-300 transition-colors hover:text-white"
-            >
-              {HEARSE_CONTACT.phone}
-            </a>
-          </RevealItem>
-        </RevealGroup>
-      </section>
-
-      <section className="bg-white py-24 sm:py-28">
-        <Reveal className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl">
-            {dict.pickup.title}
-          </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-600">{dict.pickup.body}</p>
-        </Reveal>
-      </section>
-
+      <GalleryPage dict={{ gallery }} images={images} heroImage="/images/hearse/hero.webp" />
       <CtaBand
         title={t.cta.title}
         body={t.cta.body}
         primaryLabel={dict.common.getQuote}
-        quoteHref={quoteHref}
+        quoteHref={hearsePath("quote", lang)}
         phone={HEARSE_CONTACT.phone}
         phoneHref={HEARSE_CONTACT.phoneHref}
       />

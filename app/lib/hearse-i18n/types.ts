@@ -2,7 +2,11 @@ import type { HearsePage } from "../hearse";
 
 type TitleBody = { title: string; body: string };
 
-/** All text on halottszallito.hu, one object per language. */
+/**
+ * All text on halottszallito.hu, one object per language. The Hungarian copy
+ * is the company's own from the original site; figures that age ({years},
+ * {insulationYears}, {conversions}) are filled in at render time.
+ */
 export interface HearseDict {
   nav: Record<HearsePage, string>;
   seo: Record<HearsePage, { title: string; description: string }>;
@@ -14,73 +18,67 @@ export interface HearseDict {
     contactPerson: string;
     phone: string;
     email: string;
-    /** Shown on the contact card next to the form and on the home page. */
+    /** Shown on the contact card on the home and quote pages. */
     callIntro: string;
   };
   contactRole: string;
-  /** "Pick-up and return" offer, on the home, builds and quote pages. */
-  pickup: TitleBody;
   hero: {
     eyebrow: string;
     title: string;
-    tagline: string;
     lead: string;
-    howItWorks: string;
+    /** Second hero button, to the builds gallery. */
+    buildsLabel: string;
     points: string[];
   };
-  home: {
-    introEyebrow: string;
-    introTitle: string;
-    introLead: string;
-    introBody: string[];
-    introLink: string;
-    contactEyebrow: string;
-    contactTitle: string;
-    cta: TitleBody;
-  };
-  /** Eight items, matching HEARSE_FEATURE_ICONS. */
-  features: TitleBody[];
-  /** Shared by the home and "why us" pages. */
-  case: { title: string; body: string[] };
+  /** Production, cargo-space cooling, paperwork. */
+  pillars: { eyebrow: string; items: TitleBody[] };
+  /** Vastag Péter's welcome letter. */
+  welcome: { greeting: string; body: string; name: string; role: string };
+  /** The 3.5 t conversion summary with its six features. */
+  conversion: { eyebrow: string; title: string; features: string[]; details: string };
   strip: { eyebrow: string; title: string; cta: string };
-  why: {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    logisticsEyebrow: string;
-    logistics: string[];
-    quote: string;
-    benefitsTitle: string;
-    /** Seven items, matching HEARSE_WHY_ICONS. */
-    benefits: TitleBody[];
-    bestEyebrow: string;
-    best: string[];
-    cargoEyebrow: string;
-    cargo: string[];
-    cta: TitleBody;
-  };
+  /** See-what-you-get, 30-day buy-back, 3-year insulation warranty. */
+  guarantees: { eyebrow: string; title: string; items: TitleBody[] };
+  testimonials: { eyebrow: string; title: string; items: { quote: string; name: string; role: string }[] };
+  homeContact: { eyebrow: string; title: string };
+  homeCta: TitleBody;
   product: {
     eyebrow: string;
     title: string;
     lead: string;
-    howTitle: string;
-    steps: TitleBody[];
-    compareEyebrow: string;
-    compareTitle: string;
-    driveLabel: string;
-    drive: string[];
-    ownLabel: string;
-    own: string[];
-    closing: string;
+    specTitle: string;
+    spec: string[];
+    detailsTitle: string;
+    /** Captions for the six detail photos, in HEARSE_DETAIL_PHOTOS order. */
+    details: string[];
+    coolingTitle: string;
+    cooling: string[];
+    ceremonialTitle: string;
+    ceremonial: string[];
     cta: TitleBody;
   };
   builds: {
     eyebrow: string;
     title: string;
     lead: string;
-    cardBody: string;
-    otherEyebrow: string;
-    otherTitle: string;
+    all: string;
+    /** Spec tag for leather interiors. */
+    leather: string;
+    imageAlt: string;
+    prev: string;
+    next: string;
+    cta: TitleBody;
+  };
+  why: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    reasonsTitle: string;
+    /** Seven reasons; bodies may use {years}, {insulationYears}, {conversions}. */
+    reasons: TitleBody[];
+    oneHandTitle: string;
+    oneHand: TitleBody[];
+    quote: { text: string; author: string };
     cta: TitleBody;
   };
   quote: {
@@ -89,6 +87,9 @@ export interface HearseDict {
     lead: string;
     formTitle: string;
     vehiclePlaceholder: string;
+    stepsTitle: string;
+    steps: TitleBody[];
+    fact: string;
   };
   footer: {
     /** "{year}" is replaced with the founding year. */

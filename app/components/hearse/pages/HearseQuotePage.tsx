@@ -2,7 +2,6 @@ import HearseContactCard from "@/app/components/hearse/HearseContactCard";
 import ContactForm from "@/app/components/forms/ContactForm";
 import { Reveal } from "@/app/components/motion/Reveal";
 import PageHero from "@/app/components/site/PageHero";
-import Icon from "@/app/components/ui/Icon";
 import type { Lang } from "@/app/lib/constants";
 import { getDict } from "@/app/lib/dictionaries";
 import { getHearseDict, hearsePath } from "@/app/lib/hearse";
@@ -11,7 +10,7 @@ export default function HearseQuotePage({ lang }: { lang: Lang }) {
   const dict = getHearseDict(lang);
   const t = dict.quote;
   // Same form and pipeline as the main site; the page value tags the lead as
-  // coming from halottszallito.hu, and the vehicle hint points at hearse bases.
+  // coming from halottszallito.hu.
   const form = { ...getDict(lang).form, vehiclePlaceholder: t.vehiclePlaceholder };
 
   return (
@@ -33,14 +32,24 @@ export default function HearseQuotePage({ lang }: { lang: Lang }) {
           </Reveal>
 
           <Reveal delay={0.15} className="flex flex-col gap-4">
-            <HearseContactCard lang={lang} intro={dict.common.callIntro} />
             <div className="panel-ring rounded-3xl bg-white p-8 shadow-soft">
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-600/10 text-brand-600">
-                <Icon name="truck" className="h-5 w-5" />
-              </span>
-              <h3 className="mt-5 text-lg font-extrabold tracking-tight text-ink-900">{dict.pickup.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-ink-600">{dict.pickup.body}</p>
+              <h3 className="text-lg font-extrabold tracking-tight text-ink-900">{t.stepsTitle}</h3>
+              <ol className="mt-6 flex flex-col gap-5">
+                {t.steps.map((s, i) => (
+                  <li key={s.title} className="flex gap-4">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-black text-brand-600 tabular-nums ring-2 ring-brand-600">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <p className="font-extrabold tracking-tight text-ink-900">{s.title}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-ink-600">{s.body}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
             </div>
+            <HearseContactCard lang={lang} intro={dict.common.callIntro} />
+            <p className="px-2 text-sm font-semibold text-brand-700">{t.fact}</p>
           </Reveal>
         </div>
       </section>

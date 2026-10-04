@@ -6,7 +6,13 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import PageHero from "@/app/components/site/PageHero";
 import type { Dict } from "@/app/lib/dictionaries";
-import type { GalleryImage } from "@/app/lib/page-content";
+
+/** A photo in the grid; `alt` (e.g. the vehicle's name) defaults to the generic label. */
+export interface GalleryItem {
+  src: string;
+  category: string;
+  alt?: string;
+}
 
 /** Shared-element move between a thumbnail and the lightbox. */
 const SHARED = { type: "spring", stiffness: 260, damping: 32, mass: 0.9 } as const;
@@ -28,8 +34,9 @@ export default function GalleryPage({
   images,
   heroImage,
 }: {
-  dict: Dict;
-  images: GalleryImage[];
+  /** Only the gallery copy is used, so the microsites can pass their own. */
+  dict: { gallery: Dict["gallery"] };
+  images: GalleryItem[];
   heroImage?: string;
 }) {
   const g = dict.gallery;
@@ -127,7 +134,7 @@ export default function GalleryPage({
                   transition={{ duration: 0.45, ease: EASE_CINEMATIC }}
                   whileHover={{ y: -4 }}
                   whileTap={{ scale: 0.97 }}
-                  aria-label={`${g.imageAlt} ${i + 1}`}
+                  aria-label={img.alt ?? `${g.imageAlt} ${i + 1}`}
                   /* No overflow-hidden here: the shared photo must be free to
                      travel outside its cell when it flies back from the lightbox.
                      The origin cell is lifted so it lands above its neighbours. */
@@ -146,7 +153,7 @@ export default function GalleryPage({
                     <motion.div layout className="absolute inset-0" transition={SHARED}>
                       <Image
                         src={img.src}
-                        alt={g.imageAlt}
+                        alt={img.alt ?? g.imageAlt}
                         fill
                         sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
                         className="object-cover transition-transform duration-700 group-hover:scale-108"
@@ -167,7 +174,7 @@ export default function GalleryPage({
             className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-10"
             role="dialog"
             aria-modal="true"
-            aria-label={g.imageAlt}
+            aria-label={current.alt ?? g.imageAlt}
             onClick={close}
           >
             {/* Backdrop and controls fade on their own layer; the photo does
@@ -236,7 +243,7 @@ export default function GalleryPage({
                 <motion.div layout className="absolute inset-0" transition={SHARED}>
                   <Image
                     src={current.src}
-                    alt={g.imageAlt}
+                    alt={current.alt ?? g.imageAlt}
                     fill
                     sizes="90vw"
                     className="object-cover"
@@ -255,7 +262,7 @@ export default function GalleryPage({
               >
                 <Image
                   src={current.src}
-                  alt={g.imageAlt}
+                  alt={current.alt ?? g.imageAlt}
                   width={1600}
                   height={1200}
                   sizes="90vw"

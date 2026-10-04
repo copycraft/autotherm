@@ -1,14 +1,6 @@
 import type { HearseDict } from "./types";
 
-const quoteBody = "Halottszállító és pompaautó átalakítás egyedi igényekre szabva!";
-const pickupBody =
-  "Vegye igénybe járművének átvételi és visszaküldési ajánlatunkat egy átfogó és gondtalan szolgáltatáshoz!";
-const individual = "Az egyedi igények egyedi megoldásokat igényelnek.";
-const tagline = "Az örökkévalóság jegyében.";
-const approach =
-  "3,5 tonnás haszonjárművek halottszállító rakterének kialakítása: AT Strong® hőszigetelés, rozsdamentes vagy üvegszálas bevonat, rejtett raktérhűtés, amely kánikulában is garantált +18 °C fokot tart.";
-const efficient =
-  "A kegyeleti szolgáltatásokhoz méltó, csendes és megbízható hűtés, a garanciális átalakítás és a teljes körű ügyintézés teszi igazán hatékonnyá az általunk épített halottszállító járműveket.";
+const quoteTitle = "Kérje árajánlatunkat most!";
 
 export const hu: HearseDict = {
   nav: {
@@ -20,29 +12,29 @@ export const hu: HearseDict = {
   },
   seo: {
     home: {
-      title: "Halottszállító autó gyártás, pompaautó átalakítás | Halottszállító – Autotherm",
+      title: "Halottasautó gyártás – halottszállító és pompaautó | Halottszállító – Autotherm",
       description:
-        "Elhunyt szállító és pompaautó gyártás, halottszállító furgonok átalakítása rejtett raktérhűtéssel, teljes ügyintézéssel. Autotherm Kft.",
+        "Halottszállító és pompaautó gyártás, 3,5 tonnás furgonok halottszállító átalakítása rejtett raktérhűtéssel és teljes ügyintézéssel. Autotherm Kft., Szeged.",
     },
     why: {
-      title: "Miért mi? Halottaskocsi gyártás 1992 óta | Halottszállító – Autotherm",
+      title: "Miért mi? Halottaskocsi gyártás és átalakítás | Halottszállító – Autotherm",
       description:
-        "Egyedülálló garanciák, piacvezető gyorsaság, igényes kivitelezés: miért az Autotherm a halottszállító autók gyártója.",
+        "Egyedülálló garanciák: 30 napos visszavásárlási garancia, 3 éves raktérszigetelési garancia és „Azt kapja, amit lát” garancia.",
     },
     product: {
-      title: "Elhunyt szállító hűtőautó: AT Strong® szigetelés, +18 °C hűtés | Halottszállító",
+      title: "Halottszállító autó gyártás – műszaki tartalom | Halottszállító – Autotherm",
       description:
-        "Így készül a halottszállító raktér: AT Strong® hőszigetelés, rozsdamentes vagy üvegszálas bevonat, rejtett raktérhűtés, koporsótálca és urnatartó.",
+        "Hőhídmentes AT Strong szigetelés, mosható poliészter vagy rozsdamentes belső burkolat, +18 °C-os raktérhűtés, díszített pompaautó kivitel.",
     },
     builds: {
-      title: "Halottas autók: elkészült átalakításaink képekben | Halottszállító – Autotherm",
+      title: "Halottas autó átalakításaink képekben | Halottszállító – Autotherm",
       description:
-        "Ford Transit, Ford Custom, Mercedes Vito és további halottszállító átalakítások – nézze meg elkészült halottas autóinkat.",
+        "Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert és Opel Vivaro halottszállító átalakítások képekben.",
     },
     quote: {
-      title: "Halottasautó árak – gyors árajánlat pompaautó átalakításra | Halottszállító",
+      title: "Halottasautó árak – gyors árajánlat | Halottszállító – Autotherm",
       description:
-        "Kérjen árajánlatot halottszállító és pompaautó átalakításra. Személyre szabott megoldás, 12 órán belüli ajánlatküldés.",
+        "Kérjen árajánlatot halottszállító vagy pompaautó átalakításra – munkatársunk 12 órán belül PDF-ben küldi ajánlatát.",
     },
   },
   common: {
@@ -53,132 +45,214 @@ export const hu: HearseDict = {
     contactPerson: "Kapcsolattartó",
     phone: "Telefon",
     email: "E-mail",
-    callIntro: "Ha inkább telefonon szeretne árajánlatot kérni, keresse kollégánkat.",
+    callIntro: "Ha inkább telefonon kérne ajánlatot, hívja értékesítési tanácsadónkat!",
   },
-  contactRole: "Értékesítés – halottszállító autók",
-  pickup: { title: "Átvétel és visszaküldés", body: pickupBody },
+  contactRole: "Értékesítési tanácsadó",
   hero: {
-    eyebrow: "Autotherm · Halottszállító autók",
-    title: "Halottszállító autó",
-    tagline,
-    lead: "Halottszállító és pompaautó gyártás, hűtőautó átalakítás és raktérhűtő szerviz – egyedi igényekre szabva, egy méltó koporsós vagy hamvasztásos szertartáshoz.",
-    howItWorks: "Hogyan készül?",
-    points: ["Rejtett raktérhűtés", "Teljes ügyintézés", "Egyedülálló garanciák"],
+    eyebrow: "Egyedi igényekre szabva",
+    title: "Elhunyt szállító átalakítások",
+    lead: "Halottasautó gyártás: halottszállító és pompaautó gyártás, hűtőautó-átalakítás és Carrier raktérhűtő szerviz.",
+    buildsLabel: "Átalakításaink",
+    points: ["AT Strong® hőszigetelés", "+18 °C-os raktérhűtés", "Teljes ügyintézés"],
   },
-  home: {
-    introEyebrow: "Személyre szabott halottszállítók",
-    introTitle: individual,
-    introLead: "Elhunyt szállító átalakítások 3,5 tonnás haszonjárművekbe.",
-    introBody: [
-      `Halottszállító autó gyártó cégként az Autotherm Kft. a kegyeletteljes, méltó búcsú szolgálatában áll. ${approach}`,
-      efficient,
+  pillars: {
+    eyebrow: "Halottszállító furgonok átalakítása",
+    items: [
+      { title: "Gyártás", body: "3,5 tonnás haszonjárművek halottszállító rakterének kialakítása." },
+      { title: "Raktérhűtés", body: "Rejtett raktérhűtés, kánikulában is garantált +18 °C-kal." },
+      { title: "Ügyintézés", body: "Műszaki tervdokumentáció készítése, vizsgáztatás, okmányirodai ügyintézés." },
     ],
-    introLink: "Így készül a termékünk",
-    contactEyebrow: "Személyes tanácsadás",
-    contactTitle: "Más típusban gondolkodik? Kérdezze kollégánkat.",
-    cta: {
-      title: "Kérje árajánlatunkat most!",
-      body: "Halottszállító és pompaautó átalakítás egyedi igényekre szabva! Vegye igénybe járművének átvételi és visszaküldési ajánlatunkat egy átfogó és gondtalan szolgáltatáshoz.",
-    },
   },
-  features: [
-    { title: "AT Strong® hőszigetelés", body: "Saját fejlesztésű szigetelési technológia, amelyre 3 év garanciát vállalunk." },
-    { title: "Rejtett raktérhűtés", body: "Kánikulában is garantált +18 °C fok a raktérben, észrevétlenül beépítve." },
-    { title: "Rozsdamentes bevonat", body: "Rozsdamentes vagy üvegszálas bevonat – higiénikus, mosható, méltó kivitel." },
-    { title: "Koporsótálca és sínek", body: "Kihúzható koporsótálca, rögzítősínek és urnatartó a biztonságos szállításhoz." },
-    { title: "Több szintes változat", body: "Egy- és többszintes kialakítás, speciális megoldások egyedi igényekre." },
-    { title: "Ford és Mercedes alapok", body: "Ford Transit, Custom és Mercedes Vito alapokra építve – bevált típusok." },
-    { title: "Gyors kivitelezés", body: "Piacvezető gyorsaság, évi több száz átalakítás rutinjával." },
-    { title: "Garanciális és megbízható", body: "Pénzvisszafizetési garancia és 3 éves szigetelési garancia az Autotherm-től." },
-  ],
-  case: {
-    title: "Halottszállító az Autotherm-től? Egyértelműen: IGEN!",
-    body: [
-      "Az előnyök nyilvánvalóak: az Autotherm halottszállító autói méltóak, csendesek és megbízhatóak – jót tesznek a kegyeleti szolgáltatás színvonalának és a cég megítélésének. Az elhunytak szállításához azonban mindenekelőtt két dolog kell: megbízhatóság a hűtésben és méltóság a kivitelben.",
-      "A halottszállító autók különösen alkalmasak a kegyeleti szolgáltatások napi feladataira: akár koporsós, akár hamvasztásos szertartáshoz készülnek. Függetlenül attól, hogy Ford Transit, Custom vagy Mercedes Vito az alapjármű, egy Autotherm átalakítással ugyanolyan igényes hűtést és kivitelt kap, mint a legnagyobb európai gyártóknál.",
-      "A rejtett raktérhűtés előnye pedig azt jelenti, hogy a kegyeletteljes +18 °C fok kánikulában is tartható – mindez csendesen, észrevétlenül!",
+  welcome: {
+    greeting: "Üdvözlöm!",
+    body: "Egy percre képzelje el cégünket, mint egy éttermet! Hiszek abban, hogy a mi száraz és műszaki szakmánkban is olyan kiszolgálást tudunk nyújtani, mintha egy Michelin-csillagos étteremben rendelne. Azt akarjuk, hogy ha nálunk vacsorázik, ne csak jóllakjon, hanem egy élménnyel távozzon tőlünk! Felszolgálóink lelkesen segítenek kiválasztani azt az ízkombinációt, amire vágyik; a konyhában pedig szakácsaink minőségi alapanyagokból, kimagasló precizitással készítik el az ételkölteményt. Küldetésemnek tekintem, hogy mi legyünk a halottszállító autó gyártás Michelin-csillagos étterme!",
+    name: "Vastag Péter",
+    role: "az Autotherm üzletvezető tulajdonosa",
+  },
+  conversion: {
+    eyebrow: "Termékünk",
+    title: "3,5 t-s haszonjármű halottszállító átalakítás",
+    features: [
+      "AT Strong® hőszigetelés",
+      "Rozsdamentes vagy üvegszálas bevonat",
+      "+18 °C-os raktérhűtés",
+      "Többszintes változat",
+      "Speciális megoldások",
+      "Teljes ügyintézés",
     ],
+    details: "Részletek",
   },
   strip: {
-    eyebrow: "Elkészült átalakítások",
-    title: "Halottas autók, amelyeket átépítettünk",
-    cta: "Minden jármű",
+    eyebrow: "Galéria",
+    title: "Átalakításaink képekben",
+    cta: "Minden átalakítás",
   },
-  why: {
-    eyebrow: "Miért mi?",
-    title: "7 érv, miért minket válasszon",
-    lead: "Magyarország egyik vezető halott szállító autók és hűtőautók átalakításával foglalkozó vállalkozása vagyunk – 1992 óta.",
-    logisticsEyebrow: "Honnan jövünk",
-    logistics: [
-      "Cégünk 1992-ben Autotherm Kft. néven alakult meg. A Carrier, majd a Thermo King hűtőberendezések szervizeként váltunk Dél-Magyarország meghatározó hűtőgép szervizévé.",
-      "Ma 1500 m²-en, 4 üzemcsarnokban folyik a gyártás: felépítménygyártás, utólagos szigetelés, vasanyagok megmunkálása, raktérhűtők beépítése és szervize.",
+  guarantees: {
+    eyebrow: "Garanciáink",
+    title: "Garancia, amilyet még nem látott a mi szakmánk!",
+    items: [
+      {
+        title: "„Azt kapja, amit lát” garancia",
+        body: "Szimpatikus az ajánlatunk, de mégis kétségei vannak? Erre való az „Azt kapja, amit lát” garanciánk! Elhozza hozzánk átalakítandó járművét, és ha kételkedik abban, hogy meg tudnánk valósítani az elvárásait, elképzeléseit, kifizetjük az útiköltségét – és mert raboltuk az idejét, meghívjuk egy finom szegedi halászlére!",
+      },
+      {
+        title: "30 napos visszavásárlási garancia",
+        body: "Ezt még senki nem merte bevállalni a hűtőautós piacon! Ha az átalakításunk nem teljesíti az elvárt hőmérsékletet, 30 napon belül kiszerelünk mindent az autóból, és visszafizetjük az árát!",
+      },
+      {
+        title: "3 éves raktérszigetelési garancia",
+        body: "A 3,5 tonnás, furgon jellegű haszonjárművek rakterének szigetelésére – Magyarországon egyedülálló módon – 3 év garanciát vállalunk!",
+      },
     ],
-    quote: "25 éve a szakmában – garanciáink, amelyekkel senki más nem mer előállni.",
-    benefitsTitle: "Az előnyök nyilvánvalóak",
-    benefits: [
-      { title: "25 éve a szakmában", body: "1992 óta építünk hűtős és halottszállító járműveket – több ezer elégedett ügyfél." },
-      { title: "Garanciáink", body: "Pénzvisszafizetési garancia, 3 éves szigetelési garancia és az „Azt kapja, amit lát” garancia." },
-      { title: "Egy kézben minden", body: "Felépítménygyártás és hűtős szakterület cégen belül – gyorsan, rugalmasan." },
-      { title: "0–24 órás szerviz", body: "24 órás készenlét raktérhűtő gondokra, saját szervizmúlttal." },
-      { title: "Ügyfélszolgálat", body: "Ingyen hívható zöldszám és gyors, precíz árajánlatadás 12 órán belül." },
-      { title: "Darabszám", body: "Évi több száz átalakítás – piacvezetők a 3,5 tonnás kategóriában." },
-      { title: "Üzletfilozófiánk", body: "„Többet tenni a világért, mint amennyit a világ tesz érted – ez a siker.”" },
+  },
+  testimonials: {
+    eyebrow: "Rólunk mondták",
+    title: "Akik már ránk bízták járművüket",
+    items: [
+      {
+        quote: "Hónapokig jártam körbe a kivitelezők ajánlatát, minden apró részletet figyelembe véve. 3 évvel és 38 átalakított jármű után még mindig az Autotherm csapatát tartom a legjobb döntésnek!",
+        name: "Mayer Tibor",
+        role: "Fönix Pharma Zrt. alvállalkozója",
+      },
+      {
+        quote: "Pontos határidő, minőségi munka, a szó: garancia!",
+        name: "Neuberger Balázs",
+        role: "Neuberger és Fiai Kft. – ügyvezető",
+      },
+      {
+        quote: "Nagyszerű a kivitelező csapat igényessége, precizitása és a menedzsment hozzáállása a speciális kérésekhez. Nagy örömünkre szolgált egy rugalmas, talpraesett szakértő csapattal együtt dolgozni.",
+        name: "Zollai János",
+        role: "Zollai Kft. – tulajdonos, ügyvezető",
+      },
+      {
+        quote: "Remek munkával egy új teherautónk hűtős autóvá alakítását végezték el, amivel maximálisan elégedettek vagyunk. Az autóval kapcsolatos minden ügyintézést, engedélyeztetést gyorsan, precízen intéztek el.",
+        name: "Nádasdi Tamás",
+        role: "Palian Kft. – ügyvezető",
+      },
     ],
-    bestEyebrow: "Amire a legbüszkébbek vagyunk",
-    best: ["Pénzvisszafizetési garancia", "3 éves raktérszigetelési garancia"],
-    cargoEyebrow: "Minden kegyeleti feladatra",
-    cargo: ["Koporsós szertartás", "Hamvasztásos szertartás", "Elhunyt szállítás", "Pompaautó szolgáltatás", "Koszorúszállítás"],
-    cta: {
-      title: "Válassza a méltó minőséget!",
-      body: "Halottszállító és pompaautó átalakítás egyedi igényekre szabva – kérjen személyre szabott ajánlatot.",
-    },
+  },
+  homeContact: {
+    eyebrow: "Személyes tanácsadás",
+    title: "Kérje expressz árajánlatunkat online vagy telefonon!",
+  },
+  homeCta: {
+    title: quoteTitle,
+    body: "Kérjen most árajánlatot egy halottas autó átalakítására!",
   },
   product: {
     eyebrow: "Termékünk",
-    title: "Elhunyt szállító hűtőautó",
-    lead: approach,
-    howTitle: "Így készül",
-    steps: [
-      { title: "AT Strong® szigetelés", body: "Saját fejlesztésű hőszigetelés, amelyre Magyarországon egyedülállóan 3 év garanciát adunk." },
-      { title: "Rozsdamentes bevonat", body: "Rozsdamentes vagy üvegszálas burkolat: higiénikus, mosható, esztétikus raktér." },
-      { title: "Rejtett raktérhűtés", body: "A hűtőberendezés rejtve épül be, kánikulában is garantált +18 °C fokkal." },
-      { title: "Koporsótálca és rögzítés", body: "Kihúzható koporsótálca, sínek és urnatartó – biztonságos, méltó szállítás." },
+    title: "Halottszállító autó gyártás",
+    lead: "Halottszállító autó és díszített pompaautó piacvezető halottaskocsi-gyártó cégtől. Hűtős halottas autók, furgonok.",
+    specTitle: "Műszaki tartalom",
+    spec: [
+      "60 mm vastag, hőszigetelt padló",
+      "Hőhídmentes hőszigetelés: saját gyártású, 50 mm vastag AT Strong szendvicspanel falak és 60 mm-es Tel hőszigetelő paplan",
+      "Belső felület: 1,8 mm-es fehér, fényes és mosható poliészter lemez, rozsdamentes lemez vagy egyedi igény szerint",
+      "A panelek rögzítése és a tömítés magas minőségű, speciális autóipari ragasztó-tömítő anyaggal történik",
+      "A padló járófelülete kopásálló műanyag vagy rozsdamentes lemez",
+      "A kerékjárat burkolata szögletes, a sarkain lekerekített",
+      "Kiegészítő opciók teljesen a megrendelő igényeire szabva",
+      "A belső burkolat anyagai megfelelnek az Állategészségügyi Szolgálat és az ÁNTSZ előírásainak",
     ],
-    compareEyebrow: "Miért rejtett hűtés?",
-    compareTitle: "A hűtés ne látszódjon, csak működjön",
-    driveLabel: "Látható, utólagos klíma",
-    drive: ["Zajos, feltűnő kültéri egység", "Nehézkes tisztítás, toldozott burkolat"],
-    ownLabel: "Rejtett raktérhűtés – Autotherm",
-    own: [
-      "Észrevétlen beépítés",
-      "Kánikulában is garantált +18 °C",
-      "Könnyen mosható, higiénikus raktér",
-      "Műszaki tervdokumentáció és vizsgáztatás",
+    detailsTitle: "Részletek",
+    details: ["Kihúzható tálca", "Koporsótálca", "Acélburkolat", "Urnatartó", "Rögzítősínek", "Waeco vezérlő"],
+    coolingTitle: "Raktérhűtés",
+    cooling: [
+      "Rejtett raktérhűtés, kánikulában is garantált +18 °C-kal.",
+      "Választható modell: Waeco raktérhűtő a jármű gyári klímájához integrálva (csak járó motornál hűt).",
     ],
-    closing: efficient,
-    cta: {
-      title: "Kíváncsi, melyik megoldás illik a szolgálatához?",
-      body: "Kollégánk elmondja, hogyan alakítjuk át az Ön járművét halottszállítóvá.",
-    },
+    ceremonialTitle: "Pompaautó",
+    ceremonial: [
+      "A koporsót szállító halottaskocsi – pompaautó, halottszállító autó – a gyászszertartás elmaradhatatlan kelléke.",
+      "Feladata, hogy a temető területén, a gyászolók között lépésben haladva tegye meg azt az akár több száz méteres utat a ravataltól a végső nyughelyig, amelyen az elhunytat utolsó útjára kísérik.",
+      "A pompaautó eleganciájával egyszerre emeli a búcsúztatás ünnepélyességét, és fejezi ki a családtagok tiszteletét, nagyrabecsülését az elhunyt iránt.",
+    ],
+    cta: { title: quoteTitle, body: "Kérjen most árajánlatot egy halottas autó átalakítására!" },
   },
   builds: {
-    eyebrow: "Halottas autók",
-    title: "Elkészült átalakításaink képekben",
-    lead: "Az alábbi halottszállító átalakításokat készítettük – Ford Transit, Ford Custom, Mercedes Vito és további típusok. Más típusban gondolkodik? Kérdezze kollégánkat.",
-    cardBody: "Halottszállító átalakítás rejtett raktérhűtéssel, rozsdamentes bevonattal.",
-    otherEyebrow: "Más típus?",
-    otherTitle: individual,
-    cta: { title: "Kérje árajánlatunkat most!", body: quoteBody },
+    eyebrow: "Átalakításaink",
+    title: "Halottas autó gyártás. Gyors átalakítás – korrekt ár.",
+    lead: "Tekintse meg az átalakított halottszállító autó és pompaautó kivitelezéseket.",
+    all: "Összes",
+    leather: "bőr",
+    imageAlt: "Halottszállító átalakítás",
+    prev: "Előző kép",
+    next: "Következő kép",
+    cta: { title: quoteTitle, body: "Kérjen most árajánlatot egy halottas autó átalakítására!" },
+  },
+  why: {
+    eyebrow: "Miért mi?",
+    title: "Halottaskocsi gyártás és átalakítás piacvezető cégtől",
+    lead: "Funkció – látvány – minőség: Autotherm halottszállító autó. Tekintse meg egyedülálló garanciáinkat!",
+    reasonsTitle: "7 érv, miért minket válasszon",
+    reasons: [
+      {
+        title: "{years} éve a szakmában",
+        body: "Cégünk 1992-ben alakult Autotherm Kft. néven. Az alapítók, Csurgó László és egy osztrák üzletember, Dkfm. Peter Knerer azzal a céllal hozták létre, hogy meghonosítsák a Carrier hűtőberendezéseket az éledező magyar hűtős piacon. 1995-től a Thermo King berendezések javítását is felvállalva Dél-Magyarország meghatározó hűtőgépszervize lettünk.",
+      },
+      {
+        title: "Garanciáink",
+        body: "Garanciáink által teljes biztonságban rendelhet nálunk: pénzvisszafizetési garanciát csak mi adunk a hűtőautós szakmában, raktérszigetelésünkre 3 év garanciát vállalunk, és ott van az „Azt kapja, amit lát” garanciánk is.",
+      },
+      {
+        title: "Egy kézben minden",
+        body: "A hűtőautós szakmában kétféle cég van: a felépítménygyártók és a hűtősök. Nálunk ez a két szakterület egy cégen belül van, így gyorsan és rugalmasan szolgáljuk ki ügyfeleinket!",
+      },
+      {
+        title: "0–24 órás szerviz",
+        body: "{years} éves raktérhűtő-szervizes tapasztalatunkra támaszkodva 24 órás készenlétben állunk, hogy segítsünk a hűtési gonddal küzdő raktérhűtő berendezéseken – legyen szó kamion rakományhűtőről vagy 3,5 tonnás jármű direkt hajtású hűtőjéről.",
+      },
+      {
+        title: "Ügyfélszolgálat",
+        body: "Minket mindig el tud érni! Külön figyelmet fordítunk arra, hogy ügyfeleinket, érdeklődőinket a lehető leghamarabb kiszolgáljuk árajánlattal, szaktanáccsal, alkatrésszel.",
+      },
+      {
+        title: "Darabszám",
+        body: "Évente több mint {conversions} átalakított járművel piacvezetők vagyunk a 3,5 tonnás hűtőautók között, így Ön a leggyorsabban juthat hozzá egy Rolls-Royce színvonalú járműhöz!",
+      },
+      {
+        title: "Üzletfilozófiánk",
+        body: "Minden napunkat a profizmusra való törekvés irányítja: szakszerű tájékoztatás, gyors és precíz árajánlat, igényes és megbízható termék, hosszú távú, rugalmas együttműködés – mindez korrekt árakon.",
+      },
+    ],
+    oneHandTitle: "Egy kézben minden",
+    oneHand: [
+      {
+        title: "Felépítménygyártás",
+        body: "Felépítményeink a legmagasabb minősítésűek, horganyzott és porfestett segédalvázzal: ellenállnak a rozsdának, a raktér kánikulában is biztonságos.",
+      },
+      {
+        title: "Raktérszigetelés",
+        body: "Szigetelési technológiánkat {insulationYears} éve, a kezdetektől fejlesztjük. Minősége és esztétikája miatt Ausztriából, Németországból és Svájcból is visszatérő ügyfeleink vannak.",
+      },
+      {
+        title: "Carrier Transicold képviselet",
+        body: "Az európai raktérhűtő-piac vezetője a Carrier, amelynek kiemelt partnere vagyunk, hiszen Magyarországon mi építjük be a legtöbbet.",
+      },
+      {
+        title: "Teljes ügyintézés",
+        body: "Az autó átvétele után nincs papírmunkája: minden hatósági engedélyt, dokumentációt, vizsgáztatást és okmányirodai ügyintézést elvégzünk, és tartjuk a kapcsolatot az autókereskedővel.",
+      },
+    ],
+    quote: { text: "Többet tenni a világért, mint amennyit a világ tesz érted – ez a siker.", author: "Henry Ford" },
+    cta: { title: quoteTitle, body: "Kérjen most árajánlatot egy halottas autó átalakítására!" },
   },
   quote: {
     eyebrow: "Ajánlatkérés",
     title: "Halottasautó árak",
-    lead: "Gyors árajánlat egy pompaautó átalakítására! Az egyedi igények egyedi megoldásokat igényelnek – írja meg, milyen járműre és milyen kegyeleti feladathoz keres megoldást.",
+    lead: "Gyors árajánlat egy halottszállító vagy pompaautó átalakítására. Írja meg, milyen járműre keres megoldást!",
     formTitle: "Ajánlatkérő űrlap",
-    vehiclePlaceholder: "Pl. Ford Transit, Mercedes Vito",
+    vehiclePlaceholder: "Pl. Mercedes Vito, Ford Transit Custom",
+    stepsTitle: "Mi történik az ajánlatkérés után?",
+    steps: [
+      { title: "Megerősítő e-mail", body: "E-mailben megerősítjük, hogy megkaptuk ajánlatkérését, és nem történt technikai hiba." },
+      { title: "Telefonos műszaki egyeztetés", body: "Munkatársunk rövid időn belül felhívja a műszaki részletek pontosítása miatt, hogy az ajánlat tényleg az Ön igényeiről szóljon." },
+      { title: "Elküldjük az árajánlatot", body: "Munkatársunk 12 órán belül PDF formátumban küldi el ajánlatunkat." },
+    ],
+    fact: "Tudta? Piacvezetők vagyunk a halottszállító autók és pompaautók gyártásában!",
   },
   footer: {
-    tagline: "Halottszállító és pompaautó gyártás – az Autotherm Kft.-től, {year} óta a hűtőautók szakértőjétől.",
+    tagline: "Halottszállító és pompaautó gyártás – az Autotherm Kft.-től, {year} óta.",
     mainSite: "Autotherm hűtőautók",
     menu: "Menü",
     navLabel: "Lábléc",
