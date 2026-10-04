@@ -32,14 +32,14 @@ export const en: EcoDict = {
         "How the self-contained refrigeration unit with a cyclically charged battery pack works: cooling doesn't draw on the traction battery, and the cold chain holds even when the van is parked.",
     },
     vehicles: {
-      title: "Convertible electric vans | Zero Emission – Autotherm",
+      title: "Electric vans for conversion | Zero Emission – Autotherm",
       description:
         "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito and eSprinter – electric vans converted into refrigerated vehicles.",
     },
     quote: {
       title: "Request a quote – electric refrigerated van | Zero Emission – Autotherm",
       description:
-        "Request a quote for converting an electric van into a refrigerated vehicle with a self-contained refrigeration unit. A tailored solution, with vehicle pick-up and return.",
+        "Request a quote for converting an electric van into a refrigerated vehicle with a self-contained refrigeration unit. A tailored solution with vehicle pick-up and return.",
     },
   },
   common: {
@@ -144,7 +144,7 @@ export const en: EcoDict = {
     compareEyebrow: "Why not from the traction battery?",
     compareTitle: "Cooling shouldn't eat into your range",
     driveLabel: "Cooling from the traction battery",
-    drive: ["Cooling energy comes out of the van's range", "The daily route is harder to plan"],
+    drive: ["Cooling energy comes at the expense of the van's range", "The daily route is harder to plan"],
     ownLabel: "Self-contained battery pack – Autotherm",
     own: [
       "Unchanged range",
@@ -160,7 +160,7 @@ export const en: EcoDict = {
   },
   vehicles: {
     eyebrow: "Vehicles",
-    title: "Convertible electric vans",
+    title: "Electric vans for conversion",
     lead: "We convert the following electric vans into refrigerated vehicles with a self-contained refrigeration unit. Thinking of a different model? Ask our colleague.",
     cardBody: "Refrigerated conversion with a self-contained refrigeration unit that has its own battery pack.",
     otherEyebrow: "Another model?",
@@ -173,7 +173,7 @@ export const en: EcoDict = {
   quote: {
     eyebrow: "Request a quote",
     title: "Request our quote now!",
-    lead: "Electric refrigerated van with a self-contained refrigeration unit! Individual needs call for individual solutions – tell us which vehicle and which chilled goods you need a solution for.",
+    lead: "Electric refrigerated van with a self-contained refrigeration unit! Individual needs call for individual solutions – tell us which vehicle and which chilled goods you need to transport.",
     formTitle: "Quote request form",
     vehiclePlaceholder: "E.g. Citroën ë-Berlingo, Kia PV5 Cargo",
   },

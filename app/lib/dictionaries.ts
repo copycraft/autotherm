@@ -244,7 +244,7 @@ export const dictionaries: Record<Lang, Dict> = {
       vehiclePlaceholder: "Pl. Fiat Ducato L2H2 hűtős átalakítás",
       tempRange: "Kívánt hőmérséklet-tartomány",
       tempOptions: [
-        { value: "frozen", label: "Fagyasztott (-18°C … -20°C)" },
+        { value: "frozen", label: "Fagyasztott (-20°C … -18°C)" },
         { value: "chilled", label: "Hűtött (0°C … +4°C)" },
         { value: "multi", label: "Több hőmérsékletű / osztott raktér" },
         { value: "insulated", label: "Csak szigetelés (izoterm)" },
@@ -306,7 +306,7 @@ export const dictionaries: Record<Lang, Dict> = {
         items: [
           {
             title: "Hűtős furgonok",
-            body: "Raktérszigetelés és hűtőberendezés beépítés Fiat, Mercedes, Ford, Renault, VW és Iveco furgonokba – fagyasztott, hűtött vagy több hőmérsékletű kivitelben.",
+            body: "Raktérszigetelés és hűtőberendezés-beépítés Fiat, Mercedes, Ford, Renault, VW és Iveco furgonokba – fagyasztott, hűtött vagy több hőmérsékletű kivitelben.",
             href: "products",
             image: "/images/sprinter-reefer-front.webp",
           },
@@ -404,7 +404,7 @@ export const dictionaries: Record<Lang, Dict> = {
       close: "Bezárás",
       prev: "Előző kép",
       nextImg: "Következő kép",
-      imageAlt: "Autotherm referencia munka",
+      imageAlt: "Autotherm referenciamunka",
     },
     contactPage: {
       eyebrow: "Kapcsolat",
@@ -457,7 +457,7 @@ export const dictionaries: Record<Lang, Dict> = {
       quotation: "Quotation",
       blog: "Blog",
       commercialBodies: "Commercial vehicle bodies",
-      vanIsolations: "Van isolations",
+      vanIsolations: "Van insulation",
       deceasedTransport: "Deceased transport",
       cooledBodies: "Refrigerated bodies",
     },
@@ -476,7 +476,7 @@ export const dictionaries: Record<Lang, Dict> = {
       workdays: "Workdays",
       address: "Address",
       phone: "Phone",
-      email: "Email",
+      email: "E-mail",
       openingHours: "Opening hours",
       since: "since",
       netPrices: "Prices are net guide prices.",
@@ -506,7 +506,7 @@ export const dictionaries: Record<Lang, Dict> = {
       vehiclePlaceholder: "E.g. Fiat Ducato L2H2 refrigerated conversion",
       tempRange: "Required temperature range",
       tempOptions: [
-        { value: "frozen", label: "Frozen (-18°C … -20°C)" },
+        { value: "frozen", label: "Frozen (-20°C … -18°C)" },
         { value: "chilled", label: "Chilled (0°C … +4°C)" },
         { value: "multi", label: "Multi-temperature / split cargo bay" },
         { value: "insulated", label: "Insulation only (isothermal)" },
@@ -584,12 +584,12 @@ export const dictionaries: Record<Lang, Dict> = {
           },
           {
             title: "Deceased transport vehicles",
-            body: "Dignified, temperature-controlled (+18°C) funeral transport vehicles with stainless steel interiors, up to multi-level configurations.",
+            body: "Dignified, temperature-controlled (+18°C) funeral transport vehicles with stainless steel interiors, including multi-level configurations.",
             href: "deceasedTransport",
             image: "/images/deceased-platform-side.webp",
           },
           {
-            title: "Van isolations",
+            title: "Van insulation",
             body: "Thermal-bridge-free insulation with hygienic washable lining - ready for HACCP-compliant cold chain operation.",
             href: "vanIsolations",
             image: "/images/daily-box-roof-unit.webp",
@@ -633,7 +633,7 @@ export const dictionaries: Record<Lang, Dict> = {
       partners: {
         eyebrow: "Cooling partners",
         title: "Carrier, Daikin, Autoclima. One workshop.",
-        lead: "As an official Carrier Transicold partner we sell, install and service - and we also repair Daikin and Autoclima units.",
+        lead: "As an official Carrier Transicold partner, we sell, install and service - and we also repair Daikin and Autoclima units.",
         carrier: "Official partner - sales, installation, service",
         daikin: "Service and repair of Daikin cooling units",
         autoclima: "Service and repair of Autoclima cooling units",
@@ -700,7 +700,7 @@ export const dictionaries: Record<Lang, Dict> = {
       body: "The page you are looking for does not exist or has moved. Visit our homepage or request a quote!",
       cta: "Back to homepage",
     },
-    stickyCta: "Get quotation",
+    stickyCta: "Request a quote",
   },
 
   /* ------------------------------------------------------------------ DE --- */
@@ -740,7 +740,7 @@ export const dictionaries: Record<Lang, Dict> = {
       menuTitle: "Menü",
       contactTitle: "Kontakt",
       mapTitle: "Karte",
-      mapAria: "Autotherm Standort auf der Karte",
+      mapAria: "Autotherm-Standort auf der Karte",
       rights: "alle Rechte vorbehalten",
       copyright:
         "Das Kopieren, die Vervielfältigung, die Bearbeitung oder die kommerzielle Verbreitung dieser Website oder eines Teils davon ist untersagt.",
@@ -761,7 +761,7 @@ export const dictionaries: Record<Lang, Dict> = {
       vehiclePlaceholder: "z. B. Fiat Ducato L2H2 Kühlumbau",
       tempRange: "Gewünschter Temperaturbereich",
       tempOptions: [
-        { value: "frozen", label: "Tiefkühl (-18°C … -20°C)" },
+        { value: "frozen", label: "Tiefkühl (-20°C … -18°C)" },
         { value: "chilled", label: "Gekühlt (0°C … +4°C)" },
         { value: "multi", label: "Mehrtemperatur / geteilter Laderaum" },
         { value: "insulated", label: "Nur Isolierung (isotherm)" },
@@ -804,7 +804,7 @@ export const dictionaries: Record<Lang, Dict> = {
         eyebrow: "",
         titleA: "Innen eiskalt.",
         titleB: "Leistung glühend heiß.",
-        lead: `Kühlfahrzeuge, Kühlkoffer und individuelle Nutzfahrzeugaufbauten bis 3,5 t - gebaut von einem offiziellen Carrier Transicold Partner mit ${yearsSince()} Jahren Erfahrung.`,
+        lead: `Kühlfahrzeuge, Kühlkoffer und individuelle Nutzfahrzeugaufbauten bis 3,5 t - gebaut von einem offiziellen Carrier-Transicold-Partner mit ${yearsSince()} Jahren Erfahrung.`,
         ctaPrimary: "Angebot anfordern",
         ctaSecondary: "Unsere Geschichte",
       },
@@ -848,7 +848,7 @@ export const dictionaries: Record<Lang, Dict> = {
           },
           {
             title: "Carrier Verkauf & Service",
-            body: "Verkauf, Einbau und Service von Carrier Xarios- und Supra-Aggregaten - Originalteile ab Lager, Diagnose, Fehlercode-Auslesen.",
+            body: "Verkauf, Einbau und Service von Carrier-Xarios- und Supra-Aggregaten - Originalteile ab Lager, Diagnose, Fehlercode-Auslesen.",
             href: "products",
             image: "/images/daily-box-roof-unit.webp",
           },
@@ -891,7 +891,7 @@ export const dictionaries: Record<Lang, Dict> = {
       partners: {
         eyebrow: "Kältetechnik-Partner",
         title: "Carrier, Daikin, Autoclima. Eine Werkstatt.",
-        lead: "Als offizieller Carrier Transicold Partner verkaufen, montieren und warten wir - zusätzlich reparieren wir Daikin- und Autoclima-Aggregate.",
+        lead: "Als offizieller Carrier-Transicold-Partner verkaufen, montieren und warten wir - zusätzlich reparieren wir Daikin- und Autoclima-Aggregate.",
         carrier: "Offizieller Partner - Verkauf, Einbau, Service",
         daikin: "Service und Reparatur von Daikin-Aggregaten",
         autoclima: "Service und Reparatur von Autoclima-Aggregaten",
@@ -922,7 +922,7 @@ export const dictionaries: Record<Lang, Dict> = {
       close: "Schließen",
       prev: "Vorheriges Bild",
       nextImg: "Nächstes Bild",
-      imageAlt: "Autotherm Referenzarbeit",
+      imageAlt: "Autotherm-Referenzarbeit",
     },
     contactPage: {
       eyebrow: "Kontakt",
@@ -947,7 +947,7 @@ export const dictionaries: Record<Lang, Dict> = {
       ],
     },
     blogPage: {
-      eyebrow: "Kühlfahrzeug Blog",
+      eyebrow: "Kühlfahrzeug-Blog",
       title: "Wissen rund um den Kühltransport",
       lead: "Praktische Tipps, Wartungshinweise und Neuigkeiten von den Autotherm-Experten.",
       empty: "Die ersten Beiträge folgen in Kürze - schauen Sie bald wieder vorbei!",
@@ -967,10 +967,10 @@ export const dictionaries: Record<Lang, Dict> = {
     nav: {
       home: "Acasă",
       about: "Cine suntem noi?",
-      products: "Carosări & furgonete",
+      products: "Caroserii & furgonete",
       gallery: "Galerie foto",
       contact: "Contact",
-      quotation: "Cerere ofertă",
+      quotation: "Cerere de ofertă",
       blog: "Blog",
     },
     common: {
@@ -1015,10 +1015,10 @@ export const dictionaries: Record<Lang, Dict> = {
       message: "Mesaj",
       messagePlaceholder: "Descrieți cum vă putem ajuta…",
       vehicle: "Vehicul / suprastructură",
-      vehiclePlaceholder: "Ex. Fiat Ducato L2H2 carosare frigorifică",
+      vehiclePlaceholder: "Ex. Fiat Ducato L2H2 caroserie frigorifică",
       tempRange: "Interval de temperatură dorit",
       tempOptions: [
-        { value: "frozen", label: "Congelat (-18°C … -20°C)" },
+        { value: "frozen", label: "Congelat (-20°C … -18°C)" },
         { value: "chilled", label: "Refrigerat (0°C … +4°C)" },
         { value: "multi", label: "Multi-temperatură / compartimentat" },
         { value: "insulated", label: "Doar izolare (izoterm)" },
@@ -1030,7 +1030,7 @@ export const dictionaries: Record<Lang, Dict> = {
       successDetail:
         "Am primit mesajul dumneavoastră - răspundem în 12 ore în zilele lucrătoare.",
       error:
-        "A apărut o eroare la trimitere. Vă rugăm încercați din nou sau sunați-ne direct.",
+        "A apărut o eroare la trimitere. Vă rugăm să încercați din nou sau sunați-ne direct.",
       requiredNote: "Câmpurile marcate cu asterisc sunt obligatorii.",
       privacyNote:
         "Prin trimiterea formularului acceptați politica noastră de confidențialitate.",
@@ -1061,7 +1061,7 @@ export const dictionaries: Record<Lang, Dict> = {
         eyebrow: "",
         titleA: "Frig înăuntru.",
         titleB: "Performanță fierbinte.",
-        lead: `Furgonete frigorifice, carosări și suprastructuri comerciale personalizate până la 3,5 t - construite de un partener oficial Carrier Transicold cu ${yearsSince()} de ani de experiență.`,
+        lead: `Furgonete frigorifice, caroserii și suprastructuri comerciale personalizate până la 3,5 t - construite de un partener oficial Carrier Transicold cu ${yearsSince()} de ani de experiență.`,
         ctaPrimary: "Solicită ofertă",
         ctaSecondary: "Povestea noastră",
       },
@@ -1105,7 +1105,7 @@ export const dictionaries: Record<Lang, Dict> = {
           },
           {
             title: "Vânzare & service Carrier",
-            body: "Vânzare, montaj și service pentru unitățile Carrier Xarios și Supra - piese originale din stoc, diagnoză, citire coduri de eroare.",
+            body: "Vânzare, montaj și service pentru unitățile Carrier Xarios și Supra - piese originale din stoc, diagnoză, citirea codurilor de eroare.",
             href: "products",
             image: "/images/daily-box-roof-unit.webp",
           },
@@ -1120,7 +1120,7 @@ export const dictionaries: Record<Lang, Dict> = {
       process: {
         eyebrow: "Cum lucrăm",
         title: "De la ofertă la predare",
-        lead: "Un proces predictibil, cu termene precise - motivul pentru care 280+ de clienți ne aleg în fiecare an.",
+        lead: "Un proces predictibil, cu termene precise - motivul pentru care peste 280 de clienți ne aleg în fiecare an.",
         steps: [
           {
             title: "Evaluarea nevoilor",
@@ -1132,7 +1132,7 @@ export const dictionaries: Record<Lang, Dict> = {
           },
           {
             title: "Producție",
-            body: "Construit pe 1.500 m², în patru hale de producție, de 33 de specialiști.",
+            body: "Construim pe 1.500 m², în patru hale de producție, cu 33 de specialiști.",
           },
           {
             title: "Predare & garanție",
@@ -1162,7 +1162,7 @@ export const dictionaries: Record<Lang, Dict> = {
       ctaBand: {
         title: "Solicitați oferta chiar astăzi!",
         body: "În zilele lucrătoare trimitem în 12 ore o ofertă detaliată, cu documentație tehnică.",
-        primary: "Cerere ofertă",
+        primary: "Cerere de ofertă",
         secondary: "+36 20 910 20 50",
       },
     },
@@ -1190,7 +1190,7 @@ export const dictionaries: Record<Lang, Dict> = {
       gps: "GPS: 46° 16.060' N, 20° 7.331' E",
     },
     quotationPage: {
-      eyebrow: "Cerere ofertă",
+      eyebrow: "Cerere de ofertă",
       title: "Ofertă gratuită și detaliată în 12 ore",
       lead: "Descrieți vehiculul sau suprastructura de care aveți nevoie - pregătim o ofertă exactă, cu documentație tehnică completă.",
       promiseTitle: "Ce include oferta?",
@@ -1215,7 +1215,7 @@ export const dictionaries: Record<Lang, Dict> = {
       body: "Pagina căutată nu există sau a fost mutată. Vizitați pagina principală sau solicitați o ofertă!",
       cta: "Înapoi la pagina principală",
     },
-    stickyCta: "Cerere ofertă",
+    stickyCta: "Cerere de ofertă",
   },
 };
 

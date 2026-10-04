@@ -25,7 +25,7 @@ export const de: HearseDict = {
     product: {
       title: "Bau von Bestattungsfahrzeugen – Ausstattung | Mortecontrol – Autotherm",
       description:
-        "Wärmebrückenfreie AT-Strong-Isolierung, abwaschbare Polyester- oder Edelstahlverkleidung, +18 °C Laderaumkühlung und geschmückte Leichenwagen.",
+        "Wärmebrückenfreie AT Strong®-Isolierung, abwaschbare Polyester- oder Edelstahlverkleidung, +18 °C Laderaumkühlung und geschmückte Leichenwagen.",
     },
     builds: {
       title: "Unsere Bestattungsfahrzeug-Umbauten in Bildern | Mortecontrol – Autotherm",
@@ -126,7 +126,7 @@ export const de: HearseDict = {
     specTitle: "Ausstattung",
     spec: [
       "60 mm isolierter Boden",
-      "Wärmebrückenfreie Isolierung: eigene 50 mm AT-Strong-Sandwichpaneele und 60 mm Tel-Dämmmatte",
+      "Wärmebrückenfreie Isolierung: eigene 50 mm AT Strong®-Sandwichpaneele und 60 mm Tel-Dämmmatte",
       "Innenfläche: 1,8 mm weiße, glänzende, abwaschbare Polyesterplatte, Edelstahl oder nach Wunsch",
       "Paneele mit hochwertigem Spezial-Kfz-Klebedichtstoff befestigt und abgedichtet",
       "Bodenbelag aus verschleißfestem Kunststoff oder Edelstahl",
@@ -195,7 +195,7 @@ export const de: HearseDict = {
     oneHand: [
       {
         title: "Aufbauherstellung",
-        body: "Unsere Aufbauten tragen die höchste Einstufung, mit verzinktem, pulverbeschichtetem Hilfsrahmen: rostbeständig, und die Ladung ist auch bei Hitze sicher.",
+        body: "Unsere Aufbauten tragen die höchste Einstufung, mit verzinktem, pulverbeschichtetem Hilfsrahmen: rostbeständig und die Ladung ist auch bei Hitze sicher.",
       },
       {
         title: "Laderaumisolierung",
@@ -229,7 +229,7 @@ export const de: HearseDict = {
   },
   footer: {
     tagline: "Überführungs- und Leichenwagen – von der Autotherm GmbH, seit {year}.",
-    mainSite: "Autotherm Kühlfahrzeuge",
+    mainSite: "Autotherm-Kühlfahrzeuge",
     menu: "Menü",
     navLabel: "Fußzeile",
     rights: "alle Rechte vorbehalten",

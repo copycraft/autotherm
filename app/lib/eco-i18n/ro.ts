@@ -60,7 +60,7 @@ export const ro: EcoDict = {
     eyebrow: "Autotherm · Autofrigorifice electrice",
     title: "Autofrigorifică electrică",
     tagline,
-    lead: "Piața vehiculelor comerciale electrice crește rapid. La Autotherm lucrăm pentru a găsi cea mai bună soluție pentru clienții noștri, prin dezvoltări și introducerea de noi tehnologii.",
+    lead: "Piața vehiculelor comerciale electrice crește rapid. La Autotherm lucrăm pentru a găsi cea mai bună soluție pentru clienții noștri, prin dezvoltarea și introducerea de noi tehnologii.",
     howItWorks: "Cum funcționează?",
     points: ["Fără emisii și silențioasă", "Autonomie neschimbată", "Pachet de baterii propriu"],
   },
@@ -93,7 +93,7 @@ export const ro: EcoDict = {
   case: {
     title: "Este autofrigorifica electrică o alternativă? Categoric: DA!",
     body: [
-      "Avantajele sunt evidente: dubele frigorifice electrice sunt fără emisii, silențioase și bune atât pentru imaginea, cât și pentru buzunarul firmei. Logistica produselor proaspete are însă nevoie, înainte de toate, de două lucruri: fiabilitate în controlul temperaturii și folosirea la maximum a autonomiei.",
+      "Avantajele sunt evidente: dubele frigorifice electrice sunt fără emisii, silențioase și bune atât pentru imagine, cât și pentru buzunarul firmei. Logistica produselor proaspete are însă nevoie, înainte de toate, de două lucruri: fiabilitate în controlul temperaturii și folosirea la maximum a autonomiei.",
       "Autofrigorificele electrice sunt potrivite mai ales pentru traficul din centrul orașelor sau pentru livrările din marile orașe către zonele învecinate. Indiferent dacă transportați carne, produse de patiserie, fructe, legume sau alte alimente refrigerate, cu o dubă frigorifică electrică obțineți aceeași performanță de răcire ca la dubele izoterme obișnuite. Autofrigorificele electrice se încarcă în câteva ore și au o durată lungă de răcire.",
       "Iar avantajul unui agregat frigorific cu pachet de baterii propriu este că lanțul frigorific nu se întrerupe nici când vehiculul staționează, deoarece agregatul continuă să funcționeze – totul fără pierdere de autonomie!",
     ],
@@ -106,7 +106,7 @@ export const ro: EcoDict = {
   why: {
     eyebrow: "De ce electric?",
     title: tagline,
-    lead: "Logistica alimentelor proaspete se confruntă cu multe provocări noi: restricțiile pentru vehiculele diesel, precum și zgomotul și poluarea aerului tot mai mari din orașe cer soluții noi, de exemplu dube electrice.",
+    lead: "Logistica alimentelor proaspete se confruntă cu multe provocări noi: restricțiile pentru vehiculele diesel, precum și zgomotul și poluarea aerului tot mai mare din orașe cer soluții noi, de exemplu dube electrice.",
     logisticsEyebrow: "Logistica urbană în schimbare",
     logistics: [
       "Cererea de alimente proaspete crește, lanțurile de aprovizionare au devenit mai complexe și tot mai mulți oameni primesc produse la domiciliu – rolul unei logistici eficiente devine tot mai important.",
@@ -143,7 +143,7 @@ export const ro: EcoDict = {
     compareEyebrow: "De ce nu din bateria de tracțiune?",
     compareTitle: "Răcirea să nu consume din autonomie",
     driveLabel: "Răcire din bateria de tracțiune",
-    drive: ["Energia pentru răcire se scade din autonomia vehiculului", "Traseul zilnic este mai greu de planificat"],
+    drive: ["Energia pentru răcire reduce autonomia vehiculului", "Traseul zilnic este mai greu de planificat"],
     ownLabel: "Cu pachet de baterii propriu – Autotherm",
     own: [
       "Autonomie neschimbată",
@@ -174,7 +174,7 @@ export const ro: EcoDict = {
     title: "Solicitați acum oferta noastră!",
     lead: "Autofrigorifică electrică cu agregat frigorific autonom! Nevoile individuale cer soluții individuale – scrieți-ne pentru ce vehicul și pentru ce marfă refrigerată căutați o soluție.",
     formTitle: "Formular de cerere de ofertă",
-    vehiclePlaceholder: "De ex. Citroën ë-Berlingo, Kia PV5 Cargo",
+    vehiclePlaceholder: "Ex. Citroën ë-Berlingo, Kia PV5 Cargo",
   },
   footer: {
     tagline: "Autofrigorifice electrice cu agregat frigorific autonom – de la Autotherm SRL, specialistul în autofrigorifice din {year}.",

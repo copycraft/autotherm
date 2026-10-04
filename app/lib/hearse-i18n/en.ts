@@ -72,7 +72,7 @@ export const en: HearseDict = {
   },
   conversion: {
     eyebrow: "Our product",
-    title: "3.5 t van converted for transporting the deceased",
+    title: "3.5-tonne van converted for transporting the deceased",
     features: [
       "AT Strong® insulation",
       "Stainless-steel or fibreglass lining",
@@ -154,7 +154,7 @@ export const en: HearseDict = {
     title: "Funeral vehicle manufacturing. Fast conversion – fair price.",
     lead: "Take a look at the removal vans and hearses we have converted.",
     all: "All",
-    leather: "leather",
+    leather: "Leather",
     imageAlt: "Funeral vehicle conversion",
     prev: "Previous image",
     next: "Next image",
@@ -216,7 +216,7 @@ export const en: HearseDict = {
   quote: {
     eyebrow: "Request a quote",
     title: "Funeral vehicle prices",
-    lead: "A fast quote for a removal van or hearse conversion. Tell us which vehicle you need a solution for!",
+    lead: "A fast quote for a removal van or hearse conversion. Tell us which vehicle you need converting!",
     formTitle: "Quote request form",
     vehiclePlaceholder: "E.g. Mercedes Vito, Ford Transit Custom",
     stepsTitle: "What happens after you ask for a quote?",

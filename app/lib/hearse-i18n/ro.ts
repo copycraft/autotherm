@@ -13,7 +13,7 @@ export const ro: HearseDict = {
   },
   seo: {
     home: {
-      title: "Fabricare de mașini funerare – transport decedați și dric | Mortecontrol – Autotherm",
+      title: "Fabricare de mașini funerare – transportul decedaților și dricuri | Mortecontrol – Autotherm",
       description:
         "Fabricăm mașini pentru transportul decedaților și dricuri: dube de 3,5 tone transformate, cu răcire ascunsă a spațiului de încărcare și toate formalitățile rezolvate. Autotherm SRL, Szeged.",
     },
@@ -30,7 +30,7 @@ export const ro: HearseDict = {
     builds: {
       title: "Transformările noastre în imagini | Mortecontrol – Autotherm",
       description:
-        "Mașini funerare pe bază de Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert și Opel Vivaro, în imagini.",
+        "Mașini funerare pe baza modelelor Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert și Opel Vivaro, în imagini.",
     },
     quote: {
       title: "Prețuri mașini funerare – ofertă rapidă | Mortecontrol – Autotherm",
@@ -59,14 +59,14 @@ export const ro: HearseDict = {
   pillars: {
     eyebrow: "Transformarea dubelor pentru transportul decedaților",
     items: [
-      { title: "Fabricare", body: "Amenajarea spațiului de încărcare al dubelor de 3,5 tone pentru transportul decedaților." },
+      { title: "Fabricare", body: "Amenajarea spațiului de încărcare ale dubelor de 3,5 tone pentru transportul decedaților." },
       { title: "Răcire", body: "Răcire ascunsă a spațiului de încărcare, cu +18 °C garantat chiar și pe caniculă." },
       { title: "Formalități", body: "Documentație tehnică, inspecție tehnică și înmatriculare – toate rezolvate de noi." },
     ],
   },
   welcome: {
     greeting: "Bine ați venit!",
-    body: "Imaginați-vă pentru o clipă firma noastră ca pe un restaurant! Cred că și în meseria noastră aridă și tehnică putem oferi un serviciu ca într-un restaurant cu stele Michelin. Vrem ca, atunci când luați masa la noi, să nu plecați doar sătul, ci cu o experiență! Ospătarii noștri vă ajută cu drag să alegeți combinația de gusturi dorită, iar în bucătărie bucătarii noștri pregătesc preparatul din ingrediente de calitate, cu o precizie remarcabilă. Misiunea mea este ca noi să fim restaurantul cu stele Michelin al fabricării de mașini funerare!",
+    body: "Imaginați-vă pentru o clipă firma noastră ca pe un restaurant! Cred că și în meseria noastră aridă și tehnică putem oferi un serviciu ca într-un restaurant cu stele Michelin. Vrem ca, atunci când luați masa la noi, să nu plecați doar sătui, ci cu o experiență! Ospătarii noștri vă ajută cu drag să alegeți combinația de gusturi dorită, iar în bucătărie bucătarii noștri pregătesc preparatul din ingrediente de calitate, cu o precizie remarcabilă. Misiunea mea este ca noi să fim restaurantul cu stele Michelin al fabricării de mașini funerare!",
     name: "Péter Vastag",
     role: "Proprietarul și directorul Autotherm",
   },
@@ -132,7 +132,7 @@ export const ro: HearseDict = {
       "Suprafața podelei din plastic rezistent la uzură sau inox",
       "Carcasa pasajelor roților dreptunghiulară, cu colțuri rotunjite",
       "Opțiuni suplimentare adaptate complet cerințelor dumneavoastră",
-      "Materialele căptușelii interioare respectă cerințele autorităților sanitar-veterinare și de sănătate publică din Ungaria",
+      "Materialele căptușelii interioare respectă cerințele autorităților sanitare-veterinare și de sănătate publică din Ungaria",
     ],
     detailsTitle: "Detalii",
     details: ["Tavă extractibilă", "Tavă pentru sicriu", "Căptușeală din oțel", "Suport pentru urnă", "Șine de fixare", "Controler Waeco"],
@@ -176,7 +176,7 @@ export const ro: HearseDict = {
       },
       {
         title: "Service non-stop",
-        body: "Bazându-ne pe {years} de ani de experiență în service frigorific, suntem disponibili non-stop pentru a ajuta la problemele de răcire – fie că e vorba de agregatul unui camion sau de răcirea cu acționare directă a unui vehicul de 3,5 tone.",
+        body: "Bazându-ne pe {years} de ani de experiență în service frigorific, suntem disponibili non-stop pentru rezolvarea problemelor de răcire – fie că e vorba de agregatul unui camion sau de răcirea cu acționare directă a unui vehicul de 3,5 tone.",
       },
       {
         title: "Relații cu clienții",
@@ -188,7 +188,7 @@ export const ro: HearseDict = {
       },
       {
         title: "Filozofia noastră",
-        body: "Fiecare zi ne este condusă de profesionalism: informare competentă, oferte rapide și precise, produse de calitate și fiabile și colaborare flexibilă pe termen lung – totul la prețuri corecte.",
+        body: "În fiecare zi suntem ghidați de profesionalism: informare competentă, oferte rapide și precise, produse de calitate și fiabile și colaborare flexibilă pe termen lung – totul la prețuri corecte.",
       },
     ],
     oneHandTitle: "Totul dintr-o singură mână",
@@ -203,11 +203,11 @@ export const ro: HearseDict = {
       },
       {
         title: "Partener Carrier Transicold",
-        body: "Carrier este liderul pieței europene de agregate frigorifice, iar noi suntem partener-cheie, pentru că în Ungaria montăm cele mai multe.",
+        body: "Carrier este liderul pieței europene de agregate frigorifice, iar noi suntem partener-cheie, pentru că în Ungaria montăm cele mai multe agregate.",
       },
       {
         title: "Toate formalitățile rezolvate",
-        body: "După predarea vehiculului nu mai aveți nicio hârtie de completat: ne ocupăm de toate autorizațiile, documentele, inspecțiile și înmatricularea și ținem legătura cu dealerul auto.",
+        body: "După predarea vehiculului nu mai aveți nicio hârtie de completat: ne ocupăm de toate autorizațiile, documentele, inspecțiile și înmatricularea, ținem legătura cu dealerul auto.",
       },
     ],
     quote: { text: "Să faci mai mult pentru lume decât face lumea pentru tine – acesta e succesul.", author: "Henry Ford" },

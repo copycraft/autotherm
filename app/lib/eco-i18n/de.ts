@@ -26,7 +26,7 @@ export const de: EcoDict = {
     why: {
       title: "Warum ein Elektro-Kühlfahrzeug? | Zero Emission – Autotherm",
       description:
-        "Emissionsfrei, leise und wirtschaftlich: Warum das Elektro-Kühlfahrzeug eine gute Wahl für die Frischelogistik in Innenstadt und Umland ist.",
+        "Emissionsfrei, leise und wirtschaftlich: Warum das Elektro-Kühlfahrzeug eine gute Wahl für die Frischelogistik in der Innenstadt und im Umland ist.",
     },
     technology: {
       title: "Autarkes Kühlaggregat mit eigenem Akkupack | Zero Emission – Autotherm",
@@ -178,7 +178,7 @@ export const de: EcoDict = {
   },
   footer: {
     tagline: "Elektro-Kühlfahrzeuge mit autarkem Kühlaggregat – von der Autotherm GmbH, dem Kühlfahrzeug-Spezialisten seit {year}.",
-    mainSite: "Autotherm Kühlfahrzeuge",
+    mainSite: "Autotherm-Kühlfahrzeuge",
     menu: "Menü",
     navLabel: "Fußzeile",
     rights: "alle Rechte vorbehalten",
