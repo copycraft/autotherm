@@ -114,6 +114,13 @@ export const ro: HearseDict = {
       },
     ],
   },
+  clients: {
+    eyebrow: "Referințe",
+    title: "Clienții noștri",
+    items: ["Elohim Kft.", "BTI – Budapesti Temetkezési Intézet", "Csongrád Megyei Kegyeleti Kft."],
+    membership:
+      "Autotherm SRL este membru al MATESZSZ (Asociația Națională a Prestatorilor de Servicii Funerare din Ungaria), al MTFE (Asociația Întreținătorilor și Operatorilor de Cimitire din Ungaria) și al MATEK (producători maghiari de articole funerare).",
+  },
   homeContact: {
     eyebrow: "Consultanță personală",
     title: "Cereți oferta expres online sau telefonic!",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import HearseBuildsStrip from "@/app/components/hearse/HearseBuildsStrip";
+import HearseClients from "@/app/components/hearse/HearseClients";
 import HearseContactCard from "@/app/components/hearse/HearseContactCard";
 import HearseHero from "@/app/components/hearse/HearseHero";
 import HearseTestimonials from "@/app/components/hearse/HearseTestimonials";
@@ -110,6 +111,8 @@ export default function HearseHomePage({ lang }: { lang: Lang }) {
       <HearseBuildsStrip lang={lang} />
 
       <HearseTestimonials lang={lang} limit={1} />
+
+      <HearseClients lang={lang} />
 
       <StatsBand lang={lang} dict={getDict(lang)} />
 

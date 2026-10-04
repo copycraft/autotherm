@@ -114,6 +114,13 @@ export const en: HearseDict = {
       },
     ],
   },
+  clients: {
+    eyebrow: "References",
+    title: "Our clients",
+    items: ["Elohim Kft.", "BTI – Budapesti Temetkezési Intézet", "Csongrád Megyei Kegyeleti Kft."],
+    membership:
+      "Autotherm Ltd. is a member of MATESZSZ (National Association of Hungarian Funeral Service Providers), MTFE (Association of Hungarian Cemetery Maintainers and Operators) and MATEK (Hungarian funeral-supply manufacturers).",
+  },
   homeContact: {
     eyebrow: "Personal advice",
     title: "Ask for an express quote online or by phone!",

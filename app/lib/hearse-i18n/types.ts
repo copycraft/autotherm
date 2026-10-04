@@ -38,6 +38,8 @@ export interface HearseDict {
   conversion: { eyebrow: string; title: string; features: string[]; details: string };
   strip: { eyebrow: string; title: string; cta: string };
   testimonials: { eyebrow: string; title: string; items: { quote: string; name: string; role: string }[] };
+  /** Reference clients plus the industry associations we belong to. */
+  clients: { eyebrow: string; title: string; items: string[]; membership: string };
   homeContact: { eyebrow: string; title: string };
   homeCta: TitleBody;
   product: {

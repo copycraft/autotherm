@@ -113,6 +113,13 @@ export const hu: HearseDict = {
       },
     ],
   },
+  clients: {
+    eyebrow: "Referenciák",
+    title: "Ügyfeleink",
+    items: ["Elohim Kft.", "BTI – Budapesti Temetkezési Intézet", "Csongrád Megyei Kegyeleti Kft."],
+    membership:
+      "Az Autotherm Kft. a MATESZSZ (Magyar Temetkezési Szolgáltatók Országos Szakegyesülete), az MTFE (Magyarországi Temetőfenntartók és Üzemeltetők Egyesülete) és a MATEK (magyar temetkezési kellékgyártók) tagja.",
+  },
   homeContact: {
     eyebrow: "Személyes tanácsadás",
     title: "Kérje expressz árajánlatunkat online vagy telefonon!",
