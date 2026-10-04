@@ -95,7 +95,7 @@ export const hu: EcoDict = {
     title: "Alternatíva az elektromos hűtőautó? Egyértelműen: IGEN!",
     body: [
       "Az előnyök nyilvánvalóak: Az elektromos hűtős furgonok emissziómentesek, csendesek és jót tesznek a cég arculatának és zsebének. A friss termékek logisztikájának azonban mindenekelőtt két dologra van szüksége: Megbízhatóságra a hőmérséklet-szabályozásban és a hatótávolság maximális kihasználására.",
-      "Az elektromos hűtőautók különösen alkalmasak a belváros forgalomban vagy a nagyvárosokból a környező területekre való kiszállításokhoz. Függetlenül attól, hogy húst, süteményt, gyümölcsöt, zöldséget vagy más hűtött ételt szállít, egy elektromos hűtős furgonnal ugyanolyan jó hűtési teljesítményt érhet el, mint a szokásos szigetelt dobozos kisteherautóknál. Az elektromos hűtőautók pár órán belül feltölthetőek és hosszú hűtési üzemidővel rendelkeznek.",
+      "Az elektromos hűtőautók különösen alkalmasak a belvárosi forgalomban vagy a nagyvárosokból a környező területekre való kiszállításokhoz. Függetlenül attól, hogy húst, süteményt, gyümölcsöt, zöldséget vagy más hűtött ételt szállít, egy elektromos hűtős furgonnal ugyanolyan jó hűtési teljesítményt érhet el, mint a szokásos szigetelt dobozos kisteherautóknál. Az elektromos hűtőautók pár órán belül feltölthetőek és hosszú hűtési üzemidővel rendelkeznek.",
       "Az önálló akkupakkal rendelkező hűtőegység előnye pedig azt jelenti, hogy a hűtési láncolat akár egy álló jármű esetében sem szakad meg, mert az egység tovább működik – mindez hatótávolság csökkenés nélkül!",
     ],
   },
@@ -107,11 +107,11 @@ export const hu: EcoDict = {
   why: {
     eyebrow: "Miért elektromos?",
     title: tagline,
-    lead: "A friss élelmiszerek logisztikája számos új kihívással néz szembe: a dízelüzemű járművek korlátozása és a városokban növekvő zaj és légszennyezés új megoldásokat igényel, például elektromos meghajtású kisteherautókat.",
+    lead: "A friss élelmiszerek logisztikája számos új kihívással néz szembe: a dízelüzemű járművek korlátozása és a városokban növekvő zaj és légszennyezés új megoldásokat igényelnek, például elektromos meghajtású kisteherautókat.",
     logisticsEyebrow: "Változó városi logisztika",
     logistics: [
       "Egyre nagyobb a kereslet a friss élelmiszerek iránt, az ellátási láncok összetettebbé váltak, és egyre több embernek szállítanak termékeket az otthonukba – a hatékony logisztika szerepe is egyre fontosabbá válik.",
-      "A belső égésű motoroknak megjelentek az alternatívái: Egyre több gyártó kínál elektromos meghajtású haszongépjárműveket.",
+      "Megjelentek a belső égésű motorok alternatívái: egyre több gyártó kínál elektromos meghajtású haszongépjárműveket.",
     ],
     quote: "De mennyire praktikusak a piacon elérhető járművek? Gazdaságosak-e egyáltalán?",
     benefitsTitle: "Az előnyök nyilvánvalóak",

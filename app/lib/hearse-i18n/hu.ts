@@ -71,7 +71,7 @@ export const hu: HearseDict = {
   },
   conversion: {
     eyebrow: "Termékünk",
-    title: "3,5 t-s haszonjármű halottszállító átalakítás",
+    title: "3,5 t-ás haszonjármű halottszállító átalakítás",
     features: [
       "AT Strong® hőszigetelés",
       "Rozsdamentes vagy üvegszálas bevonat",
@@ -154,7 +154,7 @@ export const hu: HearseDict = {
   builds: {
     eyebrow: "Átalakításaink",
     title: "Halottas autó gyártás. Gyors átalakítás – korrekt ár.",
-    lead: "Tekintse meg az átalakított halottszállító autó és pompaautó kivitelezéseket.",
+    lead: "Tekintse meg az átalakított halottszállító autók és pompaautók kivitelezéseit.",
     all: "Összes",
     leather: "bőr",
     imageAlt: "Halottszállító átalakítás",
@@ -165,16 +165,16 @@ export const hu: HearseDict = {
   why: {
     eyebrow: "Miért mi?",
     title: "Halottaskocsi gyártás és átalakítás piacvezető cégtől",
-    lead: "Funkció – látvány – minőség: Autotherm halottszállító autó.",
+    lead: "Funkció – látvány – minőség: az Autotherm halottszállító autója.",
     reasonsTitle: "6 érv, miért minket válasszon",
     reasons: [
       {
         title: "{years} éve a szakmában",
-        body: "Cégünk 1992-ben alakult Autotherm Kft. néven. Az alapítók, Csurgó László és egy osztrák üzletember, Dkfm. Peter Knerer azzal a céllal hozták létre, hogy meghonosítsák a Carrier hűtőberendezéseket az éledező magyar hűtős piacon. 1995-től a Thermo King berendezések javítását is felvállalva Dél-Magyarország meghatározó hűtőgépszervize lettünk.",
+        body: "Cégünk 1992-ben Autotherm Kft. néven alakult. Az alapítók, Csurgó László és egy osztrák üzletember, Dkfm. Peter Knerer azzal a céllal hozták létre, hogy meghonosítsák a Carrier hűtőberendezéseket az éledező magyar hűtős piacon. 1995-től a Thermo King berendezések javítását is felvállalva Dél-Magyarország meghatározó hűtőgépszervize lettünk.",
       },
       {
         title: "Egy kézben minden",
-        body: "A hűtőautós szakmában kétféle cég van: a felépítménygyártók és a hűtősök. Nálunk ez a két szakterület egy cégen belül van, így gyorsan és rugalmasan szolgáljuk ki ügyfeleinket!",
+        body: "A hűtőautós szakmában kétféle cég van: a felépítménygyártók és a hűtősök. Nálunk ez a két szakterület cégünkön belül van, így gyorsan és rugalmasan szolgáljuk ki ügyfeleinket!",
       },
       {
         title: "0–24 órás szerviz",
@@ -186,7 +186,7 @@ export const hu: HearseDict = {
       },
       {
         title: "Darabszám",
-        body: "Évente több mint {conversions} átalakított járművel piacvezetők vagyunk a 3,5 tonnás hűtőautók között, így Ön a leggyorsabban juthat hozzá egy Rolls-Royce színvonalú járműhöz!",
+        body: "Évente több mint {conversions} átalakított járművel piacvezetők vagyunk a 3,5 tonnás hűtőautók piacán, így Ön a leggyorsabban juthat hozzá egy Rolls-Royce színvonalú járműhöz!",
       },
       {
         title: "Üzletfilozófiánk",
@@ -224,7 +224,7 @@ export const hu: HearseDict = {
     stepsTitle: "Mi történik az ajánlatkérés után?",
     steps: [
       { title: "Megerősítő e-mail", body: "E-mailben megerősítjük, hogy megkaptuk ajánlatkérését, és nem történt technikai hiba." },
-      { title: "Telefonos műszaki egyeztetés", body: "Munkatársunk rövid időn belül felhívja a műszaki részletek pontosítása miatt, hogy az ajánlat tényleg az Ön igényeiről szóljon." },
+      { title: "Telefonos műszaki egyeztetés", body: "Munkatársunk rövid időn belül felhívja Önt a műszaki részletek pontosítása miatt, hogy az ajánlat tényleg az Ön igényeiről szóljon." },
       { title: "Elküldjük az árajánlatot", body: "Munkatársunk 12 órán belül PDF formátumban küldi el ajánlatunkat." },
     ],
     fact: "Tudta? Piacvezetők vagyunk a halottszállító autók és pompaautók gyártásában!",
