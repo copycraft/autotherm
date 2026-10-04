@@ -19,27 +19,27 @@ export const de: EcoDict = {
   },
   seo: {
     home: {
-      title: "Elektro-Kühlfahrzeug mit autarkem Kühlaggregat | eHűtőautó – Autotherm",
+      title: "Elektro-Kühlfahrzeug mit autarkem Kühlaggregat | Zero Emission – Autotherm",
       description:
         "Kühlumbau von Elektrotransportern mit autarkem Kühlaggregat und eigenem Akkupack – unveränderte Reichweite, emissionsfreier und leiser Kühltransport. Autotherm GmbH.",
     },
     why: {
-      title: "Warum ein Elektro-Kühlfahrzeug? | eHűtőautó – Autotherm",
+      title: "Warum ein Elektro-Kühlfahrzeug? | Zero Emission – Autotherm",
       description:
         "Emissionsfrei, leise und wirtschaftlich: Warum das Elektro-Kühlfahrzeug eine gute Wahl für die Frischelogistik in Innenstadt und Umland ist.",
     },
     technology: {
-      title: "Autarkes Kühlaggregat mit eigenem Akkupack | eHűtőautó – Autotherm",
+      title: "Autarkes Kühlaggregat mit eigenem Akkupack | Zero Emission – Autotherm",
       description:
         "So funktioniert das autarke Kühlaggregat mit zyklisch geladenem Akkupack: Die Kühlung zehrt nicht am Antriebsakku, die Kühlkette hält auch im Stand.",
     },
     vehicles: {
-      title: "Umbaubare Elektrotransporter | eHűtőautó – Autotherm",
+      title: "Umbaubare Elektrotransporter | Zero Emission – Autotherm",
       description:
         "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito und eSprinter – Umbau von Elektrotransportern zu Kühlfahrzeugen.",
     },
     quote: {
-      title: "Angebot anfordern – Elektro-Kühlfahrzeug | eHűtőautó – Autotherm",
+      title: "Angebot anfordern – Elektro-Kühlfahrzeug | Zero Emission – Autotherm",
       description:
         "Fordern Sie ein Angebot für den Kühlumbau Ihres Elektrotransporters mit autarkem Kühlaggregat an. Individuelle Lösung, mit Abhol- und Rückführungsservice.",
     },

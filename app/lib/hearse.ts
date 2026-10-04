@@ -20,7 +20,7 @@ import { HEARSE_DICTS } from "./hearse-i18n";
  */
 
 export const HEARSE_SITE_URL = "https://halottszallito.hu";
-export const HEARSE_NAME = "Halottszállító";
+export const HEARSE_NAME = "Mortecontrol";
 export const HEARSE_DEFAULT_LANG: Lang = "hu";
 
 export const HEARSE_PAGES = ["home", "why", "product", "builds", "quote"] as const;

@@ -13,27 +13,27 @@ export const en: HearseDict = {
   },
   seo: {
     home: {
-      title: "Funeral vehicle manufacturing – removal vans and hearses | Halottszállító – Autotherm",
+      title: "Funeral vehicle manufacturing – removal vans and hearses | Mortecontrol – Autotherm",
       description:
         "Removal van and hearse manufacturing: 3.5-tonne vans converted for transporting the deceased, with concealed cargo cooling and all paperwork handled. Autotherm Ltd., Szeged, Hungary.",
     },
     why: {
-      title: "Why us? Hearse building and conversion | Halottszállító – Autotherm",
+      title: "Why us? Hearse building and conversion | Mortecontrol – Autotherm",
       description:
         "Hearse building and conversion since 1992: body building, cargo cooling and all the paperwork under one roof.",
     },
     product: {
-      title: "Funeral vehicle manufacturing – specification | Halottszállító – Autotherm",
+      title: "Funeral vehicle manufacturing – specification | Mortecontrol – Autotherm",
       description:
         "Thermal-bridge-free AT Strong insulation, washable polyester or stainless-steel lining, +18 °C cargo cooling and decorated hearse versions.",
     },
     builds: {
-      title: "Our funeral vehicle conversions in pictures | Halottszállító – Autotherm",
+      title: "Our funeral vehicle conversions in pictures | Mortecontrol – Autotherm",
       description:
         "Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert and Opel Vivaro funeral vehicle conversions in pictures.",
     },
     quote: {
-      title: "Funeral vehicle prices – fast quote | Halottszállító – Autotherm",
+      title: "Funeral vehicle prices – fast quote | Mortecontrol – Autotherm",
       description:
         "Request a quote for a removal van or hearse conversion – our colleague sends the quote as a PDF within 12 hours.",
     },

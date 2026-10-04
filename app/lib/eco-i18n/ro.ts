@@ -19,27 +19,27 @@ export const ro: EcoDict = {
   },
   seo: {
     home: {
-      title: "Autofrigorifică electrică cu agregat frigorific autonom | eHűtőautó – Autotherm",
+      title: "Autofrigorifică electrică cu agregat frigorific autonom | Zero Emission – Autotherm",
       description:
         "Transformarea dubelor electrice în autofrigorifice cu agregat frigorific autonom, cu pachet de baterii propriu – autonomie neschimbată, transport refrigerat fără emisii și silențios. Autotherm SRL.",
     },
     why: {
-      title: "De ce o autofrigorifică electrică? | eHűtőautó – Autotherm",
+      title: "De ce o autofrigorifică electrică? | Zero Emission – Autotherm",
       description:
         "Fără emisii, silențioasă și economică: de ce autofrigorifica electrică este o alegere bună pentru logistica produselor proaspete în oraș și în împrejurimi.",
     },
     technology: {
-      title: "Agregat frigorific autonom cu baterii proprii | eHűtőautó – Autotherm",
+      title: "Agregat frigorific autonom cu baterii proprii | Zero Emission – Autotherm",
       description:
         "Cum funcționează agregatul frigorific autonom cu pachet de baterii încărcat ciclic: răcirea nu consumă din bateria de tracțiune, iar lanțul frigorific se menține și în staționare.",
     },
     vehicles: {
-      title: "Dube electrice transformabile | eHűtőautó – Autotherm",
+      title: "Dube electrice transformabile | Zero Emission – Autotherm",
       description:
         "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito și eSprinter – transformarea dubelor electrice în autofrigorifice.",
     },
     quote: {
-      title: "Cerere de ofertă – autofrigorifică electrică | eHűtőautó – Autotherm",
+      title: "Cerere de ofertă – autofrigorifică electrică | Zero Emission – Autotherm",
       description:
         "Solicitați o ofertă pentru transformarea dubei electrice în autofrigorifică cu agregat frigorific autonom. Soluție personalizată, cu serviciu de preluare și returnare.",
     },

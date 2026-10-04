@@ -66,7 +66,7 @@ function Flag({ code }: { code: string }) {
   }
 }
 
-/** eHűtőautó wordmark: leaf mark + name, with an "by Autotherm" endorsement. */
+/** Zero Emission wordmark: leaf mark + name, with an "by Autotherm" endorsement. */
 export function EcoWordmark({ light }: { light: boolean }) {
   return (
     <span className="flex items-center gap-2.5" aria-hidden="true">
@@ -90,7 +90,7 @@ export function EcoWordmark({ light }: { light: boolean }) {
         <span
           className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
         >
-          e<span className={light ? "text-frost-300" : "text-brand-600"}>Hűtőautó</span>
+          Zero <span className={light ? "text-frost-300" : "text-brand-600"}>Emission</span>
         </span>
         <span
           className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
@@ -102,7 +102,7 @@ export function EcoWordmark({ light }: { light: boolean }) {
   );
 }
 
-/** Halottszállító wordmark: gold "A" mark + name, with a "by Autotherm" endorsement. */
+/** Mortecontrol wordmark: gold "A" mark + name, with a "by Autotherm" endorsement. */
 export function HearseWordmark({ light }: { light: boolean }) {
   return (
     <span className="flex items-center gap-2.5" aria-hidden="true">
@@ -120,7 +120,7 @@ export function HearseWordmark({ light }: { light: boolean }) {
         <span
           className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
         >
-          Halott<span className={light ? "text-frost-300" : "text-brand-600"}>szállító</span>
+          Morte<span className={light ? "text-frost-300" : "text-brand-600"}>control</span>
         </span>
         <span
           className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
@@ -144,7 +144,7 @@ export default function Header({
   closeMenuLabel,
   brand = "autotherm",
 }: {
-  /** "eco" swaps the logo for the eHűtőautó wordmark (ehutoauto.hu); "hearse" for the Halottszállító wordmark (halottszallito.hu). */
+  /** "eco" swaps the logo for the Zero Emission wordmark (ehutoauto.hu); "hearse" for the Mortecontrol wordmark (halottszallito.hu). */
   brand?: "autotherm" | "eco" | "hearse";
   homeHref: string;
   nav: NavEntry[];
@@ -197,7 +197,7 @@ export default function Header({
           <Link
             href={homeHref}
             className="flex shrink-0 items-center gap-2 rounded-lg focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none"
-            aria-label={brand === "eco" ? "eHűtőautó – Autotherm" : brand === "hearse" ? "Halottszállító – Autotherm" : "Autotherm"}
+            aria-label={brand === "eco" ? "Zero Emission – Autotherm" : brand === "hearse" ? "Mortecontrol – Autotherm" : "Autotherm"}
           >
             {brand === "eco" ? (
               <EcoWordmark light={!(scrolled || open)} />

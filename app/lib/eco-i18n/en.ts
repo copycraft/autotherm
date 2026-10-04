@@ -17,27 +17,27 @@ export const en: EcoDict = {
   },
   seo: {
     home: {
-      title: "Electric refrigerated van with a self-contained cooling unit | eHűtőautó – Autotherm",
+      title: "Electric refrigerated van with a self-contained cooling unit | Zero Emission – Autotherm",
       description:
         "Refrigerated conversion of electric vans with a self-contained refrigeration unit running on its own battery pack – unchanged range, zero-emission and quiet chilled transport. Autotherm Ltd.",
     },
     why: {
-      title: "Why an electric refrigerated van? | eHűtőautó – Autotherm",
+      title: "Why an electric refrigerated van? | Zero Emission – Autotherm",
       description:
         "Zero-emission, quiet and economical: why an electric refrigerated van is a good choice for urban and suburban fresh-food logistics.",
     },
     technology: {
-      title: "Self-contained refrigeration unit with its own battery pack | eHűtőautó – Autotherm",
+      title: "Self-contained refrigeration unit with its own battery pack | Zero Emission – Autotherm",
       description:
         "How the self-contained refrigeration unit with a cyclically charged battery pack works: cooling doesn't draw on the traction battery, and the cold chain holds even when the van is parked.",
     },
     vehicles: {
-      title: "Convertible electric vans | eHűtőautó – Autotherm",
+      title: "Convertible electric vans | Zero Emission – Autotherm",
       description:
         "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito and eSprinter – electric vans converted into refrigerated vehicles.",
     },
     quote: {
-      title: "Request a quote – electric refrigerated van | eHűtőautó – Autotherm",
+      title: "Request a quote – electric refrigerated van | Zero Emission – Autotherm",
       description:
         "Request a quote for converting an electric van into a refrigerated vehicle with a self-contained refrigeration unit. A tailored solution, with vehicle pick-up and return.",
     },

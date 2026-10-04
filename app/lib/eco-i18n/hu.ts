@@ -20,27 +20,27 @@ export const hu: EcoDict = {
   },
   seo: {
     home: {
-      title: "Elektromos hűtőautó önellátó hűtőegységgel | eHűtőautó – Autotherm",
+      title: "Elektromos hűtőautó önellátó hűtőegységgel | Zero Emission – Autotherm",
       description:
         "Elektromos furgonok hűtős átalakítása önellátó, saját akkupakkal működő hűtőegységgel – változatlan hatótáv, emissziómentes és csendes hűtött szállítás. Autotherm Kft.",
     },
     why: {
-      title: "Miért elektromos hűtőautó? | eHűtőautó – Autotherm",
+      title: "Miért elektromos hűtőautó? | Zero Emission – Autotherm",
       description:
         "Emissziómentes, csendes és gazdaságos: miért jó választás az elektromos hűtőautó a belvárosi és elővárosi frissáru-logisztikában.",
     },
     technology: {
-      title: "Önellátó hűtőegység saját akkupakkal | eHűtőautó – Autotherm",
+      title: "Önellátó hűtőegység saját akkupakkal | Zero Emission – Autotherm",
       description:
         "Így működik az önellátó, ciklikus töltésű akkupakkal rendelkező hűtőegység: a hűtés nem a hajtóakkuból fogyaszt, a hűtési lánc álló járműnél sem szakad meg.",
     },
     vehicles: {
-      title: "Átalakítható elektromos furgonok | eHűtőautó – Autotherm",
+      title: "Átalakítható elektromos furgonok | Zero Emission – Autotherm",
       description:
         "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito és eSprinter – elektromos furgonok hűtőautóvá alakítása.",
     },
     quote: {
-      title: "Árajánlatkérés – elektromos hűtőautó | eHűtőautó – Autotherm",
+      title: "Árajánlatkérés – elektromos hűtőautó | Zero Emission – Autotherm",
       description:
         "Kérjen árajánlatot elektromos hűtőautó átalakításra önellátó hűtőegységgel. Személyre szabott megoldás, átvételi és visszaküldési szolgáltatással.",
     },

@@ -13,27 +13,27 @@ export const de: HearseDict = {
   },
   seo: {
     home: {
-      title: "Bau von Bestattungsfahrzeugen – Überführungs- und Leichenwagen | Halottszállító – Autotherm",
+      title: "Bau von Bestattungsfahrzeugen – Überführungs- und Leichenwagen | Mortecontrol – Autotherm",
       description:
         "Bau von Überführungs- und Leichenwagen: 3,5-Tonner-Transporter für den Verstorbenentransport umgebaut, mit verdeckter Laderaumkühlung und kompletter Abwicklung. Autotherm GmbH, Szeged.",
     },
     why: {
-      title: "Warum wir? Bau und Umbau von Leichenwagen | Halottszállító – Autotherm",
+      title: "Warum wir? Bau und Umbau von Leichenwagen | Mortecontrol – Autotherm",
       description:
         "Bau und Umbau von Leichenwagen seit 1992: Aufbau, Laderaumkühlung und komplette Abwicklung aus einer Hand.",
     },
     product: {
-      title: "Bau von Bestattungsfahrzeugen – Ausstattung | Halottszállító – Autotherm",
+      title: "Bau von Bestattungsfahrzeugen – Ausstattung | Mortecontrol – Autotherm",
       description:
         "Wärmebrückenfreie AT-Strong-Isolierung, abwaschbare Polyester- oder Edelstahlverkleidung, +18 °C Laderaumkühlung und geschmückte Leichenwagen.",
     },
     builds: {
-      title: "Unsere Bestattungsfahrzeug-Umbauten in Bildern | Halottszállító – Autotherm",
+      title: "Unsere Bestattungsfahrzeug-Umbauten in Bildern | Mortecontrol – Autotherm",
       description:
         "Umbauten auf Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert und Opel Vivaro in Bildern.",
     },
     quote: {
-      title: "Preise für Bestattungsfahrzeuge – schnelles Angebot | Halottszállító – Autotherm",
+      title: "Preise für Bestattungsfahrzeuge – schnelles Angebot | Mortecontrol – Autotherm",
       description:
         "Fordern Sie ein Angebot für den Umbau eines Überführungs- oder Leichenwagens an – unser Kollege sendet es innerhalb von 12 Stunden als PDF.",
     },

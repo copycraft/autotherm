@@ -72,7 +72,7 @@ export async function generateMetadata({
           url: `${MAIN_SITE_URL}/images/og-banner.jpg`,
           width: 1200,
           height: 630,
-          alt: "eHűtőautó – Autotherm",
+          alt: "Zero Emission – Autotherm",
         },
       ],
     },

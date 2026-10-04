@@ -13,27 +13,27 @@ export const ro: HearseDict = {
   },
   seo: {
     home: {
-      title: "Fabricare de mașini funerare – transport decedați și dric | Halottszállító – Autotherm",
+      title: "Fabricare de mașini funerare – transport decedați și dric | Mortecontrol – Autotherm",
       description:
         "Fabricăm mașini pentru transportul decedaților și dricuri: dube de 3,5 tone transformate, cu răcire ascunsă a spațiului de încărcare și toate formalitățile rezolvate. Autotherm SRL, Szeged.",
     },
     why: {
-      title: "De ce noi? Fabricarea și transformarea dricurilor | Halottszállító – Autotherm",
+      title: "De ce noi? Fabricarea și transformarea dricurilor | Mortecontrol – Autotherm",
       description:
         "Fabricarea și transformarea dricurilor din 1992: suprastructuri, răcire și toate formalitățile dintr-o singură mână.",
     },
     product: {
-      title: "Fabricare de mașini funerare – dotări | Halottszállító – Autotherm",
+      title: "Fabricare de mașini funerare – dotări | Mortecontrol – Autotherm",
       description:
         "Izolație AT Strong fără punți termice, căptușeală lavabilă din poliester sau inox, răcire la +18 °C și dricuri decorate.",
     },
     builds: {
-      title: "Transformările noastre în imagini | Halottszállító – Autotherm",
+      title: "Transformările noastre în imagini | Mortecontrol – Autotherm",
       description:
         "Mașini funerare pe bază de Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert și Opel Vivaro, în imagini.",
     },
     quote: {
-      title: "Prețuri mașini funerare – ofertă rapidă | Halottszállító – Autotherm",
+      title: "Prețuri mașini funerare – ofertă rapidă | Mortecontrol – Autotherm",
       description:
         "Cereți o ofertă pentru transformarea unei mașini de transport decedați sau a unui dric – colegul nostru vă trimite oferta în format PDF în 12 ore.",
     },
