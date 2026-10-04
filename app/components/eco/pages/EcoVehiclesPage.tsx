@@ -4,8 +4,9 @@ import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal"
 import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import PageHero from "@/app/components/site/PageHero";
+import Eyebrow from "@/app/components/ui/Eyebrow";
 import type { Lang } from "@/app/lib/constants";
-import { ECO_CONTACT, ECO_VEHICLES, ecoPath, getEcoDict } from "@/app/lib/eco";
+import { ECO_BUILDS, ECO_CONTACT, ECO_VEHICLES, ecoBuildPhotos, ecoPath, getEcoDict } from "@/app/lib/eco";
 
 export default function EcoVehiclesPage({ lang }: { lang: Lang }) {
   const dict = getEcoDict(lang);
@@ -26,7 +27,11 @@ export default function EcoVehiclesPage({ lang }: { lang: Lang }) {
                 width={521}
                 height={365}
                 sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 90vw"
-                className="aspect-[521/365] h-auto w-full object-contain"
+                className={
+                  v.photo
+                    ? "aspect-[521/365] h-auto w-full rounded-2xl object-cover"
+                    : "aspect-[521/365] h-auto w-full object-contain"
+                }
               />
               <p className="mt-4 border-t border-ink-100 pt-4 text-sm font-semibold text-ink-500">{v.make}</p>
               <h2 className="text-3xl font-black tracking-tighter text-ink-900">{v.model}</h2>
@@ -55,6 +60,44 @@ export default function EcoVehiclesPage({ lang }: { lang: Lang }) {
             </a>
           </RevealItem>
         </RevealGroup>
+      </section>
+
+      <section className="bg-white py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <Eyebrow label={t.galleryEyebrow} tone="light" />
+            <RevealText
+              as="h2"
+              text={t.galleryTitle}
+              className="mt-4 block max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+            />
+            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink-600">{t.galleryLead}</p>
+          </Reveal>
+          {ECO_BUILDS.map((b) => (
+            <div key={b.id} id={`ref-${b.id}`} className="mt-16 scroll-mt-24">
+              <Reveal>
+                <p className="text-sm font-semibold text-ink-500">{b.make}</p>
+                <h3 className="text-2xl font-black tracking-tighter text-ink-900 sm:text-3xl">
+                  {b.model}
+                </h3>
+              </Reveal>
+              <RevealGroup className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+                {ecoBuildPhotos(b.dir, b.count).map((src, i) => (
+                  <RevealItem key={src} className="panel-ring overflow-hidden rounded-3xl bg-white shadow-soft">
+                    <Image
+                      src={src}
+                      alt={`${b.make} ${b.model} – ${i + 1}`}
+                      width={800}
+                      height={600}
+                      sizes="(min-width: 1024px) 20rem, (min-width: 640px) 45vw, 90vw"
+                      className="aspect-[4/3] h-auto w-full object-cover"
+                    />
+                  </RevealItem>
+                ))}
+              </RevealGroup>
+            </div>
+          ))}
+        </div>
       </section>
 
       <section className="bg-white py-24 sm:py-28">

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import EcoContactCard from "@/app/components/eco/EcoContactCard";
 import EcoHero from "@/app/components/eco/EcoHero";
 import EcoVehicleStrip from "@/app/components/eco/EcoVehicleStrip";
@@ -8,7 +9,7 @@ import CtaBand from "@/app/components/site/CtaBand";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import Icon from "@/app/components/ui/Icon";
 import type { Lang } from "@/app/lib/constants";
-import { ECO_CONTACT, ECO_FEATURE_ICONS, ecoPath, getEcoDict } from "@/app/lib/eco";
+import { ECO_BUILDS, ECO_CONTACT, ECO_FEATURE_ICONS, ecoPath, getEcoDict } from "@/app/lib/eco";
 
 export default function EcoHomePage({ lang }: { lang: Lang }) {
   const dict = getEcoDict(lang);
@@ -91,6 +92,53 @@ export default function EcoHomePage({ lang }: { lang: Lang }) {
 
       {/* The convertible vans, scrolled through sideways */}
       <EcoVehicleStrip lang={lang} />
+
+      {/* Finished builds */}
+      <section className="bg-white py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <Eyebrow label={t.ref.eyebrow} tone="light" />
+            <RevealText
+              as="h2"
+              text={t.ref.title}
+              className="mt-4 block max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+            />
+          </Reveal>
+          <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ECO_BUILDS.map((b) => (
+              <RevealItem key={b.id} className="panel-ring group overflow-hidden rounded-3xl bg-white shadow-soft">
+                <Link href={`${ecoPath("vehicles", lang)}#ref-${b.id}`} className="block focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus-visible:outline-none">
+                  <div className="overflow-hidden">
+                    <Image
+                      src={`/images/eco/builds/covers/${b.id}.webp`}
+                      alt={`${b.make} ${b.model}`}
+                      width={640}
+                      height={480}
+                      sizes="(min-width: 1024px) 20rem, (min-width: 640px) 45vw, 90vw"
+                      className="aspect-[4/3] h-auto w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-sm font-semibold text-ink-500">{b.make}</p>
+                    <p className="text-xl font-black tracking-tighter text-ink-900">{b.model}</p>
+                  </div>
+                </Link>
+              </RevealItem>
+            ))}
+          </RevealGroup>
+          <Reveal delay={0.1}>
+            <Link
+              href={ecoPath("vehicles", lang)}
+              className="group mt-8 inline-flex items-center gap-1.5 text-sm font-bold text-brand-600"
+            >
+              {t.ref.cta}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" />
+              </svg>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
 
       {/* Contact */}
       <section className="bg-white py-24 sm:py-32">

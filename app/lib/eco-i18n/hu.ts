@@ -37,7 +37,7 @@ export const hu: EcoDict = {
     vehicles: {
       title: "Átalakítható elektromos furgonok | eHűtőautó – Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito és eSprinter – elektromos furgonok hűtőautóvá alakítása.",
+        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter és eCitan, Ford E-Transit Custom, Peugeot E-Expert és Fiat E-Ducato – elektromos furgonok hűtőautóvá alakítása.",
     },
     quote: {
       title: "Árajánlatkérés – elektromos hűtőautó | eHűtőautó – Autotherm",
@@ -79,6 +79,11 @@ export const hu: EcoDict = {
     cta: {
       title: "Kérje árajánlatunkat most!",
       body: "Elektromos hűtőautó önellátó hűtőegységgel! Vegye igénybe járművének átvételi és visszaküldési ajánlatunkat egy átfogó és gondtalan szolgáltatáshoz.",
+    },
+    ref: {
+      eyebrow: "Referenciák",
+      title: "Elkészült elektromos hűtőautók",
+      cta: "Megnézem a referenciákat",
     },
   },
   features: [
@@ -166,6 +171,10 @@ export const hu: EcoDict = {
     otherEyebrow: "Más típus?",
     otherTitle: individual,
     cta: { title: "Kérje árajánlatunkat most!", body: quoteBody },
+    galleryEyebrow: "Elkészült átalakítások",
+    galleryTitle: "Referencia hűtőautók képekben",
+    galleryLead:
+      "Négy elkészült elektromos hűtőautó átalakításunk – Mercedes-Benz eCitan, Ford E-Transit Custom, Peugeot E-Expert és Fiat E-Ducato.",
   },
   quote: {
     eyebrow: "Árajánlatkérés",

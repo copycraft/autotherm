@@ -37,6 +37,8 @@ export interface EcoDict {
     contactEyebrow: string;
     contactTitle: string;
     cta: TitleBody;
+    /** Finished-build reference band linking to the vehicles page. */
+    ref: { eyebrow: string; title: string; cta: string };
   };
   /** Eight items, matching ECO_FEATURE_ICONS. */
   features: TitleBody[];
@@ -82,6 +84,10 @@ export interface EcoDict {
     otherEyebrow: string;
     otherTitle: string;
     cta: TitleBody;
+    /** Finished-build photo galleries below the vehicle grid. */
+    galleryEyebrow: string;
+    galleryTitle: string;
+    galleryLead: string;
   };
   quote: {
     eyebrow: string;

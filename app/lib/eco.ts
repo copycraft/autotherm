@@ -130,8 +130,10 @@ export const ECO_FEATURE_ICONS: IconName[] = [
  * Electric vans converted to refrigerated vehicles, current model years, from
  * small to large. Manufacturer studio shots, cut out and centred on a white
  * 521×365 canvas so every card matches (shown at about native size).
+ * Entries with `photo` are finished Autotherm builds documented with workshop
+ * photography instead (shown cropped, with their reference gallery below).
  */
-export const ECO_VEHICLES: { make: string; model: string; image: string }[] = [
+export const ECO_VEHICLES: { make: string; model: string; image: string; photo?: boolean }[] = [
   { make: "Peugeot", model: "E-Partner", image: "/images/eco/peugeot-e-partner.webp" },
   { make: "Citroën", model: "ë-Berlingo", image: "/images/eco/citroen-e-berlingo.webp" },
   { make: "Opel", model: "Combo Electric", image: "/images/eco/opel-combo-electric.webp" },
@@ -141,4 +143,28 @@ export const ECO_VEHICLES: { make: string; model: string; image: string }[] = [
   { make: "Kia", model: "PV5 Cargo", image: "/images/eco/kia-pv5-cargo.webp" },
   { make: "Mercedes-Benz", model: "eVito", image: "/images/eco/mercedes-evito.webp" },
   { make: "Mercedes-Benz", model: "eSprinter", image: "/images/eco/mercedes-esprinter.webp" },
+  { make: "Mercedes-Benz", model: "eCitan", image: "/images/eco/builds/covers/ecitan.webp", photo: true },
+  { make: "Ford", model: "E-Transit Custom", image: "/images/eco/builds/covers/e-transit-custom.webp", photo: true },
+  { make: "Peugeot", model: "E-Expert", image: "/images/eco/builds/covers/e-expert.webp", photo: true },
+  { make: "Fiat", model: "E-Ducato", image: "/images/eco/builds/covers/e-ducato.webp", photo: true },
 ];
+
+/**
+ * Finished electric refrigerated conversions documented photo by photo.
+ * `dir` is the folder under /images/eco/builds, `count` the number of
+ * sequentially numbered photos, `cover` the 1-based cover photo.
+ */
+export const ECO_BUILDS: { id: string; make: string; model: string; dir: string; count: number; cover: number }[] = [
+  { id: "ecitan", make: "Mercedes-Benz", model: "eCitan", dir: "ecitan", count: 17, cover: 14 },
+  { id: "e-transit-custom", make: "Ford", model: "E-Transit Custom", dir: "build-002", count: 20, cover: 3 },
+  { id: "e-expert", make: "Peugeot", model: "E-Expert", dir: "build-008", count: 16, cover: 3 },
+  { id: "e-ducato", make: "Fiat", model: "E-Ducato", dir: "build-004", count: 16, cover: 8 },
+];
+
+/** Photo paths for one finished build, in shooting order. */
+export function ecoBuildPhotos(dir: string, count: number): string[] {
+  return Array.from(
+    { length: count },
+    (_, i) => `/images/eco/builds/${dir}/${String(i + 1).padStart(2, "0")}.webp`,
+  );
+}

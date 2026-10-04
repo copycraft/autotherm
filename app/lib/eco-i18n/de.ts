@@ -36,7 +36,7 @@ export const de: EcoDict = {
     vehicles: {
       title: "Umbaubare Elektrotransporter | Zero Emission – Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito und eSprinter – Umbau von Elektrotransportern zu Kühlfahrzeugen.",
+        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter und eCitan, Ford E-Transit Custom, Peugeot E-Expert und Fiat E-Ducato – Umbau von Elektrotransportern zu Kühlfahrzeugen.",
     },
     quote: {
       title: "Angebot anfordern – Elektro-Kühlfahrzeug | Zero Emission – Autotherm",
@@ -78,6 +78,11 @@ export const de: EcoDict = {
     cta: {
       title: "Fordern Sie jetzt unser Angebot an!",
       body: "Elektro-Kühlfahrzeug mit autarkem Kühlaggregat! Nutzen Sie unser Angebot zur Abholung und Rückführung Ihres Fahrzeugs – für einen umfassenden, sorgenfreien Service.",
+    },
+    ref: {
+      eyebrow: "Referenzen",
+      title: "Fertige Elektro-Kühlfahrzeuge",
+      cta: "Referenzen ansehen",
     },
   },
   features: [
@@ -168,6 +173,10 @@ export const de: EcoDict = {
       title: "Fordern Sie jetzt unser Angebot an!",
       body: "Elektro-Kühlfahrzeug mit autarkem Kühlaggregat!",
     },
+    galleryEyebrow: "Fertige Umbauten",
+    galleryTitle: "Referenz-Kühlfahrzeuge in Bildern",
+    galleryLead:
+      "Vier fertige Elektro-Kühlumbauten – Mercedes-Benz eCitan, Ford E-Transit Custom, Peugeot E-Expert und Fiat E-Ducato.",
   },
   quote: {
     eyebrow: "Angebot anfordern",

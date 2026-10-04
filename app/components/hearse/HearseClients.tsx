@@ -28,10 +28,17 @@ export default function HearseClients({ lang }: { lang: Lang }) {
           ))}
         </RevealGroup>
         <Reveal delay={0.1}>
-          <p className="mx-auto mt-10 flex max-w-3xl items-start justify-center gap-3 text-center text-sm leading-relaxed text-ink-500">
-            <Icon name="medal" className="h-5 w-5 shrink-0 text-brand-600" />
-            <span>{clients.membership}</span>
-          </p>
+          <div className="mx-auto mt-12 max-w-5xl rounded-3xl bg-ink-950 p-10 text-center shadow-lifted ring-1 ring-frost-300/25 sm:p-14">
+            <span
+              className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-frost-300/15 text-frost-300"
+              aria-hidden="true"
+            >
+              <Icon name="medal" className="h-8 w-8" />
+            </span>
+            <p className="mx-auto mt-6 max-w-3xl text-xl leading-relaxed font-extrabold tracking-tight text-balance text-white sm:text-2xl">
+              {clients.membership}
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>

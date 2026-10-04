@@ -36,7 +36,7 @@ export const ro: EcoDict = {
     vehicles: {
       title: "Dube electrice transformabile | Zero Emission – Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito și eSprinter – transformarea dubelor electrice în autofrigorifice.",
+        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter și eCitan, Ford E-Transit Custom, Peugeot E-Expert și Fiat E-Ducato – transformarea dubelor electrice în autofrigorifice.",
     },
     quote: {
       title: "Cerere de ofertă – autofrigorifică electrică | Zero Emission – Autotherm",
@@ -78,6 +78,11 @@ export const ro: EcoDict = {
     cta: {
       title: "Solicitați acum oferta noastră!",
       body: "Autofrigorifică electrică cu agregat frigorific autonom! Profitați de oferta noastră de preluare și returnare a vehiculului, pentru un serviciu complet și fără griji.",
+    },
+    ref: {
+      eyebrow: "Referințe",
+      title: "Autofrigorifice electrice finalizate",
+      cta: "Vezi referințele",
     },
   },
   features: [
@@ -168,6 +173,10 @@ export const ro: EcoDict = {
       title: "Solicitați acum oferta noastră!",
       body: "Autofrigorifică electrică cu agregat frigorific autonom!",
     },
+    galleryEyebrow: "Transformări finalizate",
+    galleryTitle: "Autofrigorifice de referință în imagini",
+    galleryLead:
+      "Patru transformări electrice finalizate – Mercedes-Benz eCitan, Ford E-Transit Custom, Peugeot E-Expert și Fiat E-Ducato.",
   },
   quote: {
     eyebrow: "Cerere de ofertă",

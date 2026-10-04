@@ -34,7 +34,7 @@ export const en: EcoDict = {
     vehicles: {
       title: "Electric vans for conversion | Zero Emission – Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito and eSprinter – electric vans converted into refrigerated vehicles.",
+        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter and eCitan, Ford E-Transit Custom, Peugeot E-Expert and Fiat E-Ducato – electric vans converted into refrigerated vehicles.",
     },
     quote: {
       title: "Request a quote – electric refrigerated van | Zero Emission – Autotherm",
@@ -79,6 +79,11 @@ export const en: EcoDict = {
     cta: {
       title: "Request our quote now!",
       body: "Electric refrigerated van with a self-contained refrigeration unit! Take advantage of our vehicle pick-up and return offer for a complete, hassle-free service.",
+    },
+    ref: {
+      eyebrow: "References",
+      title: "Finished electric refrigerated vans",
+      cta: "See the references",
     },
   },
   features: [
@@ -169,6 +174,10 @@ export const en: EcoDict = {
       title: "Request our quote now!",
       body: "Electric refrigerated van with a self-contained refrigeration unit!",
     },
+    galleryEyebrow: "Finished conversions",
+    galleryTitle: "Reference refrigerated vans in pictures",
+    galleryLead:
+      "Four finished electric refrigerated van conversions – Mercedes-Benz eCitan, Ford E-Transit Custom, Peugeot E-Expert and Fiat E-Ducato.",
   },
   quote: {
     eyebrow: "Request a quote",

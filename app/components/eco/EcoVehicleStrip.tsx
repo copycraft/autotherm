@@ -36,7 +36,11 @@ export default function EcoVehicleStrip({ lang }: { lang: Lang }) {
             // ~15 KB each. Already sized for this card, so served as-is.
             loading="eager"
             unoptimized
-            className="mt-2 aspect-[521/365] h-auto w-full object-contain"
+            className={
+              v.photo
+                ? "mt-2 aspect-[521/365] h-auto w-full rounded-2xl object-cover"
+                : "mt-2 aspect-[521/365] h-auto w-full object-contain"
+            }
           />
           <figcaption className="mt-4 border-t border-ink-100 pt-4">
             <span className="block text-sm font-semibold text-ink-500">{v.make}</span>
