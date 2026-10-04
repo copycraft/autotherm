@@ -3,7 +3,10 @@
 import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import MagneticButton from "@/app/components/motion/MagneticButton";
+import Parallax from "@/app/components/motion/Parallax";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
+import VelocityStretch from "@/app/components/motion/VelocityStretch";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import type { HearseDict } from "@/app/lib/hearse-i18n";
 
@@ -31,26 +34,31 @@ export default function HearseHero({
 
   return (
     <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink-950">
-      <Image
-        src="/images/hearse/hero.webp"
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover opacity-40"
-      />
+      {/* Workshop plate: parallax drift underneath, velocity stretch on the move. */}
+      <Parallax className="absolute inset-0" speed={0.3}>
+        <VelocityStretch className="h-full w-full">
+          <Image
+            src="/images/hearse/hero.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="scale-[1.08] object-cover opacity-40"
+          />
+        </VelocityStretch>
+      </Parallax>
       <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/60 to-ink-950/30" aria-hidden="true" />
       <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 pt-32 pb-20 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-32">
         <div className="lg:col-span-7">
           <motion.div {...fade(0.1)}>
             <Eyebrow label={copy.eyebrow} />
           </motion.div>
-          <motion.h1
-            {...fade(0.2)}
-            className="mt-8 text-5xl font-black tracking-tighter text-balance text-white sm:text-6xl xl:text-7xl"
-          >
-            {copy.title}
-          </motion.h1>
+          <RevealText
+            as="h1"
+            text={copy.title}
+            delay={0.2}
+            className="mt-8 block text-5xl font-black tracking-tighter text-balance text-white sm:text-6xl xl:text-7xl"
+          />
           <motion.p {...fade(0.5)} className="mt-8 max-w-xl text-lg leading-relaxed text-ink-200">
             {copy.lead}
           </motion.p>

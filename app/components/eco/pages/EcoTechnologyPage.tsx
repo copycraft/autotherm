@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import PageHero from "@/app/components/site/PageHero";
 import Eyebrow from "@/app/components/ui/Eyebrow";
@@ -16,9 +17,11 @@ export default function EcoTechnologyPage({ lang }: { lang: Lang }) {
       <section className="mesh-light py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="text-center text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl">
-              {t.howTitle}
-            </h2>
+            <RevealText
+              as="h2"
+              text={t.howTitle}
+              className="block text-center text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+            />
           </Reveal>
           <RevealGroup className="relative mt-16 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             <span
@@ -42,9 +45,11 @@ export default function EcoTechnologyPage({ lang }: { lang: Lang }) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
             <Eyebrow label={t.compareEyebrow} tone="light" />
-            <h2 className="mt-4 max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl">
-              {t.compareTitle}
-            </h2>
+            <RevealText
+              as="h2"
+              text={t.compareTitle}
+              className="mt-4 block max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+            />
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-4 lg:grid-cols-2">
             <Reveal className="rounded-3xl bg-ink-50 p-8 panel-ring">

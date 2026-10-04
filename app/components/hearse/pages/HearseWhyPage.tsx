@@ -1,5 +1,6 @@
 import HearseTestimonials from "@/app/components/hearse/HearseTestimonials";
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import PageHero from "@/app/components/site/PageHero";
 import StatsBand from "@/app/components/site/StatsBand";
@@ -19,9 +20,11 @@ export default function HearseWhyPage({ lang }: { lang: Lang }) {
       <section className="bg-white py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl">
-              {t.reasonsTitle}
-            </h2>
+            <RevealText
+              as="h2"
+              text={t.reasonsTitle}
+              className="block max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+            />
           </Reveal>
           <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {t.reasons.map((r, i) => (
@@ -39,7 +42,11 @@ export default function HearseWhyPage({ lang }: { lang: Lang }) {
       <section className="bg-ink-950 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="text-3xl font-black tracking-tighter text-white sm:text-5xl">{t.oneHandTitle}</h2>
+            <RevealText
+              as="h2"
+              text={t.oneHandTitle}
+              className="block text-3xl font-black tracking-tighter text-white sm:text-5xl"
+            />
           </Reveal>
           <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.oneHand.map((o) => (

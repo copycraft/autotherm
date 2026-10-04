@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import PageHero from "@/app/components/site/PageHero";
 import type { Lang } from "@/app/lib/constants";
@@ -58,9 +59,11 @@ export default function EcoVehiclesPage({ lang }: { lang: Lang }) {
 
       <section className="bg-white py-24 sm:py-28">
         <Reveal className="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl">
-            {dict.pickup.title}
-          </h2>
+          <RevealText
+            as="h2"
+            text={dict.pickup.title}
+            className="block text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl"
+          />
           <p className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-ink-600">{dict.pickup.body}</p>
         </Reveal>
       </section>

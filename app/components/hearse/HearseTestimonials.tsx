@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import type { Lang } from "@/app/lib/constants";
 import { getHearseDict } from "@/app/lib/hearse";
@@ -22,9 +23,11 @@ export default function HearseTestimonials({ lang, limit }: { lang: Lang; limit?
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <Eyebrow label={testimonials.eyebrow} tone="light" />
-          <h2 className="mt-4 max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl">
-            {testimonials.title}
-          </h2>
+          <RevealText
+            as="h2"
+            text={testimonials.title}
+            className="mt-4 block max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+          />
         </Reveal>
         <RevealGroup className={`mt-12 grid grid-cols-1 gap-4 ${items.length > 1 ? "md:grid-cols-2" : ""}`}>
           {items.map((t) => (

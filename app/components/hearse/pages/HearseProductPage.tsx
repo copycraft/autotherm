@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import { DollyImage, Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import PageHero from "@/app/components/site/PageHero";
 import type { Lang } from "@/app/lib/constants";
@@ -23,7 +24,11 @@ export default function HearseProductPage({ lang }: { lang: Lang }) {
       <section className="bg-white py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
           <Reveal className="lg:col-span-4">
-            <h2 className="text-3xl font-black tracking-tighter text-ink-900 sm:text-5xl">{t.specTitle}</h2>
+            <RevealText
+              as="h2"
+              text={t.specTitle}
+              className="block text-3xl font-black tracking-tighter text-ink-900 sm:text-5xl"
+            />
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-8">
             <ul className="flex flex-col divide-y divide-ink-100 border-y border-ink-100">
@@ -42,19 +47,25 @@ export default function HearseProductPage({ lang }: { lang: Lang }) {
       <section className="mesh-light py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="text-3xl font-black tracking-tighter text-ink-900 sm:text-5xl">{t.detailsTitle}</h2>
+            <RevealText
+              as="h2"
+              text={t.detailsTitle}
+              className="block text-3xl font-black tracking-tighter text-ink-900 sm:text-5xl"
+            />
           </Reveal>
           <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {HEARSE_DETAIL_PHOTOS.map((src, i) => (
               <RevealItem key={src} className="panel-ring overflow-hidden rounded-3xl bg-white shadow-soft">
-                <Image
-                  src={src}
-                  alt={t.details[i]}
-                  width={2000}
-                  height={940}
-                  sizes="(min-width: 1024px) 26rem, (min-width: 640px) 45vw, 90vw"
-                  className="aspect-[2/1] h-auto w-full object-cover"
-                />
+                <DollyImage>
+                  <Image
+                    src={src}
+                    alt={t.details[i]}
+                    width={2000}
+                    height={940}
+                    sizes="(min-width: 1024px) 26rem, (min-width: 640px) 45vw, 90vw"
+                    className="aspect-[2/1] h-auto w-full object-cover"
+                  />
+                </DollyImage>
                 <p className="px-6 py-4 text-base font-extrabold tracking-tight text-ink-900">{t.details[i]}</p>
               </RevealItem>
             ))}
@@ -66,7 +77,11 @@ export default function HearseProductPage({ lang }: { lang: Lang }) {
       <section className="bg-white py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-4 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
           <Reveal className="rounded-3xl bg-ink-950 p-8 sm:p-10">
-            <h2 className="text-2xl font-black tracking-tight text-white sm:text-3xl">{t.coolingTitle}</h2>
+            <RevealText
+              as="h2"
+              text={t.coolingTitle}
+              className="block text-2xl font-black tracking-tight text-white sm:text-3xl"
+            />
             <ul className="mt-6 flex flex-col gap-4">
               {t.cooling.map((c) => (
                 <li key={c} className="flex gap-3 text-base leading-relaxed text-ink-200">
@@ -77,7 +92,11 @@ export default function HearseProductPage({ lang }: { lang: Lang }) {
             </ul>
           </Reveal>
           <Reveal delay={0.1} className="panel-ring rounded-3xl bg-ink-50 p-8 sm:p-10">
-            <h2 className="text-2xl font-black tracking-tight text-ink-900 sm:text-3xl">{t.ceremonialTitle}</h2>
+            <RevealText
+              as="h2"
+              text={t.ceremonialTitle}
+              className="block text-2xl font-black tracking-tight text-ink-900 sm:text-3xl"
+            />
             {t.ceremonial.map((p) => (
               <p key={p} className="mt-4 text-base leading-relaxed text-ink-600">
                 {p}

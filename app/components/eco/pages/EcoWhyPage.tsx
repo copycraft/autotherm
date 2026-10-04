@@ -1,4 +1,5 @@
 import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import PageHero from "@/app/components/site/PageHero";
 import Eyebrow from "@/app/components/ui/Eyebrow";
@@ -39,9 +40,11 @@ export default function EcoWhyPage({ lang }: { lang: Lang }) {
       <section className="mesh-light py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <Reveal>
-            <h2 className="max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl">
-              {t.benefitsTitle}
-            </h2>
+            <RevealText
+              as="h2"
+              text={t.benefitsTitle}
+              className="block max-w-3xl text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-5xl"
+            />
           </Reveal>
           <RevealGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {t.benefits.map((b, i) => (
@@ -59,9 +62,11 @@ export default function EcoWhyPage({ lang }: { lang: Lang }) {
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
           <div className="lg:col-span-7">
             <Reveal>
-              <h2 className="text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl">
-                {dict.case.title}
-              </h2>
+              <RevealText
+                as="h2"
+                text={dict.case.title}
+                className="block text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl"
+              />
             </Reveal>
             {dict.case.body.map((p, i) => (
               <Reveal key={i} delay={0.05 * i}>

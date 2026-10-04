@@ -2,7 +2,9 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import MagneticButton from "@/app/components/motion/MagneticButton";
+import Parallax from "@/app/components/motion/Parallax";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import type { EcoDict } from "@/app/lib/eco-i18n";
 
@@ -44,12 +46,12 @@ export default function EcoHero({
           <motion.div {...fade(0.1)}>
             <Eyebrow label={copy.eyebrow} />
           </motion.div>
-          <motion.h1
-            {...fade(0.2)}
-            className="mt-8 text-5xl font-black tracking-tighter text-balance text-white sm:text-6xl xl:text-7xl"
-          >
-            {copy.title}
-          </motion.h1>
+          <RevealText
+            as="h1"
+            text={copy.title}
+            delay={0.2}
+            className="mt-8 block text-5xl font-black tracking-tighter text-balance text-white sm:text-6xl xl:text-7xl"
+          />
           <motion.p
             {...fade(0.35)}
             className="mt-4 text-2xl font-extrabold tracking-tight text-frost-300 sm:text-3xl"
@@ -80,8 +82,8 @@ export default function EcoHero({
           </motion.ul>
         </div>
 
-        {/* Electric refrigerated van on charge. */}
-        <div className="lg:col-span-6">
+        {/* Electric refrigerated van on charge, drifting on scroll. */}
+        <Parallax className="lg:col-span-6" speed={0.18}>
           <svg viewBox="0 0 520 340" className="mx-auto w-full max-w-xl" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             {/* ground */}
             <motion.path {...draw(0.2)} d="M20 286h480" className="stroke-white/15" strokeWidth="2" />
@@ -107,7 +109,7 @@ export default function EcoHero({
             <motion.path {...draw(1.6)} d="M424 220c30 0 34 40 60 40v-120" className="stroke-brand-400" strokeWidth="3" />
             <motion.path {...draw(1.8)} d="M468 70h32v70h-32zM476 86h16M480 102l-6 10h10l-6 10" className="stroke-white/80" strokeWidth="3" />
           </svg>
-        </div>
+        </Parallax>
       </div>
     </section>
   );

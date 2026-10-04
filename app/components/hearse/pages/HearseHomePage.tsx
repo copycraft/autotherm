@@ -4,7 +4,8 @@ import HearseBuildsStrip from "@/app/components/hearse/HearseBuildsStrip";
 import HearseContactCard from "@/app/components/hearse/HearseContactCard";
 import HearseHero from "@/app/components/hearse/HearseHero";
 import HearseTestimonials from "@/app/components/hearse/HearseTestimonials";
-import { Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import { DollyImage, Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
+import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
 import StatsBand from "@/app/components/site/StatsBand";
 import Eyebrow from "@/app/components/ui/Eyebrow";
@@ -49,7 +50,7 @@ export default function HearseHomePage({ lang }: { lang: Lang }) {
       {/* Welcome letter from the owner */}
       <section className="mesh-light py-24 sm:py-32">
         <Reveal className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <p className="text-3xl font-black tracking-tighter text-ink-900 sm:text-4xl">{dict.welcome.greeting}</p>
+          <RevealText as="p" text={dict.welcome.greeting} className="block text-3xl font-black tracking-tighter text-ink-900 sm:text-4xl" />
           <p className="mt-6 text-lg leading-relaxed text-ink-600">{dict.welcome.body}</p>
           <p className="mt-8 text-base font-extrabold tracking-tight text-ink-900">{dict.welcome.name}</p>
           <p className="text-sm text-ink-500">{dict.welcome.role}</p>
@@ -60,20 +61,24 @@ export default function HearseHomePage({ lang }: { lang: Lang }) {
       <section className="bg-white py-24 sm:py-32">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
           <Reveal className="lg:col-span-7">
-            <Image
-              src="/images/hearse/van-ford.webp"
-              alt={dict.conversion.title}
-              width={2000}
-              height={940}
-              sizes="(min-width: 1024px) 56vw, 100vw"
-              className="h-auto w-full rounded-3xl object-cover"
-            />
+            <DollyImage>
+              <Image
+                src="/images/hearse/van-ford.webp"
+                alt={dict.conversion.title}
+                width={2000}
+                height={940}
+                sizes="(min-width: 1024px) 56vw, 100vw"
+                className="h-auto w-full rounded-3xl object-cover"
+              />
+            </DollyImage>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5">
             <Eyebrow label={dict.conversion.eyebrow} tone="light" />
-            <h2 className="mt-4 text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl">
-              {dict.conversion.title}
-            </h2>
+            <RevealText
+              as="h2"
+              text={dict.conversion.title}
+              className="mt-4 block text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl"
+            />
             <ul className="mt-8 flex flex-col gap-3">
               {dict.conversion.features.map((f) => (
                 <li key={f} className="flex gap-3 text-base font-semibold text-ink-700">
@@ -113,9 +118,11 @@ export default function HearseHomePage({ lang }: { lang: Lang }) {
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-4 sm:px-6 lg:grid-cols-12 lg:px-8">
           <Reveal className="lg:col-span-7">
             <Eyebrow label={dict.homeContact.eyebrow} tone="light" />
-            <h2 className="mt-4 text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl">
-              {dict.homeContact.title}
-            </h2>
+            <RevealText
+              as="h2"
+              text={dict.homeContact.title}
+              className="mt-4 block text-3xl font-black tracking-tighter text-balance text-ink-900 sm:text-4xl"
+            />
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5">
             <HearseContactCard lang={lang} intro={dict.common.callIntro} />
