@@ -91,6 +91,9 @@
     // repeated here; the database is shared so enquiries stay in one place.
     "pharma": {
       "name": "pharmacontrol",
+      // Served at pharmacontrol.hutoautok.hu: Cloudflare creates the DNS record
+      // and certificate for the custom domain on deploy (zone: hutoautok.hu).
+      "routes": [{ "pattern": "pharmacontrol.hutoautok.hu", "custom_domain": true }],
       "assets": {
         "directory": ".open-next/assets",
         "binding": "ASSETS",
