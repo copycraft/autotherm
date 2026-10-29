@@ -21,7 +21,7 @@ import { PHASE_DEVELOPMENT_SERVER } from "next/constants";
 // halottszallito.vastagkoppany.workers.dev (env "hearse") does the same for
 // halottszallito.hu.
 const ECO_HOST =
-  "(?:(?:www\\.)?ehutoauto\\.hu|eco\\.localhost|ehutoauto\\.vastagkoppany\\.workers\\.dev)";
+  "(?:(?:www\\.)?ehutoauto\\.hu|ehutoauto\\.hutoautok\\.hu|eco\\.localhost|ehutoauto\\.vastagkoppany\\.workers\\.dev)";
 const MAIN_HOST = "(?:www\\.)?(?:hutoautok|autotherm)\\.hu";
 const onEco = [{ type: "host" as const, value: ECO_HOST }];
 /** Prefixed eco languages; Hungarian is the default and has no prefix. */
@@ -38,8 +38,21 @@ const ECO_PREFIXED = "en|de|ro";
 // halottszallito.vastagkoppany.workers.dev is the third Worker (wrangler env
 // "hearse"), which previews the hearse site online before the DNS moves.
 const HEARSE_HOST =
-  "(?:(?:www\\.)?halottszallito\\.hu|hearse\\.localhost|halottszallito\\.vastagkoppany\\.workers\\.dev)";
+  "(?:(?:www\\.)?halottszallito\\.hu|halottszallito\\.hutoautok\\.hu|(?:hearse|halottszallito)\\.localhost|halottszallito\\.vastagkoppany\\.workers\\.dev)";
 const onHearse = [{ type: "host" as const, value: HEARSE_HOST }];
+
+/* ------------------------------ Pharmacontrol ------------------------------- */
+
+/**
+ * Pharmacontrol (pharmaceutical transport vehicles) is the fourth site served
+ * by this app, from the app/(pharma)/pharma/[lang] route tree - the same
+ * pattern as the eco and hearse sites. pharmacontrol.localhost does the same
+ * in dev; pharmacontrol.hutoautok.hu is the staging address until a domain is
+ * pointed at it.
+ */
+const PHARMA_HOST =
+  "(?:(?:www\\.)?pharmacontrol\\.hu|pharmacontrol\\.hutoautok\\.hu|pharmacontrol\\.localhost|pharmacontrol\\.vastagkoppany\\.workers\\.dev)";
+const onPharma = [{ type: "host" as const, value: PHARMA_HOST }];
 
 /**
  * Unprefixed (Hungarian) page paths on a microsite host → its tree's /hu.
@@ -52,7 +65,7 @@ const onHearse = [{ type: "host" as const, value: HEARSE_HOST }];
 function hungarianRewrites(has: { type: "host"; value: string }[], tree: string) {
   // "(?:/|$)", not "$": the lookahead sees the rest of the path, and an
   // earlier rewrite's target ("/hearse/hu") must not match again.
-  const first = `(?!(?:_next|api|eco|hearse|hu|${ECO_PREFIXED})(?:/|$))[^/.]+`;
+  const first = `(?!(?:_next|api|eco|hearse|pharma|hu|${ECO_PREFIXED})(?:/|$))[^/.]+`;
   return [
     { source: `/:page(${first})`, has, destination: `/${tree}/hu/:page` },
     { source: `/:page(${first})/:rest([^/.]+)+`, has, destination: `/${tree}/hu/:page/:rest+` },
@@ -175,9 +188,59 @@ async function hearseRewrites() {
   ];
 }
 
+async function pharmaRedirects() {
+  return [
+    // Hungarian is unprefixed, so a /hu prefix just drops off.
+    { source: "/hu", has: onPharma, destination: "/", permanent: true },
+    { source: "/hu/:path*", has: onPharma, destination: "/:path*", permanent: true },
+    // The internal tree is never a public URL on the pharma domain.
+    { source: "/pharma/hu", has: onPharma, destination: "/", permanent: true },
+    { source: "/pharma/hu/:path*", has: onPharma, destination: "/:path*", permanent: true },
+    { source: "/pharma", has: onPharma, destination: "/", permanent: true },
+    { source: "/pharma/:path*", has: onPharma, destination: "/:path*", permanent: true },
+    // The other sites' trees are not public URLs here either.
+    { source: "/eco/:path*", has: onPharma, destination: "/", permanent: true },
+    { source: "/hearse/:path*", has: onPharma, destination: "/", permanent: true },
+    // ...and the pharma tree is not a public URL on the other hosts.
+    { source: "/pharma/:path*", has: onEco, destination: "/", permanent: true },
+    { source: "/pharma/:path*", has: onHearse, destination: "/", permanent: true },
+    {
+      source: "/pharma/hu/:path*",
+      has: [{ type: "host" as const, value: MAIN_HOST }],
+      destination: "https://pharmacontrol.hutoautok.hu/:path*",
+      permanent: true,
+    },
+    {
+      source: "/pharma/:path*",
+      has: [{ type: "host" as const, value: MAIN_HOST }],
+      destination: "https://pharmacontrol.hutoautok.hu/:path*",
+      permanent: true,
+    },
+  ];
+}
+
+async function pharmaRewrites() {
+  return [
+    { source: "/", has: onPharma, destination: "/pharma/hu" },
+    { source: "/sitemap.xml", has: onPharma, destination: "/pharma/sitemap.xml" },
+    { source: "/robots.txt", has: onPharma, destination: "/pharma/robots.txt" },
+    // The Pharmacontrol icon (app/favicon.ico is the main site's).
+    { source: "/favicon.ico", has: onPharma, destination: "/images/pharma/favicon-32.png" },
+    // English, German and Romanian: "/en", "/en/solutions". Deeper paths go
+    // to the pharma tree too (and 404 there) so they never reach main-site pages.
+    { source: `/:lang(${ECO_PREFIXED})`, has: onPharma, destination: "/pharma/:lang" },
+    { source: `/:lang(${ECO_PREFIXED})/:path+`, has: onPharma, destination: "/pharma/:lang/:path+" },
+    // Every other page path is Hungarian.
+    ...hungarianRewrites(onPharma, "pharma"),
+  ];
+}
+
 const nextConfig: NextConfig = {
-  allowedDevOrigins: ["192.168.2.72", "eco.localhost", "hearse.localhost"],
-  redirects: async () => [...(await ecoRedirects()), ...(await hearseRedirects())],
+  // The photographic heroes ask for quality={90}; Next only honours the
+  // qualities listed here (anything else silently falls back to 75).
+  images: { qualities: [75, 90] },
+  allowedDevOrigins: ["192.168.2.72", "eco.localhost", "hearse.localhost", "halottszallito.localhost", "pharmacontrol.localhost"],
+  redirects: async () => [...(await ecoRedirects()), ...(await hearseRedirects()), ...(await pharmaRedirects())],
   // The workers.dev addresses are previews; keep them out of search results
   // so they never compete with hutoautok.hu / ehutoauto.hu.
   headers: async () => [
@@ -187,7 +250,7 @@ const nextConfig: NextConfig = {
       headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
     },
   ],
-  rewrites: async () => ({ beforeFiles: [...(await ecoRewrites()), ...(await hearseRewrites())], afterFiles: [], fallback: [] }),
+  rewrites: async () => ({ beforeFiles: [...(await ecoRewrites()), ...(await hearseRewrites()), ...(await pharmaRewrites())], afterFiles: [], fallback: [] }),
   experimental: {
     globalNotFound: true,
     // Enables React's <ViewTransition> during route navigation, so pages

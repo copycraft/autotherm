@@ -5,6 +5,7 @@ import HearseClients from "@/app/components/hearse/HearseClients";
 import HearseContactCard from "@/app/components/hearse/HearseContactCard";
 import HearseHero from "@/app/components/hearse/HearseHero";
 import HearseTestimonials from "@/app/components/hearse/HearseTestimonials";
+import ModelMarquee from "@/app/components/site/ModelMarquee";
 import { DollyImage, Reveal, RevealGroup, RevealItem } from "@/app/components/motion/Reveal";
 import RevealText from "@/app/components/motion/RevealText";
 import CtaBand from "@/app/components/site/CtaBand";
@@ -13,7 +14,7 @@ import Eyebrow from "@/app/components/ui/Eyebrow";
 import Icon from "@/app/components/ui/Icon";
 import type { Lang } from "@/app/lib/constants";
 import { getDict } from "@/app/lib/dictionaries";
-import { HEARSE_CONTACT, HEARSE_PILLAR_ICONS, getHearseDict, hearsePath } from "@/app/lib/hearse";
+import { HEARSE_CONTACT, HEARSE_MODELS, HEARSE_MODELS_TITLE, HEARSE_PILLAR_ICONS, getHearseDict, hearsePath } from "@/app/lib/hearse";
 
 export default function HearseHomePage({ lang }: { lang: Lang }) {
   const dict = getHearseDict(lang);
@@ -109,6 +110,8 @@ export default function HearseHomePage({ lang }: { lang: Lang }) {
       </section>
 
       <HearseBuildsStrip lang={lang} />
+
+      <ModelMarquee title={HEARSE_MODELS_TITLE[lang]} items={HEARSE_MODELS} icon="truck" />
 
       <HearseTestimonials lang={lang} limit={1} />
 

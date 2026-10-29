@@ -18,6 +18,7 @@ import {
   ecoPath,
   getEcoDict,
 } from "@/app/lib/eco";
+import { EcoJsonLd } from "@/app/lib/json-ld";
 import { rootViewport } from "@/app/lib/root-metadata";
 
 const CookieConsent = dynamic(() => import("@/app/components/site/CookieConsent"));
@@ -50,7 +51,17 @@ export async function generateMetadata({
     applicationName: ecoName(lang),
     authors: [{ name: "Autotherm" }],
     publisher: "Autotherm",
-    robots: { index: true, follow: true },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     // The original ehutoauto.hu site icon (green "A"). /favicon.ico on the eco
     // host is rewritten to the same file in next.config.ts, since browsers also
     // request that path on their own.
@@ -95,6 +106,7 @@ export default async function EcoLayout({
 
   return (
     <RootShell lang={lang} theme="eco" jsonLd={false}>
+      <EcoJsonLd />
       <SmoothScroll>
         <EcoHeader lang={lang} langNames={langNames} />
         <main className="flex-1">{children}</main>

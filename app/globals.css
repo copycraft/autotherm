@@ -41,17 +41,6 @@
   --color-frost-400: #22d3ee;
   --color-frost-500: #06b6d4;
 
-  /* Stripe-grade layered shadows */
-  --shadow-soft:
-    0 2px 10px rgba(5, 11, 24, 0.04), 0 8px 30px rgba(5, 11, 24, 0.04);
-  --shadow-lifted:
-    0 2px 8px rgba(5, 11, 24, 0.06), 0 12px 40px rgba(5, 11, 24, 0.1);
-  --shadow-glow: 0 0 0 1px rgba(61, 110, 238, 0.2),
-    0 6px 22px rgba(61, 110, 238, 0.22);
-  /* Resting glow behind primary buttons (hover uses --shadow-glow). */
-  --shadow-button:
-    0 2px 10px rgba(39, 79, 226, 0.25), 0 8px 30px rgba(39, 79, 226, 0.25);
-
   /* Tighter, more structured radius language — precise over blobby */
   --radius-2xl: 0.875rem;
   --radius-3xl: 1.125rem;
@@ -80,13 +69,48 @@
   }
 }
 
+/* Shadows live outside @theme on purpose: Tailwind v4 bakes @theme shadow
+   colours into the utility at build time, so a per-site override of the token
+   never reached the rendered box-shadow (the buttons stayed main-site blue).
+   The utilities below read plain custom properties at runtime instead; each
+   theme only swaps the colour channels. */
+:root {
+  --shadow-ink: 5, 11, 24;
+  --shadow-glow-rgb: 61, 110, 238;
+  --shadow-button-rgb: 39, 79, 226;
+}
+
+@utility shadow-soft {
+  --tw-shadow: 0 2px 10px rgba(var(--shadow-ink), 0.04), 0 8px 30px rgba(var(--shadow-ink), 0.04);
+  box-shadow: var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+@utility shadow-lifted {
+  --tw-shadow: 0 2px 8px rgba(var(--shadow-ink), 0.06), 0 12px 40px rgba(var(--shadow-ink), 0.1);
+  box-shadow: var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* Hover glow on buttons and cards. */
+@utility shadow-glow {
+  --tw-shadow: 0 0 0 1px rgba(var(--shadow-glow-rgb), 0.22), 0 6px 22px rgba(var(--shadow-glow-rgb), 0.22);
+  box-shadow: var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* Resting glow behind primary buttons (hover uses shadow-glow). */
+@utility shadow-button {
+  --tw-shadow: 0 2px 10px rgba(var(--shadow-button-rgb), 0.25), 0 8px 30px rgba(var(--shadow-button-rgb), 0.25);
+  box-shadow: var(--tw-inset-shadow, 0 0 #0000), var(--tw-inset-ring-shadow, 0 0 #0000), var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 /* ---------------------- Eco theme (ehutoauto.hu) ------------------------- */
 
 /* The electric-vehicle site shares every component with the main site; it
    re-tints them by redefining the palette tokens. Tailwind utilities read
    these variables, so bg-brand-600 / text-ink-900 / mesh-hero all turn green.
    brand-600 (#047857) keeps white button text at 5.5:1 contrast. */
-html[data-theme="eco"] {
+/* Matches any element, not just <html>, so a single block (the main-site
+   footer wordmarks) can opt into a sister site's palette. */
+[data-theme="eco"] {
   /* Brand - forest green */
   --color-brand-50: #ecfdf5;
   --color-brand-100: #d1fae5;
@@ -120,10 +144,9 @@ html[data-theme="eco"] {
   --color-frost-400: #a3e635;
   --color-frost-500: #84cc16;
 
-  --shadow-glow: 0 0 0 1px rgba(5, 150, 105, 0.22),
-    0 6px 22px rgba(5, 150, 105, 0.24);
-  --shadow-button:
-    0 2px 10px rgba(4, 120, 87, 0.25), 0 8px 30px rgba(4, 120, 87, 0.25);
+  --shadow-ink: 4, 18, 11;
+  --shadow-glow-rgb: 5, 150, 105;
+  --shadow-button-rgb: 4, 120, 87;
 }
 
 /* --------------------- Hearse theme (halottszallito.hu) -------------------- */
@@ -132,7 +155,7 @@ html[data-theme="eco"] {
    them by redefining the palette tokens. Charcoal ink, deep bronze brand
    (brand-600 keeps white button text at contrast), muted gold accent.
    Light sections stay light; dark sections turn near-black. */
-html[data-theme="hearse"] {
+[data-theme="hearse"] {
   /* Brand - deep bronze / antique gold */
   --color-brand-50: #faf7ec;
   --color-brand-100: #f3ead0;
@@ -166,10 +189,55 @@ html[data-theme="hearse"] {
   --color-frost-400: #dbb654;
   --color-frost-500: #c9a24a;
 
-  --shadow-glow: 0 0 0 1px rgba(169, 133, 48, 0.25),
-    0 6px 22px rgba(169, 133, 48, 0.22);
-  --shadow-button:
-    0 2px 10px rgba(125, 98, 32, 0.25), 0 8px 30px rgba(125, 98, 32, 0.25);
+  --shadow-ink: 8, 8, 7;
+  --shadow-glow-rgb: 169, 133, 48;
+  --shadow-button-rgb: 125, 98, 32;
+}
+
+/* -------------------- Pharma theme (Pharmacontrol) ------------------------ */
+
+/* The pharmaceutical-transport site re-tints the shared components the same
+   way. Lime green: the bright limes (frost scale, brand-300/400) carry the
+   accents on dark surfaces; brand-600 is a deeper lime (#4d7c0f) so white
+   button text keeps 5:1 contrast on light and dark alike. Ink is a near-black
+   with an olive cast. */
+[data-theme="pharma"] {
+  /* Brand - lime */
+  --color-brand-50: #f7fee7;
+  --color-brand-100: #ecfccb;
+  --color-brand-200: #d9f99d;
+  --color-brand-300: #bef264;
+  --color-brand-400: #84cc16;
+  --color-brand-500: #65a30d;
+  --color-brand-600: #4d7c0f;
+  --color-brand-700: #3f6212;
+  --color-brand-800: #365314;
+  --color-brand-900: #2c4311;
+  --color-brand-950: #152607;
+
+  /* Ink - olive-tinted neutrals, near-black at the dark end */
+  --color-ink-50: #f6f8f2;
+  --color-ink-100: #eaeee2;
+  --color-ink-200: #d3dac6;
+  --color-ink-300: #aeb89c;
+  --color-ink-400: #868f76;
+  --color-ink-500: #646c57;
+  --color-ink-600: #4c5342;
+  --color-ink-700: #3c4233;
+  --color-ink-800: #2a2e23;
+  --color-ink-900: #12160c;
+  --color-ink-950: #090c05;
+
+  /* Frost - bright lime accent */
+  --color-frost-100: #f1fcd0;
+  --color-frost-200: #e0f9a0;
+  --color-frost-300: #c7f23a;
+  --color-frost-400: #b3e61b;
+  --color-frost-500: #98cc0c;
+
+  --shadow-ink: 9, 12, 5;
+  --shadow-glow-rgb: 132, 204, 22;
+  --shadow-button-rgb: 77, 124, 15;
 }
 
 /* --------------------------------- Base ---------------------------------- */
@@ -236,13 +304,13 @@ body {
 @utility glass-dark {
   backdrop-filter: blur(24px) saturate(140%);
   -webkit-backdrop-filter: blur(24px) saturate(140%);
-  background: rgba(5, 11, 24, 0.55);
+  background: rgba(var(--shadow-ink), 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Hardware-panel ring (Vercel / Apple style 1px inner border) */
 @utility panel-ring {
-  box-shadow: inset 0 0 0 1px rgba(5, 11, 24, 0.05);
+  box-shadow: inset 0 0 0 1px rgba(var(--shadow-ink), 0.05);
 }
 
 /* Flat ink surface. Deliberately not a gradient — colour does no decorative

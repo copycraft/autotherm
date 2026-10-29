@@ -49,3 +49,6 @@ next-env.d.ts
 # cloudflare
 worker-configuration.d.ts
 .wrangler/
+
+# i18n editor (portable node runtime, downloaded on first run)
+/i18n/node/

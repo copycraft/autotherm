@@ -13,29 +13,29 @@ export const en: HearseDict = {
   },
   seo: {
     home: {
-      title: "Funeral vehicle manufacturing – removal vans and hearses | Mortecontrol – Autotherm",
+      title: "Hearse Manufacturing – Funeral Vehicles & Removal Vans | Autotherm",
       description:
-        "Removal van and hearse manufacturing: 3.5-tonne vans converted for transporting the deceased, with concealed cargo cooling and all paperwork handled. Autotherm Ltd., Szeged, Hungary.",
+        "Hearse and funeral vehicle manufacturing since 1992: 3.5-tonne removal vans and mortuary conversions with concealed +18 °C cargo cooling and all paperwork handled. Autotherm Ltd., Szeged, Hungary.",
     },
     why: {
-      title: "Why us? Hearse building and conversion | Mortecontrol – Autotherm",
+      title: "Hearse Builder & Funeral Van Conversions – Why Us | Autotherm",
       description:
-        "Hearse building and conversion since 1992: body building, cargo cooling and all the paperwork under one roof.",
+        "Hearse building and funeral vehicle conversion since 1992: market-leading hearse manufacturer with body building, cargo cooling and all paperwork under one roof.",
     },
     product: {
-      title: "Funeral vehicle manufacturing – specification | Mortecontrol – Autotherm",
+      title: "Funeral Vehicle Specification – Hearse Cooling & Interior | Autotherm",
       description:
-        "Thermal-bridge-free AT Strong insulation, washable polyester or stainless-steel lining, +18 °C cargo cooling and decorated hearse versions.",
+        "Funeral vehicle specification: thermal-bridge-free AT Strong insulation, washable polyester or stainless-steel lining, +18 °C hearse cooling and decorated hearses.",
     },
     builds: {
-      title: "Our funeral vehicle conversions in pictures | Mortecontrol – Autotherm",
+      title: "Hearse Conversions – Mercedes Vito, Ford Transit, VW | Autotherm",
       description:
-        "Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert and Opel Vivaro funeral vehicle conversions in pictures.",
+        "Finished hearse and removal van conversions in pictures: Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert and Opel Vivaro funeral vehicles.",
     },
     quote: {
-      title: "Funeral vehicle prices – fast quote | Mortecontrol – Autotherm",
+      title: "Hearse Prices – Funeral Vehicle Quote in 12 Hours | Autotherm",
       description:
-        "Request a quote for a removal van or hearse conversion – our colleague sends the quote as a PDF within 12 hours.",
+        "Hearse prices: request a quote for a removal van or funeral vehicle conversion – our colleague sends the quote as a PDF within 12 hours.",
     },
   },
   common: {
@@ -50,9 +50,9 @@ export const en: HearseDict = {
   },
   contactRole: "Sales advisor",
   hero: {
-    eyebrow: "Tailored to your needs",
-    title: "Funeral vehicle conversions",
-    lead: "Funeral vehicle manufacturing: removal vans and hearses, refrigerated conversions and Carrier cargo-cooling service.",
+    eyebrow: "Hearse manufacturing since 1992",
+    title: "Funeral vehicle manufacturing",
+    lead: "Hearse, removal van and mortuary vehicle manufacturing: refrigerated funeral conversions with concealed cooling and Carrier service.",
     buildsLabel: "Our conversions",
     points: ["AT Strong® insulation", "+18 °C cargo cooling", "All paperwork handled"],
   },

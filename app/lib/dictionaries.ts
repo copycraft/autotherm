@@ -38,6 +38,10 @@ export interface Dict {
     rights: string;
     copyright: string;
     tagline: string;
+    sisterTitle: string;
+    sisterEco: string;
+    sisterHearse: string;
+    sisterPharma: string;
   };
   cookie: {
     text: string;
@@ -228,6 +232,10 @@ export const dictionaries: Record<Lang, Dict> = {
       copyright:
         "Az oldal, vagy egy részének másolása, sokszorosítása, bármilyen célú fel- és átdolgozása, kereskedelmi forgalomba hozatala tilos.",
       tagline: "Hűtőautók és járműfelépítmények gyártása 1992 óta.",
+      sisterTitle: "Társoldalaink",
+      sisterEco: "Elektromos hűtőautók",
+      sisterHearse: "Halottszállító autók",
+      sisterPharma: "Gyógyszerszállító járművek",
     },
     cookie: {
       text: "Az „Elfogadom” gombbal hozzájárul, hogy statisztikai és hirdetésmérő sütiket (Google Analytics, Google Ads) használjunk, hogy lássuk, honnan érkeznek látogatóink. Az „Elutasítom” gombbal ezek nélkül is használhatja az oldalt. Részletek az adatkezelési tájékoztatóban.",
@@ -490,6 +498,10 @@ export const dictionaries: Record<Lang, Dict> = {
       copyright:
         "Copying, reproduction, adaptation, or commercial distribution of this site or any part thereof is prohibited.",
       tagline: "Manufacturing refrigerated vehicles and bodies since 1992.",
+      sisterTitle: "Our sister sites",
+      sisterEco: "Electric refrigerated vans",
+      sisterHearse: "Funeral vehicles",
+      sisterPharma: "Pharmaceutical transport vehicles",
     },
     cookie: {
       text: "By clicking Accept you allow statistics and ad-measurement cookies (Google Analytics, Google Ads) that show us where our visitors come from. You can use the site fully if you decline. See our privacy policy for details.",
@@ -745,6 +757,10 @@ export const dictionaries: Record<Lang, Dict> = {
       copyright:
         "Das Kopieren, die Vervielfältigung, die Bearbeitung oder die kommerzielle Verbreitung dieser Website oder eines Teils davon ist untersagt.",
       tagline: "Kühlfahrzeuge und Aufbauten seit 1992.",
+      sisterTitle: "Unsere Schwesterseiten",
+      sisterEco: "Elektro-Kühlfahrzeuge",
+      sisterHearse: "Bestattungswagen",
+      sisterPharma: "Pharmatransportfahrzeuge",
     },
     cookie: {
       text: "Mit „Akzeptieren“ erlauben Sie Statistik- und Werbemessungs-Cookies (Google Analytics, Google Ads), damit wir sehen, woher unsere Besucher kommen. Die Seite funktioniert auch bei „Ablehnen“. Details in der Datenschutzerklärung.",
@@ -1002,6 +1018,10 @@ export const dictionaries: Record<Lang, Dict> = {
       copyright:
         "Copierea, reproducerea, adaptarea sau distribuția comercială a acestui site sau a oricărei părți a acestuia este interzisă.",
       tagline: "Producem vehicule frigorifice și suprastructuri din 1992.",
+      sisterTitle: "Site-urile noastre",
+      sisterEco: "Autofrigorifice electrice",
+      sisterHearse: "Mașini funerare",
+      sisterPharma: "Vehicule pentru transport farmaceutic",
     },
     cookie: {
       text: "Prin „Accept” permiteți cookie-uri de statistică și măsurare a reclamelor (Google Analytics, Google Ads), pentru a vedea de unde vin vizitatorii. Puteți folosi site-ul și dacă refuzați. Detalii în politica de confidențialitate.",

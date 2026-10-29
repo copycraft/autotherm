@@ -4,9 +4,9 @@ import type { Lang } from "@/app/lib/constants";
 import { ECO_VEHICLES, ecoPath, getEcoDict } from "@/app/lib/eco";
 
 /**
- * The convertible electric vans, scrolled through sideways: each studio shot
- * on its own white card (the photos are white-background cut-outs) with the
- * make and model under the car.
+ * The best-known convertible electric vans, scrolled through sideways: each
+ * studio shot on its own white card (the photos are white-background cut-outs)
+ * with the make and model under the car.
  */
 export default function EcoVehicleStrip({ lang }: { lang: Lang }) {
   const { strip } = getEcoDict(lang);
@@ -36,11 +36,7 @@ export default function EcoVehicleStrip({ lang }: { lang: Lang }) {
             // ~15 KB each. Already sized for this card, so served as-is.
             loading="eager"
             unoptimized
-            className={
-              v.photo
-                ? "mt-2 aspect-[521/365] h-auto w-full rounded-2xl object-cover"
-                : "mt-2 aspect-[521/365] h-auto w-full object-contain"
-            }
+            className="mt-2 aspect-[521/365] h-auto w-full object-contain"
           />
           <figcaption className="mt-4 border-t border-ink-100 pt-4">
             <span className="block text-sm font-semibold text-ink-500">{v.make}</span>

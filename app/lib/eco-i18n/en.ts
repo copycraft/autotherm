@@ -17,29 +17,29 @@ export const en: EcoDict = {
   },
   seo: {
     home: {
-      title: "Electric refrigerated van with a self-contained cooling unit | Zero Emission – Autotherm",
+      title: "Electric Refrigerated Van – Self-Contained Cooling, Unchanged Range | Autotherm",
       description:
-        "Refrigerated conversion of electric vans with a self-contained refrigeration unit running on its own battery pack – unchanged range, zero-emission and quiet chilled transport. Autotherm Ltd.",
+        "Electric refrigerated van and EV reefer conversions with a self-contained cooling unit on its own battery pack – unchanged range, zero-emission, quiet chilled transport for city deliveries. Autotherm Ltd.",
     },
     why: {
-      title: "Why an electric refrigerated van? | Zero Emission – Autotherm",
+      title: "Why an Electric Refrigerated Van? – Zero-Emission Cold Chain | Autotherm",
       description:
-        "Zero-emission, quiet and economical: why an electric refrigerated van is a good choice for urban and suburban fresh-food logistics.",
+        "Zero-emission, quiet and economical electric reefer van: why an electric refrigerated van is the right choice for urban and suburban fresh-food logistics.",
     },
     technology: {
-      title: "Self-contained refrigeration unit with its own battery pack | Zero Emission – Autotherm",
+      title: "Self-Contained Refrigeration Unit – Cooling Without Range Loss | Autotherm",
       description:
-        "How the self-contained refrigeration unit with a cyclically charged battery pack works: cooling doesn't draw on the traction battery, and the cold chain holds even when the van is parked.",
+        "How the self-contained EV refrigeration unit with a cyclically charged battery pack works: cooling never draws on the traction battery, and the cold chain holds even when the van is parked.",
     },
     vehicles: {
-      title: "Electric vans for conversion | Zero Emission – Autotherm",
+      title: "Electric Vans for Refrigerated Conversion – EV Reefer Models | Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter and eCitan, Ford E-Transit Custom, Peugeot E-Expert and Fiat E-Ducato – electric vans converted into refrigerated vehicles.",
+        "Electric vans converted into refrigerated vehicles: Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter, eCitan, Ford E-Transit Custom, Peugeot E-Expert, Fiat E-Ducato.",
     },
     quote: {
-      title: "Request a quote – electric refrigerated van | Zero Emission – Autotherm",
+      title: "Electric Refrigerated Van Quote – EV Reefer Conversion | Autotherm",
       description:
-        "Request a quote for converting an electric van into a refrigerated vehicle with a self-contained refrigeration unit. A tailored solution with vehicle pick-up and return.",
+        "Request a quote for an electric refrigerated van conversion with a self-contained refrigeration unit. A tailored EV reefer solution with vehicle pick-up and return.",
     },
   },
   common: {

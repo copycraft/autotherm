@@ -12,29 +12,29 @@ export const hu: HearseDict = {
   },
   seo: {
     home: {
-      title: "Halottasautó gyártás – halottszállító és pompaautó | Halottszállító – Autotherm",
+      title: "Halottszállító autó gyártás – halottasautó, halottaskocsi, pompaautó | Autotherm",
       description:
-        "Halottszállító és pompaautó gyártás, 3,5 tonnás furgonok halottszállító átalakítása rejtett raktérhűtéssel és teljes ügyintézéssel. Autotherm Kft., Szeged.",
+        "Halottszállító autó, halottasautó és pompaautó gyártás 1992 óta: 3,5 tonnás furgonok halottszállító átalakítása rejtett +18 °C-os raktérhűtéssel és teljes ügyintézéssel. Elhunytszállító és temetkezési autók Szegedről. Autotherm Kft.",
     },
     why: {
-      title: "Miért mi? Halottaskocsi gyártás és átalakítás | Halottszállító – Autotherm",
+      title: "Halottaskocsi gyártás és átalakítás – miért mi? | Autotherm",
       description:
-        "Halottaskocsi gyártás és átalakítás 1992 óta: egy kézben a felépítménygyártás, a raktérhűtés és a teljes ügyintézés.",
+        "Halottaskocsi gyártás és halottszállító átalakítás 1992 óta: piacvezető halottasautó gyártóként egy kézben a felépítménygyártás, a raktérhűtés és a teljes ügyintézés.",
     },
     product: {
-      title: "Halottszállító autó gyártás – műszaki tartalom | Halottszállító – Autotherm",
+      title: "Halottszállító autó – műszaki tartalom és raktérhűtés | Autotherm",
       description:
-        "Hőhídmentes AT Strong szigetelés, mosható poliészter vagy rozsdamentes belső burkolat, +18 °C-os raktérhűtés, díszített pompaautó kivitel.",
+        "Halottszállító autó műszaki tartalma: hőhídmentes AT Strong szigetelés, mosható poliészter vagy rozsdamentes belső burkolat, +18 °C-os raktérhűtés, díszített pompaautó kivitel.",
     },
     builds: {
-      title: "Halottas autó átalakításaink képekben | Halottszállító – Autotherm",
+      title: "Halottas autó átalakítások – Mercedes Vito, Ford Transit | Autotherm",
       description:
-        "Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert és Opel Vivaro halottszállító átalakítások képekben.",
+        "Elkészült halottszállító átalakítások képekben: Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert és Opel Vivaro halottasautók és pompaautók.",
     },
     quote: {
-      title: "Halottasautó árak – gyors árajánlat | Halottszállító – Autotherm",
+      title: "Halottasautó árak – halottszállító árajánlat 12 órán belül | Autotherm",
       description:
-        "Kérjen árajánlatot halottszállító vagy pompaautó átalakításra – munkatársunk 12 órán belül PDF-ben küldi ajánlatát.",
+        "Halottasautó árak: kérjen árajánlatot halottszállító vagy pompaautó átalakításra – munkatársunk 12 órán belül PDF-ben küldi ajánlatát.",
     },
   },
   common: {
@@ -49,9 +49,9 @@ export const hu: HearseDict = {
   },
   contactRole: "Értékesítési tanácsadó",
   hero: {
-    eyebrow: "Egyedi igényekre szabva",
-    title: "Elhunyt szállító átalakítások",
-    lead: "Halottasautó gyártás: halottszállító és pompaautó gyártás, hűtőautó-átalakítás és Carrier raktérhűtő szerviz.",
+    eyebrow: "Halottszállító autó gyártás 1992 óta",
+    title: "Halottszállító autó gyártás",
+    lead: "Halottasautó, halottaskocsi és pompaautó gyártás: 3,5 tonnás furgonok halottszállító átalakítása rejtett raktérhűtéssel és Carrier szervizzel.",
     buildsLabel: "Átalakításaink",
     points: ["AT Strong® hőszigetelés", "+18 °C-os raktérhűtés", "Teljes ügyintézés"],
   },

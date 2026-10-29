@@ -99,6 +99,7 @@ export default function Infoblokk({
               alt="Széchenyi 2020 – Magyarország Kormánya, Európai Unió, Európai Regionális Fejlesztési Alap – Befektetés a jövőbe. GINOP pályázatok"
               width={700}
               height={484}
+              loading="eager"
               sizes="(min-width: 640px) 17.5rem, 9.5rem"
               className="h-auto w-full"
             />

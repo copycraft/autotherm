@@ -13,29 +13,29 @@ export const de: HearseDict = {
   },
   seo: {
     home: {
-      title: "Bau von Bestattungsfahrzeugen – Überführungs- und Leichenwagen | Mortecontrol – Autotherm",
+      title: "Leichenwagen Hersteller – Bestattungswagen & Überführungswagen | Autotherm",
       description:
-        "Bau von Überführungs- und Leichenwagen: 3,5-Tonner-Transporter für den Verstorbenentransport umgebaut, mit verdeckter Laderaumkühlung und kompletter Abwicklung. Autotherm GmbH, Szeged.",
+        "Leichenwagen und Bestattungswagen vom Hersteller seit 1992: 3,5-Tonner-Überführungswagen mit verdeckter +18 °C Laderaumkühlung und kompletter Abwicklung. Autotherm GmbH, Szeged.",
     },
     why: {
-      title: "Warum wir? Bau und Umbau von Leichenwagen | Mortecontrol – Autotherm",
+      title: "Leichenwagen Bau & Umbau – warum wir? | Autotherm",
       description:
-        "Bau und Umbau von Leichenwagen seit 1992: Aufbau, Laderaumkühlung und komplette Abwicklung aus einer Hand.",
+        "Bau und Umbau von Leichenwagen seit 1992: Marktführer für Bestattungsfahrzeuge – Aufbau, Laderaumkühlung und komplette Abwicklung aus einer Hand.",
     },
     product: {
-      title: "Bau von Bestattungsfahrzeugen – Ausstattung | Mortecontrol – Autotherm",
+      title: "Bestattungswagen Ausstattung – Kühlung & Innenausbau | Autotherm",
       description:
-        "Wärmebrückenfreie AT Strong®-Isolierung, abwaschbare Polyester- oder Edelstahlverkleidung, +18 °C Laderaumkühlung und geschmückte Leichenwagen.",
+        "Bestattungswagen-Ausstattung: wärmebrückenfreie AT Strong-Isolierung, abwaschbare Polyester- oder Edelstahlverkleidung, +18 °C Leichenwagen-Kühlung und geschmückte Leichenwagen.",
     },
     builds: {
-      title: "Unsere Bestattungsfahrzeug-Umbauten in Bildern | Mortecontrol – Autotherm",
+      title: "Bestattungswagen Umbauten – Mercedes Vito, Ford Transit | Autotherm",
       description:
-        "Umbauten auf Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert und Opel Vivaro in Bildern.",
+        "Fertige Leichenwagen-Umbauten in Bildern: Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert und Opel Vivaro als Überführungs- und Bestattungsfahrzeuge.",
     },
     quote: {
-      title: "Preise für Bestattungsfahrzeuge – schnelles Angebot | Mortecontrol – Autotherm",
+      title: "Leichenwagen Preise – Angebot in 12 Stunden | Autotherm",
       description:
-        "Fordern Sie ein Angebot für den Umbau eines Überführungs- oder Leichenwagens an – unser Kollege sendet es innerhalb von 12 Stunden als PDF.",
+        "Leichenwagen-Preise: Fordern Sie ein Angebot für den Umbau eines Überführungs- oder Leichenwagens an – unser Kollege sendet es innerhalb von 12 Stunden als PDF.",
     },
   },
   common: {
@@ -50,9 +50,9 @@ export const de: HearseDict = {
   },
   contactRole: "Vertriebsberater",
   hero: {
-    eyebrow: "Nach Ihren Wünschen gefertigt",
-    title: "Umbauten für den Verstorbenentransport",
-    lead: "Bau von Bestattungsfahrzeugen: Überführungs- und Leichenwagen, Kühlumbauten und Carrier-Laderaumkühlungsservice.",
+    eyebrow: "Leichenwagen-Hersteller seit 1992",
+    title: "Bestattungswagen – Bau und Umbau",
+    lead: "Leichenwagen, Überführungs- und Bestattungswagen vom Hersteller: gekühlte Umbauten mit verdeckter Laderaumkühlung und Carrier-Service.",
     buildsLabel: "Unsere Umbauten",
     points: ["AT Strong®-Isolierung", "+18 °C Laderaumkühlung", "Komplette Abwicklung"],
   },

@@ -19,29 +19,29 @@ export const ro: EcoDict = {
   },
   seo: {
     home: {
-      title: "Autofrigorifică electrică cu agregat frigorific autonom | Zero Emission – Autotherm",
+      title: "Autofrigorifică electrică – agregat autonom, autonomie neschimbată | Autotherm",
       description:
-        "Transformarea dubelor electrice în autofrigorifice cu agregat frigorific autonom, cu pachet de baterii propriu – autonomie neschimbată, transport refrigerat fără emisii și silențios. Autotherm SRL.",
+        "Autofrigorifica electrica cu agregat frigorific autonom, cu pachet de baterii propriu – autonomie neschimbată, transport refrigerat fără emisii și silențios, ideal pentru livrări urbane. Autotherm SRL.",
     },
     why: {
-      title: "De ce o autofrigorifică electrică? | Zero Emission – Autotherm",
+      title: "De ce o autofrigorifică electrică? – transport fără emisii | Autotherm",
       description:
-        "Fără emisii, silențioasă și economică: de ce autofrigorifica electrică este o alegere bună pentru logistica produselor proaspete în oraș și în împrejurimi.",
+        "Fără emisii, silențioasă și economică: de ce furgonul frigorific electric este alegerea bună pentru logistica produselor proaspete în oraș și în împrejurimi.",
     },
     technology: {
-      title: "Agregat frigorific autonom cu baterii proprii | Zero Emission – Autotherm",
+      title: "Agregat frigorific autonom – răcire fără pierdere de autonomie | Autotherm",
       description:
-        "Cum funcționează agregatul frigorific autonom cu pachet de baterii încărcat ciclic: răcirea nu consumă din bateria de tracțiune, iar lanțul frigorific se menține și în staționare.",
+        "Cum funcționează agregatul frigorific autonom cu pachet de baterii încărcat ciclic la duba frigorifica electrica: răcirea nu consumă din bateria de tracțiune, iar lanțul frigorific se menține și în staționare.",
     },
     vehicles: {
-      title: "Dube electrice transformabile | Zero Emission – Autotherm",
+      title: "Dube electrice transformabile în autofrigorifice – modele | Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter și eCitan, Ford E-Transit Custom, Peugeot E-Expert și Fiat E-Ducato – transformarea dubelor electrice în autofrigorifice.",
+        "Dube electrice transformate în autofrigorifice: Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter, eCitan, Ford E-Transit Custom, Peugeot E-Expert, Fiat E-Ducato.",
     },
     quote: {
-      title: "Cerere de ofertă – autofrigorifică electrică | Zero Emission – Autotherm",
+      title: "Ofertă autofrigorifică electrică – furgon frigorific electric | Autotherm",
       description:
-        "Solicitați o ofertă pentru transformarea dubei electrice în autofrigorifică cu agregat frigorific autonom. Soluție personalizată, cu serviciu de preluare și returnare.",
+        "Solicitați o ofertă pentru transformarea dubei electrice în autofrigorifica electrica cu agregat frigorific autonom. Soluție personalizată, cu serviciu de preluare și returnare.",
     },
   },
   common: {

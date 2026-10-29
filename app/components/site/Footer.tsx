@@ -2,7 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { COMPANY, FOUNDED_YEAR, thisYear, type Lang } from "@/app/lib/constants";
 import { getDict } from "@/app/lib/dictionaries";
+import { ECO_SITE_URL } from "@/app/lib/eco";
+import { HEARSE_SITE_URL } from "@/app/lib/hearse";
+import { PHARMA_SITE_URL } from "@/app/lib/pharma";
 import { FOOTER_KEYS, pathFor } from "@/app/lib/routes";
+import { EcoWordmark, HearseWordmark, PharmaWordmark } from "@/app/components/site/Header";
 
 /**
  * Site footer - server component, zero client JS.
@@ -47,6 +51,37 @@ export default function Footer({ lang }: { lang: Lang }) {
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-ink-300">
               {dict.footer.tagline}
             </p>
+            {/* The sister sites, each wordmark linking to its own domain and
+                drawn in that site's own palette (data-theme re-tints the tokens). */}
+            <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <a
+                href={ECO_SITE_URL}
+                data-theme="eco"
+                aria-label={dict.footer.sisterEco}
+                title={dict.footer.sisterEco}
+                className="rounded-xl transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 focus-visible:outline-none"
+              >
+                <EcoWordmark light lang={lang} />
+              </a>
+              <a
+                href={HEARSE_SITE_URL}
+                data-theme="hearse"
+                aria-label={dict.footer.sisterHearse}
+                title={dict.footer.sisterHearse}
+                className="rounded-xl transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 focus-visible:outline-none"
+              >
+                <HearseWordmark light lang={lang} />
+              </a>
+              <a
+                href={PHARMA_SITE_URL}
+                data-theme="pharma"
+                aria-label={dict.footer.sisterPharma}
+                title={dict.footer.sisterPharma}
+                className="rounded-xl transition-transform duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-frost-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950 focus-visible:outline-none"
+              >
+                <PharmaWordmark light lang={lang} />
+              </a>
+            </div>
           </div>
 
           <div>

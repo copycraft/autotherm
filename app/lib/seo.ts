@@ -290,7 +290,7 @@ const DEFAULTS: Record<Lang, SeoEntry> = {
   },
 };
 
-const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
+export const PAGE_SEO: Partial<Record<PageKey, Partial<Record<Lang, SeoEntry>>>> = {
   home: {
     hu: {
       title: "Autotherm Kft. – Hűtőautó gyártás és hűtős furgon átalakítás 1992 óta",

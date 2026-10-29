@@ -13,29 +13,29 @@ export const ro: HearseDict = {
   },
   seo: {
     home: {
-      title: "Fabricare de mașini funerare – transportul decedaților și dricuri | Mortecontrol – Autotherm",
+      title: "Mașini funerare – masina funerara, dricuri | Autotherm",
       description:
-        "Fabricăm mașini pentru transportul decedaților și dricuri: dube de 3,5 tone transformate, cu răcire ascunsă a spațiului de încărcare și toate formalitățile rezolvate. Autotherm SRL, Szeged.",
+        "Masina funerara si dricuri de la producător, din 1992: dube de 3,5 tone transformate pentru transportul decedaților, cu răcire ascunsă la +18 °C și toate formalitățile rezolvate. Autotherm SRL, Szeged.",
     },
     why: {
-      title: "De ce noi? Fabricarea și transformarea dricurilor | Mortecontrol – Autotherm",
+      title: "Fabricare dricuri și mașini funerare – de ce noi | Autotherm",
       description:
-        "Fabricarea și transformarea dricurilor din 1992: suprastructuri, răcire și toate formalitățile dintr-o singură mână.",
+        "Fabricarea și transformarea dricurilor din 1992: lider de piață în masini funerare – suprastructuri, răcire și toate formalitățile dintr-o singură mână.",
     },
     product: {
-      title: "Fabricare de mașini funerare – dotări | Mortecontrol – Autotherm",
+      title: "Mașină funerară – dotări, răcire și interior | Autotherm",
       description:
-        "Izolație AT Strong fără punți termice, căptușeală lavabilă din poliester sau inox, răcire la +18 °C și dricuri decorate.",
+        "Dotări masina funerara: izolație AT Strong fără punți termice, căptușeală lavabilă din poliester sau inox, răcire la +18 °C și dricuri decorate.",
     },
     builds: {
-      title: "Transformările noastre în imagini | Mortecontrol – Autotherm",
+      title: "Mașini funerare transformate – Mercedes Vito, Ford | Autotherm",
       description:
-        "Mașini funerare pe baza modelelor Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert și Opel Vivaro, în imagini.",
+        "Masini funerare finalizate, în imagini: Mercedes Vito, Ford Transit Custom, VW Transporter, Peugeot Expert și Opel Vivaro transformate în mașini de transport decedați și dricuri.",
     },
     quote: {
-      title: "Prețuri mașini funerare – ofertă rapidă | Mortecontrol – Autotherm",
+      title: "Preț masina funerara – ofertă în 12 ore | Autotherm",
       description:
-        "Cereți o ofertă pentru transformarea unei mașini de transport decedați sau a unui dric – colegul nostru vă trimite oferta în format PDF în 12 ore.",
+        "Preturi masini funerare: cereți o ofertă pentru transformarea unei mașini de transport decedați sau a unui dric – colegul nostru vă trimite oferta în format PDF în 12 ore.",
     },
   },
   common: {
@@ -50,9 +50,9 @@ export const ro: HearseDict = {
   },
   contactRole: "Consultant de vânzări",
   hero: {
-    eyebrow: "Adaptate nevoilor dumneavoastră",
-    title: "Transformări pentru transportul decedaților",
-    lead: "Fabricare de mașini funerare: mașini de transport decedați și dricuri, transformări frigorifice și service Carrier pentru agregate frigorifice.",
+    eyebrow: "Mașini funerare de la producător, din 1992",
+    title: "Mașini funerare – fabricare și transformări",
+    lead: "Masina funerara, dricuri și transport decedați: transformări frigorifice cu răcire ascunsă și service Carrier pentru agregate.",
     buildsLabel: "Transformările noastre",
     points: ["Izolație AT Strong®", "Răcire la +18 °C", "Toate formalitățile rezolvate"],
   },

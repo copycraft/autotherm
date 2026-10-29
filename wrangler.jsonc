@@ -11,7 +11,7 @@
     // rewrite it to their own icons (assets otherwise bypass routing); the
     // rewrite targets must be listed too, as OpenNext only serves listed
     // paths from the routing layer.
-    "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png"]
+    "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png", "/images/pharma/favicon-32.png"]
   },
   "services": [
     {
@@ -41,7 +41,7 @@
         // Run the app first for /favicon.ico so the eco host can rewrite it to its
         // own icon (assets otherwise bypass routing); the rewrite target must be
         // listed too, as OpenNext only serves listed paths from the routing layer.
-        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png"]
+        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png", "/images/pharma/favicon-32.png"]
       },
       "services": [
         {
@@ -68,12 +68,38 @@
       "assets": {
         "directory": ".open-next/assets",
         "binding": "ASSETS",
-        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png"]
+        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png", "/images/pharma/favicon-32.png"]
       },
       "services": [
         {
           "binding": "WORKER_SELF_REFERENCE",
           "service": "halottszallito"
+        }
+      ],
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "autotherm-db",
+          "database_id": "ed4282f5-5910-44ee-9645-796a725da3e9"
+        }
+      ]
+    },
+    // Fourth Worker for Pharmacontrol, deployed from the same build. Its
+    // workers.dev address, pharmacontrol.vastagkoppany.workers.dev, is a pharma
+    // host in next.config.ts, so it previews the site before a domain is
+    // pointed at it. Bindings are not inherited by environments, hence
+    // repeated here; the database is shared so enquiries stay in one place.
+    "pharma": {
+      "name": "pharmacontrol",
+      "assets": {
+        "directory": ".open-next/assets",
+        "binding": "ASSETS",
+        "run_worker_first": ["/favicon.ico", "/images/eco/favicon-32.png", "/images/hearse/favicon-32.png", "/images/pharma/favicon-32.png"]
+      },
+      "services": [
+        {
+          "binding": "WORKER_SELF_REFERENCE",
+          "service": "pharmacontrol"
         }
       ],
       "d1_databases": [

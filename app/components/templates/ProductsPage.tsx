@@ -8,6 +8,7 @@ import {
   RevealItem,
 } from "@/app/components/motion/Reveal";
 import CtaBand from "@/app/components/site/CtaBand";
+import ModelMarquee from "@/app/components/site/ModelMarquee";
 import PageHero from "@/app/components/site/PageHero";
 import PartnersMarquee from "@/app/components/site/PartnersMarquee";
 import StatsBand from "@/app/components/site/StatsBand";
@@ -166,25 +167,7 @@ export default async function ProductsPage({
         </section>
       )}
 
-      {content.strip && (
-        <section className="overflow-hidden border-b border-ink-100 bg-white py-16">
-          <p className="px-4 text-center text-xs font-bold tracking-[0.28em] text-ink-400 uppercase">
-            {content.strip.title}
-          </p>
-          <ul className="mt-8 flex w-max animate-marquee items-center gap-10">
-            {[...content.strip.items, ...content.strip.items].map((item, i) => (
-              <li
-                key={`${item}-${i}`}
-                aria-hidden={i >= content.strip!.items.length ? true : undefined}
-                className="flex items-center gap-10 text-3xl font-black tracking-tighter whitespace-nowrap text-ink-200 sm:text-5xl"
-              >
-                {item}
-                <Icon name="snowflake" className="h-6 w-6 text-brand-300" />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {content.strip && <ModelMarquee title={content.strip.title} items={content.strip.items} />}
 
       <StatsBand lang={lang} dict={dict} />
       <PartnersMarquee dict={dict} />

@@ -19,29 +19,29 @@ export const de: EcoDict = {
   },
   seo: {
     home: {
-      title: "Elektro-Kühlfahrzeug mit autarkem Kühlaggregat | Zero Emission – Autotherm",
+      title: "Elektro-Kühlfahrzeug mit autarkem Aggregat – ohne Reichweitenverlust | Autotherm",
       description:
-        "Kühlumbau von Elektrotransportern mit autarkem Kühlaggregat und eigenem Akkupack – unveränderte Reichweite, emissionsfreier und leiser Kühltransport. Autotherm GmbH.",
+        "Elektro-Kühlfahrzeug und E-Kühltransporter mit autarkem Kühlaggregat und eigenem Akkupack – unveränderte Reichweite, emissionsfreier und leiser Kühltransport für die City-Logistik. Autotherm GmbH.",
     },
     why: {
-      title: "Warum ein Elektro-Kühlfahrzeug? | Zero Emission – Autotherm",
+      title: "Warum ein Elektro-Kühlfahrzeug? – emissionsfreie Kühlkette | Autotherm",
       description:
-        "Emissionsfrei, leise und wirtschaftlich: Warum das Elektro-Kühlfahrzeug eine gute Wahl für die Frischelogistik in der Innenstadt und im Umland ist.",
+        "Emissionsfrei, leise und wirtschaftlich: Warum das Elektro-Kühlfahrzeug die richtige Wahl für die Frischelogistik in Innenstadt und Umland ist.",
     },
     technology: {
-      title: "Autarkes Kühlaggregat mit eigenem Akkupack | Zero Emission – Autotherm",
+      title: "Autarkes Kühlaggregat – Kühlung ohne Reichweitenverlust | Autotherm",
       description:
-        "So funktioniert das autarke Kühlaggregat mit zyklisch geladenem Akkupack: Die Kühlung zehrt nicht am Antriebsakku, die Kühlkette hält auch im Stand.",
+        "So funktioniert das autarke Kühlaggregat mit zyklisch geladenem Akkupack im Elektro-Kühltransporter: Die Kühlung zehrt nicht am Antriebsakku, die Kühlkette hält auch im Stand.",
     },
     vehicles: {
-      title: "Umbaubare Elektrotransporter | Zero Emission – Autotherm",
+      title: "Umbaubare Elektrotransporter – E-Kühlfahrzeug Modelle | Autotherm",
       description:
-        "Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter und eCitan, Ford E-Transit Custom, Peugeot E-Expert und Fiat E-Ducato – Umbau von Elektrotransportern zu Kühlfahrzeugen.",
+        "Elektrotransporter als Kühlfahrzeug: Peugeot E-Partner, Citroën ë-Berlingo, Opel Combo Electric, Toyota Proace City Electric, Nissan Townstar EV, BYD ETP3, Kia PV5 Cargo, Mercedes-Benz eVito, eSprinter, eCitan, Ford E-Transit Custom, Peugeot E-Expert, Fiat E-Ducato.",
     },
     quote: {
-      title: "Angebot anfordern – Elektro-Kühlfahrzeug | Zero Emission – Autotherm",
+      title: "Elektro-Kühlfahrzeug Angebot – E-Kühlumbau | Autotherm",
       description:
-        "Fordern Sie ein Angebot für den Kühlumbau Ihres Elektrotransporters mit autarkem Kühlaggregat an. Individuelle Lösung, mit Abhol- und Rückführungsservice.",
+        "Fordern Sie ein Angebot für den Kühlumbau Ihres Elektrotransporters mit autarkem Kühlaggregat an. Individuelle E-Kühlfahrzeug-Lösung, mit Abhol- und Rückführungsservice.",
     },
   },
   common: {

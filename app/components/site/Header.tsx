@@ -9,6 +9,7 @@ import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import type { Lang } from "@/app/lib/constants";
 import { ecoName } from "@/app/lib/eco";
 import { hearseName } from "@/app/lib/hearse";
+import { PHARMA_NAME } from "@/app/lib/pharma";
 
 /**
  * Glassmorphic sticky header.
@@ -146,6 +147,46 @@ export function HearseWordmark({ light, lang }: { light: boolean; lang: Lang }) 
   );
 }
 
+/**
+ * Pharmacontrol wordmark: a capsule mark (one half solid, one half outlined)
+ * + the brand name, with a "by Autotherm" endorsement. Same name in every
+ * language.
+ */
+export function PharmaWordmark({ light }: { light: boolean; lang?: Lang }) {
+  return (
+    <span className="flex items-center gap-2.5" aria-hidden="true">
+      <svg
+        viewBox="0 0 32 32"
+        className={`h-8 w-8 shrink-0 transition-colors duration-300 lg:h-9 lg:w-9 ${light ? "text-frost-300" : "text-brand-600"}`}
+      >
+        <g transform="rotate(-45 16 16)">
+          <path fill="currentColor" d="M9 10h7v12H9a6 6 0 0 1 0-12z" />
+          <path
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinejoin="round"
+            d="M16 10h7a6 6 0 0 1 0 12h-7z"
+          />
+        </g>
+      </svg>
+      <span className="flex flex-col leading-none">
+        <span
+          className={`text-lg font-black tracking-tight transition-colors duration-300 lg:text-xl ${light ? "text-white" : "text-ink-900"}`}
+        >
+          Pharma
+          <span className={light ? "text-frost-300" : "text-brand-600"}>control</span>
+        </span>
+        <span
+          className={`mt-1 text-[9px] font-bold tracking-[0.3em] uppercase transition-colors duration-300 ${light ? "text-white/60" : "text-ink-500"}`}
+        >
+          by Autotherm
+        </span>
+      </span>
+    </span>
+  );
+}
+
 export default function Header({
   homeHref,
   nav,
@@ -159,8 +200,8 @@ export default function Header({
   brand = "autotherm",
   lang,
 }: {
-  /** "eco" swaps the logo for the eco wordmark (ehutoauto.hu); "hearse" for the hearse wordmark (halottszallito.hu). */
-  brand?: "autotherm" | "eco" | "hearse";
+  /** "eco" swaps the logo for the eco wordmark (ehutoauto.hu); "hearse" for the hearse wordmark (halottszallito.hu); "pharma" for Pharmacontrol. */
+  brand?: "autotherm" | "eco" | "hearse" | "pharma";
   homeHref: string;
   nav: NavEntry[];
   langs: LangEntry[];
@@ -178,7 +219,13 @@ export default function Header({
   const { scrollY } = useScroll();
   const pathname = usePathname();
   const brandName =
-    brand === "eco" ? ecoName(lang) : brand === "hearse" ? hearseName(lang) : "Autotherm";
+    brand === "eco"
+      ? ecoName(lang)
+      : brand === "hearse"
+        ? hearseName(lang)
+        : brand === "pharma"
+          ? PHARMA_NAME
+          : "Autotherm";
 
   useEffect(() => {
     const unsubscribe = scrollY.on("change", (v) => setScrolled(v > 24));
@@ -208,7 +255,7 @@ export default function Header({
         style={{ viewTransitionName: "site-header" }}
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ${
           scrolled || open
-            ? "glass shadow-[0_2px_10px_rgba(5,11,24,0.04),0_8px_30px_rgba(5,11,24,0.06)]"
+            ? "glass shadow-[0_2px_10px_rgba(var(--shadow-ink),0.04),0_8px_30px_rgba(var(--shadow-ink),0.06)]"
             : "border-b border-transparent bg-transparent"
         }`}
       >
@@ -222,6 +269,8 @@ export default function Header({
               <EcoWordmark light={!(scrolled || open)} lang={lang} />
             ) : brand === "hearse" ? (
               <HearseWordmark light={!(scrolled || open)} lang={lang} />
+            ) : brand === "pharma" ? (
+              <PharmaWordmark light={!(scrolled || open)} lang={lang} />
             ) : (
               <Image
                 src="/images/autotherm-logo.webp"

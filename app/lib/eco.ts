@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { LANGS, type Lang } from "./constants";
+import { BCP47, LANGS, type Lang } from "./constants";
 import type { IconName } from "./page-content";
 import { ECO_DICTS } from "./eco-i18n";
 
@@ -18,7 +18,7 @@ import { ECO_DICTS } from "./eco-i18n";
  * Preview locally at http://eco.localhost:<port>/ so links resolve the same way.
  */
 
-export const ECO_SITE_URL = "https://ehutoauto.hu";
+export const ECO_SITE_URL = "https://ehutoauto.hutoautok.hu";
 /**
  * Brand name per language: Hungarian keeps the original eHűtőautó, the other
  * languages use Zero Emission.
@@ -87,17 +87,126 @@ export function getEcoDict(lang: Lang) {
   return ECO_DICTS[lang];
 }
 
-/** Title, description, canonical and hreflang alternates for one page. */
+/* -------------------------------------------------------------------------- */
+/*  Keyword corpus - base terms per language plus per-page extras, the same   */
+/*  pattern as baseKeywords / extraKeywords on the main site. ASCII variants   */
+/*  included: a large share of queries are typed without accents.             */
+/* -------------------------------------------------------------------------- */
+
+export const ECO_BASE_KEYWORDS: Record<Lang, string[]> = {
+  hu: [
+    "elektromos hűtőautó", "elektromos hűtős furgon", "e-hűtőautó", "elektromos furgon hűtés",
+    "elektromos hűtőautó átalakítás", "emissziómentes hűtőautó", "önellátó hűtőegység",
+    "akkupakk hűtőegység", "elektromos hutoauto", "elektromos hutos furgon", "ehutoauto",
+    "e-hutoauto", "zöld hűtőautó", "csendes hűtőautó", "belvárosi hűtőautó",
+    "elektromos hűtőautó árak", "elektromos furgon hűtőberendezés",
+  ],
+  en: [
+    "electric refrigerated van", "electric reefer van", "electric cooled van",
+    "electric refrigerated vehicle", "EV refrigerated van", "EV reefer",
+    "zero emission refrigerated van", "zero emission reefer", "electric cold chain van",
+    "battery refrigerated van", "self-contained refrigeration unit", "electric van refrigeration",
+    "electric refrigerated conversion", "electric chiller van", "emission free refrigerated transport",
+  ],
+  de: [
+    "Elektro-Kühlfahrzeug", "Elektro-Kühltransporter", "elektrischer Kühltransporter",
+    "Elektro Kühlfahrzeug Umbau", "emissionsfreier Kühltransport", "autarkes Kühlaggregat",
+    "Elektrotransporter Kühlung", "Elektro-Kühlkoffer", "leiser Kühltransporter",
+    "Elektro Kuhltransporter", "Elektro-Kuhlfahrzeug", "Kühltransporter Elektro Reichweite",
+    "Elektro-Kühlfahrzeug Preise", "E-Transporter Kühlumbau",
+  ],
+  ro: [
+    "autofrigorifică electrică", "autofrigorifica electrica", "furgon frigorific electric",
+    "dubă frigorifică electrică", "duba frigorifica electrica", "vehicul frigorific electric",
+    "agregat frigorific autonom", "transport frigorific electric", "transport refrigerat electric",
+    "zero emisii frigorific", "autofrigorifice electrice", "autofrigorifica electrica pret",
+  ],
+};
+
+export const ECO_PAGE_KEYWORDS: Record<EcoPage, Partial<Record<Lang, string[]>>> = {
+  home: {
+    hu: ["elektromos hűtőautó gyártás", "Autotherm elektromos hűtőautó", "eHűtőautó Szeged"],
+    en: ["electric refrigerated van manufacturer", "Autotherm Zero Emission", "EV reefer Hungary"],
+    de: ["Elektro-Kühlfahrzeug Hersteller", "Autotherm Elektro-Kühlfahrzeuge", "E-Kühltransporter Ungarn"],
+    ro: ["producător autofrigorifice electrice", "Autotherm autofrigorifice electrice"],
+  },
+  why: {
+    hu: ["miért elektromos hűtőautó", "elektromos hűtőautó előnyei", "dízel tiltás hűtőautó"],
+    en: ["why electric refrigerated van", "electric reefer benefits", "diesel ban refrigerated"],
+    de: ["warum Elektro-Kühlfahrzeug", "Elektro-Kühltransporter Vorteile", "Dieselfahrverbot Kühlfahrzeug"],
+    ro: ["de ce autofrigorifică electrică", "de ce autofrigorifica electrica", "avantaje furgon electric frigorific"],
+  },
+  technology: {
+    hu: ["önellátó hűtőegység működése", "akkupakk hűtés hatótáv", "ciklikus töltés hűtőegység"],
+    en: ["self-contained refrigeration unit", "EV reefer battery pack", "cooling without range loss"],
+    de: ["autarkes Kühlaggregat Funktion", "Akkupack Kühlung Reichweite", "Kühlung ohne Reichweitenverlust"],
+    ro: ["agregat frigorific autonom funcționare", "agregat frigorific autonom functionare", "răcire fără pierdere autonomie"],
+  },
+  vehicles: {
+    hu: ["átalakítható elektromos furgonok", "Mercedes eVito hűtős", "Fiat E-Ducato hűtőautó", "Ford E-Transit hűtős"],
+    en: ["electric vans for refrigerated conversion", "Mercedes eVito refrigerated", "Fiat E-Ducato reefer"],
+    de: ["umbaubare Elektrotransporter", "Mercedes eVito Kühlumbau", "Fiat E-Ducato Kühlfahrzeug"],
+    ro: ["dube electrice transformabile frigorific", "Mercedes eVito frigorific", "Fiat E-Ducato frigorific"],
+  },
+  quote: {
+    hu: ["elektromos hűtőautó árajánlat", "e-hűtőautó ár", "elektromos hűtős furgon árkérés"],
+    en: ["electric refrigerated van quote", "EV reefer price", "request electric reefer quote"],
+    de: ["Elektro-Kühlfahrzeug Angebot", "E-Kühltransporter Preis", "Angebot Elektro-Kühlumbau"],
+    ro: ["ofertă autofrigorifică electrică", "oferta autofrigorifica electrica", "preț furgon frigorific electric"],
+  },
+};
+
+/** Title, description, keywords, canonical, hreflang, Open Graph and
+ * Twitter metadata for one page - mirrors buildPageMetadata on the main
+ * site so ehutoauto.hu competes with the same arsenal. */
 export function ecoMetadata(page: EcoPage, lang: Lang): Metadata {
   const { title, description } = ECO_DICTS[lang].seo[page];
-  const languages: Record<string, string> = Object.fromEntries(
-    LANGS.map((l) => [l, ecoPath(page, l)]),
-  );
-  languages["x-default"] = ecoPath(page, ECO_DEFAULT_LANG);
+  const path = ecoPath(page, lang);
+  const canonical = `${ECO_SITE_URL}${path === "/" ? "" : path}`;
+
+  const languages: Record<string, string> = {};
+  for (const l of LANGS) {
+    const p = ecoPath(page, l);
+    languages[BCP47[l]] = `${ECO_SITE_URL}${p === "/" ? "" : p}`;
+  }
+  const defaultPath = ecoPath(page, ECO_DEFAULT_LANG);
+  languages["x-default"] = `${ECO_SITE_URL}${defaultPath === "/" ? "" : defaultPath}`;
+
+  const keywords = [...ECO_BASE_KEYWORDS[lang], ...(ECO_PAGE_KEYWORDS[page]?.[lang] ?? [])];
+  const image = `${ECO_SITE_URL}/images/eco/builds/covers/ecitan.webp`;
+
   return {
     title,
     description,
-    alternates: { canonical: ecoPath(page, lang), languages },
+    keywords,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    alternates: { canonical, languages },
+    openGraph: {
+      type: "website",
+      locale: BCP47[lang].replace("-", "_"),
+      alternateLocale: LANGS.filter((l) => l !== lang).map((l) => BCP47[l].replace("-", "_")),
+      siteName: ecoName(lang),
+      title,
+      description,
+      url: canonical,
+      images: [{ url: image, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   };
 }
 
@@ -127,13 +236,12 @@ export const ECO_FEATURE_ICONS: IconName[] = [
 ];
 
 /**
- * Electric vans converted to refrigerated vehicles, current model years, from
- * small to large. Manufacturer studio shots, cut out and centred on a white
- * 521×365 canvas so every card matches (shown at about native size).
- * Entries with `photo` are finished Autotherm builds documented with workshop
- * photography instead (shown cropped, with their reference gallery below).
+ * The convertible electric vans, listed on the home strip and the vehicles
+ * page: the best-known models, each shown with its manufacturer studio
+ * shot (cut out and centred on a white 521×365 canvas so every card matches).
+ * Finished Autotherm conversions are documented separately in ECO_BUILDS.
  */
-export const ECO_VEHICLES: { make: string; model: string; image: string; photo?: boolean }[] = [
+export const ECO_VEHICLES: { make: string; model: string; image: string }[] = [
   { make: "Peugeot", model: "E-Partner", image: "/images/eco/peugeot-e-partner.webp" },
   { make: "Citroën", model: "ë-Berlingo", image: "/images/eco/citroen-e-berlingo.webp" },
   { make: "Opel", model: "Combo Electric", image: "/images/eco/opel-combo-electric.webp" },
@@ -143,10 +251,6 @@ export const ECO_VEHICLES: { make: string; model: string; image: string; photo?:
   { make: "Kia", model: "PV5 Cargo", image: "/images/eco/kia-pv5-cargo.webp" },
   { make: "Mercedes-Benz", model: "eVito", image: "/images/eco/mercedes-evito.webp" },
   { make: "Mercedes-Benz", model: "eSprinter", image: "/images/eco/mercedes-esprinter.webp" },
-  { make: "Mercedes-Benz", model: "eCitan", image: "/images/eco/builds/covers/ecitan.webp", photo: true },
-  { make: "Ford", model: "E-Transit Custom", image: "/images/eco/builds/covers/e-transit-custom.webp", photo: true },
-  { make: "Peugeot", model: "E-Expert", image: "/images/eco/builds/covers/e-expert.webp", photo: true },
-  { make: "Fiat", model: "E-Ducato", image: "/images/eco/builds/covers/e-ducato.webp", photo: true },
 ];
 
 /**
@@ -160,6 +264,19 @@ export const ECO_BUILDS: { id: string; make: string; model: string; dir: string;
   { id: "e-expert", make: "Peugeot", model: "E-Expert", dir: "build-008", count: 16, cover: 3 },
   { id: "e-ducato", make: "Fiat", model: "E-Ducato", dir: "build-004", count: 16, cover: 8 },
 ];
+
+/** Every electric van we convert, by name, for the home page marquee. */
+export const ECO_MODELS: string[] = [
+  ...ECO_VEHICLES.map((v) => `${v.make} ${v.model}`),
+  ...ECO_BUILDS.map((b) => `${b.make} ${b.model}`),
+];
+
+export const ECO_MODELS_TITLE: Record<Lang, string> = {
+  hu: "Elektromos alapjárművek, amelyekre építünk",
+  en: "Electric base vehicles we build on",
+  de: "Elektrische Basisfahrzeuge, auf die wir aufbauen",
+  ro: "Vehicule electrice de bază pe care construim",
+};
 
 /** Photo paths for one finished build, in shooting order. */
 export function ecoBuildPhotos(dir: string, count: number): string[] {

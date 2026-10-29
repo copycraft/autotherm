@@ -1,17 +1,20 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import MagneticButton from "@/app/components/motion/MagneticButton";
 import Parallax from "@/app/components/motion/Parallax";
 import { EASE_CINEMATIC } from "@/app/components/motion/Reveal";
 import RevealText from "@/app/components/motion/RevealText";
+import VelocityStretch from "@/app/components/motion/VelocityStretch";
 import Eyebrow from "@/app/components/ui/Eyebrow";
 import type { EcoDict } from "@/app/lib/eco-i18n";
 
 /**
- * ehutoauto.hu home hero. No photography yet (there are no electric-van
- * shots in the library), so the plate is a line drawing of an electric
- * refrigerated van on charge that traces itself in.
+ * ehutoauto.hu home hero: one photograph, the e-Expert on charge. On desktop the
+ * plate is pinned to the right and its left edge dissolves into the page, so
+ * the copy sits on clean dark and the charging port stays visible; on mobile
+ * it runs full-bleed with the scrim weighted low.
  */
 export default function EcoHero({
   copy,
@@ -25,24 +28,45 @@ export default function EcoHero({
   technologyHref: string;
 }) {
   const reduced = useReducedMotion() ?? false;
-  const draw = (delay: number) => ({
-    initial: { pathLength: 0, opacity: 0 },
-    animate: { pathLength: 1, opacity: 1 },
-    transition: {
-      pathLength: { duration: reduced ? 0 : 1.6, ease: EASE_CINEMATIC, delay: reduced ? 0 : delay },
-      opacity: { duration: 0.01, delay: reduced ? 0 : delay },
-    },
-  });
   const fade = (delay: number) => ({
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.8, ease: EASE_CINEMATIC, delay },
+    transition: { duration: 0.8, ease: EASE_CINEMATIC, delay: reduced ? 0 : delay },
   });
 
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink-950">
-      <div className="relative mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-4 pt-32 pb-20 sm:px-6 lg:grid-cols-12 lg:px-8 lg:py-32">
-        <div className="lg:col-span-6">
+    <section className="relative flex min-h-[100svh] items-end overflow-hidden bg-ink-950 lg:items-center">
+      <Parallax
+        className="absolute inset-x-0 top-0 h-[46svh] lg:inset-0 lg:left-auto lg:h-auto lg:w-[78%] lg:[mask-image:linear-gradient(to_right,transparent,#000_32%)]"
+        speed={0.25}
+      >
+        <VelocityStretch className="h-full w-full">
+          <Image
+            src="/images/eexpert-reefer-charging.webp"
+            alt=""
+            fill
+            priority
+            quality={90}
+            sizes="100vw"
+            className="object-cover object-[28%_50%] lg:object-left"
+          />
+        </VelocityStretch>
+      </Parallax>
+
+      {/* Phones: the photo is a band across the top and fades into the page,
+          so the copy below sits on plain dark instead of over a cropped photo. */}
+      <div
+        className="absolute inset-x-0 top-0 h-[46svh] bg-gradient-to-t from-ink-950 via-ink-950/20 to-ink-950/30 lg:hidden"
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 hidden bg-ink-950/35 lg:block" aria-hidden="true" />
+      <div
+        className="absolute inset-0 hidden lg:block lg:bg-gradient-to-r lg:from-ink-950 lg:via-ink-950/40 lg:to-transparent"
+        aria-hidden="true"
+      />
+
+      <div className="relative mx-auto w-full max-w-7xl px-4 pt-[calc(46svh-3rem)] pb-16 sm:px-6 sm:pb-24 lg:px-8 lg:py-32">
+        <div className="max-w-3xl">
           <motion.div {...fade(0.1)}>
             <Eyebrow label={copy.eyebrow} />
           </motion.div>
@@ -81,35 +105,6 @@ export default function EcoHero({
             ))}
           </motion.ul>
         </div>
-
-        {/* Electric refrigerated van on charge, drifting on scroll. */}
-        <Parallax className="lg:col-span-6" speed={0.18}>
-          <svg viewBox="0 0 520 340" className="mx-auto w-full max-w-xl" fill="none" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            {/* ground */}
-            <motion.path {...draw(0.2)} d="M20 286h480" className="stroke-white/15" strokeWidth="2" />
-            {/* insulated cargo box */}
-            <motion.path {...draw(0.3)} d="M40 92h262v170H40z" className="stroke-frost-300" strokeWidth="4" />
-            {/* cab */}
-            <motion.path {...draw(0.5)} d="M302 262V132h70l52 58v72z" className="stroke-frost-300" strokeWidth="4" />
-            <motion.path {...draw(0.7)} d="M318 148h46l38 42h-84z" className="stroke-frost-300/60" strokeWidth="3" />
-            {/* wheels */}
-            <motion.circle {...draw(0.8)} cx="110" cy="268" r="24" className="stroke-white" strokeWidth="4" />
-            <motion.circle {...draw(0.9)} cx="370" cy="268" r="24" className="stroke-white" strokeWidth="4" />
-            {/* snowflake on the box */}
-            <motion.path
-              {...draw(1.1)}
-              d="M171 135v84M134 156l74 42M208 156l-74 42M163 140l8 8 8-8M163 214l8-8 8 8"
-              className="stroke-white"
-              strokeWidth="3.5"
-            />
-            {/* self-contained battery pack under the box */}
-            <motion.path {...draw(1.3)} d="M200 236h66v26h-66zM212 236v-6M254 236v-6" className="stroke-brand-400" strokeWidth="3" />
-            <motion.path {...draw(1.5)} d="M236 241l-8 11h10l-6 9" className="stroke-frost-300" strokeWidth="3" />
-            {/* charging cable to the post */}
-            <motion.path {...draw(1.6)} d="M424 220c30 0 34 40 60 40v-120" className="stroke-brand-400" strokeWidth="3" />
-            <motion.path {...draw(1.8)} d="M468 70h32v70h-32zM476 86h16M480 102l-6 10h10l-6 10" className="stroke-white/80" strokeWidth="3" />
-          </svg>
-        </Parallax>
       </div>
     </section>
   );

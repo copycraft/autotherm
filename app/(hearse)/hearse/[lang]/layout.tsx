@@ -18,6 +18,7 @@ import {
   hearseName,
   hearsePath,
 } from "@/app/lib/hearse";
+import { HearseJsonLd } from "@/app/lib/json-ld";
 import { rootViewport } from "@/app/lib/root-metadata";
 
 const CookieConsent = dynamic(() => import("@/app/components/site/CookieConsent"));
@@ -50,7 +51,17 @@ export async function generateMetadata({
     applicationName: hearseName(lang),
     authors: [{ name: "Autotherm" }],
     publisher: "Autotherm",
-    robots: { index: true, follow: true },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     // The halottszallito.hu site icon (gold "A"). /favicon.ico on the hearse
     // host is rewritten to the same file in next.config.ts, since browsers also
     // request that path on their own.
@@ -95,6 +106,7 @@ export default async function HearseLayout({
 
   return (
     <RootShell lang={lang} theme="hearse" jsonLd={false}>
+      <HearseJsonLd />
       <SmoothScroll>
         <HearseHeader lang={lang} langNames={langNames} />
         <main className="flex-1">{children}</main>

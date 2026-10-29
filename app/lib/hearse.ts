@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FOUNDED_YEAR, LANGS, STATS, yearsSince, type Lang } from "./constants";
+import { BCP47, FOUNDED_YEAR, LANGS, STATS, yearsSince, type Lang } from "./constants";
 import type { IconName } from "./page-content";
 import { HEARSE_DICTS } from "./hearse-i18n";
 
@@ -16,10 +16,10 @@ import { HEARSE_DICTS } from "./hearse-i18n";
  * with their own slugs. Copy is in app/lib/hearse-i18n; the Hungarian text is
  * the company's own from the original halottszallito.hu site.
  *
- * Preview locally at http://hearse.localhost:<port>/ so links resolve the same way.
+ * Preview locally at http://halottszallito.localhost:<port>/ so links resolve the same way.
  */
 
-export const HEARSE_SITE_URL = "https://halottszallito.hu";
+export const HEARSE_SITE_URL = "https://halottszallito.hutoautok.hu";
 /**
  * Brand name per language: Hungarian keeps the original Halottszállító, the
  * other languages use Mortecontrol.
@@ -88,17 +88,138 @@ export function getHearseDict(lang: Lang) {
   return HEARSE_DICTS[lang];
 }
 
-/** Title, description, canonical and hreflang alternates for one page. */
+/* -------------------------------------------------------------------------- */
+/*  Keyword corpus - base terms per language plus per-page extras, the same   */
+/*  pattern as baseKeywords / extraKeywords on the main site. ASCII variants   */
+/*  included: a large share of queries are typed without accents.             */
+/* -------------------------------------------------------------------------- */
+
+export const HEARSE_BASE_KEYWORDS: Record<Lang, string[]> = {
+  hu: [
+    "halottszállító", "halottszállító autó", "halottasautó", "halottas autó",
+    "halottaskocsi", "halottszállító jármű", "elhunytszállító", "elhunytszállító autó",
+    "koporsószállító", "pompaautó", "temetkezési autó", "temetői jármű",
+    "kegyeleti jármű", "halottszállítás", "halottszallito", "halottszallito auto",
+    "halottasauto", "halottas auto", "halottaskocsi gyártás", "halottszállító gyártás",
+    "hűtős halottas autó", "díszített halottaskocsi", "halottszállító furgon",
+    "halottszállító átalakítás", "halottas autó átalakítás", "halottas autó árak",
+    "halottszállító autó ára", "használt halottas autó", "halottszállító bérlés",
+  ],
+  en: [
+    "hearse", "hearse van", "funeral vehicle", "funeral van", "mortuary van",
+    "removal van", "deceased transport vehicle", "coffin transport", "funeral transport",
+    "hearse conversion", "hearse manufacturer", "funeral car", "mortuary vehicle",
+    "body removal vehicle", "deceased removal van", "funeral director vehicle",
+    "temperature controlled funeral van", "refrigerated hearse", "cooled funeral vehicle",
+    "hearse builder", "custom hearse", "hearse for sale", "funeral vehicle conversion",
+  ],
+  de: [
+    "Leichenwagen", "Bestattungswagen", "Überführungswagen", "Überführungsfahrzeug",
+    "Bestattungsfahrzeug", "Leichenwagen Umbau", "Bestattungswagen Hersteller",
+    "Leichenwagen kaufen", "Überführungswagen kaufen", "Sargtransport",
+    "Bestattungsfahrzeug Umbau", "gekühlter Leichenwagen", "Leichenwagen mit Kühlung",
+    "Ueberfuehrungswagen", "Leichenwagen Hersteller", "Bestattungswagen Umbau",
+    "Friedhofsfahrzeug", "Trauerfahrzeug", "Leichenwagen Preise",
+  ],
+  ro: [
+    "mașină funerară", "masina funerara", "mașini funerare", "masini funerare",
+    "dric", "vehicul funerar", "transport funerar", "transport decedați",
+    "transport decedati", "mașină transport decedați", "masina transport decedati",
+    "autovehicul funerar", "sicriu transport", "transport sicrie",
+    "mașină funerară preț", "masina funerara pret", "dric preț", "servicii funerare auto",
+    "mașină funerară frigorifică", "masina funerara frigorifica",
+  ],
+};
+
+export const HEARSE_PAGE_KEYWORDS: Record<HearsePage, Partial<Record<Lang, string[]>>> = {
+  home: {
+    hu: ["halottszállító gyártás Szeged", "halottasautó gyártás Magyarország", "Autotherm halottszállító", "piacvezető halottaskocsi gyártó"],
+    en: ["hearse manufacturer Hungary", "Autotherm funeral vehicles", "market leading hearse builder"],
+    de: ["Bestattungswagen Hersteller Ungarn", "Autotherm Bestattungsfahrzeuge", "Marktführer Leichenwagen"],
+    ro: ["producător mașini funerare Ungaria", "Autotherm mașini funerare", "lider mașini funerare"],
+  },
+  why: {
+    hu: ["miért halottszállító Autotherm", "halottaskocsi gyártás tapasztalat", "halottszállító garancia"],
+    en: ["why choose hearse builder", "hearse building experience", "funeral vehicle warranty"],
+    de: ["warum Bestattungswagen Autotherm", "Leichenwagen Erfahrung", "Bestattungswagen Garantie"],
+    ro: ["de ce mașină funerară Autotherm", "experiență mașini funerare", "garanție mașină funerară", "garanție masina funerara"],
+  },
+  product: {
+    hu: ["halottszállító műszaki tartalom", "raktérhűtés halottas autó", "+18 fok halottszállító", "rozsdamentes halottas autó"],
+    en: ["hearse specification", "funeral van cooling", "stainless steel hearse interior"],
+    de: ["Bestattungswagen Ausstattung", "Leichenwagen Kühlung", "Edelstahl Leichenwagen"],
+    ro: ["dotări mașină funerară", "dotari masina funerara", "răcire mașină funerară", "racire masina funerara"],
+  },
+  builds: {
+    hu: ["Mercedes Vito halottszállító", "Ford Transit halottas autó", "halottszállító képek", "elkészült halottas autók"],
+    en: ["Mercedes Vito hearse", "Ford Transit funeral van", "hearse conversions gallery"],
+    de: ["Mercedes Vito Leichenwagen", "Ford Transit Bestattungswagen", "Bestattungswagen Galerie"],
+    ro: ["Mercedes Vito mașină funerară", "Mercedes Vito masina funerara", "Ford Transit dric", "galerie mașini funerare"],
+  },
+  quote: {
+    hu: ["halottasautó árajánlat", "halottszállító ár", "halottas autó árkérés", "pompaautó árajánlat"],
+    en: ["hearse quote", "funeral vehicle price", "request hearse quote"],
+    de: ["Leichenwagen Angebot", "Bestattungswagen Preis", "Angebot Bestattungsfahrzeug"],
+    ro: ["ofertă mașină funerară", "oferta masina funerara", "preț dric", "pret dric", "cerere ofertă dric"],
+  },
+};
+
+/** Open Graph / Twitter image per page (files under public/). */
+export const HEARSE_OG_IMAGES: Record<HearsePage, string> = {
+  home: "/images/hearse/hero.webp",
+  why: "/images/hearse/hero.webp",
+  product: "/images/hearse/steel-lining.webp",
+  builds: "/images/hearse/builds/01-1.webp",
+  quote: "/images/hearse/hero.webp",
+};
 export function hearseMetadata(page: HearsePage, lang: Lang): Metadata {
   const { title, description } = HEARSE_DICTS[lang].seo[page];
-  const languages: Record<string, string> = Object.fromEntries(
-    LANGS.map((l) => [l, hearsePath(page, l)]),
-  );
-  languages["x-default"] = hearsePath(page, HEARSE_DEFAULT_LANG);
+  const path = hearsePath(page, lang);
+  const canonical = `${HEARSE_SITE_URL}${path === "/" ? "" : path}`;
+
+  const languages: Record<string, string> = {};
+  for (const l of LANGS) {
+    const p = hearsePath(page, l);
+    languages[BCP47[l]] = `${HEARSE_SITE_URL}${p === "/" ? "" : p}`;
+  }
+  const defaultPath = hearsePath(page, HEARSE_DEFAULT_LANG);
+  languages["x-default"] = `${HEARSE_SITE_URL}${defaultPath === "/" ? "" : defaultPath}`;
+
+  const keywords = [...HEARSE_BASE_KEYWORDS[lang], ...(HEARSE_PAGE_KEYWORDS[page]?.[lang] ?? [])];
+  const image = `${HEARSE_SITE_URL}${HEARSE_OG_IMAGES[page]}`;
+
   return {
     title,
     description,
-    alternates: { canonical: hearsePath(page, lang), languages },
+    keywords,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    alternates: { canonical, languages },
+    openGraph: {
+      type: "website",
+      locale: BCP47[lang].replace("-", "_"),
+      alternateLocale: LANGS.filter((l) => l !== lang).map((l) => BCP47[l].replace("-", "_")),
+      siteName: hearseName(lang),
+      title,
+      description,
+      url: canonical,
+      images: [{ url: image, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
   };
 }
 
@@ -172,6 +293,18 @@ export const HEARSE_BUILDS: HearseBuild[] = [
   { make: "Ford", model: "Transit Custom", spec: ["SF50", "Waeco"], photos: 4 },
   { make: "Mercedes-Benz", model: "Vito", spec: [], photos: 4 },
 ];
+
+/** Distinct base vehicles in the build archive, for the home page marquee. */
+export const HEARSE_MODELS: string[] = [
+  ...new Set(HEARSE_BUILDS.map((b) => `${b.make} ${b.model}`)),
+];
+
+export const HEARSE_MODELS_TITLE: Record<Lang, string> = {
+  hu: "Alapjárművek, amelyekre építünk",
+  en: "Base vehicles we build on",
+  de: "Basisfahrzeuge, auf die wir aufbauen",
+  ro: "Vehicule de bază pe care construim",
+};
 
 export function buildPhoto(index: number, photo = 1): string {
   return `/images/hearse/builds/${String(index + 1).padStart(2, "0")}-${photo}.webp`;
